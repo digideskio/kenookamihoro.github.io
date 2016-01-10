@@ -3,6 +3,10 @@
 <head>
     <title>Horo's Test Zone</title>
     <meta charset="utf-8" />
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Horo's Test Zone Full Atom Feed" />
+    <link href="/feeds/test.atom.xml" type="application/atom+xml" rel="alternate" title="Horo's Test Zone Categories Atom Feed" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="/theme/css/metro.css" rel="stylesheet">
     <link href="/theme/css/docs.css" rel="stylesheet">
     <link href="/theme/css/metro-icons.css" rel="stylesheet">
@@ -12,24 +16,24 @@
     <script src="/theme/js/metro.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
-<body id="index" class="home">
-    <div class="app-bar orange fixed-top navy bottom-shadow clear-float" data-role="appbar">
+<body id="index">
+    <div class="app-bar orange fixed-top bottom-shadow" data-role="appbar">
         <div class="container">
             <ul class="app-bar-menu">
                 <li><a href="/"><strong>Horo's Test Zone</strong></a></li>
-                <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
+                <li><a href="" class="dropdown-toggle"><span class="mif-stack2"> 分类</span></a>
                 <ul class="d-menu" data-role="dropdown">
                 <li><a href="/category/examples.html">Examples</a></li>
                 <li><a href="/category/markdown.html">MarkDown</a></li>
                 <li class="active"><a href="/category/test.html">Test</a></li>
                 </ul></li>
-                <li><a href="/archives.html"><span class="mif-versions"></span> 文章归档</a></li>
+                <li><a href="/archives.html"><span class="mif-versions"> 文章归档</span></a></li>
             </ul>
             <ul class="app-bar-menu place-right">
-                <li><a href="/None"><span class="mif-feed3"></span></a></li>
-                <li><a href="/links.html"><span class="mif-favorite"></span> 链接 </a></li>
-                <li><span class="mif-search"> 搜索准备中......</span></li>
+                <li><a href="/feeds/all.atom.xml"><span class="mif-feed3"></span></a></li>
+                <li><a href="/links.html"><span class="mif-favorite"> 链接 </span></a></li>
                 <!--
+                <li><span class="mif-search"> 搜索准备中......</span></li>
                 <li>
                 <form>
                 <div class="input-control text small">
@@ -41,15 +45,14 @@
             </ul>
         </div>
     </div>
-    <br />
     <div class="container page-content">
         <div class="grid">
+        	<blockquote class="bg-grayLighter place-right" style="display:block;">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    		<small>Someone famous <cite title="Source Title">Source Title</cite></small>
+			</blockquote>
             <div class="row cells10">
                 <div class="cell colspan7">
-                <blockquote class="bg-grayLighter place-right no-margin-top" style="padding-bottom:12px;display:block;">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    			<small>Someone famous <cite title="Source Title">Source Title</cite></small>
-				</blockquote>
 				<div style="clear:both;"></div>
 <section id="content" style="clear:both;">
 <h2>分类"Test"中的文章</h2>
@@ -89,8 +92,8 @@
                         <span class="title">Ken_Ookami_Horo</span>
                     </div>    
                     <div class="content padding10">
-                    <div class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
-                        <div class="tile-content slide-up-2 ">
+                    <a href="/aboutme.html" class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
+                        <div class="tile-content slide-up-2">
                             <div class="slide">
                                  <div class="image-container image-format-square" style="width: 100%;">
                                      <div class="frame">
@@ -103,7 +106,7 @@
                             「虽然咱长久以来被尊为神，不过，咱就是咱。咱是赫萝。」
                             </div>
                         </div>
-                    </div>
+                    </a>
                         <div class="toolbar align-center">
                         <br />
                         <a href="https://twitter.com/Ken_Ookami_Horo">
