@@ -6,6 +6,7 @@
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Horo's Test Zone Full Atom Feed" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#fa6800">
     <link href="/theme/css/metro.css" rel="stylesheet">
     <link href="/theme/css/docs.css" rel="stylesheet">
     <link href="/theme/css/metro-icons.css" rel="stylesheet">
@@ -13,24 +14,34 @@
     <link href="/theme/css/metro-schemes.css" rel="stylesheet">
     <script src="/theme/js/jquery-2.1.3.min.js"></script>
     <script src="/theme/js/metro.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script>
+        function showCharm(id){
+            var  charm = $("#"+id+"-charm").data("charm");
+            if (charm.element.data("opened") === true) {
+                charm.close();
+            } else {
+                charm.open();
+            }
+        }
+    </script>
+   
 </head>
 <body id="index">
     <div class="app-bar orange fixed-top bottom-shadow" data-role="appbar">
         <div class="container">
             <ul class="app-bar-menu">
                 <li><a href="/"><strong>Horo's Test Zone</strong></a></li>
-                <li><a href="" class="dropdown-toggle"><span class="mif-stack2"> 分类</span></a>
+                <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
                 <li><a href="/category/examples.html">Examples</a></li>
                 <li><a href="/category/markdown.html">MarkDown</a></li>
                 <li><a href="/category/test.html">Test</a></li>
                 </ul></li>
-                <li><a href="/archives.html"><span class="mif-versions"> 文章归档</span></a></li>
+                <li><a href="/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
             <ul class="app-bar-menu place-right">
                 <li><a href="/feeds/all.atom.xml"><span class="mif-feed3"></span></a></li>
-                <li><a href="/links.html"><span class="mif-favorite"> 链接 </span></a></li>
+                <li><a href="/links.html"><span class="mif-favorite"></span>&nbsp;链接&nbsp;</a></li>
                 <!--
                 <li><span class="mif-search"> 搜索准备中......</span></li>
                 <li>
@@ -46,7 +57,7 @@
     </div>
     <div class="container page-content">
         <div class="grid">
-        	<blockquote class="bg-grayLighter place-right" style="display:block;">
+        	<blockquote class="bg-grayLighter place-right padding5" style="display:block;">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     		<small>Someone famous <cite title="Source Title">Source Title</cite></small>
 			</blockquote>
@@ -62,13 +73,13 @@
             <div class="cell colspan3">
                 <div class="panel warning shadow">
                     <div class="heading">
-                        <span class="icon mif-tag bg-darkOrange"></span>
+                        <span class="icon mif-notification bg-darkOrange"></span>
                         <span class="title">站点通告</span>
                     </div>
                 <div class="content padding10">
-                <ul>
-                <li>Test1</li>
-                <li>Test2</li>
+                <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
+                <div>如果有问题的话，记得回报咱哟~</div><br />
+                <div><a href="{{ GITHUB_ISSUE_URL }}"><button class="button success block-shadow-success text-shadow">Github</button></a>&nbsp;<a href="{{ BACKPORT_URL }}/wiki/Feedback:%E5%9B%9E%E6%8A%A5%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98"><button class="button warning block-shadow-warning text-shadow">Yoitsu.moe</button></a></div><br />
                 </ul>
                 </div>
                 </div>
@@ -120,12 +131,13 @@
             </div>
         </div>
     </div>
+    <a href="#"><button class="button cycle-button large-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1000"><span class="mif-vertical-align-top"></span></button></a>
     </div>
     <div class="app-bar darcula padding10 text-shadow ">
         <div class="grid container page-content ">
             Horo's Test Zone基于<a href="http://metroui.org.ua/">Metro UI CSS</a>和使用<del>人生苦短</del>的<a href="http://python.org">Python</a>制成的<a href="http://getpelican.com/">Pelican</a>构建.<br />
             <br />
-            <img alt="知识共享许可协议" style="border-width:1" src="/theme/images/cc-by-sa.png" />Horo's Test Zone的文字内容在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">知识共享 署名-相同方式共享 4.0协议</a>之条款下提供。<br />
+            <img alt="知识共享许可协议" style="border-width:1" src="/theme/images/cc-by-sa.png" />除非另有声明，Horo's Test Zone的文字内容在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">知识共享 署名-相同方式共享 4.0协议</a>之条款下提供。<br />
         </div>
     </div>
 </body>
