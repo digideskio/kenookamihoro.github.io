@@ -5,29 +5,36 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2016-01-12T21:50:42-00:00</lastmod>
+<lastmod>2016-01-14T22:06:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2016-01-12T21:50:42-00:00</lastmod>
+<lastmod>2016-01-14T22:06:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/tags.html</loc>
-<lastmod>2016-01-12T21:50:42-00:00</lastmod>
+<lastmod>2016-01-14T22:06:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2016-01-12T21:50:42-00:00</lastmod>
+<lastmod>2016-01-14T22:06:05-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/neighbor-articles-plugin-for-pelican.html</loc>
+<lastmod>2016-01-18T13:45:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -67,6 +74,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/category/plugins.html</loc>
+<lastmod>2016-01-18T13:45:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/category/test.html</loc>
 <lastmod>2016-01-17T17:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -74,14 +88,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/tag/example.html</loc>
-<lastmod>2016-01-18T13:45:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/author/ken_ookami_horo.html</loc>
+<loc>/author/horo.html</loc>
 <lastmod>2016-01-18T13:45:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>

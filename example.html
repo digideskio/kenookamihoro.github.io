@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>约伊兹的萌狼乡手札</title>
+      <title>Example - 约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
-    <link href="/feeds/examples.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
+    <link href="/feeds/pages.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
     <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#bf5a15">
+    <meta name="theme-color" content="#fa6800">
     <link href="/theme/css/metro.css" rel="stylesheet">
     <link href="/theme/css/docs.css" rel="stylesheet">
     <link href="/theme/css/metro-icons.css" rel="stylesheet">
@@ -47,6 +47,10 @@
     });
     </script>
 
+
+
+
+
 </head>
 <body id="index">
     <div class="app-bar orange fixed-top bottom-shadow" data-role="appbar">
@@ -55,15 +59,19 @@
                 <li><a href="/"><strong>约伊兹的萌狼乡手札</strong></a></li>
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
-                <li class="active"><a href="/category/examples.html">Examples</a></li>
+                <li><a href="/category/examples.html">Examples</a></li>
                 <li><a href="/category/markdown.html">MarkDown</a></li>
+                <li class="active"><a href="/category/pages.html">Pages</a></li>
                 <li><a href="/category/plugins.html">Plugins</a></li>
                 <li><a href="/category/test.html">Test</a></li>
                 </ul></li>
                 <li><a href="/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
             <ul class="app-bar-menu place-right">
-<li><a href="/feeds/examples.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅这个分类&nbsp;</a></li>
+
+<li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
+<li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
+                <li><a href="/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
                 <li><a href="/aboutrss.html"><span class="mif-chevron-left"></span>那个怎么用？</a></li>
                 <li><a href="/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
                 <li>
@@ -107,27 +115,64 @@
 			</script>
             <div class="row cells10">
                 <div class="cell colspan7">
-<section id="content" style="clear:both;">
-<h2>分类"Examples"中的文章</h2>
-        <article class="hentry block-shadow">
-                <header class="bg-darkOrange fg-white padding20"> <h2 class="entry-title"><a href="/pelican-quickstart.html" rel="bookmark" title="到 Pelican QuickStart的固定链接" class="fg-white">Pelican QuickStart</a></h2>
-               <span class="mif-calendar"> 2016年01月18日 星期一&nbsp;&nbsp;</span>
-					<span class="mif-user" title="作者"><a class="fg-white" href="/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
-               <span class="mif-folder" title="分类"><a class="fg-white" href="/category/examples.html"> Examples</a></span>
-                </header>
-                <footer class="post-info">
-                <div class="entry-content popover marker-on-top bg-lightOrange fg-grayDarker"> 
-<p>Reading through all the documentation is highly recommended, but for the truly
+<div data-role="charm" data-position="right" id="right-charm" class="bg-grayLighter page-content fg-black ">
+<h2>目录</h2>
+</div>
+<section id="content" class="body">
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="/example.html" rel="bookmark" title="到 Example的固定链接" class="fg-white">Example</a></h2>
+    	<span class="mif-calendar"> 2016年01月18日 星期一&nbsp;&nbsp;</span>
+    	<span class="mif-user" title="作者"><a class="fg-white" href="/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
+        <span class="mif-folder" title="分类"><a class="fg-white" href="/category/pages.html"> Pages</a></span><br /><br />
+
+    </header>
+  <div class="entry-content text-accent">
+    <p>Reading through all the documentation is highly recommended, but for the truly
 impatient, following are some quick steps to get started.</p>
-<div class="section" id="installation">
-<h2><a class="toc-backref" href="#id1">Installation</a></h2>
-<p>Install Pelican (and optionally Markdown if you intend to use it) on Python
-2.7.x or Python 3.3+ by running the following command in your preferred ...</p></div> </div><!-- /.entry-content -->
-                </footer><!-- /.post-info -->
-        </article>
-        <hr class="bg-lightOrange" />
-<!-- /#posts-list -->
-</section><!-- /#content -->
+
+  </div><!-- /.entry-content -->
+</section>
+<div class="padding10"></div>
+<div class="panel" id="talk" data-role="panel">
+<div class="heading bg-orange">
+       <span class="icon mif-bubbles bg-darkOrange"></span>
+       <span class="title">参与讨论</span>
+    </div>
+    <div class="content">
+       <ul class="step-list padding10" style="padding-left:20px;">
+        <li>
+            <h2>如何和咱交流?</h2>
+            <hr class="bg-red" />
+            <div>
+                汝可以通过Github的Issue和<a href="https://yoitsu.moe">yoitsu.moe</a>上的Feedback页面和咱交(bao)流(yuan)呐~
+                <br />
+                <a href="/talk.html"><button class="button warning">汝想问咱为啥不用Disqus?</button></a>
+            </div>
+        </li>
+        <li>
+            <h2>如果用Github Issue?</h2>
+            <hr class="bg-green" />
+            <div>
+                那就用Github帐号登录，然后提交issue，记得附上有问题的页面的标题呐~（和页面无关的问题可以忽略标题）
+                <br />
+                <a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success">前往Issues页面呗~</button></a>
+            </div>
+        </li>
+        <li>
+            <h2>如果去yoitsu.moe?</h2>
+            <hr  class="bg-blue"/>
+            <div>
+                点击下面的按钮就进入到对应的页面了啦。虽然不需要注册，但是由于MediaWiki软件的限制，不注册的话会暴露IP地址+收不到通知呐~
+                <br />
+                但是注册时输入的验证码是Google的ReCaptcha呐~，于是……
+                <br />
+                如果不觉得麻烦的话，就戳下面的按钮呗~
+                <br />
+                <a href="https://yoitsu.moe/w/index.php?title=Feedback:Example"><button class="button primary">给咱戳这儿~</button></a>
+            </div>
+        </li>
+     </ul>
+    </div>
+</div>
                 </div>
             <div class="cell colspan3">
                 <div class="panel warning shadow">
