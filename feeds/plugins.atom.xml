@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="/" rel="alternate"></link><link href="/feeds/plugins.atom.xml" rel="self"></link><id>/</id><updated>2016-01-18T13:45:00+08:00</updated><entry><title>Neighbor Articles Plugin for Pelican</title><link href="/neighbor-articles-plugin-for-pelican.html" rel="alternate"></link><updated>2016-01-18T13:45:00+08:00</updated><author><name>ホロ</name></author><id>tag:,2016-01-18:neighbor-articles-plugin-for-pelican.html</id><summary type="html">
-&lt;p&gt;This plugin adds &lt;tt class="docutils literal"&gt;next_article&lt;/tt&gt; (newer) and &lt;tt class="docutils literal"&gt;prev_article&lt;/tt&gt; (older)
+&lt;p&gt;This plugin adds &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;next_article&lt;/span&gt;&lt;/pre&gt;
+ (newer) and &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;prev_article&lt;/span&gt;&lt;/pre&gt;
+ (older)
 variables to the article's context.&lt;/p&gt;
-&lt;p&gt;Also adds &lt;tt class="docutils literal"&gt;next_article_in_category&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;prev_article_in_category&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Also adds &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;next_article_in_category&lt;/span&gt;&lt;/pre&gt;
+ and &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;prev_article_in_category&lt;/span&gt;&lt;/pre&gt;
+.&lt;/p&gt;
 &lt;div class="section" id="usage"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Usage&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt; &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;&lt;/span&gt;
@@ -44,10 +52,18 @@ variables to the article's context.&lt;/p&gt;
 &lt;p&gt;If you want to get the neigbors within a subcategory it's a little different.
 Since an article can belong to more than one subcategory, subcategories are
 stored in a list. If you have an article with subcategories like&lt;/p&gt;
-&lt;p&gt;&lt;tt class="docutils literal"&gt;Category/Foo/Bar&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Category/Foo/Bar&lt;/span&gt;&lt;/pre&gt;
+&lt;/p&gt;
 &lt;p&gt;it will belong to both subcategory Foo, and Foo/Bar. Subcategory neighbors are
-added to an article as &lt;tt class="docutils literal"&gt;next_article_in_subcategory#&lt;/tt&gt; and
-&lt;tt class="docutils literal"&gt;prev_article_in_subcategory#&lt;/tt&gt; where &lt;tt class="docutils literal"&gt;#&lt;/tt&gt; is the level of subcategory. So using
+added to an article as &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;next_article_in_subcategory#&lt;/span&gt;&lt;/pre&gt;
+ and
+&lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;prev_article_in_subcategory#&lt;/span&gt;&lt;/pre&gt;
+ where &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;#&lt;/span&gt;&lt;/pre&gt;
+ is the level of subcategory. So using
 the example from above, subcategory1 will be Foo, and subcategory2 Foo/Bar.
 Therefor the usage with subcategories is:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt; &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;&lt;/span&gt;
@@ -84,4 +100,192 @@ Therefor the usage with subcategories is:&lt;/p&gt;
 &lt;span class="code-line"&gt; &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-</summary></entry></feed>
+</summary><category term="pelican"></category><category term="plugin"></category></entry><entry><title>Summary</title><link href="/summary.html" rel="alternate"></link><updated>2016-01-18T13:45:00+08:00</updated><author><name>ホロ</name></author><id>tag:,2016-01-18:summary.html</id><summary type="html">
+&lt;p&gt;This plugin allows easy, variable length summaries directly embedded into the
+body of your articles. It introduces two new settings: &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;SUMMARY_BEGIN_MARKER&lt;/span&gt;&lt;/pre&gt;
+
+and &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;SUMMARY_END_MARKER&lt;/span&gt;&lt;/pre&gt;
+: strings which can be placed directly into an article
+to mark the beginning and end of a summary. When found, the standard
+&lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;SUMMARY_MAX_LENGTH&lt;/span&gt;&lt;/pre&gt;
+ setting will be ignored. The markers themselves will also
+be removed from your articles before they are published. The default values
+are &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&amp;lt;!-- PELICAN_BEGIN_SUMMARY --&amp;gt;&lt;/span&gt;&lt;/pre&gt;
+ and &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&amp;lt;!-- PELICAN_END_SUMMARY --&amp;gt;&lt;/span&gt;&lt;/pre&gt;
+.
+For example:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Title: My super title
+Date: 2010-12-03 10:20
+Tags: thats, awesome
+Category: yeah
+Slug: my-super-post
+Author: Alexis Metaireau
+
+This is the content of my super blog post.
+&amp;lt;!-- PELICAN_END_SUMMARY --&amp;gt;
+and this content occurs after the summary.
+&lt;/pre&gt;
+&lt;p&gt;Here, the summary is taken to be the first line of the post. Because no
+beginning marker was found, it starts at the top of the body. It is possible
+to leave out the end marker instead, in which case the summary will start at the
+beginning marker and continue to the end of the body.&lt;/p&gt;
+&lt;p&gt;The plugin also sets a &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;has_summary&lt;/span&gt;&lt;/pre&gt;
+ attribute on every article. It is True
+for articles with an explicitly-defined summary, and False otherwise.  (It is
+also False for an article truncated by &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;SUMMARY_MAX_LENGTH&lt;/span&gt;&lt;/pre&gt;
+.)  Your templates
+can use this e.g. to add a link to the full text at the end of the summary.&lt;/p&gt;
+&lt;div class="section" id="rest-example"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;reST example&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Inserting the markers into a reStructuredText document makes use of the
+comment directive, because raw HTML is automatically escaped. The reST equivalent of the above Markdown example looks like this:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+My super title
+##############
+
+:date: 2010-12-03 10:20
+:tags: thats, awesome
+:category: yeah
+:slug: my-super-post
+:author: Alexis Metaireau
+
+This is the content of my super blog post.
+
+.. PELICAN_END_SUMMARY
+
+and this content occurs after the summary.
+&lt;/pre&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>tag_cloud</title><link href="/tag_cloud.html" rel="alternate"></link><updated>2016-01-18T13:45:00+08:00</updated><author><name>ホロ</name></author><id>tag:,2016-01-18:tag_cloud.html</id><summary type="html">&lt;p&gt;This plugin generates a tag-cloud.&lt;/p&gt;
+
+&lt;div class="section" id="installation"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Installation&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In order to use to use this plugin, you have to edit(*) or create(+) the following files:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+blog/
+  ├── pelicanconf.py *
+  ├── content
+  ├── plugins +
+  │     └── tag_cloud.py +
+  └── themes
+        └── mytheme
+              ├── templates
+              │      └── base.html *
+              └── static
+                    └── css
+                         └── style.css *
+&lt;/pre&gt;
+&lt;p&gt;In &lt;strong&gt;pelicanconf.py&lt;/strong&gt; you have to activate the plugin:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = ["tag_cloud"]
+&lt;/pre&gt;
+&lt;p&gt;Into your &lt;strong&gt;plugins&lt;/strong&gt; folder, you should add tag_cloud.py (from this repository).&lt;/p&gt;
+&lt;p&gt;In your theme files, you should change &lt;strong&gt;base.html&lt;/strong&gt; to apply formats (and sizes) defined in &lt;strong&gt;style.css&lt;/strong&gt;, as specified in "Settings", below.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="settings"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Settings&lt;/a&gt;&lt;/h2&gt;
+&lt;table border="1" class="table-striped table table-hover docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="48%"&gt;&lt;/col&gt;
+&lt;col width="52%"&gt;&lt;/col&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Setting name (followed by default value)&lt;/th&gt;
+&lt;th class="head"&gt;What does it do?&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;TAG_CLOUD_STEPS = 4&lt;/span&gt;&lt;/pre&gt;
+&lt;/td&gt;
+&lt;td&gt;Count of different font sizes in the tag
+cloud.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;TAG_CLOUD_MAX_ITEMS = 100&lt;/span&gt;&lt;/pre&gt;
+&lt;/td&gt;
+&lt;td&gt;Maximum number of tags in the cloud.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;TAG_CLOUD_SORTING = 'random'&lt;/span&gt;&lt;/pre&gt;
+&lt;/td&gt;
+&lt;td&gt;The tag cloud ordering scheme.  Valid values:
+random, alphabetically, alphabetically-rev, size and
+size-rev&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;TAG_CLOUD_BADGE = True&lt;/span&gt;&lt;/pre&gt;
+&lt;/td&gt;
+&lt;td&gt;Optionnal setting : can bring &lt;strong&gt;badges&lt;/strong&gt;, which mean
+say : display the number of each tags present
+on all articles.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The default theme does not include a tag cloud, but it is pretty easy to add one:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+&amp;lt;ul class="tagcloud"&amp;gt;
+    {% for tag in tag_cloud %}
+        &amp;lt;li class="tag-{{ tag.1 }}"&amp;gt;
+            &amp;lt;a href="{{ SITEURL }}/{{ tag.0.url }}"&amp;gt;
+            {{ tag.0 }}
+                {% if TAG_CLOUD_BADGE %}
+                    &amp;lt;span class="badge"&amp;gt;{{ tag.2 }}&amp;lt;/span&amp;gt;
+                {% endif %}
+            &amp;lt;/a&amp;gt;
+        &amp;lt;/li&amp;gt;
+    {% endfor %}
+&amp;lt;/ul&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;You should then also define CSS styles with appropriate classes (tag-1 to tag-N,
+where N matches &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;TAG_CLOUD_STEPS&lt;/span&gt;&lt;/pre&gt;
+), tag-1 being the most frequent, and
+define a &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;ul.tagcloud&lt;/span&gt;&lt;/pre&gt;
+ class with appropriate list-style to create the cloud.
+You should copy/paste this &lt;strong&gt;badge&lt;/strong&gt; CSS rule &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;ul.tagcloud .list-group-item &amp;lt;span&amp;gt;.badge&lt;/span&gt;&lt;/pre&gt;
+
+if you're using &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;TAG_CLOUD_BADGE&lt;/span&gt;&lt;/pre&gt;
+ setting. (this rule, potentially long , is suggested to avoid
+conflicts with CSS libs as twitter Bootstrap)&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+ul.tagcloud {
+  list-style: none;
+    padding: 0;
+}
+
+ul.tagcloud li {
+    display: inline-block;
+}
+
+li.tag-1 {
+    font-size: 150%;
+}
+
+li.tag-2 {
+    font-size: 120%;
+}
+
+...
+
+ul.tagcloud .list-group-item &amp;lt;span&amp;gt;.badge {
+    background-color: grey;
+    color: white;
+}
+&lt;/pre&gt;
+&lt;p&gt;By default the tags in the cloud are sorted randomly, but if you prefers to have it alphabetically use the &lt;cite&gt;alphabetically&lt;/cite&gt; (ascending) and &lt;cite&gt;alphabetically-rev&lt;/cite&gt; (descending). Also is possible to sort the tags by it's size (number of articles with this specific tag) using the values &lt;cite&gt;size&lt;/cite&gt; (ascending) and &lt;cite&gt;size-rev&lt;/cite&gt; (descending).&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="pelican"></category></entry></feed>

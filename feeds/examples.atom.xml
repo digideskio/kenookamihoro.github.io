@@ -6,7 +6,9 @@ impatient, following are some quick steps to get started.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Installation&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Install Pelican (and optionally Markdown if you intend to use it) on Python
 2.7.x or Python 3.3+ by running the following command in your preferred
-terminal, prefixing with &lt;tt class="docutils literal"&gt;sudo&lt;/tt&gt; if permissions warrant:&lt;/p&gt;
+terminal, prefixing with &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo&lt;/span&gt;&lt;/pre&gt;
+ if permissions warrant:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 pip install pelican markdown
 &lt;/pre&gt;
@@ -19,14 +21,18 @@ for your site, and switch to that directory:&lt;/p&gt;
 mkdir -p ~/projects/yoursite
 cd ~/projects/yoursite
 &lt;/pre&gt;
-&lt;p&gt;Create a skeleton project via the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;pelican-quickstart&lt;/span&gt;&lt;/tt&gt; command, which begins
+&lt;p&gt;Create a skeleton project via the &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;pelican-quickstart&lt;/span&gt;&lt;/pre&gt;
+ command, which begins
 by asking some questions about your site:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 pelican-quickstart
 &lt;/pre&gt;
 &lt;p&gt;For questions that have default values denoted in brackets, feel free to use
 the Return key to accept those default values. When asked for your URL prefix,
-enter your domain name as indicated (e.g., &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;http://example.com&lt;/span&gt;&lt;/tt&gt;).&lt;/p&gt;
+enter your domain name as indicated (e.g., &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;http://example.com&lt;/span&gt;&lt;/pre&gt;
+).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-an-article"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Create an article&lt;/a&gt;&lt;/h2&gt;
@@ -40,22 +46,30 @@ Category: Review
 Following is a review of my favorite mechanical keyboard.
 &lt;/pre&gt;
 &lt;p&gt;Given that this example article is in Markdown format, save it as
-&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/projects/yoursite/content/keyboard-review.md&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;~/projects/yoursite/content/keyboard-review.md&lt;/span&gt;&lt;/pre&gt;
+.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="generate-your-site"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Generate your site&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;From your site directory, run the &lt;tt class="docutils literal"&gt;pelican&lt;/tt&gt; command to generate your site:&lt;/p&gt;
+&lt;p&gt;From your site directory, run the &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;pelican&lt;/span&gt;&lt;/pre&gt;
+ command to generate your site:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 pelican content
 &lt;/pre&gt;
-&lt;p&gt;Your site has now been generated inside the &lt;tt class="docutils literal"&gt;output&lt;/tt&gt; directory. (You may see a
+&lt;p&gt;Your site has now been generated inside the &lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;output&lt;/span&gt;&lt;/pre&gt;
+ directory. (You may see a
 warning related to feeds, but that is normal when developing locally and can be
 ignored for now.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="preview-your-site"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Preview your site&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Open a new terminal session and run the following commands to switch to your
-&lt;tt class="docutils literal"&gt;output&lt;/tt&gt; directory and launch Pelican's web server:&lt;/p&gt;
+&lt;pre&gt;&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;output&lt;/span&gt;&lt;/pre&gt;
+ directory and launch Pelican's web server:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 cd ~/projects/yoursite/output
 python -m pelican.server

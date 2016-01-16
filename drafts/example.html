@@ -19,6 +19,7 @@
     <script src="/theme/js/jquery-2.1.3.min.js"></script>
     <script src="/theme/js/metro.js"></script>
     <script src="/theme/js/velocity.min.js"></script>
+    <script src="/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
     <script>
         function showCharm(id){
             var  charm = $("#"+id+"-charm").data("charm");
@@ -29,6 +30,7 @@
             }
         }
     </script>
+
     <!--动态格言的实现参考自https://fiveyellowmice.github.io/-->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -53,16 +55,15 @@
 
 </head>
 <body id="index">
-    <div class="app-bar orange fixed-top bottom-shadow" data-role="appbar">
+    <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
         <div class="container">
             <ul class="app-bar-menu">
                 <li><a href="/"><strong>约伊兹的萌狼乡手札</strong></a></li>
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
                 <li><a href="/category/examples.html">Examples</a></li>
-                <li><a href="/category/markdown.html">MarkDown</a></li>
+                <li class="active"><a href="/category/pages.html">Pages</a></li>
                 <li><a href="/category/plugins.html">Plugins</a></li>
-                <li><a href="/category/test.html">Test</a></li>
                 </ul></li>
                 <li><a href="/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
@@ -71,16 +72,15 @@
 <li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
 <li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
                 <li><a href="/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
-                <li><a href="/aboutrss.html"><span class="mif-chevron-left"></span>那个怎么用？</a></li>
                 <li><a href="/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
                 <li>
-                <a href="" class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
+                <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
                 <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
                 	<div class="padding10">
                 		<h4>搜索约伊兹的萌狼乡手札</h4>
                     	<form action="search.html">
                         	<div class="input-control text" data-role="input">
-    						<input type="text" name="q">
+    						<input type="text" name="q" required="required">
     						<button class="button" action="sumbit"><span class="mif-search"></span></button>
 							</div>
                        </form>
@@ -90,7 +90,8 @@
             </ul>
         </div>
     </div>
-    <div class="container page-content">
+    <script>$("div#navbar-fixed-top").autoHidingNavbar();</script>
+    <div class="container page-content" >
         <div class="grid">
 			<div class="padding5 site-description" style="clear:both;"></div>
 			<script>
@@ -121,16 +122,25 @@
 	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="/drafts/example.html" rel="bookmark" title="到 Example的固定链接" class="fg-white">Example</a></h2>
     	<span class="mif-calendar"> 2016年01月18日 星期一&nbsp;&nbsp;</span>
     	<span class="mif-user" title="作者"><a class="fg-white" href="/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
-        <span class="mif-folder" title="分类"><a class="fg-white" href="/category/pages.html"> Pages</a></span><br /><br />
+        <span class="mif-folder" title="分类"><a class="fg-white" href="/category/pages.html"> Pages&nbsp;&nbsp;</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('/example.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <br /><br />
 
     </header>
-  <div class="entry-content text-accent">
+  <div class="entry-content text-accent" id="article-content">
     <p>Reading through all the documentation is highly recommended, but for the truly
 impatient, following are some quick steps to get started.</p>
 
   </div><!-- /.entry-content -->
+  <div class="entry-content jumbotron" id="source-content" style="display: none">
+               <!-- <pre><code id="source-code">
+               </code></pre> -->
+               <div id="source-code"></div>
+  </div>
 </section>
-<div class="padding10"></div>
+<br />
+  <div class="padding10 clear-float"></div>
+
 <div class="panel" id="talk" data-role="panel">
 <div class="heading bg-orange">
        <span class="icon mif-bubbles bg-darkOrange"></span>
@@ -172,6 +182,7 @@ impatient, following are some quick steps to get started.</p>
      </ul>
     </div>
 </div>
+
                 </div>
             <div class="cell colspan3">
                 <div class="panel warning shadow">
@@ -230,10 +241,38 @@ impatient, following are some quick steps to get started.</p>
                     </div>
                 </div>
                 <br />
+                <div class="panel">
+                    <div class="heading">
+                        <span class="icon mif-tags"></span>
+                        <span class="title">标签云</span>
+                    </div>
+                    <div class="content padding10">
+                        <ul class="tagcloud">
+                                <li class="tag-1">
+                                    <a href="/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="/tag/plugin.html">
+                                    plugin
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="/tag/links.html">
+                                    links
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
             </div>
         </div>
     </div>
-    <a href="#"><button class="button cycle-button large-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1000"><span class="mif-vertical-align-top"></span></button></a>
+    <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
+
+<button onclick="showCharm('right')" class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:100px;right:30px;z-index:2000;"><span class="mif-list"></span></button>
     </div>
     <div class="app-bar darcula padding10 text-shadow ">
         <div class="grid container page-content ">

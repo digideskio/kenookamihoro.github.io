@@ -19,6 +19,7 @@
     <script src="/theme/js/jquery-2.1.3.min.js"></script>
     <script src="/theme/js/metro.js"></script>
     <script src="/theme/js/velocity.min.js"></script>
+    <script src="/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
     <script>
         function showCharm(id){
             var  charm = $("#"+id+"-charm").data("charm");
@@ -29,6 +30,7 @@
             }
         }
     </script>
+
     <!--动态格言的实现参考自https://fiveyellowmice.github.io/-->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -49,31 +51,28 @@
 
 </head>
 <body id="index">
-    <div class="app-bar orange fixed-top bottom-shadow" data-role="appbar">
+    <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
         <div class="container">
             <ul class="app-bar-menu">
                 <li><a href="/"><strong>约伊兹的萌狼乡手札</strong></a></li>
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
                 <li class="active"><a href="/category/examples.html">Examples</a></li>
-                <li><a href="/category/markdown.html">MarkDown</a></li>
                 <li><a href="/category/plugins.html">Plugins</a></li>
-                <li><a href="/category/test.html">Test</a></li>
                 </ul></li>
                 <li><a href="/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
             <ul class="app-bar-menu place-right">
 <li><a href="/feeds/examples.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅这个分类&nbsp;</a></li>
-                <li><a href="/aboutrss.html"><span class="mif-chevron-left"></span>那个怎么用？</a></li>
                 <li><a href="/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
                 <li>
-                <a href="" class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
+                <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
                 <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
                 	<div class="padding10">
                 		<h4>搜索约伊兹的萌狼乡手札</h4>
                     	<form action="search.html">
                         	<div class="input-control text" data-role="input">
-    						<input type="text" name="q">
+    						<input type="text" name="q" required="required">
     						<button class="button" action="sumbit"><span class="mif-search"></span></button>
 							</div>
                        </form>
@@ -83,7 +82,8 @@
             </ul>
         </div>
     </div>
-    <div class="container page-content">
+    <script>$("div#navbar-fixed-top").autoHidingNavbar();</script>
+    <div class="container page-content" >
         <div class="grid">
 			<div class="padding5 site-description" style="clear:both;"></div>
 			<script>
@@ -138,7 +138,7 @@ impatient, following are some quick steps to get started.</p>
                 <div class="content padding10">
                 <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
                 <div>如果有问题的话，记得回报咱哟~</div><br />
-                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a>&nbsp;<a href="https://yoitsu.moe/wiki/Feedback:%E5%9B%9E%E6%8A%A5%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98"><button class="button warning block-shadow-warning text-shadow">Yoitsu.moe</button></a></div><br />
+                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a>&nbsp;<a href="https://wiki.yoitsu.moe/wiki/Feedback:%E5%9B%9E%E6%8A%A5%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98"><button class="button warning block-shadow-warning text-shadow">Yoitsu.moe</button></a></div><br />
                 </ul>
                 </div>
                 </div>
@@ -186,10 +186,31 @@ impatient, following are some quick steps to get started.</p>
                     </div>
                 </div>
                 <br />
+                <div class="panel">
+                    <div class="heading">
+                        <span class="icon mif-tags"></span>
+                        <span class="title">标签云</span>
+                    </div>
+                    <div class="content padding10">
+                        <ul class="tagcloud">
+                                <li class="tag-4">
+                                    <a href="/tag/plugin.html">
+                                    plugin
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
             </div>
         </div>
     </div>
-    <a href="#"><button class="button cycle-button large-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1000"><span class="mif-vertical-align-top"></span></button></a>
+    <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
     </div>
     <div class="app-bar darcula padding10 text-shadow ">
         <div class="grid container page-content ">

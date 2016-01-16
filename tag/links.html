@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-      <title>Another test - 约伊兹的萌狼乡手札</title>
+    <title>约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
-    <link href="/feeds/test.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
     <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -19,6 +18,7 @@
     <script src="/theme/js/jquery-2.1.3.min.js"></script>
     <script src="/theme/js/metro.js"></script>
     <script src="/theme/js/velocity.min.js"></script>
+    <script src="/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
     <script>
         function showCharm(id){
             var  charm = $("#"+id+"-charm").data("charm");
@@ -29,6 +29,7 @@
             }
         }
     </script>
+
     <!--动态格言的实现参考自https://fiveyellowmice.github.io/-->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -47,39 +48,31 @@
     });
     </script>
 
-
-
-
-
 </head>
 <body id="index">
-    <div class="app-bar orange fixed-top bottom-shadow" data-role="appbar">
+    <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
         <div class="container">
             <ul class="app-bar-menu">
                 <li><a href="/"><strong>约伊兹的萌狼乡手札</strong></a></li>
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
                 <li><a href="/category/examples.html">Examples</a></li>
+                <li><a href="/category/pages.html">Pages</a></li>
                 <li><a href="/category/plugins.html">Plugins</a></li>
-                <li class="active"><a href="/category/test.html">Test</a></li>
                 </ul></li>
                 <li><a href="/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
             <ul class="app-bar-menu place-right">
-
-<li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
-<li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
                 <li><a href="/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
-                <li><a href="/aboutrss.html"><span class="mif-chevron-left"></span>那个怎么用？</a></li>
                 <li><a href="/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
                 <li>
-                <a href="" class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
+                <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
                 <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
                 	<div class="padding10">
                 		<h4>搜索约伊兹的萌狼乡手札</h4>
                     	<form action="search.html">
                         	<div class="input-control text" data-role="input">
-    						<input type="text" name="q">
+    						<input type="text" name="q" required="required">
     						<button class="button" action="sumbit"><span class="mif-search"></span></button>
 							</div>
                        </form>
@@ -89,7 +82,8 @@
             </ul>
         </div>
     </div>
-    <div class="container page-content">
+    <script>$("div#navbar-fixed-top").autoHidingNavbar();</script>
+    <div class="container page-content" >
         <div class="grid">
 			<div class="padding5 site-description" style="clear:both;"></div>
 			<script>
@@ -113,64 +107,25 @@
 			</script>
             <div class="row cells10">
                 <div class="cell colspan7">
-<div data-role="charm" data-position="right" id="right-charm" class="bg-grayLighter page-content fg-black ">
-<h2>目录</h2>
+<section id="content" style="clear:both;">
+<h2>标签"links"中的文章</h2>
+        <article class="hentry block-shadow">
+                <header class="bg-darkOrange fg-white padding20"> <h2 class="entry-title"><a href="/links.html" rel="bookmark" title="到 Links的固定链接" class="fg-white">Links</a></h2>
+               <span class="mif-calendar"> 2016年01月16日 星期六&nbsp;&nbsp;</span>
+					<span class="mif-user" title="作者"><a class="fg-white" href="/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
+               <span class="mif-folder" title="分类"><a class="fg-white" href="/category/pages.html"> Pages</a></span>
+                </header>
+                <footer class="post-info">
+                <div class="entry-content popover marker-on-top bg-lightOrange fg-grayDarker"> <div class="section" id="id1">
+<h2>友情链接</h2>
+<p>填坑中……</p>
 </div>
-<section id="content" class="body">
-	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="/another-test.html" rel="bookmark" title="到 Another test的固定链接" class="fg-white">Another test</a></h2>
-    	<span class="mif-calendar"> 2016年01月17日 星期日&nbsp;&nbsp;</span>
-    	<span class="mif-user" title="作者"><a class="fg-white" href="/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
-        <span class="mif-folder" title="分类"><a class="fg-white" href="/category/test.html"> Test</a></span><br /><br />
-
-    </header>
-  <div class="entry-content text-accent">
-    <h1 id="lorem-ipsum">Lorem ipsum</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-  </div><!-- /.entry-content -->
-</section>
-<div class="padding10"></div>
-<div class="panel" id="talk" data-role="panel">
-<div class="heading bg-orange">
-       <span class="icon mif-bubbles bg-darkOrange"></span>
-       <span class="title">参与讨论</span>
-    </div>
-    <div class="content">
-       <ul class="step-list padding10" style="padding-left:20px;">
-        <li>
-            <h2>如何和咱交流?</h2>
-            <hr class="bg-red" />
-            <div>
-                汝可以通过Github的Issue和<a href="https://yoitsu.moe">yoitsu.moe</a>上的Feedback页面和咱交(bao)流(yuan)呐~
-                <br />
-                <a href="/talk.html"><button class="button warning">汝想问咱为啥不用Disqus?</button></a>
-            </div>
-        </li>
-        <li>
-            <h2>如果用Github Issue?</h2>
-            <hr class="bg-green" />
-            <div>
-                那就用Github帐号登录，然后提交issue，记得附上有问题的页面的标题呐~（和页面无关的问题可以忽略标题）
-                <br />
-                <a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success">前往Issues页面呗~</button></a>
-            </div>
-        </li>
-        <li>
-            <h2>如果去yoitsu.moe?</h2>
-            <hr  class="bg-blue"/>
-            <div>
-                点击下面的按钮就进入到对应的页面了啦。虽然不需要注册，但是由于MediaWiki软件的限制，不注册的话会暴露IP地址+收不到通知呐~
-                <br />
-                但是注册时输入的验证码是Google的ReCaptcha呐~，于是……
-                <br />
-                如果不觉得麻烦的话，就戳下面的按钮呗~
-                <br />
-                <a href="https://yoitsu.moe/w/index.php?title=Feedback:Another test"><button class="button primary">给咱戳这儿~</button></a>
-            </div>
-        </li>
-     </ul>
-    </div>
-</div>
+ </div><!-- /.entry-content -->
+                </footer><!-- /.post-info -->
+        </article>
+        <hr class="bg-lightOrange" />
+<!-- /#posts-list -->
+</section><!-- /#content -->
                 </div>
             <div class="cell colspan3">
                 <div class="panel warning shadow">
@@ -229,10 +184,36 @@
                     </div>
                 </div>
                 <br />
+                <div class="panel">
+                    <div class="heading">
+                        <span class="icon mif-tags"></span>
+                        <span class="title">标签云</span>
+                    </div>
+                    <div class="content padding10">
+                        <ul class="tagcloud">
+                                <li class="tag-1">
+                                    <a href="/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="/tag/plugin.html">
+                                    plugin
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="/tag/links.html">
+                                    links
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
             </div>
         </div>
     </div>
-    <a href="#"><button class="button cycle-button large-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1000"><span class="mif-vertical-align-top"></span></button></a>
+    <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
     </div>
     <div class="app-bar darcula padding10 text-shadow ">
         <div class="grid container page-content ">

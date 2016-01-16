@@ -18,6 +18,7 @@
     <script src="/theme/js/jquery-2.1.3.min.js"></script>
     <script src="/theme/js/metro.js"></script>
     <script src="/theme/js/velocity.min.js"></script>
+    <script src="/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
     <script>
         function showCharm(id){
             var  charm = $("#"+id+"-charm").data("charm");
@@ -28,6 +29,7 @@
             }
         }
     </script>
+
     <!--动态格言的实现参考自https://fiveyellowmice.github.io/-->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -48,31 +50,28 @@
 
 </head>
 <body id="index">
-    <div class="app-bar orange fixed-top bottom-shadow" data-role="appbar">
+    <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
         <div class="container">
             <ul class="app-bar-menu">
                 <li><a href="/"><strong>约伊兹的萌狼乡手札</strong></a></li>
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
                 <li><a href="/category/examples.html">Examples</a></li>
-                <li><a href="/category/markdown.html">MarkDown</a></li>
                 <li><a href="/category/plugins.html">Plugins</a></li>
-                <li><a href="/category/test.html">Test</a></li>
                 </ul></li>
                 <li><a href="/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
             <ul class="app-bar-menu place-right">
                 <li><a href="/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
-                <li><a href="/aboutrss.html"><span class="mif-chevron-left"></span>那个怎么用？</a></li>
                 <li><a href="/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
                 <li>
-                <a href="" class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
+                <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
                 <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
                 	<div class="padding10">
                 		<h4>搜索约伊兹的萌狼乡手札</h4>
                     	<form action="search.html">
                         	<div class="input-control text" data-role="input">
-    						<input type="text" name="q">
+    						<input type="text" name="q" required="required">
     						<button class="button" action="sumbit"><span class="mif-search"></span></button>
 							</div>
                        </form>
@@ -82,7 +81,8 @@
             </ul>
         </div>
     </div>
-    <div class="container page-content">
+    <script>$("div#navbar-fixed-top").autoHidingNavbar();</script>
+    <div class="container page-content" >
         <div class="grid">
 			<div class="padding5 site-description" style="clear:both;"></div>
 			<script>
@@ -115,9 +115,17 @@
                 </header>
                 <footer class="post-info">
                 <div class="entry-content popover marker-on-top bg-lightOrange fg-grayDarker"> 
-<p>This plugin adds <tt class="docutils literal">next_article</tt> (newer) and <tt class="docutils literal">prev_article</tt> (older)
+<p>This plugin adds <pre><span class="code-line"></span>
+<span class="code-line">next_article</span></pre>
+ (newer) and <pre><span class="code-line"></span>
+<span class="code-line">prev_article</span></pre>
+ (older)
 variables to the article's context.</p>
-<p>Also adds <tt class="docutils literal">next_article_in_category</tt> and <tt class="docutils literal">prev_article_in_category</tt>.</p>
+<p>Also adds <pre><span class="code-line"></span>
+<span class="code-line">next_article_in_category</span></pre>
+ and <pre><span class="code-line"></span>
+<span class="code-line">prev_article_in_category</span></pre>
+.</p>
 <div class="section" id="usage">
 <h2><a class="toc-backref" href="#id1">Usage</a></h2>
 <div class="highlight"><pre><span class="code-line"> <span class="nt">&lt;ul&gt;</span></span>
@@ -153,29 +161,56 @@ impatient, following are some quick steps to get started.</p>
         </article>
         <hr class="bg-lightOrange" />
         <article class="hentry block-shadow">
-                <header class="bg-darkOrange fg-white padding20"> <h2 class="entry-title"><a href="/another-test.html" rel="bookmark" title="到 Another test的固定链接" class="fg-white">Another test</a></h2>
-               <span class="mif-calendar"> 2016年01月17日 星期日&nbsp;&nbsp;</span>
+                <header class="bg-darkOrange fg-white padding20"> <h2 class="entry-title"><a href="/summary.html" rel="bookmark" title="到 Summary的固定链接" class="fg-white">Summary</a></h2>
+               <span class="mif-calendar"> 2016年01月18日 星期一&nbsp;&nbsp;</span>
 					<span class="mif-user" title="作者"><a class="fg-white" href="/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
-               <span class="mif-folder" title="分类"><a class="fg-white" href="/category/test.html"> Test</a></span>
+               <span class="mif-folder" title="分类"><a class="fg-white" href="/category/plugins.html"> Plugins</a></span>
                 </header>
                 <footer class="post-info">
-                <div class="entry-content popover marker-on-top bg-lightOrange fg-grayDarker"> <h1 id="lorem-ipsum">Lorem ipsum</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ...</p> </div><!-- /.entry-content -->
+                <div class="entry-content popover marker-on-top bg-lightOrange fg-grayDarker"> 
+<p>This plugin allows easy, variable length summaries directly embedded into the
+body of your articles. It introduces two new settings: <pre><span class="code-line"></span>
+<span class="code-line">SUMMARY_BEGIN_MARKER</span></pre>
+
+and <pre><span class="code-line"></span>
+<span class="code-line">SUMMARY_END_MARKER</span></pre>
+: strings which can be placed directly into an article
+to mark the beginning and end of a summary. When found, the standard
+<pre><span class="code-line"></span>
+<span class="code-line">SUMMARY_MAX_LENGTH</span></pre>
+ setting will be ignored ...</p> </div><!-- /.entry-content -->
                 </footer><!-- /.post-info -->
         </article>
         <hr class="bg-lightOrange" />
         <article class="hentry block-shadow">
-                <header class="bg-darkOrange fg-white padding20"> <h2 class="entry-title"><a href="/markdown-zhong-wen-zhi-nan.html" rel="bookmark" title="到 Markdown 中文指南的固定链接" class="fg-white">Markdown 中文指南</a></h2>
-               <span class="mif-calendar"> 2016年01月17日 星期日&nbsp;&nbsp;</span>
+                <header class="bg-darkOrange fg-white padding20"> <h2 class="entry-title"><a href="/tag_cloud.html" rel="bookmark" title="到 tag_cloud的固定链接" class="fg-white">tag_cloud</a></h2>
+               <span class="mif-calendar"> 2016年01月18日 星期一&nbsp;&nbsp;</span>
 					<span class="mif-user" title="作者"><a class="fg-white" href="/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
-               <span class="mif-folder" title="分类"><a class="fg-white" href="/category/markdown.html"> MarkDown</a></span>
+               <span class="mif-folder" title="分类"><a class="fg-white" href="/category/plugins.html"> Plugins</a></span>
                 </header>
                 <footer class="post-info">
-                <div class="entry-content popover marker-on-top bg-lightOrange fg-grayDarker"> <p><strong>NOTE:</strong> This is Simplelified Chinese Edition Document of Markdown Syntax. If you are seeking for English Edition Document. Please refer to <a href="http://daringfireball.net/projects/markdown/syntax">Markdown: Syntax</a>.</p>
-<p><strong>声明：</strong> 这份文档派生(fork)于<a href="http://markdown.tw/">繁体中文版</a>，在此基础上进行了繁体转简体工作，并进行了适当的润色。此文档用 Markdown 语法编写，你可以到这里<a href="http://gitcafe.com/riku/Markdown-Syntax-CN/blob/master/syntax.md">查看它的源文件</a>。「繁体中文版的原始文件可以<a href="https://github.com/othree/markdown-syntax-zhtw/blob/master/syntax.md">查看这里</a> 。」--By @<a href="http://twitter.com/riku">riku</a></p>
-<p><strong>注：</strong> 本项目托管于 <a href="http://gitcafe.com/riku/Markdown-Syntax-CN/">GitCafe</a>上，请通过&quot;派生&quot;和&quot;合并请求&quot;来帮忙改进本项目。</p>
-<p>[TOC]</p>
-<h1 id="markdown-语法说明-简体中文版-点击查看快速入门">Markdown ...</h1> </div><!-- /.entry-content -->
+                <div class="entry-content popover marker-on-top bg-lightOrange fg-grayDarker"> <p>This plugin generates a tag-cloud.</p>
+
+<div class="section" id="installation">
+<h2><a class="toc-backref" href="#id1">Installation</a></h2>
+<p>In order to use to use this plugin, you have to edit(*) or create(+) the following files:</p>
+<pre class="literal-block">
+blog/
+  ├── pelicanconf.py *
+  ├── content
+  ├── plugins +
+  │     └── tag_cloud.py +
+  └── themes
+        └── mytheme
+              ├── templates
+              │      └── base.html *
+              └── static
+                    └── css
+                         └── style.css *
+</pre>
+<p>In <strong>pelicanconf.py</strong> you have to activate the plugin:</p>
+<pre class="literal-block">
+PLUGIN_PATHS = ["plugins ...</pre></div> </div><!-- /.entry-content -->
                 </footer><!-- /.post-info -->
         </article>
         <hr class="bg-lightOrange" />
@@ -191,7 +226,7 @@ impatient, following are some quick steps to get started.</p>
                 <div class="content padding10">
                 <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
                 <div>如果有问题的话，记得回报咱哟~</div><br />
-                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a>&nbsp;<a href="https://yoitsu.moe/wiki/Feedback:%E5%9B%9E%E6%8A%A5%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98"><button class="button warning block-shadow-warning text-shadow">Yoitsu.moe</button></a></div><br />
+                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a>&nbsp;<a href="https://wiki.yoitsu.moe/wiki/Feedback:%E5%9B%9E%E6%8A%A5%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98"><button class="button warning block-shadow-warning text-shadow">Yoitsu.moe</button></a></div><br />
                 </ul>
                 </div>
                 </div>
@@ -239,10 +274,31 @@ impatient, following are some quick steps to get started.</p>
                     </div>
                 </div>
                 <br />
+                <div class="panel">
+                    <div class="heading">
+                        <span class="icon mif-tags"></span>
+                        <span class="title">标签云</span>
+                    </div>
+                    <div class="content padding10">
+                        <ul class="tagcloud">
+                                <li class="tag-4">
+                                    <a href="/tag/plugin.html">
+                                    plugin
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
             </div>
         </div>
     </div>
-    <a href="#"><button class="button cycle-button large-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1000"><span class="mif-vertical-align-top"></span></button></a>
+    <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
     </div>
     <div class="app-bar darcula padding10 text-shadow ">
         <div class="grid container page-content ">

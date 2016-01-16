@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-      <title>Another test - 约伊兹的萌狼乡手札</title>
+      <title>Summary - 约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
-    <link href="/feeds/test.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
+    <link href="/feeds/plugins.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
     <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -19,6 +19,7 @@
     <script src="/theme/js/jquery-2.1.3.min.js"></script>
     <script src="/theme/js/metro.js"></script>
     <script src="/theme/js/velocity.min.js"></script>
+    <script src="/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
     <script>
         function showCharm(id){
             var  charm = $("#"+id+"-charm").data("charm");
@@ -29,6 +30,7 @@
             }
         }
     </script>
+
     <!--动态格言的实现参考自https://fiveyellowmice.github.io/-->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -53,15 +55,14 @@
 
 </head>
 <body id="index">
-    <div class="app-bar orange fixed-top bottom-shadow" data-role="appbar">
+    <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
         <div class="container">
             <ul class="app-bar-menu">
                 <li><a href="/"><strong>约伊兹的萌狼乡手札</strong></a></li>
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
                 <li><a href="/category/examples.html">Examples</a></li>
-                <li><a href="/category/plugins.html">Plugins</a></li>
-                <li class="active"><a href="/category/test.html">Test</a></li>
+                <li class="active"><a href="/category/plugins.html">Plugins</a></li>
                 </ul></li>
                 <li><a href="/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
@@ -70,16 +71,15 @@
 <li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
 <li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
                 <li><a href="/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
-                <li><a href="/aboutrss.html"><span class="mif-chevron-left"></span>那个怎么用？</a></li>
                 <li><a href="/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
                 <li>
-                <a href="" class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
+                <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
                 <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
                 	<div class="padding10">
                 		<h4>搜索约伊兹的萌狼乡手札</h4>
                     	<form action="search.html">
                         	<div class="input-control text" data-role="input">
-    						<input type="text" name="q">
+    						<input type="text" name="q" required="required">
     						<button class="button" action="sumbit"><span class="mif-search"></span></button>
 							</div>
                        </form>
@@ -89,7 +89,8 @@
             </ul>
         </div>
     </div>
-    <div class="container page-content">
+    <script>$("div#navbar-fixed-top").autoHidingNavbar();</script>
+    <div class="container page-content" >
         <div class="grid">
 			<div class="padding5 site-description" style="clear:both;"></div>
 			<script>
@@ -115,21 +116,135 @@
                 <div class="cell colspan7">
 <div data-role="charm" data-position="right" id="right-charm" class="bg-grayLighter page-content fg-black ">
 <h2>目录</h2>
+    <nav class="toc">
+    <div class="toc" id="">
+
+<ul class="simple">
+<li><a class="reference internal" href="#rest-example" id="id1">reST example</a></li>
+</ul>
+</div>
+    </nav>
 </div>
 <section id="content" class="body">
-	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="/another-test.html" rel="bookmark" title="到 Another test的固定链接" class="fg-white">Another test</a></h2>
-    	<span class="mif-calendar"> 2016年01月17日 星期日&nbsp;&nbsp;</span>
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="/summary.html" rel="bookmark" title="到 Summary的固定链接" class="fg-white">Summary</a></h2>
+    	<span class="mif-calendar"> 2016年01月18日 星期一&nbsp;&nbsp;</span>
     	<span class="mif-user" title="作者"><a class="fg-white" href="/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
-        <span class="mif-folder" title="分类"><a class="fg-white" href="/category/test.html"> Test</a></span><br /><br />
+        <span class="mif-folder" title="分类"><a class="fg-white" href="/category/plugins.html"> Plugins&nbsp;&nbsp;</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('/summary.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <br /><br />
 
     </header>
-  <div class="entry-content text-accent">
-    <h1 id="lorem-ipsum">Lorem ipsum</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div class="entry-content text-accent" id="article-content">
+    
+<p>This plugin allows easy, variable length summaries directly embedded into the
+body of your articles. It introduces two new settings: <pre><span class="code-line"></span>
+<span class="code-line">SUMMARY_BEGIN_MARKER</span></pre>
+
+and <pre><span class="code-line"></span>
+<span class="code-line">SUMMARY_END_MARKER</span></pre>
+: strings which can be placed directly into an article
+to mark the beginning and end of a summary. When found, the standard
+<pre><span class="code-line"></span>
+<span class="code-line">SUMMARY_MAX_LENGTH</span></pre>
+ setting will be ignored. The markers themselves will also
+be removed from your articles before they are published. The default values
+are <pre><span class="code-line"></span>
+<span class="code-line">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;</span></pre>
+ and <pre><span class="code-line"></span>
+<span class="code-line">&lt;!-- PELICAN_END_SUMMARY --&gt;</span></pre>
+.
+For example:</p>
+<pre class="literal-block">
+Title: My super title
+Date: 2010-12-03 10:20
+Tags: thats, awesome
+Category: yeah
+Slug: my-super-post
+Author: Alexis Metaireau
+
+This is the content of my super blog post.
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+and this content occurs after the summary.
+</pre>
+<p>Here, the summary is taken to be the first line of the post. Because no
+beginning marker was found, it starts at the top of the body. It is possible
+to leave out the end marker instead, in which case the summary will start at the
+beginning marker and continue to the end of the body.</p>
+<p>The plugin also sets a <pre><span class="code-line"></span>
+<span class="code-line">has_summary</span></pre>
+ attribute on every article. It is True
+for articles with an explicitly-defined summary, and False otherwise.  (It is
+also False for an article truncated by <pre><span class="code-line"></span>
+<span class="code-line">SUMMARY_MAX_LENGTH</span></pre>
+.)  Your templates
+can use this e.g. to add a link to the full text at the end of the summary.</p>
+<div class="section" id="rest-example">
+<h2><a class="toc-backref" href="#id1">reST example</a></h2>
+<p>Inserting the markers into a reStructuredText document makes use of the
+comment directive, because raw HTML is automatically escaped. The reST equivalent of the above Markdown example looks like this:</p>
+<pre class="literal-block">
+My super title
+##############
+
+:date: 2010-12-03 10:20
+:tags: thats, awesome
+:category: yeah
+:slug: my-super-post
+:author: Alexis Metaireau
+
+This is the content of my super blog post.
+
+.. PELICAN_END_SUMMARY
+
+and this content occurs after the summary.
+</pre>
+</div>
 
   </div><!-- /.entry-content -->
+  <div class="entry-content jumbotron" id="source-content" style="display: none">
+               <!-- <pre><code id="source-code">
+               </code></pre> -->
+               <div id="source-code"></div>
+  </div>
 </section>
-<div class="padding10"></div>
+<br />
+      <a href="/tag_cloud.html" class="place-left">
+        <button class="command-button bg-lightOlive fg-white">
+            <span class="icon mif-arrow-left"></span>
+                tag_cloud
+              <small>上一篇</small>
+        </button>
+      </a>
+      <a href="/pelican-quickstart.html" class="place-right">
+        <button class="command-button icon-right bg-lightOlive fg-white">
+            <span class="icon mif-arrow-right"></span>
+                Pelican QuickStart
+              <small>下一篇</small>
+        </button>
+      </a>
+  <div class="padding10 clear-float"></div>
+<div class="panel">
+    <div class="heading bg-amber">
+        <span class="title">系列Pelican_Plugins中的文章</span>
+    </div>
+    <div class="content padding10">
+            <a href='/neighbor-articles-plugin-for-pelican.html'>
+            <button class="button ">
+                Neighbor Articles Plugin for Pelican
+              </button></a><br/>
+            <a href='/summary.html'>
+            <button class="button  warning ">
+                Summary
+              </button></a><br/>
+            <a href='/tag_cloud.html'>
+            <button class="button ">
+                tag_cloud
+              </button></a><br/>
+    </ol>
+    </div>
+</div>
+<div class="padding10 clear-float"></div>
+
 <div class="panel" id="talk" data-role="panel">
 <div class="heading bg-orange">
        <span class="icon mif-bubbles bg-darkOrange"></span>
@@ -141,7 +256,7 @@
             <h2>如何和咱交流?</h2>
             <hr class="bg-red" />
             <div>
-                汝可以通过Github的Issue和<a href="https://yoitsu.moe">yoitsu.moe</a>上的Feedback页面和咱交(bao)流(yuan)呐~
+                汝可以通过Github的Issue和<a href="https://wiki.yoitsu.moe">yoitsu.moe</a>上的Feedback页面和咱交(bao)流(yuan)呐~
                 <br />
                 <a href="/talk.html"><button class="button warning">汝想问咱为啥不用Disqus?</button></a>
             </div>
@@ -165,12 +280,13 @@
                 <br />
                 如果不觉得麻烦的话，就戳下面的按钮呗~
                 <br />
-                <a href="https://yoitsu.moe/w/index.php?title=Feedback:Another test"><button class="button primary">给咱戳这儿~</button></a>
+                <a href="https://wiki.yoitsu.moe/w/index.php?title=Feedback:Summary"><button class="button primary">给咱戳这儿~</button></a>
             </div>
         </li>
      </ul>
     </div>
 </div>
+
                 </div>
             <div class="cell colspan3">
                 <div class="panel warning shadow">
@@ -181,7 +297,7 @@
                 <div class="content padding10">
                 <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
                 <div>如果有问题的话，记得回报咱哟~</div><br />
-                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a>&nbsp;<a href="https://yoitsu.moe/wiki/Feedback:%E5%9B%9E%E6%8A%A5%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98"><button class="button warning block-shadow-warning text-shadow">Yoitsu.moe</button></a></div><br />
+                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a>&nbsp;<a href="https://wiki.yoitsu.moe/wiki/Feedback:%E5%9B%9E%E6%8A%A5%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98"><button class="button warning block-shadow-warning text-shadow">Yoitsu.moe</button></a></div><br />
                 </ul>
                 </div>
                 </div>
@@ -229,10 +345,33 @@
                     </div>
                 </div>
                 <br />
+                <div class="panel">
+                    <div class="heading">
+                        <span class="icon mif-tags"></span>
+                        <span class="title">标签云</span>
+                    </div>
+                    <div class="content padding10">
+                        <ul class="tagcloud">
+                                <li class="tag-4">
+                                    <a href="/tag/plugin.html">
+                                    plugin
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
             </div>
         </div>
     </div>
-    <a href="#"><button class="button cycle-button large-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1000"><span class="mif-vertical-align-top"></span></button></a>
+    <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
+
+<button onclick="showCharm('right')" class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:100px;right:30px;z-index:2000;"><span class="mif-list"></span></button>
     </div>
     <div class="app-bar darcula padding10 text-shadow ">
         <div class="grid container page-content ">
