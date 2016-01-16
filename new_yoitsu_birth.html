@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-      <title>Pelican QuickStart - 约伊兹的萌狼乡手札</title>
+      <title>新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~ - 约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
-    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
-    <link href="/feeds/examples.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
-    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
+    <link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
+    <link href="https://blog.yoitsu.moe/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#bf5a15">
-    <link href="/theme/css/metro.css" rel="stylesheet">
-    <link href="/theme/css/docs.css" rel="stylesheet">
-    <link href="/theme/css/metro-icons.css" rel="stylesheet">
-    <link href="/theme/css/metro-responsive.css" rel="stylesheet">
-    <link href="/theme/css/metro-schemes.css" rel="stylesheet">
-    <link href="/theme/css/pygment.css" rel="stylesheet">
-    <script src="/theme/js/jquery-2.1.3.min.js"></script>
-    <script src="/theme/js/metro.js"></script>
-    <script src="/theme/js/velocity.min.js"></script>
-    <script src="/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+    <link href="https://blog.yoitsu.moe/theme/css/metro.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/docs.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-icons.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-responsive.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-schemes.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/pygment.css" rel="stylesheet">
+    <script src="https://blog.yoitsu.moe/theme/js/jquery-2.1.3.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/metro.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/velocity.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
     <script>
         function showCharm(id){
             var  charm = $("#"+id+"-charm").data("charm");
@@ -51,6 +51,9 @@
 
 
 
+    <meta name="tags" content="yoitsu" />
+    <meta name="tags" content="pelican" />
+    <meta name="tags" content="blog" />
 
 
 </head>
@@ -58,20 +61,19 @@
     <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
         <div class="container">
             <ul class="app-bar-menu">
-                <li><a href="/"><strong>约伊兹的萌狼乡手札</strong></a></li>
+                <li><a href="https://blog.yoitsu.moe/"><strong>约伊兹的萌狼乡手札</strong></a></li>
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
-                <li class="active"><a href="/category/examples.html">Examples</a></li>
-                <li><a href="/category/plugins.html">Plugins</a></li>
+                <li class="active"><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
                 </ul></li>
-                <li><a href="/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
+                <li><a href="https://blog.yoitsu.moe/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
             <ul class="app-bar-menu place-right">
 
 <li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
 <li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
-                <li><a href="/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
-                <li><a href="/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
+                <li><a href="https://blog.yoitsu.moe/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
+                <li><a href="https://blog.yoitsu.moe/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
                 <li>
                 <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
                 <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
@@ -120,115 +122,66 @@
     <div class="toc" id="">
 
 <ul class="simple">
-<li><a class="reference internal" href="#installation" id="id1">Installation</a></li>
-<li><a class="reference internal" href="#create-a-project" id="id2">Create a project</a></li>
-<li><a class="reference internal" href="#create-an-article" id="id3">Create an article</a></li>
-<li><a class="reference internal" href="#generate-your-site" id="id4">Generate your site</a></li>
-<li><a class="reference internal" href="#preview-your-site" id="id5">Preview your site</a></li>
+<li><a class="reference internal" href="#id2" id="id10">为啥要重做？</a></li>
+<li><a class="reference internal" href="#pelican" id="id11">为啥是Pelican?</a></li>
+<li><a class="reference internal" href="#id4" id="id12">那么有哪些问题咧?</a></li>
+<li><a class="reference internal" href="#id6" id="id13">关于旧站的打算?</a></li>
+<li><a class="reference internal" href="#id7" id="id14">关于评论?</a></li>
 </ul>
 </div>
     </nav>
 </div>
 <section id="content" class="body">
-	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="/pelican-quickstart.html" rel="bookmark" title="到 Pelican QuickStart的固定链接" class="fg-white">Pelican QuickStart</a></h2>
-    	<span class="mif-calendar"> 2016年01月18日 星期一&nbsp;&nbsp;</span>
-    	<span class="mif-user" title="作者"><a class="fg-white" href="/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
-        <span class="mif-folder" title="分类"><a class="fg-white" href="/category/examples.html"> Examples&nbsp;&nbsp;</a></span>
-        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('/pelican-quickstart.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/new_yoitsu_birth.html" rel="bookmark" title="到 新的"约伊兹的萌狼乡手札"诞生啦~的固定链接" class="fg-white">新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~</a></h2>
+    	<span class="mif-calendar"> 2015年01月16日 星期五&nbsp;&nbsp;</span>
+    	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
+        <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/new_yoitsu_birth.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
         <br /><br />
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/yoitsu.html"> yoitsu</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/pelican.html"> pelican</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/blog.html"> blog</a>&nbsp;&nbsp;</span>
 
     </header>
   <div class="entry-content text-accent" id="article-content">
-    
-<p>Reading through all the documentation is highly recommended, but for the truly
-impatient, following are some quick steps to get started.</p>
-<div class="section" id="installation">
-<h2><a class="toc-backref" href="#id1">Installation</a></h2>
-<p>Install Pelican (and optionally Markdown if you intend to use it) on Python
-2.7.x or Python 3.3+ by running the following command in your preferred
-terminal, prefixing with <pre><span class="code-line"></span>
-<span class="code-line">sudo</span></pre>
- if permissions warrant:</p>
-<pre class="literal-block">
-pip install pelican markdown
-</pre>
+    <!-- PELICAN_BEGIN_SUMMARY -->
+<p>就像标题描述的一样，新的"约伊兹的萌狼乡手札"以Pelican之姿再次出发啦~</p>
+<!-- PELICAN_END_SUMMARY -->
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id10">为啥要重做？</a></h2>
+<p>原来的 <a class="reference external" href="https://wiki.yoitsu.moe/">约伊兹的萌狼乡手札</a> 是基于MediaWiki搭建的,但是MediaWiki的本来用途并不是来做博客的呐~,不过咱还是一直拖着......直到 <a class="reference external" href="https://www.archlinux.org/news/php-70-packages-released/">Arch Linux 宣布PHP7进入官方软件仓库</a> ,咱升级以后两个关键的RSS扩展都坏掉啦~(应该都知道RSS对于博客型网站的重要性呗~),于是咱痛定思痛决定升级😂</p>
 </div>
-<div class="section" id="create-a-project">
-<h2><a class="toc-backref" href="#id2">Create a project</a></h2>
-<p>First, choose a name for your project, create an appropriately-named directory
-for your site, and switch to that directory:</p>
-<pre class="literal-block">
-mkdir -p ~/projects/yoursite
-cd ~/projects/yoursite
-</pre>
-<p>Create a skeleton project via the <pre><span class="code-line"></span>
-<span class="code-line">pelican-quickstart</span></pre>
- command, which begins
-by asking some questions about your site:</p>
-<pre class="literal-block">
-pelican-quickstart
-</pre>
-<p>For questions that have default values denoted in brackets, feel free to use
-the Return key to accept those default values. When asked for your URL prefix,
-enter your domain name as indicated (e.g., <pre><span class="code-line"></span>
-<span class="code-line">http://example.com</span></pre>
-).</p>
+<div class="section" id="pelican">
+<h2><a class="toc-backref" href="#id11">为啥是Pelican?</a></h2>
+<p>主要的原因是 <del>人生赢家</del> <a class="reference external" href="/links.html#farseerfc">farseerfc</a> 用的也是Pelican，这样咱可以照着他的经历少走一些弯路......</p>
+<p>为啥不用Hexo,Ghost一类的博客系统呢?因为咱不太会设置Node.js(想当初给MediaWiki装可视化编辑器就折腾了半天)😂😂😂</p>
 </div>
-<div class="section" id="create-an-article">
-<h2><a class="toc-backref" href="#id3">Create an article</a></h2>
-<p>You cannot run Pelican until you have created some content. Use your preferred
-text editor to create your first article with the following content:</p>
-<pre class="literal-block">
-Title: My First Review
-Date: 2010-12-03 10:20
-Category: Review
-
-Following is a review of my favorite mechanical keyboard.
-</pre>
-<p>Given that this example article is in Markdown format, save it as
-<pre><span class="code-line"></span>
-<span class="code-line">~/projects/yoursite/content/keyboard-review.md</span></pre>
-.</p>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id12">那么有哪些问题咧?</a></h2>
+<p>首先Pelican用的标记语言是rst(重组的文本)或是MarkDown,不过看情况Markdown是刚加入进来的,处理的还不够好,就先用rst呗~</p>
+<p>然而咱并不会rst的语法......只好找来个 <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">语法指南</a> 先照着看......</p>
 </div>
-<div class="section" id="generate-your-site">
-<h2><a class="toc-backref" href="#id4">Generate your site</a></h2>
-<p>From your site directory, run the <pre><span class="code-line"></span>
-<span class="code-line">pelican</span></pre>
- command to generate your site:</p>
-<pre class="literal-block">
-pelican content
-</pre>
-<p>Your site has now been generated inside the <pre><span class="code-line"></span>
-<span class="code-line">output</span></pre>
- directory. (You may see a
-warning related to feeds, but that is normal when developing locally and can be
-ignored for now.)</p>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id13">关于旧站的打算?</a></h2>
+<p>介于原来的网站也是咱折腾了一阵子才出来的,于是决定先留着.(这个新站的评论要靠它呐~)</p>
+<p>咱以后也会继续折腾MediaWiki,顺便在这记下来一些过程和经验呗~</p>
 </div>
-<div class="section" id="preview-your-site">
-<h2><a class="toc-backref" href="#id5">Preview your site</a></h2>
-<p>Open a new terminal session and run the following commands to switch to your
-<pre><span class="code-line"></span>
-<span class="code-line">output</span></pre>
- directory and launch Pelican's web server:</p>
-<pre class="literal-block">
-cd ~/projects/yoursite/output
-python -m pelican.server
-</pre>
-<p>Preview your site by navigating to <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a> in your browser.</p>
-<p>Continue reading the other documentation sections for more detail, and check out
-the Pelican wiki's <a class="reference external" href="https://github.com/getpelican/pelican/wiki/Tutorials">Tutorials</a> page for links to community-published tutorials.</p>
-<div class="highlight"><pre><span class="code-line"><span class="nf">publish</span><span class="o">:</span> <span class="n">rmdrafts</span> <span class="n">cc</span> <span class="n">clean</span> <span class="n">theme</span></span>
-<span class="code-line">  <span class="o">[</span> ! -d <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> <span class="o">]</span> <span class="o">||</span> find <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> -mindepth <span class="m">1</span> -not -wholename <span class="s2">"*/.git*"</span> -delete</span>
-<span class="code-line">  rm -rf cache</span>
-<span class="code-line">  <span class="nb">echo</span> <span class="k">$(</span>SITEURL<span class="k">)</span> &gt; content/static/CNAME</span>
-<span class="code-line">  <span class="k">$(</span>PELICAN<span class="k">)</span> <span class="k">$(</span>INPUTDIR<span class="k">)</span> -o <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> -s <span class="k">$(</span>PUBLISHCONF<span class="k">)</span> <span class="k">$(</span>PELICANOPTS<span class="k">)</span></span>
-<span class="code-line">  <span class="k">$(</span>MAKE<span class="k">)</span> rsthtml</span>
-<span class="code-line"></span>
-<span class="code-line"><span class="nf">github</span><span class="o">:</span></span>
-<span class="code-line">  <span class="o">(</span><span class="nb">cd</span> <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> <span class="o">&amp;&amp;</span> git checkout master<span class="o">)</span></span>
-<span class="code-line">  env <span class="nv">SITEURL</span><span class="o">=</span><span class="s2">"farseerfc.me"</span> <span class="k">$(</span>MAKE<span class="k">)</span> publish</span>
-<span class="code-line">  <span class="o">(</span><span class="nb">cd</span> <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> <span class="o">&amp;&amp;</span> git add . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"update"</span> <span class="o">&amp;&amp;</span> git push<span class="o">)</span></span>
-</pre></div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id14">关于评论?</a></h2>
+<p>目前的计划是用 <a class="reference external" href="https://wiki.yoitsu.moe/">https://wiki.yoitsu.moe/</a> 的Feedback名字空间或是Github issues来完成呐~汝问咱为啥不用Disqus?</p>
+<p>受 <a class="reference external" href="/links.html#fiveyellowmice">fiveyellowmice</a> 的影响,咱不会试图去收集汝的隐私呐~</p>
+<p>这个网站回放在咱自己的服务器上,然而由于开了Cloudflare的CDN又没安装插件,咱的服务器日志上的IP地址全部是来自Cloudflare的......</p>
+<p>咱还使用Google Analytics ，它收集像访问人数和浏览器类型之类的信息.而且(照Google的说法),它使用匿名标识符来区分每一个人.所以汝最好去看看 <a class="reference external" href="https://www.google.com/intl/zh-CN/policies/">Google 的隐私政策</a> .如果汝真的不想让咱知道的话, <a class="reference external" href="https://www.torproject.org/">用Tor 呗~</a></p>
+<p>这里(不含用于评论的wiki.yoitsu.moe)本身不会创建任何Cookie,汝看到的Cookie是CloudFlare和Google Analytics创建的,和咱没啥关系.</p>
+<p>用于评论的 <a class="reference external" href="https://wiki.yoitsu.moe/">原约伊兹的萌狼乡手札</a> 是基于MediaWiki搭建的,所以匿名用户的IP地址会显示在编辑历史中(这是MediaWiki软件自身的设定,毕竟人家的本意是做开放的wiki不是?).如果汝使用账户登录的话,便会在汝的浏览器上设置Cookies呐~(登录用户的IP地址轻易不会让人知道的啦[#]_ )</p>
+<p>当然啦,如果汝觉得便捷大于对隐私的关注的话,可以发个评论抱怨一下咱~</p>
+<table class="table table-striped docutils table-hover footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label"></col><col></col></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>通过Checkuser扩展可以查出注册用户进行编辑时的IP地址,然而咱并没有......</td></tr>
+</tbody>
+</table>
+<p>作为新博客的第一篇博文就说到这里,咱具体是怎么做的 <del>请听下回分解</del> 😂😂😂</p>
 </div>
 
   </div><!-- /.entry-content -->
@@ -239,21 +192,20 @@ the Pelican wiki's <a class="reference external" href="https://github.com/getpel
   </div>
 </section>
 <br />
-      <a href="/summary.html" class="place-left">
-        <button class="command-button bg-lightOlive fg-white">
-            <span class="icon mif-arrow-left"></span>
-                Summary
-              <small>上一篇</small>
-        </button>
-      </a>
-      <a href="/neighbor-articles-plugin-for-pelican.html" class="place-right">
-        <button class="command-button icon-right bg-lightOlive fg-white">
-            <span class="icon mif-arrow-right"></span>
-                Neighbor Articles Plugin for Pelican
-              <small>下一篇</small>
-        </button>
-      </a>
   <div class="padding10 clear-float"></div>
+<div class="panel">
+    <div class="heading bg-amber">
+        <span class="title">系列Pelican中的文章</span>
+    </div>
+    <div class="content padding10">
+            <a href='https://blog.yoitsu.moe/new_yoitsu_birth.html'>
+            <button class="button  warning ">
+                新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~
+              </button></a><br/>
+    </ol>
+    </div>
+</div>
+<div class="padding10 clear-float"></div>
 
 <div class="panel" id="talk" data-role="panel">
 <div class="heading bg-orange">
@@ -268,7 +220,7 @@ the Pelican wiki's <a class="reference external" href="https://github.com/getpel
             <div>
                 汝可以通过Github的Issue和<a href="https://wiki.yoitsu.moe">yoitsu.moe</a>上的Feedback页面和咱交(bao)流(yuan)呐~
                 <br />
-                <a href="/talk.html"><button class="button warning">汝想问咱为啥不用Disqus?</button></a>
+                <a href="https://blog.yoitsu.moe/new_yoitsu_birth.html#id14"><button class="button warning">汝想问咱为啥不用Disqus?</button></a>
             </div>
         </li>
         <li>
@@ -290,7 +242,7 @@ the Pelican wiki's <a class="reference external" href="https://github.com/getpel
                 <br />
                 如果不觉得麻烦的话，就戳下面的按钮呗~
                 <br />
-                <a href="https://wiki.yoitsu.moe/w/index.php?title=Feedback:Pelican QuickStart"><button class="button primary">给咱戳这儿~</button></a>
+                <a href="https://wiki.yoitsu.moe/w/index.php?title=Feedback:新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~"><button class="button primary">给咱戳这儿~</button></a>
             </div>
         </li>
      </ul>
@@ -318,7 +270,7 @@ the Pelican wiki's <a class="reference external" href="https://github.com/getpel
                         <span class="title">ホロ</span>
                     </div>
                     <div class="content padding10">
-                    <a href="/aboutme.html" class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
+                    <a href="https://blog.yoitsu.moe/aboutme.html" class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
                         <div class="tile-content slide-up-2">
                             <div class="slide">
                                  <div class="image-container image-format-square" style="width: 100%;">
@@ -363,12 +315,17 @@ the Pelican wiki's <a class="reference external" href="https://github.com/getpel
                     <div class="content padding10">
                         <ul class="tagcloud">
                                 <li class="tag-4">
-                                    <a href="/tag/plugin.html">
-                                    plugin
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
                                     </a>
                                 </li>
-                                <li class="tag-1">
-                                    <a href="/tag/pelican.html">
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
                                     pelican
                                     </a>
                                 </li>
