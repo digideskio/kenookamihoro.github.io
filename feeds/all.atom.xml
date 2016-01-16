@@ -256,7 +256,6 @@ and this content occurs after the summary.
 &lt;/pre&gt;
 &lt;/div&gt;
 </summary></entry><entry><title>tag_cloud</title><link href="/tag_cloud.html" rel="alternate"></link><updated>2016-01-18T13:45:00+08:00</updated><author><name>ホロ</name></author><id>tag:,2016-01-18:tag_cloud.html</id><summary type="html">&lt;p&gt;This plugin generates a tag-cloud.&lt;/p&gt;
-
 &lt;div class="section" id="installation"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Installation&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;In order to use to use this plugin, you have to edit(*) or create(+) the following files:&lt;/p&gt;
@@ -284,7 +283,7 @@ PLUGINS = ["tag_cloud"]
 &lt;/div&gt;
 &lt;div class="section" id="settings"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Settings&lt;/a&gt;&lt;/h2&gt;
-&lt;table border="1" class="table-striped table table-hover docutils"&gt;
+&lt;table border="1" class="table table-striped docutils table-hover"&gt;
 &lt;colgroup&gt;
 &lt;col width="48%"&gt;&lt;/col&gt;
 &lt;col width="52%"&gt;&lt;/col&gt;
