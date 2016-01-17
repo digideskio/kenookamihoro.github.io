@@ -169,7 +169,7 @@ http://服务器的IP地址:8142&lt;/code&gt;
 &lt;p&gt;这里(不含用于评论的wiki.yoitsu.moe)本身不会创建任何Cookie,汝看到的Cookie是CloudFlare和Google Analytics创建的,和咱没啥关系.&lt;/p&gt;
 &lt;p&gt;用于评论的 &lt;a class="reference external" href="https://wiki.yoitsu.moe/"&gt;原约伊兹的萌狼乡手札&lt;/a&gt; 是基于MediaWiki搭建的,所以匿名用户的IP地址会显示在编辑历史中(这是MediaWiki软件自身的设定,毕竟人家的本意是做开放的wiki不是?).如果汝使用账户登录的话,便会在汝的浏览器上设置Cookies呐~(登录用户的IP地址轻易不会让人知道的啦[#]_ )&lt;/p&gt;
 &lt;p&gt;当然啦,如果汝觉得便捷大于对隐私的关注的话,可以发个评论抱怨一下咱~&lt;/p&gt;
-&lt;table class="table-striped table-hover footnote table docutils" frame="void" id="id9" rules="none"&gt;
+&lt;table class="table-striped docutils footnote table table-hover" frame="void" id="id9" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;[1]&lt;/td&gt;&lt;td&gt;通过Checkuser扩展可以查出注册用户进行编辑时的IP地址,然而咱并没有......&lt;/td&gt;&lt;/tr&gt;
