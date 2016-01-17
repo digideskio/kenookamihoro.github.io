@@ -44,25 +44,4 @@
 
 咱以后也会继续折腾MediaWiki,顺便在这记下来一些过程和经验呗~
 
-关于评论?
---------------
-
-目前的计划是用 `<https://wiki.yoitsu.moe/>`_ 的Feedback名字空间或是Github issues来完成呐~汝问咱为啥不用Disqus?
-
-受 :fref:`fiveyellowmice` 的影响,咱不会试图去收集汝的隐私呐~
-
-这个网站回放在咱自己的服务器上,然而由于开了Cloudflare的CDN又没安装插件,咱的服务器日志上的IP地址全部是来自Cloudflare的......
-
-咱还使用Google Analytics ，它收集像访问人数和浏览器类型之类的信息.而且(照Google的说法),它使用匿名标识符来区分每一个人.所以汝最好去看看 `Google 的隐私政策 <https://www.google.com/intl/zh-CN/policies/>`_ .如果汝真的不想让咱知道的话, `用Tor 呗~ <https://www.torproject.org/>`_ 
-
-这里(不含用于评论的wiki.yoitsu.moe)本身不会创建任何Cookie,汝看到的Cookie是CloudFlare和Google Analytics创建的,和咱没啥关系.
-
-用于评论的 `原约伊兹的萌狼乡手札 <https://wiki.yoitsu.moe/>`_ 是基于MediaWiki搭建的,所以匿名用户的IP地址会显示在编辑历史中(这是MediaWiki软件自身的设定,毕竟人家的本意是做开放的wiki不是?).如果汝使用账户登录的话,便会在汝的浏览器上设置Cookies呐~(登录用户的IP地址轻易不会让人知道的啦[#]_ )
-
-当然啦,如果汝觉得便捷大于对隐私的关注的话,可以发个评论抱怨一下咱~
-
-
-.. [#] 通过Checkuser扩展可以查出注册用户进行编辑时的IP地址,然而咱并没有......
-
-
 作为新博客的第一篇博文就说到这里,咱具体是怎么做的 :del:`请听下回分解` 😂😂😂

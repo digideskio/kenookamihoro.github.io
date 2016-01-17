@@ -137,6 +137,10 @@
 </div>
     </nav>
 </div>
+    
+    <script id="dsq-count-scr" src="//kenookamihoro.disqus.com/count.js" async></script>
+    
+    
 <section id="content" class="body">
 	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="bookmark" title="到 为MediaWiki安装可视化编辑器的固定链接" class="fg-white">为MediaWiki安装可视化编辑器</a></h2>
     	<span class="mif-calendar"> 2015年01月17日 星期六&nbsp;&nbsp;</span>
@@ -304,6 +308,13 @@ http://服务器的IP地址:8142</code>
               <small>上一篇</small>
         </button>
       </a>
+      <a href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" class="place-right">
+        <button class="command-button icon-right bg-lightOlive fg-white">
+            <span class="icon mif-arrow-right"></span>
+                新约伊兹的萌狼乡手札诞生全过程伪实录
+              <small>下一篇</small>
+        </button>
+      </a>
   <div class="padding10 clear-float"></div>
 <div class="panel">
     <div class="heading bg-amber">
@@ -314,7 +325,6 @@ http://服务器的IP地址:8142</code>
             <button class="button  warning ">
                 为MediaWiki安装可视化编辑器
               </button></a><br/>
-    </ol>
     </div>
 </div>
 <div class="padding10 clear-float"></div>
@@ -325,39 +335,54 @@ http://服务器的IP地址:8142</code>
        <span class="title">参与讨论</span>
     </div>
     <div class="content">
-       <ul class="step-list padding10" style="padding-left:20px;">
-        <li>
-            <h2>如何和咱交流?</h2>
-            <hr class="bg-red" />
-            <div>
-                汝可以通过Github的Issue和<a href="https://wiki.yoitsu.moe">yoitsu.moe</a>上的Feedback页面和咱交(bao)流(yuan)呐~
-                <br />
-                <a href="https://blog.yoitsu.moe/new_yoitsu_birth.html#id14"><button class="button warning">汝想问咱为啥不用Disqus?</button></a>
-            </div>
-        </li>
-        <li>
-            <h2>如果用Github Issue?</h2>
-            <hr class="bg-green" />
-            <div>
-                那就用Github帐号登录，然后提交issue，记得附上有问题的页面的标题呐~（和页面无关的问题可以忽略标题）
-                <br />
-                <a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success">前往Issues页面呗~</button></a>
-            </div>
-        </li>
-        <li>
-            <h2>如果去yoitsu.moe?</h2>
-            <hr  class="bg-blue"/>
-            <div>
-                点击下面的按钮就进入到对应的页面了啦。虽然不需要注册，但是由于MediaWiki软件的限制，不注册的话会暴露IP地址+收不到通知呐~
-                <br />
-                但是注册时输入的验证码是Google的ReCaptcha呐~，于是……
-                <br />
-                如果不觉得麻烦的话，就戳下面的按钮呗~
-                <br />
-                <a href="https://wiki.yoitsu.moe/w/index.php?title=Feedback:为MediaWiki安装可视化编辑器"><button class="button primary">给咱戳这儿~</button></a>
-            </div>
-        </li>
-     </ul>
+        <ul class="step-list padding10" style="padding-left:20px;">
+         <li>
+             <h2>如何和咱交流?</h2>
+             <hr class="bg-red" />
+             <div>
+                 汝可以通过Github的Issue和Disqus和咱交(bao)流(yuan)呐~
+                 <br />
+             </div>
+         </li>
+         <li>
+             <h2>Github Issue?</h2>
+             <hr class="bg-green" />
+             <div>
+                 Github issues用来回报网站的一般问题，用Github帐号登录，然后提交issue抱怨咱一下呗~
+                 <br />
+                 <a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success">前往Issues页面呗~</button></a>
+             </div>
+         </li>
+         <li>
+             <h2>用Disqus?</h2>
+             <hr  class="bg-blue"/>
+             <div>
+                 Disqus用来回报某个页面的问题，用Disqus帐号登录，提交评论抱怨咱一下呗~ <br /><br />
+                 <div id="disqus_thread"></div>
+					<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//kenookamihoro.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Disqus需要启用JavaScript 才能工作呐~<br /><a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+             </div>
+         </li>
+      </ul>
     </div>
 </div>
 
@@ -371,7 +396,7 @@ http://服务器的IP地址:8142</code>
                 <div class="content padding10">
                 <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
                 <div>如果有问题的话，记得回报咱哟~</div><br />
-                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a>&nbsp;<a href="https://wiki.yoitsu.moe/wiki/Feedback:%E5%9B%9E%E6%8A%A5%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98"><button class="button warning block-shadow-warning text-shadow">Yoitsu.moe</button></a></div><br />
+                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a></div><br />
                 </ul>
                 </div>
                 </div>
@@ -382,7 +407,7 @@ http://服务器的IP地址:8142</code>
                         <span class="title">ホロ</span>
                     </div>
                     <div class="content padding10">
-                    <a href="https://blog.yoitsu.moe/aboutme.html" class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
+                    <div class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
                         <div class="tile-content slide-up-2">
                             <div class="slide">
                                  <div class="image-container image-format-square" style="width: 100%;">
@@ -396,7 +421,7 @@ http://服务器的IP地址:8142</code>
                             「虽然咱长久以来被尊为神，不过，咱就是咱。咱是赫萝。」
                             </div>
                         </div>
-                    </a>
+                    </div>
                         <div class="toolbar align-center">
                         <br />
                         <a href="https://twitter.com/Ken_Ookami_Horo">
@@ -419,26 +444,27 @@ http://服务器的IP地址:8142</code>
                     </div>
                 </div>
                 <br />
-                <div class="panel">
+                <div class="panel shadow">
+                    <div class="heading bg-darkCyan">
+                        <span class="icon mif-twitter"></span>
+                        <span class="title">Twitter</span>
+                    </div>
+                    <div class="content padding10">
+                        <a class="twitter-timeline" href="https://twitter.com/Ken_Ookami_Horo" data-widget-id="685324055361134592">@Ken_Ookami_Horo的推文</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                </div>
+                 <br />
+                <div class="panel shadow">
                     <div class="heading">
                         <span class="icon mif-tags"></span>
                         <span class="title">标签云</span>
                     </div>
                     <div class="content padding10">
                         <ul class="tagcloud">
-                                <li class="tag-4">
+                                <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/blog.html">
                                     blog
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
-                                    pelican
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
-                                    notes
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -446,7 +472,22 @@ http://服务器的IP地址:8142</code>
                                     mediawiki
                                     </a>
                                 </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
                                 <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
+                                    notes
+                                    </a>
+                                </li>
+                                <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
                                     yoitsu
                                     </a>

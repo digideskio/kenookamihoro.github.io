@@ -265,12 +265,12 @@
 }
 @media screen and (max-width: 1400px) {
   html {
-    font-size: 115%;
+    font-size: 110%;
   }
 }
 @media screen and (max-width: 1200px) {
   html {
-    font-size: 110%;
+    font-size: 100%;
   }
 }
 @media screen and (max-width: 768px) {

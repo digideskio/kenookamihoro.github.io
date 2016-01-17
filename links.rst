@@ -63,7 +63,7 @@ IRC 频道 :irc:`archlinux-cn`
     :nick: `quininer <http://quininer.github.io/>`_
     :gravatar: quininer@live.com
 
-    U need tox （雾），小心Ta傲娇block汝呐~（大雾），写着一个JavaScript驱动的帅气博客。（没雾）
+    :del:`U need tox （雾）`，小心Ta傲娇block汝呐~（大雾），写着一个JavaScript驱动的帅气博客。（没雾）
 
 .. friend:: frantic1048
     :nick: `Frantic1048 Chino Kafuu 智乃 香风 <https://frantic1048.com/>`_
@@ -71,6 +71,26 @@ IRC 频道 :irc:`archlinux-cn`
 
     萌萌的智乃，自己很萌的同时喜欢一切萌物，前端技艺精湛，貌似正在构建新的博客框架……
 
+IRC 频道 :irc:`aosc` (Telegram群 "安同开源社区"，目前不开放~）
+----------------------------------------------------------------------------------
+
+.. friend:: jeffbai
+    :nick: `白铭骢 Jeff Bai <http://jeffbai.info/>`_
+    :logo: https://avatars1.githubusercontent.com/u/5006263
+
+    AOSC创始人 :del:`兼特首` ,开源爱好者：打包狂人，翻译狂魔，FSF 会员.
+
+.. friend:: azu_nyan
+    :nick: `Azu | Nyan  <https://www.tombu.info/>`_
+    :logo: /images/J7_CeSoa.png
+
+    Skidmore College （准）学生，伪宅。折腾是生命的动力。千万别以为Ta是开发者或者什么别的技术人才，这是不正确的。
+
+.. friend:: arthur2e5
+    :nick: `Mingye Wang / 王铭烨  <https://about.me/Arthur2e5>`_
+    :logo: https://avatars0.githubusercontent.com/u/6459309?v=3&s=400
+
+    一个野生逗比小学生、间歇性自由软件原教旨主义者，并且他忽悠了很多人，很多很多人。:del:`（因为某些特殊原因在某QQ群被调教，并被备注为女装狂魔）`
 
 
 Telegram群 `MediaWiki 站长交流 <https://telegram.me/joinchat/BuDkcQJ5ZNVAS9sgfAGq4A>`_
@@ -93,6 +113,8 @@ Telegram群 `MediaWiki 站长交流 <https://telegram.me/joinchat/BuDkcQJ5ZNVAS9
     :logo: https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Pattern_example.svg/480px-Pattern_example.svg.png
 
     MediaWiki站长交流Telegram群里第三个说话的人（第一个是咱，第二个是@Pumiao（滑稽））
+
+
 
 
 地点不明（准确的地点咱已经忘记了呐~）
