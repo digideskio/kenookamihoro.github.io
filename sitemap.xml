@@ -4,84 +4,84 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/</loc>
-<lastmod>2016-01-17T12:44:14-00:00</lastmod>
+<loc>https://blog.yoitsu.moe/</loc>
+<lastmod>2016-01-17T12:45:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/archives.html</loc>
-<lastmod>2016-01-17T12:44:14-00:00</lastmod>
+<loc>https://blog.yoitsu.moe/archives.html</loc>
+<lastmod>2016-01-17T12:45:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/links.html</loc>
+<loc>https://blog.yoitsu.moe/links.html</loc>
 <lastmod>2016-01-16T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/visualeditor_for_mediawiki.html</loc>
+<loc>https://blog.yoitsu.moe/visualeditor_for_mediawiki.html</loc>
 <lastmod>2015-01-17T09:35:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/new_yoitsu_birth.html</loc>
+<loc>https://blog.yoitsu.moe/new_yoitsu_birth.html</loc>
 <lastmod>2015-01-16T09:35:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/category/tech.html</loc>
+<loc>https://blog.yoitsu.moe/category/tech.html</loc>
 <lastmod>2015-01-17T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/blog.html</loc>
+<loc>https://blog.yoitsu.moe/tag/yoitsu.html</loc>
 <lastmod>2015-01-16T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/pelican.html</loc>
-<lastmod>2015-01-16T09:35:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/tag/mediawiki.html</loc>
+<loc>https://blog.yoitsu.moe/tag/mediawiki.html</loc>
 <lastmod>2015-01-17T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/yoitsu.html</loc>
+<loc>https://blog.yoitsu.moe/tag/blog.html</loc>
 <lastmod>2015-01-16T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/notes.html</loc>
+<loc>https://blog.yoitsu.moe/tag/pelican.html</loc>
+<lastmod>2015-01-16T09:35:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://blog.yoitsu.moe/tag/notes.html</loc>
 <lastmod>2015-01-17T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/author/horo.html</loc>
+<loc>https://blog.yoitsu.moe/author/horo.html</loc>
 <lastmod>2015-01-17T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>

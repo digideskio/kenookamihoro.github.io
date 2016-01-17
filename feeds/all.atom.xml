@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2015-01-17T09:35:00+08:00</updated><entry><title>为MediaWiki安装可视化编辑器</title><link href="/visualeditor_for_mediawiki.html" rel="alternate"></link><updated>2015-01-17T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:,2015-01-17:visualeditor_for_mediawiki.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/all.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2015-01-17T09:35:00+08:00</updated><entry><title>为MediaWiki安装可视化编辑器</title><link href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="alternate"></link><updated>2015-01-17T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-17:visualeditor_for_mediawiki.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 &lt;p&gt;为MediaWiki安装来自 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor"&gt;维基媒体基金会&lt;/a&gt; 的 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor"&gt;可视化编辑器&lt;/a&gt; .&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
-
 &lt;div class="section" id="hold"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;连维基百科都要Hold不住啦~&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -139,10 +138,9 @@ http://服务器的IP地址:8142&lt;/code&gt;
 &lt;p&gt;然后在汝的wiki上试试看呗~&lt;/p&gt;
 &lt;img alt="Parsoid的工作原理" class="img-responsive" src="images/visualeditor-test.png"/&gt;
 &lt;/div&gt;
-</summary><category term="mediawiki"></category><category term="notes"></category></entry><entry><title>新的"约伊兹的萌狼乡手札"诞生啦~</title><link href="/new_yoitsu_birth.html" rel="alternate"></link><updated>2015-01-16T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:,2015-01-16:new_yoitsu_birth.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+</summary><category term="mediawiki"></category><category term="notes"></category></entry><entry><title>新的"约伊兹的萌狼乡手札"诞生啦~</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth.html" rel="alternate"></link><updated>2015-01-16T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-16:new_yoitsu_birth.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 &lt;p&gt;就像标题描述的一样，新的"约伊兹的萌狼乡手札"以Pelican之姿再次出发啦~&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
-
 &lt;div class="section" id="id2"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;为啥要重做？&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;原来的 &lt;a class="reference external" href="https://wiki.yoitsu.moe/"&gt;约伊兹的萌狼乡手札&lt;/a&gt; 是基于MediaWiki搭建的,但是MediaWiki的本来用途并不是来做博客的呐~,不过咱还是一直拖着......直到 &lt;a class="reference external" href="https://www.archlinux.org/news/php-70-packages-released/"&gt;Arch Linux 宣布PHP7进入官方软件仓库&lt;/a&gt; ,咱升级以后两个关键的RSS扩展都坏掉啦~(应该都知道RSS对于博客型网站的重要性呗~),于是咱痛定思痛决定升级😂&lt;/p&gt;
@@ -171,7 +169,7 @@ http://服务器的IP地址:8142&lt;/code&gt;
 &lt;p&gt;这里(不含用于评论的wiki.yoitsu.moe)本身不会创建任何Cookie,汝看到的Cookie是CloudFlare和Google Analytics创建的,和咱没啥关系.&lt;/p&gt;
 &lt;p&gt;用于评论的 &lt;a class="reference external" href="https://wiki.yoitsu.moe/"&gt;原约伊兹的萌狼乡手札&lt;/a&gt; 是基于MediaWiki搭建的,所以匿名用户的IP地址会显示在编辑历史中(这是MediaWiki软件自身的设定,毕竟人家的本意是做开放的wiki不是?).如果汝使用账户登录的话,便会在汝的浏览器上设置Cookies呐~(登录用户的IP地址轻易不会让人知道的啦[#]_ )&lt;/p&gt;
 &lt;p&gt;当然啦,如果汝觉得便捷大于对隐私的关注的话,可以发个评论抱怨一下咱~&lt;/p&gt;
-&lt;table class="table-striped table footnote table-hover docutils" frame="void" id="id9" rules="none"&gt;
+&lt;table class="table-striped table-hover footnote table docutils" frame="void" id="id9" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;[1]&lt;/td&gt;&lt;td&gt;通过Checkuser扩展可以查出注册用户进行编辑时的IP地址,然而咱并没有......&lt;/td&gt;&lt;/tr&gt;
