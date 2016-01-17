@@ -1,7 +1,7 @@
 .highlight .hll { background-color: #49483e }
 .highlight pre {
     counter-reset: linecounter;
-    padding-left: 2em;
+    padding-left: 1.5em;
 }
 .highlight pre span.code-line {
     counter-increment: linecounter;
@@ -16,7 +16,14 @@
     color: grey;
     text-align: right;
 }
-.highlight  { background: #272822; color: #f8f8f2;padding:10px;overflow:auto;}
+.highlight  {
+    background: #272822;
+    color: #f8f8f2;
+    overflow-x:auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 .highlight .c { color: #75715e } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
 .highlight .k { color: #66d9ef } /* Keyword */

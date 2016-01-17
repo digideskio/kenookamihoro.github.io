@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-      <title>新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~ - 约伊兹的萌狼乡手札</title>
+      <title>为MediaWiki安装可视化编辑器 - 约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
     <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
@@ -51,9 +51,8 @@
 
 
 
-    <meta name="tags" content="yoitsu" />
-    <meta name="tags" content="pelican" />
-    <meta name="tags" content="blog" />
+    <meta name="tags" content="mediawiki" />
+    <meta name="tags" content="notes" />
 
 
 </head>
@@ -122,66 +121,173 @@
     <div class="toc" id="">
 
 <ul class="simple">
-<li><a class="reference internal" href="#id2" id="id10">为啥要重做？</a></li>
-<li><a class="reference internal" href="#pelican" id="id11">为啥是Pelican?</a></li>
-<li><a class="reference internal" href="#id4" id="id12">那么有哪些问题咧?</a></li>
-<li><a class="reference internal" href="#id6" id="id13">关于旧站的打算?</a></li>
-<li><a class="reference internal" href="#id7" id="id14">关于评论?</a></li>
+<li><a class="reference internal" href="#hold" id="id10">连维基百科都要Hold不住啦~</a></li>
+<li><a class="reference internal" href="#id3" id="id11">开始之前-检查一下要求</a></li>
+<li><a class="reference internal" href="#parsoid-ubuntu-14-debian-7" id="id12">安装Parsoid(Ubuntu 14+ / Debian 7+ )</a></li>
+<li><a class="reference internal" href="#id4" id="id13">其它系统?手动安装呗~</a></li>
+<li><a class="reference internal" href="#id5" id="id14">修改配置文件</a></li>
+<li><a class="reference internal" href="#id6" id="id15">启动服务</a><ul>
+<li><a class="reference internal" href="#id7" id="id16">从软件源安装的?</a></li>
+<li><a class="reference internal" href="#git" id="id17">用git安装的?</a></li>
+<li><a class="reference internal" href="#id8" id="id18">修改监听地址便于远程测试</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#visualeditor" id="id19">安装VisualEditor扩展</a></li>
 </ul>
 </div>
     </nav>
 </div>
 <section id="content" class="body">
-	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/new_yoitsu_birth.html" rel="bookmark" title="到 新的"约伊兹的萌狼乡手札"诞生啦~的固定链接" class="fg-white">新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~</a></h2>
-    	<span class="mif-calendar"> 2015年01月16日 星期五&nbsp;&nbsp;</span>
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="bookmark" title="到 为MediaWiki安装可视化编辑器的固定链接" class="fg-white">为MediaWiki安装可视化编辑器</a></h2>
+    	<span class="mif-calendar"> 2015年01月17日 星期六&nbsp;&nbsp;</span>
     	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
         <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
-        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/new_yoitsu_birth.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/visualeditor_for_mediawiki.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
         <br /><br />
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/yoitsu.html"> yoitsu</a>&nbsp;&nbsp;</span>
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/pelican.html"> pelican</a>&nbsp;&nbsp;</span>
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/blog.html"> blog</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/mediawiki.html"> mediawiki</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/notes.html"> notes</a>&nbsp;&nbsp;</span>
 
     </header>
   <div class="entry-content text-accent" id="article-content">
     <!-- PELICAN_BEGIN_SUMMARY -->
-<p>就像标题描述的一样，新的"约伊兹的萌狼乡手札"以Pelican之姿再次出发啦~</p>
+<p>为MediaWiki安装来自 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">维基媒体基金会</a> 的 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">可视化编辑器</a> .</p>
 <!-- PELICAN_END_SUMMARY -->
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id10">为啥要重做？</a></h2>
-<p>原来的 <a class="reference external" href="https://wiki.yoitsu.moe/">约伊兹的萌狼乡手札</a> 是基于MediaWiki搭建的,但是MediaWiki的本来用途并不是来做博客的呐~,不过咱还是一直拖着......直到 <a class="reference external" href="https://www.archlinux.org/news/php-70-packages-released/">Arch Linux 宣布PHP7进入官方软件仓库</a> ,咱升级以后两个关键的RSS扩展都坏掉啦~(应该都知道RSS对于博客型网站的重要性呗~),于是咱痛定思痛决定升级😂</p>
+<div class="section" id="hold">
+<h2><a class="toc-backref" href="#id10">连维基百科都要Hold不住啦~</a></h2>
+<blockquote>
+<p>许多新用户不会着手大幅度修改，而只是做些细节调整，不过仅仅阅读源代码就必须学标记语言了。当我们的用户在演示操作时，这把他们吓走了。</p>
+<p>早在 2004 年，社群开始一再认识到必须采用更好的编辑方式。因为人们的请求，更重要的是他们的需要，所以我们开发了可视化编辑器。</p>
+<p>Wiki 标记语言让新人害怕，这种程度会随着其他站点的迁离而加剧。如果我们不开发可视化编辑器，那么图表的走势会在接下来五年中变得更加糟糕。</p>
+<p class="attribution">—<a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh">MediaWiki.org</a></p>
+</blockquote>
+<p>所以他们才 <del>痛定思痛</del> 决定开发可视化编辑器么😂</p>
 </div>
-<div class="section" id="pelican">
-<h2><a class="toc-backref" href="#id11">为啥是Pelican?</a></h2>
-<p>主要的原因是 <del>人生赢家</del> <a class="reference external" href="/links.html#farseerfc">farseerfc</a> 用的也是Pelican，这样咱可以照着他的经历少走一些弯路......</p>
-<p>为啥不用Hexo,Ghost一类的博客系统呢?因为咱不太会设置Node.js(想当初给MediaWiki装可视化编辑器就折腾了半天)😂😂😂</p>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id11">开始之前-检查一下要求</a></h2>
+<p>可视化编辑器(下面就说VisualEditor呗~)还需要一个叫
+<a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh">Parsoid</a>
+的程序来承担把wiki标记转化成html的任务啦(看下图)~,所以需要服务器来运行它呐~</p>
+<object data="images/Parsoid_HTML-RDFa_content_model.svg" type="image/svg+xml">
+Parsoid的工作原理</object>
+</div>
+<div class="section" id="parsoid-ubuntu-14-debian-7">
+<h2><a class="toc-backref" href="#id12">安装Parsoid(Ubuntu 14+ / Debian 7+ )</a></h2>
+<p>上游的指南在这(好好学英语呗~) <a class="reference external" href="https://www.mediawiki.org/wiki/Parsoid/Setup">https://www.mediawiki.org/wiki/Parsoid/Setup</a></p>
+<p>Ubuntu和Debian系统的话直接添加MediaWiki.org的软件源然后通过apt安装就好了啦~</p>
+<p>首先添加MediaWiki.org的GPG公钥:</p>
+<div class="highlight"><pre><span class="code-line">sudo apt-key advanced --keyserver keys.gnupg.net --recv-keys 664C383A3566A3481B942F007A322AC6E84AFDD2</span>
+</pre></div>
+<p>然后添加Parsoid源:</p>
+<div class="highlight"><pre><span class="code-line">sudo <span class="nb">echo</span> <span class="s2">"deb https://releases.wikimedia.org/debian jessie-mediawiki main"</span> &gt; /etc/apt/sources.list.d/parsoid.list</span>
+</pre></div>
+<p>安装需要的软件包:</p>
+<div class="highlight"><pre><span class="code-line">sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install curl parsoid</span>
+</pre></div>
+<p>然后看下下面一节的内容修改一下配置文件呗~</p>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id12">那么有哪些问题咧?</a></h2>
-<p>首先Pelican用的标记语言是rst(重组的文本)或是MarkDown,不过看情况Markdown是刚加入进来的,处理的还不够好,就先用rst呗~</p>
-<p>然而咱并不会rst的语法......只好找来个 <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">语法指南</a> 先照着看......</p>
+<h2><a class="toc-backref" href="#id13">其它系统?手动安装呗~</a></h2>
+<p>上游的指南在这(还是要好好学英语呗~) <a class="reference external" href="https://www.mediawiki.org/wiki/Parsoid/Developer_Setup">https://www.mediawiki.org/wiki/Parsoid/Developer_Setup</a></p>
+<p>首先汝要装上Nodejs(&gt;0.8,建议0.10或更新的版本呐~),还有git.
+具体的安装方法为了避免降低正交性 <del>(其实是系统太多不好写......)</del>,就麻烦汝自己去找了呐~</p>
+<blockquote>
+「呵。咱是贤狼，不是神呐。如果汝开始会期待起咱能够泄露天机给汝，那咱就得从汝眼前消失了呗。」</blockquote>
+<div class="highlight"><pre><span class="code-line">node --version <span class="c"># 如果是Debian或Ubuntu ,输入 nodejs --version</span></span>
+</pre></div>
+<p>然后用git克隆版本库呗~</p>
+<div class="highlight"><pre><span class="code-line">git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid</span>
+</pre></div>
+<p>用npm安装上相应的依赖:</p>
+<div class="highlight"><pre><span class="code-line">npm install</span>
+</pre></div>
+<p>然后看下面一节的内容修改一下配置文件呗~</p>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id14">修改配置文件</a></h2>
+<blockquote>
+<p>如果是通过软件源安装的,配置文件位于 <code class="code">
+/etc/mediawiki/parsoid/settings.js</code>
+</p>
+<p>如果是通过git下载的,从parsoid目录中先复制一份样例出来呗~</p>
+<div class="highlight"><pre><span class="code-line">cp localsettings.js.example localsettings.js</span>
+</pre></div>
+</blockquote>
+<p>打开配置文件,找到这一段内容,然后改它~:</p>
+<div class="highlight"><pre><span class="code-line"><span class="nx">parsoidConfig</span><span class="p">.</span><span class="nx">setMwApi</span><span class="p">({</span></span>
+<span class="code-line">    <span class="c1">// The "prefix" is the name given to this wiki configuration in the</span></span>
+<span class="code-line">    <span class="c1">// (deprecated) Parsoid v1 API.</span></span>
+<span class="code-line">    <span class="nx">prefix</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span> <span class="c1">// optional</span></span>
+<span class="code-line">    <span class="c1">// The "domain" is used for communication with Visual Editor</span></span>
+<span class="code-line">    <span class="c1">// and RESTBase.  It defaults to the hostname portion of</span></span>
+<span class="code-line">    <span class="c1">// the `uri` property below, but you can manually set it</span></span>
+<span class="code-line">    <span class="c1">// to an arbitrary string.</span></span>
+<span class="code-line">    <span class="nx">domain</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span> <span class="c1">// optional</span></span>
+<span class="code-line">    <span class="c1">// This is the only required parameter:</span></span>
+<span class="code-line">    <span class="c1">// the URL of you MediaWiki API endpoint.</span></span>
+<span class="code-line">    <span class="nx">uri</span><span class="o">:</span> <span class="s1">'http://localhost/w/api.php'</span></span>
+<span class="code-line">    <span class="p">});</span></span>
+</pre></div>
+<p>其中"uri"对应汝的wiki的api.php的位置,"domain"是汝的域名啦~."prefix"可以自己起一个(反正因为换了API也没用啦~,不过测试时可能用得到)</p>
 </div>
 <div class="section" id="id6">
-<h2><a class="toc-backref" href="#id13">关于旧站的打算?</a></h2>
-<p>介于原来的网站也是咱折腾了一阵子才出来的,于是决定先留着.(这个新站的评论要靠它呐~)</p>
-<p>咱以后也会继续折腾MediaWiki,顺便在这记下来一些过程和经验呗~</p>
-</div>
+<h2><a class="toc-backref" href="#id15">启动服务</a></h2>
 <div class="section" id="id7">
-<h2><a class="toc-backref" href="#id14">关于评论?</a></h2>
-<p>目前的计划是用 <a class="reference external" href="https://wiki.yoitsu.moe/">https://wiki.yoitsu.moe/</a> 的Feedback名字空间或是Github issues来完成呐~汝问咱为啥不用Disqus?</p>
-<p>受 <a class="reference external" href="/links.html#fiveyellowmice">fiveyellowmice</a> 的影响,咱不会试图去收集汝的隐私呐~</p>
-<p>这个网站回放在咱自己的服务器上,然而由于开了Cloudflare的CDN又没安装插件,咱的服务器日志上的IP地址全部是来自Cloudflare的......</p>
-<p>咱还使用Google Analytics ，它收集像访问人数和浏览器类型之类的信息.而且(照Google的说法),它使用匿名标识符来区分每一个人.所以汝最好去看看 <a class="reference external" href="https://www.google.com/intl/zh-CN/policies/">Google 的隐私政策</a> .如果汝真的不想让咱知道的话, <a class="reference external" href="https://www.torproject.org/">用Tor 呗~</a></p>
-<p>这里(不含用于评论的wiki.yoitsu.moe)本身不会创建任何Cookie,汝看到的Cookie是CloudFlare和Google Analytics创建的,和咱没啥关系.</p>
-<p>用于评论的 <a class="reference external" href="https://wiki.yoitsu.moe/">原约伊兹的萌狼乡手札</a> 是基于MediaWiki搭建的,所以匿名用户的IP地址会显示在编辑历史中(这是MediaWiki软件自身的设定,毕竟人家的本意是做开放的wiki不是?).如果汝使用账户登录的话,便会在汝的浏览器上设置Cookies呐~(登录用户的IP地址轻易不会让人知道的啦[#]_ )</p>
-<p>当然啦,如果汝觉得便捷大于对隐私的关注的话,可以发个评论抱怨一下咱~</p>
-<table class="footnote table-hover table-striped table docutils" frame="void" id="id9" rules="none">
-<colgroup><col class="label"></col><col></col></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td>通过Checkuser扩展可以查出注册用户进行编辑时的IP地址,然而咱并没有......</td></tr>
-</tbody>
-</table>
-<p>作为新博客的第一篇博文就说到这里,咱具体是怎么做的 <del>请听下回分解</del> 😂😂😂</p>
+<h3><a class="toc-backref" href="#id16">从软件源安装的?</a></h3>
+<div class="highlight"><pre><span class="code-line">sudo systemctl start parsoid <span class="c"># Debian Jessie ,用Systemd启动</span></span>
+<span class="code-line"></span>
+<span class="code-line">sudo service parsoid start <span class="c"># Debian Wheezy 或Ubuntu ,用init.d脚本启动.</span></span>
+</pre></div>
+<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <code class="code">
+http://localhost:8142</code>
+ 来进行测试.试着加载 <code class="code">
+http://localhost:8142/汝设置的前缀/汝的wiki上的一个页面</code>
+ 试试呗~</p>
+</div>
+<div class="section" id="git">
+<h3><a class="toc-backref" href="#id17">用git安装的?</a></h3>
+<div class="highlight"><pre><span class="code-line">npm start</span>
+</pre></div>
+<p>或者:</p>
+<div class="highlight"><pre><span class="code-line">node bin/server.js</span>
+</pre></div>
+<p>可以用screen一类的工具让Parsoid在后台运行~</p>
+<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <code class="code">
+http://localhost:8000</code>
+ 来进行测试.试着加载 <code class="code">
+http://localhost:8000/汝设置的前缀/汝的wiki上的一个页面</code>
+ 试试呗~</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id18">修改监听地址便于远程测试</a></h3>
+<p>改这一段:</p>
+<div class="highlight"><pre><span class="code-line"><span class="c1">// Allow override of port/interface:</span></span>
+<span class="code-line"><span class="c1">//parsoidConfig.serverPort = 8142;</span></span>
+<span class="code-line"><span class="c1">//parsoidConfig.serverInterface = '127.0.0.1';</span></span>
+</pre></div>
+<p>反注释最后一行并改成0.0.0.0,就可以通过 <code class="code">
+http://服务器的IP地址:8142</code>
+ 访问啦~</p>
+</div>
+</div>
+<div class="section" id="visualeditor">
+<h2><a class="toc-backref" href="#id19">安装VisualEditor扩展</a></h2>
+<p>上游的指南在这: <a class="reference external" href="https://www.mediawiki.org/wiki/Extension:VisualEditor">https://www.mediawiki.org/wiki/Extension:VisualEditor</a></p>
+<p>首先从 <a class="reference external" href="https://www.mediawiki.org/wiki/Special:ExtensionDistributor/VisualEditor">这里</a> 获得扩展然后上传到汝的wiki上的extensions目录呗~</p>
+<p>然后修改汝的LocalSettings.php:</p>
+<div class="highlight"><pre><span class="code-line">require_once "$IP/extensions/VisualEditor/VisualEditor.php";</span>
+<span class="code-line"></span>
+<span class="code-line">// 反注释下一行来默认启用可视化编辑器</span>
+<span class="code-line">#$wgDefaultUserOptions['visualeditor-enable'] = 1;</span>
+<span class="code-line"></span>
+<span class="code-line">// 反注释下一行来启用测试中的功能</span>
+<span class="code-line">#$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;</span>
+<span class="code-line"></span>
+<span class="code-line">//在除了主名字空间以外的名字空间中也启用可视化编辑器(下面的例子是用户名字空间)</span>
+<span class="code-line">$wgVisualEditorNamespaces=array_merge($wgContentNamespaces,array( NS_USER ));</span>
+</pre></div>
+<p>完整的设置选项可以在扩展页面上找到.</p>
+<p>然后在汝的wiki上试试看呗~</p>
+<img alt="Parsoid的工作原理" class="img-responsive" src="images/visualeditor-test.png"/>
 </div>
 
   </div><!-- /.entry-content -->
@@ -192,22 +298,22 @@
   </div>
 </section>
 <br />
-      <a href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" class="place-right">
-        <button class="command-button icon-right bg-lightOlive fg-white">
-            <span class="icon mif-arrow-right"></span>
-                为MediaWiki安装可视化编辑器
-              <small>下一篇</small>
+      <a href="https://blog.yoitsu.moe/new_yoitsu_birth.html" class="place-left">
+        <button class="command-button bg-lightOlive fg-white">
+            <span class="icon mif-arrow-left"></span>
+                新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~
+              <small>上一篇</small>
         </button>
       </a>
   <div class="padding10 clear-float"></div>
 <div class="panel">
     <div class="heading bg-amber">
-        <span class="title">系列Pelican中的文章</span>
+        <span class="title">系列MediaWiki中的文章</span>
     </div>
     <div class="content padding10">
-            <a href='https://blog.yoitsu.moe/new_yoitsu_birth.html'>
+            <a href='https://blog.yoitsu.moe/visualeditor_for_mediawiki.html'>
             <button class="button  warning ">
-                新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~
+                为MediaWiki安装可视化编辑器
               </button></a><br/>
     </ol>
     </div>
@@ -249,7 +355,7 @@
                 <br />
                 如果不觉得麻烦的话，就戳下面的按钮呗~
                 <br />
-                <a href="https://wiki.yoitsu.moe/w/index.php?title=Feedback:新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~"><button class="button primary">给咱戳这儿~</button></a>
+                <a href="https://wiki.yoitsu.moe/w/index.php?title=Feedback:为MediaWiki安装可视化编辑器"><button class="button primary">给咱戳这儿~</button></a>
             </div>
         </li>
      </ul>
