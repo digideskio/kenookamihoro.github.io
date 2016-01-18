@@ -2,6 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2015-01-18T09:35:00+08:00</updated><entry><title>新约伊兹的萌狼乡手札诞生全过程伪实录</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" rel="alternate"></link><updated>2015-01-18T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-18:new_yoitsu_birth_notes.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 &lt;p&gt;说好的下一期来啦~,新的"约伊兹的萌狼乡手札"是怎么样诞生呐~马上就告诉汝呗~&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
+
 &lt;div class="section" id="pelican"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;安装Pelican然后进行初始设置&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;在咱写这篇文章时, &lt;a class="reference external" href="/links.html#farsserfc"&gt;farsserfc&lt;/a&gt; 已经把Pelican打好包放进Arch Linux 官方软件仓库啦好棒~&lt;/p&gt;
@@ -182,6 +183,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 </summary><category term="yoitsu"></category><category term="pelican"></category><category term="blog"></category><category term="python"></category></entry><entry><title>为MediaWiki安装可视化编辑器</title><link href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="alternate"></link><updated>2015-01-17T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-17:visualeditor_for_mediawiki.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 &lt;p&gt;为MediaWiki安装来自 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor"&gt;维基媒体基金会&lt;/a&gt; 的 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor"&gt;可视化编辑器&lt;/a&gt; .&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
+
 &lt;div class="section" id="hold"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;连维基百科都要Hold不住啦~&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -321,6 +323,7 @@ http://服务器的IP地址:8142&lt;/code&gt;
 </summary><category term="mediawiki"></category><category term="notes"></category></entry><entry><title>新的"约伊兹的萌狼乡手札"诞生啦~</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth.html" rel="alternate"></link><updated>2015-01-16T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-16:new_yoitsu_birth.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
 &lt;p&gt;就像标题描述的一样，新的"约伊兹的萌狼乡手札"以Pelican之姿再次出发啦~&lt;/p&gt;
 &lt;!-- PELICAN_END_SUMMARY --&gt;
+
 &lt;div class="section" id="id2"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;为啥要重做？&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;原来的 &lt;a class="reference external" href="https://wiki.yoitsu.moe/"&gt;约伊兹的萌狼乡手札&lt;/a&gt; 是基于MediaWiki搭建的,但是MediaWiki的本来用途并不是来做博客的呐~,不过咱还是一直拖着......直到 &lt;a class="reference external" href="https://www.archlinux.org/news/php-70-packages-released/"&gt;Arch Linux 宣布PHP7进入官方软件仓库&lt;/a&gt; ,咱升级以后两个关键的RSS扩展都坏掉啦~(应该都知道RSS对于博客型网站的重要性呗~),于是咱痛定思痛决定升级😂&lt;/p&gt;
