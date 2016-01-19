@@ -5,14 +5,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/</loc>
-<lastmod>2016-01-19T04:47:34-00:00</lastmod>
+<lastmod>2016-01-19T04:55:07-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/archives.html</loc>
-<lastmod>2016-01-19T04:47:34-00:00</lastmod>
+<lastmod>2016-01-19T04:55:07-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
