@@ -143,7 +143,7 @@
     
 <section id="content" class="body">
 	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="bookmark" title="到 为MediaWiki安装可视化编辑器的固定链接" class="fg-white">为MediaWiki安装可视化编辑器</a></h2>
-    	<span class="mif-calendar"> 2015年01月17日 星期六&nbsp;&nbsp;</span>
+    	<span class="mif-calendar"> 2015年01月17日 星期Sat&nbsp;&nbsp;</span>
     	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
         <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
         <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/visualeditor_for_mediawiki.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
@@ -153,9 +153,8 @@
 
     </header>
   <div class="entry-content text-accent" id="article-content">
-    <!-- PELICAN_BEGIN_SUMMARY -->
+    
 <p>为MediaWiki安装来自 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">维基媒体基金会</a> 的 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">可视化编辑器</a> .</p>
-<!-- PELICAN_END_SUMMARY -->
 
 <div class="section" id="hold">
 <h2><a class="toc-backref" href="#id10">连维基百科都要Hold不住啦~</a></h2>
@@ -196,7 +195,7 @@
 具体的安装方法为了避免降低正交性 <del>(其实是系统太多不好写......)</del>,就麻烦汝自己去找了呐~</p>
 <blockquote>
 「呵。咱是贤狼，不是神呐。如果汝开始会期待起咱能够泄露天机给汝，那咱就得从汝眼前消失了呗。」</blockquote>
-<div class="highlight"><pre><span class="code-line">node --version <span class="c"># 如果是Debian或Ubuntu ,输入 nodejs --version</span></span>
+<div class="highlight"><pre><span class="code-line">node --version <span class="c1"># 如果是Debian或Ubuntu ,输入 nodejs --version</span></span>
 </pre></div>
 <p>然后用git克隆版本库呗~</p>
 <div class="highlight"><pre><span class="code-line">git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid</span>
@@ -237,9 +236,9 @@
 <h2><a class="toc-backref" href="#id15">启动服务</a></h2>
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id16">从软件源安装的?</a></h3>
-<div class="highlight"><pre><span class="code-line">sudo systemctl start parsoid <span class="c"># Debian Jessie ,用Systemd启动</span></span>
+<div class="highlight"><pre><span class="code-line">sudo systemctl start parsoid <span class="c1"># Debian Jessie ,用Systemd启动</span></span>
 <span class="code-line"></span>
-<span class="code-line">sudo service parsoid start <span class="c"># Debian Wheezy 或Ubuntu ,用init.d脚本启动.</span></span>
+<span class="code-line">sudo service parsoid start <span class="c1"># Debian Wheezy 或Ubuntu ,用init.d脚本启动.</span></span>
 </pre></div>
 <p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <code class="code">
 http://localhost:8142</code>
@@ -459,18 +458,13 @@ http://服务器的IP地址:8142</code>
                                     </a>
                                 </li>
                                 <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                                <li class="tag-4">
                                     <a href="https://blog.yoitsu.moe/tag/python.html">
                                     python
-                                    </a>
-                                </li>
-                                <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
-                                    blog
-                                    </a>
-                                </li>
-                                <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
-                                    yoitsu
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -478,9 +472,14 @@ http://服务器的IP地址:8142</code>
                                     notes
                                     </a>
                                 </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
-                                    mediawiki
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
                                     </a>
                                 </li>
                         </ul>

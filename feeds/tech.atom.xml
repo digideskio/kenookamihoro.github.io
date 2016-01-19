@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2015-01-18T09:35:00+08:00</updated><entry><title>新约伊兹的萌狼乡手札诞生全过程伪实录</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" rel="alternate"></link><updated>2015-01-18T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-18:new_yoitsu_birth_notes.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2015-01-18T09:35:00+08:00</updated><entry><title>新约伊兹的萌狼乡手札诞生全过程伪实录</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" rel="alternate"></link><updated>2015-01-18T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-18:new_yoitsu_birth_notes.html</id><summary type="html">
 &lt;p&gt;说好的下一期来啦~,新的"约伊兹的萌狼乡手札"是怎么样诞生呐~马上就告诉汝呗~&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
 
 &lt;div class="section" id="pelican"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;安装Pelican然后进行初始设置&lt;/a&gt;&lt;/h2&gt;
@@ -36,8 +35,8 @@ contents&lt;/code&gt;
 &lt;span class="code-line"&gt;这里是内容&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后运行一个命令来测试&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;make html &lt;span class="c"&gt;# 生成html&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;make serve &lt;span class="c"&gt;# 在127.0.0.1:8000 运行一个测试服务器.&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;make html &lt;span class="c1"&gt;# 生成html&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;make serve &lt;span class="c1"&gt;# 在127.0.0.1:8000 运行一个测试服务器.&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后打开浏览器输入 &lt;code class="code"&gt;
 localhost:8000&lt;/code&gt;
@@ -93,8 +92,8 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;span class="code-line"&gt;└──&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;然后记得修改pelican.conf告诉Pelican那些页面是模板那些页面是直接生成的呐~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c"&gt;# DIRECT_TEMPLATES 告诉Pelican哪些页面是直接用来生成特定页面的......&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="n"&gt;DIRECT_TEMPLATES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;'index'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'archives'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'search'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# DIRECT_TEMPLATES 告诉Pelican哪些页面是直接用来生成特定页面的......&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;DIRECT_TEMPLATES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s1"&gt;'index'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'archives'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'search'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;接下来开始调教主题呗~,直接给出官方的教程呗~ &lt;a class="reference external" href="http://docs.getpelican.com/en/3.6.3/themes.html"&gt;Pelican doc:Creating Themes&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;经过一番 &lt;ruby&gt;&lt;rb&gt;仔细&lt;/rb&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;无脑&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt; 调教以后,就成了汝等现在看到的样子了呐~&lt;/p&gt;
@@ -104,17 +103,17 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;装插件&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;作为一套博客系统,Pelican自然有很多的插件可以安装呐~,不信的话去看看`pelican-plugins里有多少插件呗~ &amp;lt;&lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins"&gt;https://github.com/getpelican/pelican-plugins&lt;/a&gt;&amp;gt;`_&lt;/p&gt;
 &lt;p&gt;咱启用的插件有这些:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;"better_codeblock_line_numbering"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;'tipue_search'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;'neighbors'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;'series'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;"render_math"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;'extract_toc'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;'tag_cloud'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;'sitemap'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;'summary'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;'bootstrapify'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;           &lt;span class="s"&gt;'twitter_bootstrap_rst_directives'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"better_codeblock_line_numbering"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'tipue_search'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'neighbors'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'series'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s2"&gt;"render_math"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'extract_toc'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'tag_cloud'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'sitemap'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'summary'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'bootstrapify'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'twitter_bootstrap_rst_directives'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;具体的设置流程嘛,请允许咱引用一下 &lt;a class="reference external" href="http://farseerfc.me/redesign-pelican-theme.html#pelican-restructuredtext"&gt;farseerfc.me:重新設計了 Pelican 的主題與插件&lt;/a&gt; 呗~&lt;/p&gt;
 &lt;/div&gt;
@@ -122,9 +121,9 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;实现动态格言&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;动态格言的实现来自 &lt;a class="reference external" href="/links.html#fiveyellowmice"&gt;fiveyellowmice&lt;/a&gt; 啦~(咱不是JavaScript专家呐~,就不谈具体的实现了呗~)&lt;/p&gt;
 &lt;p&gt;首先是一段修改某一个元素的类的JavaScript(当然还需要 &lt;a class="reference external" href="http://julian.com/research/velocity/"&gt;velocity&lt;/a&gt; ):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt; &lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"/theme/js/velocity.min.js"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"/theme/js/velocity.min.js"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt; &lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;addEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"DOMContentLoaded"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;   &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;".menu-button"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"touchstart"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;     &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;".menu-wrapper"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;removeClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"trigger"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;/span&gt;
@@ -139,7 +138,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;span class="code-line"&gt;             &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;   &lt;span class="p"&gt;});&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="p"&gt;});&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后新建一个 Github gist 填上动态格言,像这样(大括号里的内容可以添加多个):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;/span&gt;
@@ -150,7 +149,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;再写个JavaScript来从JSON中提取格言然后填到html里:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;            &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;addEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"DOMContentLoaded"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;                    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;".site-description"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;after&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;lt;blockquote&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"id"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"fortune"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;css&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"display"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"none"&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;                    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;".site-description"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;after&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;lt;blockquote&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"id"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"fortune"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;css&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"line-height"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"1.4rem"&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;/span&gt;
@@ -168,7 +167,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;span class="code-line"&gt;                            &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"#fortune"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;velocity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"slideDown"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;easing&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"easeOutQuad"&lt;/span&gt; &lt;span class="p"&gt;});&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;                    &lt;span class="p"&gt;});&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;            &lt;span class="p"&gt;});&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;    &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;最后的效果汝也应该看到了呗~&lt;/p&gt;
 &lt;/div&gt;
@@ -180,9 +179,8 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;p&gt;然后用git提交到Github就好......&lt;/p&gt;
 &lt;p&gt;好吧这就是咱的全过程啦(雾)&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="yoitsu"></category><category term="pelican"></category><category term="blog"></category><category term="python"></category></entry><entry><title>为MediaWiki安装可视化编辑器</title><link href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="alternate"></link><updated>2015-01-17T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-17:visualeditor_for_mediawiki.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+</summary><category term="yoitsu"></category><category term="pelican"></category><category term="blog"></category><category term="python"></category></entry><entry><title>为MediaWiki安装可视化编辑器</title><link href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="alternate"></link><updated>2015-01-17T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-17:visualeditor_for_mediawiki.html</id><summary type="html">
 &lt;p&gt;为MediaWiki安装来自 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor"&gt;维基媒体基金会&lt;/a&gt; 的 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor"&gt;可视化编辑器&lt;/a&gt; .&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
 
 &lt;div class="section" id="hold"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;连维基百科都要Hold不住啦~&lt;/a&gt;&lt;/h2&gt;
@@ -223,7 +221,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 具体的安装方法为了避免降低正交性 &lt;del&gt;(其实是系统太多不好写......)&lt;/del&gt;,就麻烦汝自己去找了呐~&lt;/p&gt;
 &lt;blockquote&gt;
 「呵。咱是贤狼，不是神呐。如果汝开始会期待起咱能够泄露天机给汝，那咱就得从汝眼前消失了呗。」&lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;node --version &lt;span class="c"&gt;# 如果是Debian或Ubuntu ,输入 nodejs --version&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;node --version &lt;span class="c1"&gt;# 如果是Debian或Ubuntu ,输入 nodejs --version&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后用git克隆版本库呗~&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid&lt;/span&gt;
@@ -264,9 +262,9 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;h2&gt;&lt;a class="toc-backref" href="#id15"&gt;启动服务&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="section" id="id7"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id16"&gt;从软件源安装的?&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo systemctl start parsoid &lt;span class="c"&gt;# Debian Jessie ,用Systemd启动&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo systemctl start parsoid &lt;span class="c1"&gt;# Debian Jessie ,用Systemd启动&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;sudo service parsoid start &lt;span class="c"&gt;# Debian Wheezy 或Ubuntu ,用init.d脚本启动.&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo service parsoid start &lt;span class="c1"&gt;# Debian Wheezy 或Ubuntu ,用init.d脚本启动.&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如果汝不是通过远程访问执行的命令,可以在浏览器上打开 &lt;code class="code"&gt;
 http://localhost:8142&lt;/code&gt;
@@ -320,9 +318,8 @@ http://服务器的IP地址:8142&lt;/code&gt;
 &lt;p&gt;然后在汝的wiki上试试看呗~&lt;/p&gt;
 &lt;img alt="Parsoid的工作原理" class="img-responsive" src="images/visualeditor-test.png"/&gt;
 &lt;/div&gt;
-</summary><category term="mediawiki"></category><category term="notes"></category></entry><entry><title>新的"约伊兹的萌狼乡手札"诞生啦~</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth.html" rel="alternate"></link><updated>2015-01-16T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-16:new_yoitsu_birth.html</id><summary type="html">&lt;!-- PELICAN_BEGIN_SUMMARY --&gt;
+</summary><category term="mediawiki"></category><category term="notes"></category></entry><entry><title>新的"约伊兹的萌狼乡手札"诞生啦~</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth.html" rel="alternate"></link><updated>2015-01-16T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-16:new_yoitsu_birth.html</id><summary type="html">
 &lt;p&gt;就像标题描述的一样，新的"约伊兹的萌狼乡手札"以Pelican之姿再次出发啦~&lt;/p&gt;
-&lt;!-- PELICAN_END_SUMMARY --&gt;
 
 &lt;div class="section" id="id2"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;为啥要重做？&lt;/a&gt;&lt;/h2&gt;

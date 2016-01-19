@@ -68,8 +68,8 @@ Arch Linux用户可以这样安装:
 
 <span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
 
-    make html <span class="c"># 生成html</span>
-    make serve <span class="c"># 在127.0.0.1:8000 运行一个测试服务器.</span>
+    make html <span class="c1"># 生成html</span>
+    make serve <span class="c1"># 在127.0.0.1:8000 运行一个测试服务器.</span>
 
 然后打开浏览器输入 <span class="na">:code:</span><span class="nv">`localhost:8000`</span> ，你就能看到一个初生的很 <span class="na">:ruby:</span><span class="nv">`简洁|难看`</span> 的博客了，不过不要担心，它是只丑小鸭，很快就会像天鹅般美丽(真的么?)。
 
@@ -134,8 +134,8 @@ plugins 指向 <span class="s">`pelican-plugins </span><span class="si">&lt;http
 
 <span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
 
-    <span class="c"># DIRECT_TEMPLATES 告诉Pelican哪些页面是直接用来生成特定页面的......</span>
-    <span class="n">DIRECT_TEMPLATES</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;index&#39;</span><span class="p">,</span> <span class="s">&#39;archives&#39;</span><span class="p">,</span> <span class="s">&#39;search&#39;</span><span class="p">))</span>
+    <span class="c1"># DIRECT_TEMPLATES 告诉Pelican哪些页面是直接用来生成特定页面的......</span>
+    <span class="n">DIRECT_TEMPLATES</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;archives&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">))</span>
     
 接下来开始调教主题呗~,直接给出官方的教程呗~ <span class="s">`Pelican doc:Creating Themes </span><span class="si">&lt;http://docs.getpelican.com/en/3.6.3/themes.html&gt;</span><span class="s">`_</span>
 
@@ -153,17 +153,17 @@ PS:咱自己做的这套主题还木有到能拿来复用的程度(原因主要�
 
 <span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
 
-    <span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;better_codeblock_line_numbering&quot;</span><span class="p">,</span>
-               <span class="s">&#39;tipue_search&#39;</span><span class="p">,</span>
-               <span class="s">&#39;neighbors&#39;</span><span class="p">,</span>
-               <span class="s">&#39;series&#39;</span><span class="p">,</span>
-               <span class="s">&quot;render_math&quot;</span><span class="p">,</span>
-               <span class="s">&#39;extract_toc&#39;</span><span class="p">,</span>
-               <span class="s">&#39;tag_cloud&#39;</span><span class="p">,</span>
-               <span class="s">&#39;sitemap&#39;</span><span class="p">,</span>
-               <span class="s">&#39;summary&#39;</span><span class="p">,</span>
-               <span class="s">&#39;bootstrapify&#39;</span><span class="p">,</span>
-               <span class="s">&#39;twitter_bootstrap_rst_directives&#39;</span><span class="p">]</span>
+    <span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;better_codeblock_line_numbering&quot;</span><span class="p">,</span>
+               <span class="s1">&#39;tipue_search&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;series&#39;</span><span class="p">,</span>
+               <span class="s2">&quot;render_math&quot;</span><span class="p">,</span>
+               <span class="s1">&#39;extract_toc&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;tag_cloud&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;sitemap&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;summary&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;bootstrapify&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;twitter_bootstrap_rst_directives&#39;</span><span class="p">]</span>
                
 具体的设置流程嘛,请允许咱引用一下 <span class="s">`farseerfc.me:重新設計了 Pelican 的主題與插件 </span><span class="si">&lt;http://farseerfc.me/redesign-pelican-theme.html#pelican-restructuredtext&gt;</span><span class="s">`_</span> 呗~
 
@@ -176,9 +176,9 @@ PS:咱自己做的这套主题还木有到能拿来复用的程度(原因主要�
 
 <span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">html</span>
 
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/theme/js/velocity.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/theme/js/velocity.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
     
-    <span class="nt">&lt;script&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
     document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
       $(&quot;.menu-button&quot;).on(&quot;touchstart&quot;, function() {
         $(&quot;.menu-wrapper&quot;).removeClass(&quot;trigger&quot;);
