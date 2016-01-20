@@ -216,4 +216,4 @@ Ubuntu和Debian系统的话直接添加MediaWiki.org的软件源然后通过apt�
 
 .. image:: images/visualeditor-test.png
    :scale: 50 %
-   :alt: Parsoid的工作原理
+   :alt: VisualEditor效果
