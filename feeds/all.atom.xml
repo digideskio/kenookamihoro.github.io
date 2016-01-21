@@ -17,9 +17,12 @@
 &lt;p&gt;因为咱已经有一个Tox Profile所以是这样啦,汝直接按"New Profile"就好:&lt;/p&gt;
 &lt;img alt="qTox-新建个人资料" class="img-responsive" src="images/qtox_addprofile.png"/&gt;
 &lt;p&gt;在Username那挑个用户名,Password那输入个密码呗~&lt;/p&gt;
+&lt;div class="tag info fg-white compound"&gt;
+&lt;p&gt;如果用SSH远程访问做类比的话,汝的Profile就是私钥,密码就是私钥的保护口令呗~&lt;/p&gt;
+&lt;/div&gt;
 &lt;div class="tag warning fg-white compound"&gt;
 &lt;p class="compound-first"&gt;汝输入的密码非常重要!&lt;/p&gt;
-&lt;p class="compound-middle"&gt;1.挑一个好的密码,现在Tox的个人资料只有密码这一重保护手段呐~,如果不怀好意的骇客得到了汝的密码和profile,就可以冒充汝发送消息了诶.&lt;/p&gt;
+&lt;p class="compound-middle"&gt;1.挑一个好的密码,如果不怀好意的骇客同时得到了汝的密码和profile,就可以冒充汝发送消息了诶.&lt;/p&gt;
 &lt;p class="compound-last"&gt;2,记住汝的密码!虽然安全性很重要,但是一旦汝忘了密码,基本上就无法恢复了呗~&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;确认完毕之后就会进入到qtox的主画面了呗~(旁边一圈是咱加上的注释,原谅咱不怎么会用GIMP......)&lt;/p&gt;
