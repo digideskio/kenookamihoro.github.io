@@ -1,0 +1,130 @@
+<div class="highlight"><pre><span class="gh">Tox新手入门</span>
+<span class="gh">=========================================</span>
+
+<span class="nc">:slug:</span> <span class="nf">tox_trainee_guide</span>
+<span class="nc">:lang:</span> <span class="nf">zh</span>
+<span class="nc">:date:</span> <span class="nf">2015-01-21</span>
+<span class="nc">:tags:</span> <span class="nf">notes,software</span>
+<span class="nc">:series:</span> <span class="nf">Tox</span>
+
+<span class="cp">.. PELICAN_BEGIN_SUMMARY</span>
+
+Tox,一种新型的聊天协议.如果汝关注安全和隐私,不妨来看看呗~
+
+<span class="cp">.. PELICAN_END_SUMMARY</span>
+
+<span class="p">..</span> <span class="ow">contents</span><span class="p">::</span>
+
+<span class="gh">再说一遍Tox是啥?</span>
+<span class="gh">-----------------------------</span>
+
+Tox是一种新型的通讯协议,它的目标是——提供一个无法监控的 Skype 替代品——彻底的加密，没有后门，无需中间服务器。
+
+由于Tox就是一个协议框架,不同的开发者开发了不同的软件呗~
+
+<span class="s">`Tox 官方维护的wiki上可以找到不同平台可用的客户端列表呐 </span><span class="si">&lt;https://wiki.tox.chat/clients&gt;</span><span class="s">`_</span>
+
+在下面的例子中咱会先拿 <span class="s">`qtox </span><span class="si">&lt;https://github.com/tux3/qTox&gt;</span><span class="s">`_</span> 来示范一下,汝可以从上面的列表中选择一个适合自己的客户端呗~
+
+首先按照上游的指南装好客户端呗~
+
+<span class="gh">新建一个Tox个人资料</span>
+<span class="gh">---------------------------------</span>
+运行qtox,会弹出这样的窗口:
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/qtox_welcome.png
+   <span class="nc">:alt:</span> <span class="nf">qTox欢迎画面</span>
+   
+因为咱已经有一个Tox Profile所以是这样啦,汝直接按&quot;New Profile&quot;就好:
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/qtox_addprofile.png
+   <span class="nc">:alt:</span> <span class="nf">qTox-新建个人资料</span>
+   
+在Username那挑个用户名,Password那输入个密码呗~
+
+<span class="p">..</span> <span class="ow">alert-warning</span><span class="p">::</span>
+
+    汝输入的密码非常重要!
+    
+    1.挑一个好的密码,现在Tox的个人资料只有密码这一重保护手段呐~,如果不怀好意的骇客得到了汝的密码和profile,就可以冒充汝发送消息了诶.
+    
+    2,记住汝的密码!虽然安全性很重要,但是一旦汝忘了密码,基本上就无法恢复了呗~
+    
+确认完毕之后就会进入到qtox的主画面了呗~(旁边一圈是咱加上的注释,原谅咱不怎么会用GIMP......)
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/qtox_main.png
+   <span class="nc">:alt:</span> <span class="nf">qTox_main</span>
+   
+<span class="gh">修改个人资料</span>
+<span class="gh">------------------</span>
+
+点击头像的区域就可以修改自己的个人资料了呗~
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/qtox_profile.png
+   <span class="nc">:alt:</span> <span class="nf">qTox_profile</span>
+
+
+<span class="p">..</span> <span class="ow">alert-info</span><span class="p">::</span>
+
+   就像界面介绍的那样,Name和Status是公开的信息,所以仔细考虑一下选择一个合适的呗~
+
+不过问题来啦,木有好友咧?
+   
+<span class="gh">添加好友</span>
+<span class="gh">---------------------</span>
+
+要添加好友的话,先让汝的好友把Ta的Tox ID用其他的手段让汝知道呗~
+
+    E1F1C7DEA73D8126A1DEE9EAE5B45E21FB17E75F2319B7823A346B8C427EB272C80A89B69B4E
+    
+    --Tox ID 是像这样的十六进制数呗~
+    
+然后到添加好友的界面把Tox ID输入进去.必要的话,附上一段消息让Ta知道汝是谁呗~
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/qtox_addfriend.png
+   <span class="nc">:alt:</span> <span class="nf">qtox_addfriend</span>
+   
+一开始时汝的好友列表只会显示对方的Tox ID呐,像这样:
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/qtox_addfriend2.png
+   <span class="nc">:alt:</span> <span class="nf">qtox_addfriend_Pending</span>
+   
+当Ta同意汝的好友请求以后,汝的好友列表上就会显示Ta的Name和Status呗~
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/qtox_addfriend3.png
+   <span class="nc">:alt:</span> <span class="nf">qtox_addfriend_success</span>
+   
+然后像平常一样聊天呗~
+
+<span class="p">..</span> <span class="ow">alert-info</span><span class="p">::</span>
+
+   要想让其他人和汝成为好友的话,把汝自己的Tox ID告诉Ta,让Ta像这样添加汝为好友呗~
+   
+<span class="gh">发起群聊</span>
+<span class="gh">----------------------</span>
+Tox也是可以发起群聊的哟~首先创建一个(qtox里点击下方&quot;创建群聊&quot;按钮就可以了诶~)
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/qtox_groupchat.png
+   <span class="nc">:alt:</span> <span class="nf">qtox_groupchat</span>
+   
+汝也可以邀请好友加入群聊呗~(qtox中右键点击某个好友-邀请加入群聊-汝的群聊名称呗~)
+
+只不过万一汝退出了tox,下次登录时是不会加入上次加入的群聊的,汝只好让好友再邀请汝一次呗~
+
+<span class="gh">导出Tox的配置文件</span>
+<span class="gh">-------------------------</span>
+必要时可以导出汝的配置文件,这样就可以在其他地方连接到汝的Tox用户了呗~
+
+qtox的话,可以在Profiles页面通过&quot;导出&quot;选项导出汝的配置文件呗~
+
+
+<span class="gh">最后</span>
+<span class="gh">----------------------------</span>
+这些就是tox基本的用法啦~,对于其他的客户端的话,不妨去阅读对应的文档呗~
+
+如果汝有意帮助开发Tox的话, <span class="s">`来这看看呗~ </span><span class="si">&lt;https://wiki.tox.chat/users/contributing&gt;</span><span class="s">`_</span>
+
+哦,差点忘记啦,这是咱的Tox ID,大家可以试试看呗~
+
+    7BC803F7F9B8A7230EE181AB45CA909DE446D36A7BC3A275D5576439E0CF7546FF4E2C4665CC
+</pre></div>
