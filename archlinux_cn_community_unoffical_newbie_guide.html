@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-      <title>为MediaWiki安装可视化编辑器 - 约伊兹的萌狼乡手札</title>
+      <title>Arch Linux 中文社区非官方生存手册 - 约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
     <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
-    <link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
+    <link href="https://blog.yoitsu.moe/feeds/life.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
     <link href="https://blog.yoitsu.moe/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -51,8 +51,8 @@
 
 
 
-    <meta name="tags" content="mediawiki" />
-    <meta name="tags" content="notes" />
+    <meta name="tags" content="Arch Linux" />
+    <meta name="tags" content="中文社区" />
 
 
 </head>
@@ -63,8 +63,8 @@
                 <li><a href="https://blog.yoitsu.moe/"><strong>约伊兹的萌狼乡手札</strong></a></li>
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
-                <li><a href="https://blog.yoitsu.moe/category/life.html">Life</a></li>
-                <li class="active"><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
+                <li class="active"><a href="https://blog.yoitsu.moe/category/life.html">Life</a></li>
+                <li><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
                 </ul></li>
                 <li><a href="https://blog.yoitsu.moe/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
@@ -122,18 +122,18 @@
     <div class="toc" id="">
 
 <ul class="simple">
-<li><a class="reference internal" href="#hold" id="id10">连维基百科都要Hold不住啦~</a></li>
-<li><a class="reference internal" href="#id3" id="id11">开始之前-检查一下要求</a></li>
-<li><a class="reference internal" href="#parsoid-ubuntu-14-debian-7" id="id12">安装Parsoid(Ubuntu 14+ / Debian 7+ )</a></li>
-<li><a class="reference internal" href="#id4" id="id13">其它系统?手动安装呗~</a></li>
-<li><a class="reference internal" href="#id5" id="id14">修改配置文件</a></li>
-<li><a class="reference internal" href="#id6" id="id15">启动服务</a><ul>
-<li><a class="reference internal" href="#id7" id="id16">从软件源安装的?</a></li>
-<li><a class="reference internal" href="#git" id="id17">用git安装的?</a></li>
-<li><a class="reference internal" href="#id8" id="id18">修改监听地址便于远程测试</a></li>
+<li><a class="reference internal" href="#id1" id="id12">什么是Arch Linux?</a></li>
+<li><a class="reference internal" href="#id3" id="id13">先把Arch Linux装上先~</a></li>
+<li><a class="reference internal" href="#id4" id="id14">加入Arch Linux中文社区论坛呗~</a></li>
+<li><a class="reference internal" href="#id8" id="id15">加入中文社区的聊天频道呗~</a><ul>
+<li><a class="reference internal" href="#irc" id="id16">加入irc频道</a></li>
+<li><a class="reference internal" href="#xmpp" id="id17">通过XMPP加入</a></li>
+<li><a class="reference internal" href="#tox" id="id18">通过Tox加入</a></li>
+<li><a class="reference internal" href="#telegram" id="id19">通过Telegram加入</a></li>
+<li><a class="reference internal" href="#id9" id="id20">群内的一般原则</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#visualeditor" id="id19">安装VisualEditor扩展</a></li>
+<li><a class="reference internal" href="#id10" id="id21">如果汝的英语水平也不错的话......</a></li>
 </ul>
 </div>
     </nav>
@@ -143,155 +143,102 @@
 
 
 <section id="content" class="body">
-	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="bookmark" title="到 为MediaWiki安装可视化编辑器的固定链接" class="fg-white">为MediaWiki安装可视化编辑器</a></h2>
-    	<span class="mif-calendar"> 2015年01月17日 (Sat)&nbsp;&nbsp;</span>
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html" rel="bookmark" title="到 Arch Linux 中文社区非官方生存手册的固定链接" class="fg-white">Arch Linux 中文社区非官方生存手册</a></h2>
+    	<span class="mif-calendar"> 2015年01月21日 (Wed)&nbsp;&nbsp;</span>
     	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
-        <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
-        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/visualeditor_for_mediawiki.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/life.html"> Life&nbsp;&nbsp;</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
         <br /><br />
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/mediawiki.html"> mediawiki</a>&nbsp;&nbsp;</span>
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/notes.html"> notes</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/arch-linux.html"> Arch Linux</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html"> 中文社区</a>&nbsp;&nbsp;</span>
 
     </header>
   <div class="entry-content text-accent" id="article-content">
     
-<p>为MediaWiki安装来自 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">维基媒体基金会</a> 的 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">可视化编辑器</a> .</p>
+<p>汝要入坑Arch Linux了吗?那还不赶紧加入Arch Linux中文社区~</p>
 
-<div class="section" id="hold">
-<h2><a class="toc-backref" href="#id10">连维基百科都要Hold不住啦~</a></h2>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id12">什么是Arch Linux?</a></h2>
 <blockquote>
-<p>许多新用户不会着手大幅度修改，而只是做些细节调整，不过仅仅阅读源代码就必须学标记语言了。当我们的用户在演示操作时，这把他们吓走了。</p>
-<p>早在 2004 年，社群开始一再认识到必须采用更好的编辑方式。因为人们的请求，更重要的是他们的需要，所以我们开发了可视化编辑器。</p>
-<p>Wiki 标记语言让新人害怕，这种程度会随着其他站点的迁离而加剧。如果我们不开发可视化编辑器，那么图表的走势会在接下来五年中变得更加糟糕。</p>
-<p class="attribution">—<a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh">MediaWiki.org</a></p>
+<p>Arch Linux 是一个针对 i686/x86-64 平台独立开发的 GNU/Linux 发行版，遵循轻量、简洁、优雅的开发原则，借灵活的架构应用于各种环境。Arch 安装后只提供最基本的系统，用户可以根据自己的需求来搭建不同的系统环境。官方并不提供图形化的配置工具，多数系统配置是通过修改文本文件来进行的。Arch 尽力提供最新稳定版本的软件。</p>
+<p>Arch Linux 使用 Pacman 作为包管理器，它在提供了一个简单的包管理器同时，也提供了一个易用的包构建系统，使用户能够轻松地管理和定制官方提供的、用户自己制作的、甚至是来自第三方的各种软件包。仓库系统也能够让用户轻松的构建和维护自己的编译脚本、软件包和仓库，这样将有助于社区的成长和建设。</p>
+<p>Arch Linux 的基本安装包由 [core] 软件库提供。此外 [extra], [community] 和 [testing] 软件库则提供了大量的的高品质软件以满足你的需求。Arch Linux 同时也通过 Arch 用户软件仓库(AUR)提供了 [unsupported] 软件库，里面有大量的编译脚本，用户可以通过 <cite>makepkg</cite> 工具轻松地从源码中编译软件。</p>
+<p>Arch Linux 采用“滚动升级”策略，这样可以实现“一次安装，永久更新”。升级到下一个“版本”的 Arch Linux 几乎不需要重新安装系统，只需一行命令，你就能轻松的享受到最新的 Arch Linux。</p>
+<p>Arch Linux 努力和上游软件源码保持一致，只有使程序能够在 Arch Linux 正常编译运行的补丁才会被加入更新中。</p>
+<p>总之， Arch Linux 是一个灵活、简洁的、满足有一定经验的 Linux® 用户的需求的发行版。它强大且易于管理的特性，使其成为可以完美胜任服务器和工作站的发行版。它可以变成任何你想要的样子。如果你也认为这是一个 GNU/Linux 发行版该做的，欢迎你来自由使用并参与其中，为社区做出贡献，欢迎来到 Arch Linux！</p>
+<p class="attribution">—<a class="reference external" href="https://www.archlinuxcn.org/about/">Arch Linux 中文社区</a> ,翻译自 <a class="reference external" href="https://www.archlinux.org/about/">Archlinux.org</a> .</p>
 </blockquote>
-<p>所以他们才 <del>痛定思痛</del> 决定开发可视化编辑器么😂</p>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id11">开始之前-检查一下要求</a></h2>
-<p>可视化编辑器(下面就说VisualEditor呗~)还需要一个叫
-<a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh">Parsoid</a>
-的程序来承担把wiki标记转化成html的任务啦(看下图)~,所以需要服务器来运行它呐~</p>
-<img alt="Parsoid的工作原理" class="img-responsive" src="images/Parsoid_HTML-RDFa_content_model.svg.png"/>
-</div>
-<div class="section" id="parsoid-ubuntu-14-debian-7">
-<h2><a class="toc-backref" href="#id12">安装Parsoid(Ubuntu 14+ / Debian 7+ )</a></h2>
-<p>上游的指南在这(好好学英语呗~) <a class="reference external" href="https://www.mediawiki.org/wiki/Parsoid/Setup">https://www.mediawiki.org/wiki/Parsoid/Setup</a></p>
-<p>Ubuntu和Debian系统的话直接添加MediaWiki.org的软件源然后通过apt安装就好了啦~</p>
-<p>首先添加MediaWiki.org的GPG公钥:</p>
-<div class="highlight"><pre><span class="code-line">sudo apt-key advanced --keyserver keys.gnupg.net --recv-keys 664C383A3566A3481B942F007A322AC6E84AFDD2</span>
-</pre></div>
-<p>然后添加Parsoid源:</p>
-<div class="highlight"><pre><span class="code-line">sudo <span class="nb">echo</span> <span class="s2">"deb https://releases.wikimedia.org/debian jessie-mediawiki main"</span> &gt; /etc/apt/sources.list.d/parsoid.list</span>
-</pre></div>
-<p>安装需要的软件包:</p>
-<div class="highlight"><pre><span class="code-line">sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install curl parsoid</span>
-</pre></div>
-<p>然后看下下面一节的内容修改一下配置文件呗~</p>
+<h2><a class="toc-backref" href="#id13">先把Arch Linux装上先~</a></h2>
+<p>ArchWiki的文档应该算比较详细的啦~</p>
+<ul class="simple">
+<li>第一次安装Arch Linux的新手建议看看 <a class="reference external" href="https://wiki.archlinux.org/index.php/Beginners'_guide_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">Beginners' guide</a></li>
+<li>有经验的用户可以看看 <a class="reference external" href="https://wiki.archlinux.org/index.php/Installation_guide_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">Installation guide</a></li>
+<li>想找交互式的安装程序? 可以试试 <a class="reference external" href="https://wiki.archlinux.org/index.php/Archboot">ArchBoot</a></li>
+</ul>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id13">其它系统?手动安装呗~</a></h2>
-<p>上游的指南在这(还是要好好学英语呗~) <a class="reference external" href="https://www.mediawiki.org/wiki/Parsoid/Developer_Setup">https://www.mediawiki.org/wiki/Parsoid/Developer_Setup</a></p>
-<p>首先汝要装上Nodejs(&gt;0.8,建议0.10或更新的版本呐~),还有git.
-具体的安装方法为了避免降低正交性 <del>(其实是系统太多不好写......)</del>,就麻烦汝自己去找了呐~</p>
-<blockquote>
-「呵。咱是贤狼，不是神呐。如果汝开始会期待起咱能够泄露天机给汝，那咱就得从汝眼前消失了呗。」</blockquote>
-<div class="highlight"><pre><span class="code-line">node --version <span class="c1"># 如果是Debian或Ubuntu ,输入 nodejs --version</span></span>
-</pre></div>
-<p>然后用git克隆版本库呗~</p>
-<div class="highlight"><pre><span class="code-line">git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid</span>
-</pre></div>
-<p>用npm安装上相应的依赖:</p>
-<div class="highlight"><pre><span class="code-line">npm install</span>
-</pre></div>
-<p>然后看下面一节的内容修改一下配置文件呗~</p>
-</div>
-<div class="section" id="id5">
-<h2><a class="toc-backref" href="#id14">修改配置文件</a></h2>
-<blockquote>
-<p>如果是通过软件源安装的,配置文件位于 <code class="code">
-/etc/mediawiki/parsoid/settings.js</code>
-</p>
-<p>如果是通过git下载的,从parsoid目录中先复制一份样例出来呗~</p>
-<div class="highlight"><pre><span class="code-line">cp localsettings.js.example localsettings.js</span>
-</pre></div>
-</blockquote>
-<p>打开配置文件,找到这一段内容,然后改它~:</p>
-<div class="highlight"><pre><span class="code-line"><span class="nx">parsoidConfig</span><span class="p">.</span><span class="nx">setMwApi</span><span class="p">({</span></span>
-<span class="code-line">    <span class="c1">// The "prefix" is the name given to this wiki configuration in the</span></span>
-<span class="code-line">    <span class="c1">// (deprecated) Parsoid v1 API.</span></span>
-<span class="code-line">    <span class="nx">prefix</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span> <span class="c1">// optional</span></span>
-<span class="code-line">    <span class="c1">// The "domain" is used for communication with Visual Editor</span></span>
-<span class="code-line">    <span class="c1">// and RESTBase.  It defaults to the hostname portion of</span></span>
-<span class="code-line">    <span class="c1">// the `uri` property below, but you can manually set it</span></span>
-<span class="code-line">    <span class="c1">// to an arbitrary string.</span></span>
-<span class="code-line">    <span class="nx">domain</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span> <span class="c1">// optional</span></span>
-<span class="code-line">    <span class="c1">// This is the only required parameter:</span></span>
-<span class="code-line">    <span class="c1">// the URL of you MediaWiki API endpoint.</span></span>
-<span class="code-line">    <span class="nx">uri</span><span class="o">:</span> <span class="s1">'http://localhost/w/api.php'</span></span>
-<span class="code-line">    <span class="p">});</span></span>
-</pre></div>
-<p>其中"uri"对应汝的wiki的api.php的位置,"domain"是汝的域名啦~."prefix"可以自己起一个(反正因为换了API也没用啦~,不过测试时可能用得到)</p>
-</div>
-<div class="section" id="id6">
-<h2><a class="toc-backref" href="#id15">启动服务</a></h2>
-<div class="section" id="id7">
-<h3><a class="toc-backref" href="#id16">从软件源安装的?</a></h3>
-<div class="highlight"><pre><span class="code-line">sudo systemctl start parsoid <span class="c1"># Debian Jessie ,用Systemd启动</span></span>
-<span class="code-line"></span>
-<span class="code-line">sudo service parsoid start <span class="c1"># Debian Wheezy 或Ubuntu ,用init.d脚本启动.</span></span>
-</pre></div>
-<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <code class="code">
-http://localhost:8142</code>
- 来进行测试.试着加载 <code class="code">
-http://localhost:8142/汝设置的前缀/汝的wiki上的一个页面</code>
- 试试呗~</p>
-</div>
-<div class="section" id="git">
-<h3><a class="toc-backref" href="#id17">用git安装的?</a></h3>
-<div class="highlight"><pre><span class="code-line">npm start</span>
-</pre></div>
-<p>或者:</p>
-<div class="highlight"><pre><span class="code-line">node bin/server.js</span>
-</pre></div>
-<p>可以用screen一类的工具让Parsoid在后台运行~</p>
-<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <code class="code">
-http://localhost:8000</code>
- 来进行测试.试着加载 <code class="code">
-http://localhost:8000/汝设置的前缀/汝的wiki上的一个页面</code>
- 试试呗~</p>
+<h2><a class="toc-backref" href="#id14">加入Arch Linux中文社区论坛呗~</a></h2>
+<p>用Arch Linux时发现了些问题?英文水平不足担心发到 <a class="reference external" href="https://bbs.archlinux.org">官方论坛</a> 泥牛入海? 来中文论坛呗~</p>
+<p>中文论坛在这~: <a class="reference external" href="https://bbs.archlinuxcn.org/">https://bbs.archlinuxcn.org/</a></p>
+<p>和参加其他的论坛讨论一样,先读读 <a class="reference external" href="/links.html#phoenixlzx">phoenixlzx</a> 写的 <a class="reference external" href="https://bbs.archlinuxcn.org/viewtopic.php?id=1072">Arch Linux 中文社区 新手生存指南</a> , <a class="reference external" href="https://wiki.archlinux.org/index.php/Forum_etiquette_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">官方编写的论坛礼仪指南</a> 也可以作为参考呗~</p>
 </div>
 <div class="section" id="id8">
-<h3><a class="toc-backref" href="#id18">修改监听地址便于远程测试</a></h3>
-<p>改这一段:</p>
-<div class="highlight"><pre><span class="code-line"><span class="c1">// Allow override of port/interface:</span></span>
-<span class="code-line"><span class="c1">//parsoidConfig.serverPort = 8142;</span></span>
-<span class="code-line"><span class="c1">//parsoidConfig.serverInterface = '127.0.0.1';</span></span>
-</pre></div>
-<p>反注释最后一行并改成0.0.0.0,就可以通过 <code class="code">
-http://服务器的IP地址:8142</code>
- 访问啦~</p>
+<h2><a class="toc-backref" href="#id15">加入中文社区的聊天频道呗~</a></h2>
+<p>和论坛相比,中文社区聊天频道更 <ruby><rb>活跃</rb><rp>(</rp><rt>洪水</rt><rp>)</rp></ruby> 呗~</p>
+<p>在多才多艺的百合仙子 <a class="reference external" href="/links.html#lilydjwg">lilydjwg</a> , Tox传教士 <a class="reference external" href="/links.html#quininer">quininer</a> ,和 PhD <a class="reference external" href="/links.html#farseerfc">farseerfc</a> 的协力下,社区交流群实现了irc+Telegram+xmpp+Tox的多通道联通,撒花~</p>
+<div class="section" id="irc">
+<h3><a class="toc-backref" href="#id16">加入irc频道</a></h3>
+<p>Web界面在这: <a class="reference external" href="//webchat.freenode.net/?channels=archlinux-cn">#archlinux-cn</a></p>
+<p>如果汝使用irc客户端的话:</p>
+<blockquote>
+<p>irc服务器: <code class="code">
+irc.freenode.net</code>
+</p>
+<p>端口: <code class="code">
+7000</code>
+ (SSL) / <code class="code">
+6667</code>
+ (Plain)</p>
+</blockquote>
+</div>
+<div class="section" id="xmpp">
+<h3><a class="toc-backref" href="#id17">通过XMPP加入</a></h3>
+<p>使用XMPP帐号添加 <code class="code">
+talk@archlinuxcn.org</code>
+ 为好友即可加入。成功加入将收到欢迎信息。</p>
+</div>
+<div class="section" id="tox">
+<h3><a class="toc-backref" href="#id18">通过Tox加入</a></h3>
+<p>添加下面那个Tox ID为好友,然后按照它的提示操作呗~</p>
+<blockquote>
+34922396155AA49CE6845A2FE34A73208F6FCD6190D981B1DBBC816326F26C6CDF3581F697E7</blockquote>
+</div>
+<div class="section" id="telegram">
+<h3><a class="toc-backref" href="#id19">通过Telegram加入</a></h3>
+<p>hmmm.....为保护群组不被外星人攻击，所以这里就不贴上链接啦~</p>
+<p>汝可以通过其它方法加入,贴上汝在Telegram的用户名呗~(其它已经在群里的用户会帮汝拉进来......)</p>
+<p>或者,在Telegram上添加@Jqs7Bot这个机器人,通过群组查询中的Linux分类找到#archlinux-cn(irc)的链接再加入呗~</p>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id20">群内的一般原则</a></h3>
+<ul class="simple">
+<li><del>要优雅,不要污~</del></li>
+<li>(irc/xmpp/tox) 推荐一个由百合仙子帮忙的图床 <a class="reference external" href="https://img.vim-cn.com/">https://img.vim-cn.com/</a> 呗~</li>
+<li>(Telegram) 发没压缩的图片和声音的话irc可是收不到的哟~</li>
+</ul>
 </div>
 </div>
-<div class="section" id="visualeditor">
-<h2><a class="toc-backref" href="#id19">安装VisualEditor扩展</a></h2>
-<p>上游的指南在这: <a class="reference external" href="https://www.mediawiki.org/wiki/Extension:VisualEditor">https://www.mediawiki.org/wiki/Extension:VisualEditor</a></p>
-<p>首先从 <a class="reference external" href="https://www.mediawiki.org/wiki/Special:ExtensionDistributor/VisualEditor">这里</a> 获得扩展然后上传到汝的wiki上的extensions目录呗~</p>
-<p>然后修改汝的LocalSettings.php:</p>
-<div class="highlight"><pre><span class="code-line">require_once "$IP/extensions/VisualEditor/VisualEditor.php";</span>
-<span class="code-line"></span>
-<span class="code-line">// 反注释下一行来默认启用可视化编辑器</span>
-<span class="code-line">#$wgDefaultUserOptions['visualeditor-enable'] = 1;</span>
-<span class="code-line"></span>
-<span class="code-line">// 反注释下一行来启用测试中的功能</span>
-<span class="code-line">#$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;</span>
-<span class="code-line"></span>
-<span class="code-line">//在除了主名字空间以外的名字空间中也启用可视化编辑器(下面的例子是用户名字空间)</span>
-<span class="code-line">$wgVisualEditorNamespaces=array_merge($wgContentNamespaces,array( NS_USER ));</span>
-</pre></div>
-<p>完整的设置选项可以在扩展页面上找到.</p>
-<p>然后在汝的wiki上试试看呗~</p>
-<img alt="VisualEditor效果" class="img-responsive" src="images/visualeditor-test.png"/>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id21">如果汝的英语水平也不错的话......</a></h2>
+<p>如果汝的英语水平不错的话，太棒啦~,社区正需要汝这样的人呐~</p>
+<p>汝可以......</p>
+<ul class="simple">
+<li>帮助翻译ArchWiki,可以在 <a class="reference external" href="https://wiki.archlinux.org/index.php/ArchWiki_Translation_Team_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">ArchWiki上翻到相应页面呗~</a></li>
+<li>创建软件包并提交到 <a class="reference external" href="https://wiki.archlinux.org/index.php/Arch_User_Repository">AUR(Arch Linux User Repository)</a> ,高质量的软件包可能会被TU(授信用户)收录到官方软件仓库呗~</li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Getting_involved">参与开发</a> , <del>然后成为下一个像felixonmars一样的领袖😂😂😂</del></li>
+</ul>
 </div>
 
   </div><!-- /.entry-content -->
@@ -302,33 +249,14 @@ http://服务器的IP地址:8142</code>
   </div>
 </section>
 <br />
-      <a href="https://blog.yoitsu.moe/new_yoitsu_birth.html" class="place-left">
+      <a href="https://blog.yoitsu.moe/tox_trainee_guide.html" class="place-left">
         <button class="command-button bg-lightOlive fg-white">
             <span class="icon mif-arrow-left"></span>
-                新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~
+                Tox新手入门
               <small>上一篇</small>
         </button>
       </a>
-      <a href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" class="place-right">
-        <button class="command-button icon-right bg-lightOlive fg-white">
-            <span class="icon mif-arrow-right"></span>
-                新约伊兹的萌狼乡手札诞生全过程伪实录
-              <small>下一篇</small>
-        </button>
-      </a>
   <div class="padding10 clear-float"></div>
-<div class="panel">
-    <div class="heading bg-amber">
-        <span class="title">系列MediaWiki中的文章</span>
-    </div>
-    <div class="content padding10">
-            <a href='https://blog.yoitsu.moe/visualeditor_for_mediawiki.html'>
-            <button class="button  warning ">
-                为MediaWiki安装可视化编辑器
-              </button></a><br/>
-    </div>
-</div>
-<div class="padding10 clear-float"></div>
 
 <div class="panel" id="talk" data-role="panel">
 <div class="heading bg-orange">
