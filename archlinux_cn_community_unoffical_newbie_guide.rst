@@ -3,7 +3,7 @@ Arch Linux 中文社区非官方生存手册
 
 :slug: archlinux_cn_community_unoffical_newbie_guide
 :lang: zh
-:date: 2015-01-21
+:date: 2015-01-27
 :tags: Arch Linux,中文社区
 
 .. PELICAN_BEGIN_SUMMARY
