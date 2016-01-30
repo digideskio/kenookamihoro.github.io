@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-      <title>为MediaWiki安装可视化编辑器 - 约伊兹的萌狼乡手札</title>
+      <title>AUR 纯萌新向入门教学(1)-从AUR安装软件包 - 约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
     <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
@@ -51,8 +51,9 @@
 
 
 
-    <meta name="tags" content="mediawiki" />
-    <meta name="tags" content="notes" />
+    <meta name="tags" content="Arch Linux" />
+    <meta name="tags" content="AUR" />
+    <meta name="tags" content="Guides" />
 
 
 </head>
@@ -122,18 +123,12 @@
     <div class="toc" id="">
 
 <ul class="simple">
-<li><a class="reference internal" href="#hold" id="id10">连维基百科都要Hold不住啦~</a></li>
-<li><a class="reference internal" href="#id3" id="id11">开始之前-检查一下要求</a></li>
-<li><a class="reference internal" href="#parsoid-ubuntu-14-debian-7" id="id12">安装Parsoid(Ubuntu 14+ / Debian 7+ )</a></li>
-<li><a class="reference internal" href="#id4" id="id13">其它系统?手动安装呗~</a></li>
-<li><a class="reference internal" href="#id5" id="id14">修改配置文件</a></li>
-<li><a class="reference internal" href="#id6" id="id15">启动服务</a><ul>
-<li><a class="reference internal" href="#id7" id="id16">从软件源安装的?</a></li>
-<li><a class="reference internal" href="#git" id="id17">用git安装的?</a></li>
-<li><a class="reference internal" href="#id8" id="id18">修改监听地址便于远程测试</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#visualeditor" id="id19">安装VisualEditor扩展</a></li>
+<li><a class="reference internal" href="#aur-arch-user-repository-arch" id="id4">什么是AUR(Arch User Repository,Arch 用户软件仓库)?</a></li>
+<li><a class="reference internal" href="#aur" id="id5">安装AUR里的软件包前要做好哪些准备咧?</a></li>
+<li><a class="reference internal" href="#pkgbuild" id="id6">第一步:寻找和获得软件包的PKGBUILD文件</a></li>
+<li><a class="reference internal" href="#id2" id="id7">安装软件包</a></li>
+<li><a class="reference internal" href="#aur-helper" id="id8">使用AUR helper简化安装过程</a></li>
+<li><a class="reference internal" href="#id3" id="id9">登录到AUR以后可以进行的操作</a></li>
 </ul>
 </div>
     </nav>
@@ -143,155 +138,171 @@
 
 
 <section id="content" class="body">
-	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="bookmark" title="到 为MediaWiki安装可视化编辑器的固定链接" class="fg-white">为MediaWiki安装可视化编辑器</a></h2>
-    	<span class="mif-calendar"> 2015年01月17日 (Sat)&nbsp;&nbsp;</span>
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/aur_fresh_guidebook.html" rel="bookmark" title="到 AUR 纯萌新向入门教学(1)-从AUR安装软件包的固定链接" class="fg-white">AUR 纯萌新向入门教学(1)-从AUR安装软件包</a></h2>
+    	<span class="mif-calendar"> 2015年01月29日 (Thu)&nbsp;&nbsp;</span>
     	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
         <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
-        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/visualeditor_for_mediawiki.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/aur_fresh_guidebook.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
         <br /><br />
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/mediawiki.html"> mediawiki</a>&nbsp;&nbsp;</span>
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/notes.html"> notes</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/arch-linux.html"> Arch Linux</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/aur.html"> AUR</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/guides.html"> Guides</a>&nbsp;&nbsp;</span>
 
     </header>
   <div class="entry-content text-accent" id="article-content">
     
-<p>为MediaWiki安装来自 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">维基媒体基金会</a> 的 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">可视化编辑器</a> .</p>
+<p><del>没玩过AUR好意思说自己是Arch Linux用户？</del></p>
+<p>尽管Arch Linux官方软件仓库里的软件包够多了,连MediaWiki或者OwnCloud一类的用 <del>最好的编程语言</del> PHP写的应用都有对应的软件包啦~( <del>TU:反正闲着也没事干,打个包呗~</del> ), 但是汝是不是有时试图pacman的时候:</p>
+<div class="highlight"><pre><span class="code-line">error: target not found: <span class="o">{</span> 此处用汝希望安装的软件包名称替换呗~ <span class="o">}</span></span>
+</pre></div>
+<p>这时咋办咧?就该AUR上场了呗~</p>
 
-<div class="section" id="hold">
-<h2><a class="toc-backref" href="#id10">连维基百科都要Hold不住啦~</a></h2>
+<div class="section" id="aur-arch-user-repository-arch">
+<h2><a class="toc-backref" href="#id4">什么是AUR(Arch User Repository,Arch 用户软件仓库)?</a></h2>
 <blockquote>
-<p>许多新用户不会着手大幅度修改，而只是做些细节调整，不过仅仅阅读源代码就必须学标记语言了。当我们的用户在演示操作时，这把他们吓走了。</p>
-<p>早在 2004 年，社群开始一再认识到必须采用更好的编辑方式。因为人们的请求，更重要的是他们的需要，所以我们开发了可视化编辑器。</p>
-<p>Wiki 标记语言让新人害怕，这种程度会随着其他站点的迁离而加剧。如果我们不开发可视化编辑器，那么图表的走势会在接下来五年中变得更加糟糕。</p>
-<p class="attribution">—<a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh">MediaWiki.org</a></p>
+<p>Arch用户软件仓库（Arch User Repository，AUR）是为用户而建、由用户主导的Arch软件仓库。AUR中的软件包以软件包生成脚本（PKGBUILD）的形式提供，用户自己通过makepkg生成包，再由pacman安装。创建AUR的初衷是方便用户维护和分享新软件包，并由官方定期从中挑选软件包进入community仓库。</p>
+<p>许多官方仓库软件包都来自AUR。通过AUR，大家相互分享新的软件包生成脚本（PKGBUILD和其他相关文件）。用户还可以为软件包投票。如果一个软件包投票足够多、没有协议问题、打包质量好，那么它就很有希望被收录进官方[community]仓库（以后就可以直接通过pacman 或 abs 安装了）。</p>
+<p class="attribution">—<a class="reference external" href="https://wiki.archlinux.org/index.php/Arch_User_Repository_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">ArchWiki:Arch User Repository</a></p>
 </blockquote>
-<p>所以他们才 <del>痛定思痛</del> 决定开发可视化编辑器么😂</p>
+</div>
+<div class="section" id="aur">
+<h2><a class="toc-backref" href="#id5">安装AUR里的软件包前要做好哪些准备咧?</a></h2>
+<p>其实只有一项,安装 <code class="code">
+base-devel</code>
+ 软件包组,内含编译软件包所需要的工具.</p>
+<div class="highlight"><pre><span class="code-line">sudo pacman -S base-devel</span>
+</pre></div>
+<p>对于汝个人而言,需要 <strong>会使用</strong> 终端和 <strong>看得懂bash脚本</strong> (因为PKGBUILD其实就是bash脚本啦~,为了安全起见建议在安装时检查PKGBUILD呗~)</p>
+<p>下面是一句没啥用处的警告:</p>
+<div class="tag warning fg-white compound">
+<p class="compound-first">AUR packages are user produced content. Any use of the provided files is at your own risk.</p>
+<p class="compound-last">AUR中的软件包是由用户上传的,使用即表示汝愿意风险自担呗~</p>
+</div>
+</div>
+<div class="section" id="pkgbuild">
+<h2><a class="toc-backref" href="#id6">第一步:寻找和获得软件包的PKGBUILD文件</a></h2>
+<p>这里是AUR的网址呗~: <a class="reference external" href="https://aur.archlinux.org/">https://aur.archlinux.org/</a> 打开后大概像这样:</p>
+<img alt="AUR 首页" class="img-responsive" src="images/aur_mainpage.png"/>
+<p>可以在另一侧的"English"那里的下拉菜单里将AUR web 界面的语言修改成中文呗~</p>
+<div class="tag info fg-white compound">
+<p>建议先 <a class="alert-link reference external" href="https://aur.archlinux.org/register/">注册一个账户</a> ,
+这样便可以使用更多功能呗~</p>
+</div>
+<p>然后在搜索框里输入需要的软件包的名称就可以搜索呗~</p>
+<img alt="在AUR里搜索软件包" class="img-responsive" src="images/aur_search.png"/>
+<p>点击对应软件包的名称就可以进入软件包的详细信息呗~</p>
+<img alt="软件包的详细信息" class="img-responsive" src="images/aur_packageinfo.png"/>
+<p>点击右侧的"Download snapshot"就可以下载到软件包的快照.(比如pypi-pip.tar.gz)
+一般包含PKGBUILD,有些软件包中可能包含其它文件(例如Systemd 单元啥的)
+可以用tar来解开它呗~</p>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># 如果汝不知道tar 怎么用的话,man一下呗~ (man tar)</span></span>
+<span class="code-line">tar xzf pypi-pip.tar.gz</span>
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id7">安装软件包</a></h2>
+<p>首先切换到软件包的目录，然后检查一下PKGBUILD：</p>
+<!-- code-block::bash
+
+# 用汝喜欢的编辑器替换$EDITOR呗~
+
+$EDITOR PKGBUILD -->
+<div class="tag warning fg-white compound">
+<p>务必认真检查所有文件！
+PKGBUILD和所有.install文件都是shell脚本文件，包含若干函数，由makepkg调用并执行。
+这些函数可以调用任何命令，可能包含恶意或危险代码。
+makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一定程度防止恶意代码损坏系统，但还是小心为好。
+如有疑问，可以到论坛或邮件列表询问。</p>
+</div>
+<p>在 <ruby><rb>仔细</rb><rp>(</rp><rt>几乎没有</rt><rp>)</rp></ruby> 检查完所有文件以后,运行makepkg来创建并安装软件包呗~</p>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># 下面的三个选项分别是</span></span>
+<span class="code-line"><span class="c1"># (i) 在编译完成后安装,</span></span>
+<span class="code-line"><span class="c1"># (s) 安装编译时需要的依赖关系,</span></span>
+<span class="code-line"><span class="c1"># (r) 在安装完成后删除只在编译时需要的软件包</span></span>
+<span class="code-line"><span class="c1"># 关于makepkg的更多帮助,可以查看手册页(man makepkg)</span></span>
+<span class="code-line"><span class="c1"># 或者在ArchWiki上查阅呗~</span></span>
+<span class="code-line">makepkg -rsi</span>
+</pre></div>
+<p>不过经常会出现这样的状况:</p>
+<div class="highlight"><pre><span class="code-line"><span class="o">==</span>&gt; 正在创建软件包：pypy-pip 8.0.2-1 <span class="o">(</span>2016年 01月 30日 星期六 15:18:38 CST<span class="o">)</span></span>
+<span class="code-line"><span class="o">==</span>&gt; 正在检查运行时依赖关系...</span>
+<span class="code-line"><span class="o">==</span>&gt; 正在检查编译时依赖关系</span>
+<span class="code-line"><span class="o">==</span>&gt; 正在安装缺少的依赖关系...</span>
+<span class="code-line">错误：未找到目标：pypy-setuptools</span>
+<span class="code-line">错误：未找到目标：pypy3-setuptools</span>
+<span class="code-line"><span class="o">==</span>&gt; 错误： <span class="s1">'pacman'</span> 无法安装缺少的依赖关系。</span>
+</pre></div>
+<p>这表示这个软件包依赖的某些包也在AUR里,汝只好先把它们装上呗~,或者用个AUR Helper(一会儿咱会介绍一个AUR Helper)</p>
+<p>在安装完需要的依赖以后再运行下makepkg,大概像这样~:</p>
+<div class="highlight"><pre><span class="code-line"><span class="o">==</span>&gt; 正在创建软件包：pypy-pip 8.0.2-1 <span class="o">(</span>2016年 01月 30日 星期六 15:27:02 CST<span class="o">)</span></span>
+<span class="code-line"><span class="o">==</span>&gt; 正在检查运行时依赖关系...</span>
+<span class="code-line"><span class="o">==</span>&gt; 正在检查编译时依赖关系</span>
+<span class="code-line"><span class="o">==</span>&gt; 获取源代码......</span>
+<span class="code-line">    -&gt; 正在下载 pip-8.0.2.tar.gz...</span>
+<span class="code-line"><span class="o">==</span>&gt; 正在验证源代码文件 sha256sums...</span>
+<span class="code-line">    pip-8.0.2.tar.gz ... 通过</span>
+<span class="code-line"><span class="o">==</span>&gt; 正在释放源码......</span>
+<span class="code-line">    -&gt; 正在解压缩 pip-8.0.2.tar.gz，使用 <span class="nv">bsdtar</span></span>
+<span class="code-line"><span class="o">==</span>&gt; 正在进入 fakeroot 环境...</span>
+<span class="code-line"><span class="o">==</span>&gt; 正在开始 package_pypy-pip<span class="o">()</span>...</span>
+<span class="code-line">    <span class="c1"># 省掉编译的过程.....</span></span>
+<span class="code-line"><span class="o">==</span>&gt; 正在清理安装...</span>
+<span class="code-line">  -&gt; 正在清除不打算要的文件...</span>
+<span class="code-line">  -&gt; 正在删除 libtool 文件...</span>
+<span class="code-line">  -&gt; 正在移除静态库文件……</span>
+<span class="code-line">  -&gt; 正在压缩 man 及 info 文档...</span>
+<span class="code-line">  -&gt; 正在从二进制文件和库中清除不需要的系统符号...</span>
+<span class="code-line"><span class="o">==</span>&gt; 正在创建软件包<span class="s2">"pypy-pip"</span>......</span>
+<span class="code-line">  -&gt; 正在生成 .PKGINFO 文件...</span>
+<span class="code-line">  -&gt; 正在生成 .MTREE 文件......</span>
+<span class="code-line">  -&gt; 正在压缩软件包...</span>
+<span class="code-line"><span class="o">==</span>&gt; 正在离开 fakeroot 环境。</span>
+<span class="code-line"><span class="o">==</span>&gt; 完成创建：pypy-pip 8.0.2-1 <span class="o">(</span>2016年 01月 30日 星期六 15:27:40 CST<span class="o">)</span></span>
+<span class="code-line"><span class="o">==</span>&gt; 正在安装 pypy-pip 软件包组，使用 pacman -U...</span>
+</pre></div>
+<p>如果汝有sudo的能力的话,接下来输入密码,然后像原来一样安装软件包呗~</p>
+<p>是不是感觉自己处理依赖关系和一遍遍的makepkg已经让汝开始挠头了么,接着往下看.</p>
+</div>
+<div class="section" id="aur-helper">
+<h2><a class="toc-backref" href="#id8">使用AUR helper简化安装过程</a></h2>
+<div class="tag warning fg-white compound">
+<p>Arch官方永远不会提供安装AUR（和其他不受支持）软件包的便利工具，<strong>AUR用户应当对软件编译有一定了解。</strong></p>
+</div>
+<p>然而官方不做并不代表没有😂😂,有一个叫做yaourt的工具在Archer间口口相传.yaourt就是一个AUR helper.</p>
+<p><a class="reference external" href="https://aur.archlinux.org/packages/yaourt/">yaourt on AUR</a></p>
+<p>先用上面的方法安装好yaourt,然后像用pacman一样运行yaourt就好(除了不要以root用户运行)</p>
+<div class="highlight"><pre><span class="code-line">yaourt -S foo</span>
+</pre></div>
+<p>yaourt会帮汝下载PKGBUILD,安装需要的依赖,运行makepkg等一系列操作哟~</p>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id11">开始之前-检查一下要求</a></h2>
-<p>可视化编辑器(下面就说VisualEditor呗~)还需要一个叫
-<a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh">Parsoid</a>
-的程序来承担把wiki标记转化成html的任务啦(看下图)~,所以需要服务器来运行它呐~</p>
-<img alt="Parsoid的工作原理" class="img-responsive" src="images/Parsoid_HTML-RDFa_content_model.svg.png"/>
-</div>
-<div class="section" id="parsoid-ubuntu-14-debian-7">
-<h2><a class="toc-backref" href="#id12">安装Parsoid(Ubuntu 14+ / Debian 7+ )</a></h2>
-<p>上游的指南在这(好好学英语呗~) <a class="reference external" href="https://www.mediawiki.org/wiki/Parsoid/Setup">https://www.mediawiki.org/wiki/Parsoid/Setup</a></p>
-<p>Ubuntu和Debian系统的话直接添加MediaWiki.org的软件源然后通过apt安装就好了啦~</p>
-<p>首先添加MediaWiki.org的GPG公钥:</p>
-<div class="highlight"><pre><span class="code-line">sudo apt-key advanced --keyserver keys.gnupg.net --recv-keys 664C383A3566A3481B942F007A322AC6E84AFDD2</span>
-</pre></div>
-<p>然后添加Parsoid源:</p>
-<div class="highlight"><pre><span class="code-line">sudo <span class="nb">echo</span> <span class="s2">"deb https://releases.wikimedia.org/debian jessie-mediawiki main"</span> &gt; /etc/apt/sources.list.d/parsoid.list</span>
-</pre></div>
-<p>安装需要的软件包:</p>
-<div class="highlight"><pre><span class="code-line">sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install curl parsoid</span>
-</pre></div>
-<p>然后看下下面一节的内容修改一下配置文件呗~</p>
-</div>
-<div class="section" id="id4">
-<h2><a class="toc-backref" href="#id13">其它系统?手动安装呗~</a></h2>
-<p>上游的指南在这(还是要好好学英语呗~) <a class="reference external" href="https://www.mediawiki.org/wiki/Parsoid/Developer_Setup">https://www.mediawiki.org/wiki/Parsoid/Developer_Setup</a></p>
-<p>首先汝要装上Nodejs(&gt;0.8,建议0.10或更新的版本呐~),还有git.
-具体的安装方法为了避免降低正交性 <del>(其实是系统太多不好写......)</del>,就麻烦汝自己去找了呐~</p>
+<h2><a class="toc-backref" href="#id9">登录到AUR以后可以进行的操作</a></h2>
+<p>登录到AUR以后,软件包描述页面右侧的"软件包操作"的若干命令就可以使用了:</p>
+<ul>
+<li><p class="first">将这个包标记为过期</p>
 <blockquote>
-「呵。咱是贤狼，不是神呐。如果汝开始会期待起咱能够泄露天机给汝，那咱就得从汝眼前消失了呗。」</blockquote>
-<div class="highlight"><pre><span class="code-line">node --version <span class="c1"># 如果是Debian或Ubuntu ,输入 nodejs --version</span></span>
-</pre></div>
-<p>然后用git克隆版本库呗~</p>
-<div class="highlight"><pre><span class="code-line">git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid</span>
-</pre></div>
-<p>用npm安装上相应的依赖:</p>
-<div class="highlight"><pre><span class="code-line">npm install</span>
-</pre></div>
-<p>然后看下面一节的内容修改一下配置文件呗~</p>
-</div>
-<div class="section" id="id5">
-<h2><a class="toc-backref" href="#id14">修改配置文件</a></h2>
-<blockquote>
-<p>如果是通过软件源安装的,配置文件位于 <code class="code">
-/etc/mediawiki/parsoid/settings.js</code>
-</p>
-<p>如果是通过git下载的,从parsoid目录中先复制一份样例出来呗~</p>
-<div class="highlight"><pre><span class="code-line">cp localsettings.js.example localsettings.js</span>
-</pre></div>
+<p>如果汝发现上游更新了而AUR没更新的话,可以通过这样提醒维护者更新,长时间无人维护的软件包可能被删除.</p>
 </blockquote>
-<p>打开配置文件,找到这一段内容,然后改它~:</p>
-<div class="highlight"><pre><span class="code-line"><span class="nx">parsoidConfig</span><span class="p">.</span><span class="nx">setMwApi</span><span class="p">({</span></span>
-<span class="code-line">    <span class="c1">// The "prefix" is the name given to this wiki configuration in the</span></span>
-<span class="code-line">    <span class="c1">// (deprecated) Parsoid v1 API.</span></span>
-<span class="code-line">    <span class="nx">prefix</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span> <span class="c1">// optional</span></span>
-<span class="code-line">    <span class="c1">// The "domain" is used for communication with Visual Editor</span></span>
-<span class="code-line">    <span class="c1">// and RESTBase.  It defaults to the hostname portion of</span></span>
-<span class="code-line">    <span class="c1">// the `uri` property below, but you can manually set it</span></span>
-<span class="code-line">    <span class="c1">// to an arbitrary string.</span></span>
-<span class="code-line">    <span class="nx">domain</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span> <span class="c1">// optional</span></span>
-<span class="code-line">    <span class="c1">// This is the only required parameter:</span></span>
-<span class="code-line">    <span class="c1">// the URL of you MediaWiki API endpoint.</span></span>
-<span class="code-line">    <span class="nx">uri</span><span class="o">:</span> <span class="s1">'http://localhost/w/api.php'</span></span>
-<span class="code-line">    <span class="p">});</span></span>
-</pre></div>
-<p>其中"uri"对应汝的wiki的api.php的位置,"domain"是汝的域名啦~."prefix"可以自己起一个(反正因为换了API也没用啦~,不过测试时可能用得到)</p>
-</div>
-<div class="section" id="id6">
-<h2><a class="toc-backref" href="#id15">启动服务</a></h2>
-<div class="section" id="id7">
-<h3><a class="toc-backref" href="#id16">从软件源安装的?</a></h3>
-<div class="highlight"><pre><span class="code-line">sudo systemctl start parsoid <span class="c1"># Debian Jessie ,用Systemd启动</span></span>
-<span class="code-line"></span>
-<span class="code-line">sudo service parsoid start <span class="c1"># Debian Wheezy 或Ubuntu ,用init.d脚本启动.</span></span>
-</pre></div>
-<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <code class="code">
-http://localhost:8142</code>
- 来进行测试.试着加载 <code class="code">
-http://localhost:8142/汝设置的前缀/汝的wiki上的一个页面</code>
- 试试呗~</p>
-</div>
-<div class="section" id="git">
-<h3><a class="toc-backref" href="#id17">用git安装的?</a></h3>
-<div class="highlight"><pre><span class="code-line">npm start</span>
-</pre></div>
-<p>或者:</p>
-<div class="highlight"><pre><span class="code-line">node bin/server.js</span>
-</pre></div>
-<p>可以用screen一类的工具让Parsoid在后台运行~</p>
-<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <code class="code">
-http://localhost:8000</code>
- 来进行测试.试着加载 <code class="code">
-http://localhost:8000/汝设置的前缀/汝的wiki上的一个页面</code>
- 试试呗~</p>
-</div>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id18">修改监听地址便于远程测试</a></h3>
-<p>改这一段:</p>
-<div class="highlight"><pre><span class="code-line"><span class="c1">// Allow override of port/interface:</span></span>
-<span class="code-line"><span class="c1">//parsoidConfig.serverPort = 8142;</span></span>
-<span class="code-line"><span class="c1">//parsoidConfig.serverInterface = '127.0.0.1';</span></span>
-</pre></div>
-<p>反注释最后一行并改成0.0.0.0,就可以通过 <code class="code">
-http://服务器的IP地址:8142</code>
- 访问啦~</p>
-</div>
-</div>
-<div class="section" id="visualeditor">
-<h2><a class="toc-backref" href="#id19">安装VisualEditor扩展</a></h2>
-<p>上游的指南在这: <a class="reference external" href="https://www.mediawiki.org/wiki/Extension:VisualEditor">https://www.mediawiki.org/wiki/Extension:VisualEditor</a></p>
-<p>首先从 <a class="reference external" href="https://www.mediawiki.org/wiki/Special:ExtensionDistributor/VisualEditor">这里</a> 获得扩展然后上传到汝的wiki上的extensions目录呗~</p>
-<p>然后修改汝的LocalSettings.php:</p>
-<div class="highlight"><pre><span class="code-line">require_once "$IP/extensions/VisualEditor/VisualEditor.php";</span>
-<span class="code-line"></span>
-<span class="code-line">// 反注释下一行来默认启用可视化编辑器</span>
-<span class="code-line">#$wgDefaultUserOptions['visualeditor-enable'] = 1;</span>
-<span class="code-line"></span>
-<span class="code-line">// 反注释下一行来启用测试中的功能</span>
-<span class="code-line">#$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;</span>
-<span class="code-line"></span>
-<span class="code-line">//在除了主名字空间以外的名字空间中也启用可视化编辑器(下面的例子是用户名字空间)</span>
-<span class="code-line">$wgVisualEditorNamespaces=array_merge($wgContentNamespaces,array( NS_USER ));</span>
-</pre></div>
-<p>完整的设置选项可以在扩展页面上找到.</p>
-<p>然后在汝的wiki上试试看呗~</p>
-<img alt="VisualEditor效果" class="img-responsive" src="images/visualeditor-test.png"/>
+</li>
+<li><p class="first">为这个软件包投票</p>
+<blockquote>
+<p>觉得Ta好就给投一票呗~,票数多而且符合
+<a class="reference external" href="https://wiki.archlinux.org/index.php/Arch_packaging_standards">Arch Linux 软件包规范</a>
+的软件包可能会被TU收录到官方软件仓库诶~</p>
+</blockquote>
+</li>
+<li><p class="first">当有新评论的时候提醒我</p>
+<blockquote>
+<p>评论可以用来回报软件包的问题或是改进建议等等,如果这个选项启用的话,当评论更新时汝就会收到通知呗~</p>
+</blockquote>
+</li>
+<li><p class="first">提交请求</p>
+<blockquote>
+<p>可以提交像是合并,更名或是移除软件包的请求.</p>
+</blockquote>
+</li>
+</ul>
+<p>诶好像有些长了呐~,所以下一次咱再说如何创建软件包并提交到AUR上呗~</p>
 </div>
 
   </div><!-- /.entry-content -->
@@ -302,29 +313,26 @@ http://服务器的IP地址:8142</code>
   </div>
 </section>
 <br />
-      <a href="https://blog.yoitsu.moe/new_yoitsu_birth.html" class="place-left">
+      <a href="https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html" class="place-left">
         <button class="command-button bg-lightOlive fg-white">
             <span class="icon mif-arrow-left"></span>
-                新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~
+                Arch Linux 中文社区非官方生存手册
               <small>上一篇</small>
-        </button>
-      </a>
-      <a href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" class="place-right">
-        <button class="command-button icon-right bg-lightOlive fg-white">
-            <span class="icon mif-arrow-right"></span>
-                新约伊兹的萌狼乡手札诞生全过程伪实录
-              <small>下一篇</small>
         </button>
       </a>
   <div class="padding10 clear-float"></div>
 <div class="panel">
     <div class="heading bg-amber">
-        <span class="title">系列MediaWiki中的文章</span>
+        <span class="title">系列Arch Linux中的文章</span>
     </div>
     <div class="content padding10">
-            <a href='https://blog.yoitsu.moe/visualeditor_for_mediawiki.html'>
+            <a href='https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html'>
+            <button class="button ">
+                Arch Linux 中文社区非官方生存手册
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_fresh_guidebook.html'>
             <button class="button  warning ">
-                为MediaWiki安装可视化编辑器
+                AUR 纯萌新向入门教学(1)-从AUR安装软件包
               </button></a><br/>
     </div>
 </div>

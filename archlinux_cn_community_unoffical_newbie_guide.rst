@@ -3,8 +3,9 @@ Arch Linux 中文社区非官方生存手册
 
 :slug: archlinux_cn_community_unoffical_newbie_guide
 :lang: zh
-:date: 2015-01-27
+:date: 2015-01-28
 :tags: Arch Linux,中文社区
+:series: Arch Linux
 
 .. PELICAN_BEGIN_SUMMARY
 
@@ -82,7 +83,8 @@ Web界面在这: :irc:`archlinux-cn`
 
 添加下面那个Tox ID为好友,然后按照它的提示操作呗~
 
-    34922396155AA49CE6845A2FE34A73208F6FCD6190D981B1DBBC816326F26C6CDF3581F697E7
+    34922396155AA49CE6845A2FE34A73208F6FCD
+    6190D981B1DBBC816326F26C6CDF3581F697E7
     
 ------------------------
 通过Telegram加入
