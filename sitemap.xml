@@ -5,14 +5,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/</loc>
-<lastmod>2016-01-30T08:21:37-00:00</lastmod>
+<lastmod>2016-02-01T09:16:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/archives.html</loc>
-<lastmod>2016-01-30T08:21:37-00:00</lastmod>
+<lastmod>2016-02-01T09:16:40-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -40,7 +40,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/aur_fresh_guidebook.html</loc>
-<lastmod>2015-01-29T00:00:00+08:00</lastmod>
+<lastmod>2016-02-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -89,7 +89,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/category/tech.html</loc>
-<lastmod>2015-01-29T00:00:00+08:06</lastmod>
+<lastmod>2016-02-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -138,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/aur.html</loc>
-<lastmod>2015-01-29T00:00:00+08:06</lastmod>
+<lastmod>2016-02-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -152,14 +152,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/arch-linux.html</loc>
-<lastmod>2015-01-29T00:00:00+08:06</lastmod>
+<lastmod>2016-02-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/guides.html</loc>
-<lastmod>2015-01-29T00:00:00+08:06</lastmod>
+<lastmod>2016-02-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -173,7 +173,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/author/horo.html</loc>
-<lastmod>2015-01-29T00:00:00+08:06</lastmod>
+<lastmod>2016-02-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

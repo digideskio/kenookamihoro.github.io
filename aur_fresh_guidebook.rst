@@ -6,6 +6,7 @@ AUR 纯萌新向入门教学(1)-从AUR安装软件包
 :date: 2015-01-29
 :tags: Arch Linux,AUR,Guides
 :series: Arch Linux
+:Modified: 2016-02-01
 
 .. PELICAN_BEGIN_SUMMARY
 
@@ -185,6 +186,10 @@ AUR 纯萌新向入门教学(1)-从AUR安装软件包
 
 yaourt会帮汝下载PKGBUILD,安装需要的依赖,运行makepkg等一系列操作哟~
 
+.. alert-warning::
+
+    2月1号Pacman更新到了5.0，和yaourt的兼容性还不明确……
+    
 登录到AUR以后可以进行的操作
 ----------------------------------
 

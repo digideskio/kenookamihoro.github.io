@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2015-01-29T00:00:00+08:00</updated><entry><title>AUR 纯萌新向入门教学(1)-从AUR安装软件包</title><link href="https://blog.yoitsu.moe/aur_fresh_guidebook.html" rel="alternate"></link><updated>2015-01-29T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-29:aur_fresh_guidebook.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2016-02-01T00:00:00+08:00</updated><entry><title>AUR 纯萌新向入门教学(1)-从AUR安装软件包</title><link href="https://blog.yoitsu.moe/aur_fresh_guidebook.html" rel="alternate"></link><updated>2016-02-01T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-29:aur_fresh_guidebook.html</id><summary type="html">
 &lt;p&gt;&lt;del&gt;没玩过AUR好意思说自己是Arch Linux用户？&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;尽管Arch Linux官方软件仓库里的软件包够多了,连MediaWiki或者OwnCloud一类的用 &lt;del&gt;最好的编程语言&lt;/del&gt; PHP写的应用都有对应的软件包啦~( &lt;del&gt;TU:反正闲着也没事干,打个包呗~&lt;/del&gt; ), 但是汝是不是有时试图pacman的时候:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;error: target not found: &lt;span class="o"&gt;{&lt;/span&gt; 此处用汝希望安装的软件包名称替换呗~ &lt;span class="o"&gt;}&lt;/span&gt;&lt;/span&gt;
@@ -123,6 +123,9 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;yaourt -S foo&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;yaourt会帮汝下载PKGBUILD,安装需要的依赖,运行makepkg等一系列操作哟~&lt;/p&gt;
+&lt;div class="tag warning fg-white compound"&gt;
+&lt;p&gt;2月1号Pacman更新到了5.0，和yaourt的兼容性还不明确……&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id3"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;登录到AUR以后可以进行的操作&lt;/a&gt;&lt;/h2&gt;
