@@ -3,7 +3,7 @@ AUR 纯萌新向入门教学(2)-创建一个软件包
 
 :slug: aur_packaging_guidebook
 :lang: zh
-:date: 2015-02-03
+:date: 2016-02-03
 :tags: Arch Linux,AUR,Guides
 :series: Arch Linux
 

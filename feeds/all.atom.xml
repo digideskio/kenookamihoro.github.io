@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/all.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2016-02-01T00:00:00+08:00</updated><entry><title>AUR 纯萌新向入门教学(2)-创建一个软件包</title><link href="https://blog.yoitsu.moe/aur_packaging_guidebook.html" rel="alternate"></link><updated>2015-02-03T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-02-03:aur_packaging_guidebook.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/all.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2016-02-03T00:00:00+08:00</updated><entry><title>AUR 纯萌新向入门教学(2)-创建一个软件包</title><link href="https://blog.yoitsu.moe/aur_packaging_guidebook.html" rel="alternate"></link><updated>2016-02-03T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-02-03:aur_packaging_guidebook.html</id><summary type="html">
 &lt;p&gt;上一次咱说了 &lt;a class="reference external" href="/aur_fresh_guidebook.html"&gt;「从AUR中安装软件包」&lt;/a&gt; ,其实如果汝足够 &lt;del&gt;触&lt;/del&gt; 的话,不妨自己创建个软件包呗~&lt;/p&gt;
 
 &lt;div class="section" id="archwiki"&gt;
@@ -235,7 +235,7 @@ pacman -Rn&lt;/code&gt;
  文件,汝可以在上传到AUR前先分享给其他人帮汝检查一下呗~&lt;/p&gt;
 &lt;p&gt;到这里汝应该完成了一个软件包了呗~,下次咱会告诉汝怎么把汝创建的软件包提交到AUR上呗~&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Arch Linux"></category><category term="AUR"></category><category term="Guides"></category></entry><entry><title>AUR 纯萌新向入门教学(1)-从AUR安装软件包</title><link href="https://blog.yoitsu.moe/aur_fresh_guidebook.html" rel="alternate"></link><updated>2016-02-01T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-29:aur_fresh_guidebook.html</id><summary type="html">
+</summary><category term="Arch Linux"></category><category term="AUR"></category><category term="Guides"></category></entry><entry><title>AUR 纯萌新向入门教学(1)-从AUR安装软件包</title><link href="https://blog.yoitsu.moe/aur_fresh_guidebook.html" rel="alternate"></link><updated>2016-02-01T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-29:aur_fresh_guidebook.html</id><summary type="html">
 &lt;p&gt;&lt;del&gt;没玩过AUR好意思说自己是Arch Linux用户？&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;尽管Arch Linux官方软件仓库里的软件包够多了,连MediaWiki或者OwnCloud一类的用 &lt;del&gt;最好的编程语言&lt;/del&gt; PHP写的应用都有对应的软件包啦~( &lt;del&gt;TU:反正闲着也没事干,打个包呗~&lt;/del&gt; ), 但是汝是不是有时试图pacman的时候:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;error: target not found: &lt;span class="o"&gt;{&lt;/span&gt; 此处用汝希望安装的软件包名称替换呗~ &lt;span class="o"&gt;}&lt;/span&gt;&lt;/span&gt;
@@ -392,7 +392,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;/ul&gt;
 &lt;p&gt;诶好像有些长了呐~,所以下一次咱再说如何创建软件包并提交到AUR上呗~&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Arch Linux"></category><category term="AUR"></category><category term="Guides"></category></entry><entry><title>Arch Linux 中文社区非官方生存手册</title><link href="https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html" rel="alternate"></link><updated>2015-01-28T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-28:archlinux_cn_community_unoffical_newbie_guide.html</id><summary type="html">
+</summary><category term="Arch Linux"></category><category term="AUR"></category><category term="Guides"></category></entry><entry><title>Arch Linux 中文社区非官方生存手册</title><link href="https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html" rel="alternate"></link><updated>2016-01-28T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-28:archlinux_cn_community_unoffical_newbie_guide.html</id><summary type="html">
 &lt;p&gt;汝要入坑Arch Linux了吗?那还不赶紧加入Arch Linux中文社区~&lt;/p&gt;
 
 &lt;div class="section" id="id1"&gt;
@@ -479,7 +479,7 @@ talk@archlinuxcn.org&lt;/code&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://wiki.archlinux.org/index.php/Getting_involved"&gt;参与开发&lt;/a&gt; , &lt;del&gt;然后成为下一个像felixonmars一样的领袖😂😂😂&lt;/del&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary><category term="Arch Linux"></category><category term="中文社区"></category></entry><entry><title>Tox新手入门</title><link href="https://blog.yoitsu.moe/tox_trainee_guide.html" rel="alternate"></link><updated>2015-01-21T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-21:tox_trainee_guide.html</id><summary type="html">
+</summary><category term="Arch Linux"></category><category term="中文社区"></category></entry><entry><title>Tox新手入门</title><link href="https://blog.yoitsu.moe/tox_trainee_guide.html" rel="alternate"></link><updated>2016-01-21T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-21:tox_trainee_guide.html</id><summary type="html">
 &lt;p&gt;Tox,一种新型的聊天协议.如果汝关注安全和隐私,不妨来看看呗~&lt;/p&gt;
 
 &lt;div class="section" id="id1"&gt;
@@ -555,7 +555,7 @@ talk@archlinuxcn.org&lt;/code&gt;
 &lt;blockquote&gt;
 7BC803F7F9B8A7230EE181AB45CA909DE446D36A7BC3A275D5576439E0CF7546FF4E2C4665CC&lt;/blockquote&gt;
 &lt;/div&gt;
-</summary><category term="notes"></category><category term="software"></category></entry><entry><title>新约伊兹的萌狼乡手札诞生全过程伪实录</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" rel="alternate"></link><updated>2015-01-18T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-18:new_yoitsu_birth_notes.html</id><summary type="html">
+</summary><category term="notes"></category><category term="software"></category></entry><entry><title>新约伊兹的萌狼乡手札诞生全过程伪实录</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" rel="alternate"></link><updated>2016-01-18T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-18:new_yoitsu_birth_notes.html</id><summary type="html">
 &lt;p&gt;说好的下一期来啦~,新的"约伊兹的萌狼乡手札"是怎么样诞生呐~马上就告诉汝呗~&lt;/p&gt;
 
 &lt;div class="section" id="pelican"&gt;
@@ -735,7 +735,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;p&gt;然后用git提交到Github就好......&lt;/p&gt;
 &lt;p&gt;好吧这就是咱的全过程啦(雾)&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="yoitsu"></category><category term="pelican"></category><category term="blog"></category><category term="python"></category></entry><entry><title>为MediaWiki安装可视化编辑器</title><link href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="alternate"></link><updated>2015-01-17T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-17:visualeditor_for_mediawiki.html</id><summary type="html">
+</summary><category term="yoitsu"></category><category term="pelican"></category><category term="blog"></category><category term="python"></category></entry><entry><title>为MediaWiki安装可视化编辑器</title><link href="https://blog.yoitsu.moe/visualeditor_for_mediawiki.html" rel="alternate"></link><updated>2016-01-17T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-17:visualeditor_for_mediawiki.html</id><summary type="html">
 &lt;p&gt;为MediaWiki安装来自 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor"&gt;维基媒体基金会&lt;/a&gt; 的 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor"&gt;可视化编辑器&lt;/a&gt; .&lt;/p&gt;
 
 &lt;div class="section" id="hold"&gt;
@@ -874,7 +874,7 @@ http://服务器的IP地址:8142&lt;/code&gt;
 &lt;p&gt;然后在汝的wiki上试试看呗~&lt;/p&gt;
 &lt;img alt="VisualEditor效果" class="img-responsive" src="images/visualeditor-test.png"/&gt;
 &lt;/div&gt;
-</summary><category term="mediawiki"></category><category term="notes"></category></entry><entry><title>新的"约伊兹的萌狼乡手札"诞生啦~</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth.html" rel="alternate"></link><updated>2015-01-16T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2015-01-16:new_yoitsu_birth.html</id><summary type="html">
+</summary><category term="mediawiki"></category><category term="notes"></category></entry><entry><title>新的"约伊兹的萌狼乡手札"诞生啦~</title><link href="https://blog.yoitsu.moe/new_yoitsu_birth.html" rel="alternate"></link><updated>2016-01-16T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-16:new_yoitsu_birth.html</id><summary type="html">
 &lt;p&gt;就像标题描述的一样，新的"约伊兹的萌狼乡手札"以Pelican之姿再次出发啦~&lt;/p&gt;
 
 &lt;div class="section" id="id2"&gt;

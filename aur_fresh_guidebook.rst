@@ -3,7 +3,7 @@ AUR 纯萌新向入门教学(1)-从AUR安装软件包
 
 :slug: aur_fresh_guidebook
 :lang: zh
-:date: 2015-01-29
+:date: 2016-01-29
 :tags: Arch Linux,AUR,Guides
 :series: Arch Linux
 :Modified: 2016-02-01

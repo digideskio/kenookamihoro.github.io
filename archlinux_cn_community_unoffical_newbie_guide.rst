@@ -3,7 +3,7 @@ Arch Linux 中文社区非官方生存手册
 
 :slug: archlinux_cn_community_unoffical_newbie_guide
 :lang: zh
-:date: 2015-01-28
+:date: 2016-01-28
 :tags: Arch Linux,中文社区
 :series: Arch Linux
 

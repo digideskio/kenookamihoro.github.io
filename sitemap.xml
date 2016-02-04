@@ -5,14 +5,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/</loc>
-<lastmod>2016-02-04T09:23:05-00:00</lastmod>
+<lastmod>2016-02-04T23:37:30-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/archives.html</loc>
-<lastmod>2016-02-04T09:23:05-00:00</lastmod>
+<lastmod>2016-02-04T23:37:30-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -40,7 +40,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/aur_packaging_guidebook.html</loc>
-<lastmod>2015-02-03T00:00:00+08:00</lastmod>
+<lastmod>2016-02-03T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -54,133 +54,133 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html</loc>
-<lastmod>2015-01-28T00:00:00+08:00</lastmod>
+<lastmod>2016-01-28T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tox_trainee_guide.html</loc>
-<lastmod>2015-01-21T00:00:00+08:00</lastmod>
+<lastmod>2016-01-21T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/new_yoitsu_birth_notes.html</loc>
-<lastmod>2015-01-18T09:35:00+08:00</lastmod>
+<lastmod>2016-01-18T09:35:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/visualeditor_for_mediawiki.html</loc>
-<lastmod>2015-01-17T09:35:00+08:00</lastmod>
+<lastmod>2016-01-17T09:35:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/new_yoitsu_birth.html</loc>
-<lastmod>2015-01-16T09:35:00+08:00</lastmod>
+<lastmod>2016-01-16T09:35:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/category/life.html</loc>
-<lastmod>2015-01-28T00:00:00+08:06</lastmod>
+<lastmod>2016-01-28T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/category/tech.html</loc>
-<lastmod>2016-02-01T00:00:00+08:06</lastmod>
+<lastmod>2016-02-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/pelican.html</loc>
-<lastmod>2015-01-18T09:35:00+08:06</lastmod>
+<lastmod>2016-01-18T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/python.html</loc>
-<lastmod>2015-01-18T09:35:00+08:06</lastmod>
+<lastmod>2016-01-18T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/notes.html</loc>
-<lastmod>2015-01-21T00:00:00+08:06</lastmod>
+<lastmod>2016-01-21T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html</loc>
-<lastmod>2015-01-28T00:00:00+08:06</lastmod>
+<lastmod>2016-01-28T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/blog.html</loc>
-<lastmod>2015-01-18T09:35:00+08:06</lastmod>
+<lastmod>2016-01-18T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/mediawiki.html</loc>
-<lastmod>2015-01-17T09:35:00+08:06</lastmod>
+<lastmod>2016-01-17T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/aur.html</loc>
-<lastmod>2016-02-01T00:00:00+08:06</lastmod>
+<lastmod>2016-02-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/yoitsu.html</loc>
-<lastmod>2015-01-18T09:35:00+08:06</lastmod>
+<lastmod>2016-01-18T09:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/arch-linux.html</loc>
-<lastmod>2016-02-01T00:00:00+08:06</lastmod>
+<lastmod>2016-02-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/guides.html</loc>
-<lastmod>2016-02-01T00:00:00+08:06</lastmod>
+<lastmod>2016-02-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/tag/software.html</loc>
-<lastmod>2015-01-21T00:00:00+08:06</lastmod>
+<lastmod>2016-01-21T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://blog.yoitsu.moe/author/horo.html</loc>
-<lastmod>2016-02-01T00:00:00+08:06</lastmod>
+<lastmod>2016-02-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

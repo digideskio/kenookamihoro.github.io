@@ -3,7 +3,7 @@ Tox新手入门
 
 :slug: tox_trainee_guide
 :lang: zh
-:date: 2015-01-21
+:date: 2016-01-21
 :tags: notes,software
 :series: Tox
 

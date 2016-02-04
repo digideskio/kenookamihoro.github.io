@@ -3,7 +3,7 @@
 
 :slug: visualeditor_for_mediawiki
 :lang: zh
-:date: 2015-01-17 09:35
+:date: 2016-01-17 09:35
 :tags: mediawiki,notes
 :series: MediaWiki
 

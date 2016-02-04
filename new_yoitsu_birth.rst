@@ -3,7 +3,7 @@
 
 :slug: new_yoitsu_birth
 :lang: zh
-:date: 2015-01-16 09:35
+:date: 2016-01-16 09:35
 :tags: yoitsu ,pelican,blog
 :series: Pelican 
 
