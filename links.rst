@@ -72,7 +72,7 @@ IRC 频道 :irc:`archlinux-cn`
     萌萌的智乃，自己很萌的同时喜欢一切萌物，前端技艺精湛，貌似正在构建新的博客框架……
     
 .. friend:: cuihao
-    :nick: Cuihao 崔灏 <http://i-yu.me/>`_
+    :nick: `Cuihao 崔灏 <http://i-yu.me/>`_
     :logo: https://avatars2.githubusercontent.com/u/889871
     
     因为灏(hao,二声)的缘故经常被唤作崔土豪,曾经是 `USTC镜像源 <https://mirrors.ustc.edu.cn>`_ 的维护者,
