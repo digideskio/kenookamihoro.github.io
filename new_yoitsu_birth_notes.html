@@ -166,9 +166,7 @@
 <p>接着运行设置程序建立一个工作文件夹:</p>
 <div class="highlight"><pre><span class="code-line">pelican-quickstart</span>
 </pre></div>
-<p>接着开始挖坑呗~,用 <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> 或 <a class="reference external" href="http://wowubuntu.com/markdown/">Markdown</a> 开始写文章然后放到 <code class="code">
-contents</code>
- 文件夹里,像这样:</p>
+<p>接着开始挖坑呗~,用 <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> 或 <a class="reference external" href="http://wowubuntu.com/markdown/">Markdown</a> 开始写文章然后放到 <span class="tag">contents</span> 文件夹里,像这样:</p>
 <p>(reStructuredText)</p>
 <div class="highlight"><pre><span class="code-line"><span class="gh">这里是标题</span></span>
 <span class="code-line"><span class="gh">===========================================</span></span>
@@ -190,21 +188,13 @@ contents</code>
 <div class="highlight"><pre><span class="code-line">make html <span class="c1"># 生成html</span></span>
 <span class="code-line">make serve <span class="c1"># 在127.0.0.1:8000 运行一个测试服务器.</span></span>
 </pre></div>
-<p>然后打开浏览器输入 <code class="code">
-localhost:8000</code>
- ，你就能看到一个初生的很 <ruby><rb>简洁</rb><rp>(</rp><rt>难看</rt><rp>)</rp></ruby> 的博客了，不过不要担心，它是只丑小鸭，很快就会像天鹅般美丽(真的么?)。</p>
+<p>然后打开浏览器输入 <span class="tag">localhost:8000</span> ，你就能看到一个初生的很 <ruby><rb>简洁</rb><rp>(</rp><rt>难看</rt><rp>)</rp></ruby> 的博客了，不过不要担心，它是只丑小鸭，很快就会像天鹅般美丽(真的么?)。</p>
 </div>
 <div class="section" id="ruby-rb-rb-rp-rp-rt-rt-rp-rp-ruby-pelican">
 <h2><a class="toc-backref" href="#id6"><ruby><rb>修改</rb><rp>(</rp><rt>调教</rt><rp>)</rp></ruby> Pelican的主题</a></h2>
 <p>可能是一时抽风没找到合适的Material Design风格的框架，<del>于是走上了Metro UI CSS的不归路......</del></p>
 <p>Metro UI CSS的项目主页在这里 <a class="reference external" href="http://metroui.org.ua">http://metroui.org.ua</a></p>
-<p>咱拿了pelican内置的simple主题做起步,把Metro UI CSS文件夹里的 <code class="code">
-/css</code>
- 和 <code class="code">
-/js</code>
- 复制到主题的 <code class="code">
-/statics</code>
- 文件夹里.</p>
+<p>咱拿了pelican内置的simple主题做起步,把Metro UI CSS文件夹里的 <span class="tag">/css</span> 和 <span class="tag">/js</span> 复制到主题的 <span class="tag">/statics</span> 文件夹里.</p>
 <p>现在的文件夹结构大概像这样:</p>
 <pre><span class="code-line"></span>
 <span class="code-line"><span style="color:blue;font-weight:bold;">.</span></span>
@@ -220,9 +210,7 @@ localhost:8000</code>
 <span class="code-line">├── <span style="color:teal;font-weight:bold;">output</span>          -&gt; <span style="color:blue;font-weight:bold;">../kenookamihoro.github.io</span></span>
 <span class="code-line">├── <span style="color:teal;font-weight:bold;">plugins</span>         -&gt; <span style="color:blue;font-weight:bold;">../plugins</span></span>
 <span class="code-line">└── <span style="color:teal;font-weight:bold;">theme</span>           -&gt; <span style="color:blue;font-weight:bold;">../yoitsu</span></span>
-</pre><p>然后这个内容 repo 中的三个符号链接分别指向三个子 repo（为啥没用 <code class="code">
-git submodule</code>
- ? 因为咱技术不精还不会用......）。
+</pre><p>然后这个内容 repo 中的三个符号链接分别指向三个子 repo（为啥没用 <span class="tag">git submodule</span> ? 因为咱技术不精还不会用......）。
 theme 指向 <a class="reference external" href="https://github.com/KenOokamiHoro/yoitsu">yoitsu</a> ，是咱修改过的 pelican 主题啦。
 plugins 指向 <a class="reference external" href="https://github.com/getpelican/pelican-plugins">pelican-plugins</a>
 最后 output 指向 <a class="reference external" href="https://github.com/KenOokamiHoro/kenookamihoro.github.io">kenookamihoro.github.io</a> 也就是发布的静态网站啦。</p>
@@ -496,23 +484,13 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
                     <div class="content padding10">
                         <ul class="tagcloud">
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/python.html">
-                                    python
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
-                                    mediawiki
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
-                                    AUR
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
                                     </a>
                                 </li>
                                 <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
-                                    Arch Linux
+                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
+                                    AUR
                                     </a>
                                 </li>
                                 <li class="tag-2">
@@ -520,24 +498,34 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
                                     blog
                                     </a>
                                 </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
+                                    notes
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
+                                    Arch Linux
+                                    </a>
+                                </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
-                                    中文社区
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
                                     </a>
                                 </li>
                                 <li class="tag-2">
                                     <a href="https://blog.yoitsu.moe/tag/pelican.html">
                                     pelican
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
-                                    yoitsu
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
-                                    notes
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -546,8 +534,8 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
-                                    Guides
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
                                     </a>
                                 </li>
                         </ul>

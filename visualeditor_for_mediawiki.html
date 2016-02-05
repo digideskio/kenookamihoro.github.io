@@ -209,9 +209,7 @@
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id14">修改配置文件</a></h2>
 <blockquote>
-<p>如果是通过软件源安装的,配置文件位于 <code class="code">
-/etc/mediawiki/parsoid/settings.js</code>
-</p>
+<p>如果是通过软件源安装的,配置文件位于 <span class="tag">/etc/mediawiki/parsoid/settings.js</span></p>
 <p>如果是通过git下载的,从parsoid目录中先复制一份样例出来呗~</p>
 <div class="highlight"><pre><span class="code-line">cp localsettings.js.example localsettings.js</span>
 </pre></div>
@@ -241,11 +239,7 @@
 <span class="code-line"></span>
 <span class="code-line">sudo service parsoid start <span class="c1"># Debian Wheezy 或Ubuntu ,用init.d脚本启动.</span></span>
 </pre></div>
-<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <code class="code">
-http://localhost:8142</code>
- 来进行测试.试着加载 <code class="code">
-http://localhost:8142/汝设置的前缀/汝的wiki上的一个页面</code>
- 试试呗~</p>
+<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <span class="tag">http://localhost:8142</span> 来进行测试.试着加载 <span class="tag">http://localhost:8142/汝设置的前缀/汝的wiki上的一个页面</span> 试试呗~</p>
 </div>
 <div class="section" id="git">
 <h3><a class="toc-backref" href="#id17">用git安装的?</a></h3>
@@ -255,11 +249,7 @@ http://localhost:8142/汝设置的前缀/汝的wiki上的一个页面</code>
 <div class="highlight"><pre><span class="code-line">node bin/server.js</span>
 </pre></div>
 <p>可以用screen一类的工具让Parsoid在后台运行~</p>
-<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <code class="code">
-http://localhost:8000</code>
- 来进行测试.试着加载 <code class="code">
-http://localhost:8000/汝设置的前缀/汝的wiki上的一个页面</code>
- 试试呗~</p>
+<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <span class="tag">http://localhost:8000</span> 来进行测试.试着加载 <span class="tag">http://localhost:8000/汝设置的前缀/汝的wiki上的一个页面</span> 试试呗~</p>
 </div>
 <div class="section" id="id8">
 <h3><a class="toc-backref" href="#id18">修改监听地址便于远程测试</a></h3>
@@ -268,9 +258,7 @@ http://localhost:8000/汝设置的前缀/汝的wiki上的一个页面</code>
 <span class="code-line"><span class="c1">//parsoidConfig.serverPort = 8142;</span></span>
 <span class="code-line"><span class="c1">//parsoidConfig.serverInterface = '127.0.0.1';</span></span>
 </pre></div>
-<p>反注释最后一行并改成0.0.0.0,就可以通过 <code class="code">
-http://服务器的IP地址:8142</code>
- 访问啦~</p>
+<p>反注释最后一行并改成0.0.0.0,就可以通过 <span class="tag">http://服务器的IP地址:8142</span> 访问啦~</p>
 </div>
 </div>
 <div class="section" id="visualeditor">
@@ -454,23 +442,13 @@ http://服务器的IP地址:8142</code>
                     <div class="content padding10">
                         <ul class="tagcloud">
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/python.html">
-                                    python
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
-                                    mediawiki
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
-                                    AUR
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
                                     </a>
                                 </li>
                                 <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
-                                    Arch Linux
+                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
+                                    AUR
                                     </a>
                                 </li>
                                 <li class="tag-2">
@@ -478,24 +456,34 @@ http://服务器的IP地址:8142</code>
                                     blog
                                     </a>
                                 </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
+                                    notes
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
+                                    Arch Linux
+                                    </a>
+                                </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
-                                    中文社区
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
                                     </a>
                                 </li>
                                 <li class="tag-2">
                                     <a href="https://blog.yoitsu.moe/tag/pelican.html">
                                     pelican
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
-                                    yoitsu
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
-                                    notes
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -504,8 +492,8 @@ http://服务器的IP地址:8142</code>
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
-                                    Guides
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
                                     </a>
                                 </li>
                         </ul>

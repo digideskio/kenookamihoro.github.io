@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-      <title>Tox新手入门 - 约伊兹的萌狼乡手札</title>
+      <title>AUR 纯萌新向入门教学(3)-提交软件包到AUR - 约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
     <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
@@ -51,8 +51,9 @@
 
 
 
-    <meta name="tags" content="notes" />
-    <meta name="tags" content="software" />
+    <meta name="tags" content="Arch Linux" />
+    <meta name="tags" content="AUR" />
+    <meta name="tags" content="Guides" />
 
 
 </head>
@@ -122,13 +123,11 @@
     <div class="toc" id="">
 
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id9">再说一遍Tox是啥?</a></li>
-<li><a class="reference internal" href="#id2" id="id10">新建一个Tox个人资料</a></li>
-<li><a class="reference internal" href="#id3" id="id11">修改个人资料</a></li>
-<li><a class="reference internal" href="#id4" id="id12">添加好友</a></li>
-<li><a class="reference internal" href="#id5" id="id13">发起群聊</a></li>
-<li><a class="reference internal" href="#id6" id="id14">导出Tox的配置文件</a></li>
-<li><a class="reference internal" href="#id7" id="id15">最后</a></li>
+<li><a class="reference internal" href="#arch-user-repository" id="id5">再来回顾一下 Arch User Repository 的打包规范呗~</a></li>
+<li><a class="reference internal" href="#id2" id="id6">第一步:注册一个 AUR 帐号</a></li>
+<li><a class="reference internal" href="#aur-ssh" id="id7">第二步:为 AUR 准备一个 SSH 密钥</a></li>
+<li><a class="reference internal" href="#id3" id="id8">第三步:提交软件包到 AUR</a></li>
+<li><a class="reference internal" href="#id4" id="id9">可能的后续工作</a></li>
 </ul>
 </div>
     </nav>
@@ -138,92 +137,116 @@
 
 
 <section id="content" class="body">
-	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/tox_trainee_guide.html" rel="bookmark" title="到 Tox新手入门的固定链接" class="fg-white">Tox新手入门</a></h2>
-    	<span class="mif-calendar"> 2016年01月21日 (Thu)&nbsp;&nbsp;</span>
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/aur_sumbiting_guidebook.html" rel="bookmark" title="到 AUR 纯萌新向入门教学(3)-提交软件包到AUR的固定链接" class="fg-white">AUR 纯萌新向入门教学(3)-提交软件包到AUR</a></h2>
+    	<span class="mif-calendar"> 2016年02月05日 (Fri)&nbsp;&nbsp;</span>
     	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
         <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
-        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/tox_trainee_guide.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/aur_sumbiting_guidebook.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
         <br /><br />
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/notes.html"> notes</a>&nbsp;&nbsp;</span>
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/software.html"> software</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/arch-linux.html"> Arch Linux</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/aur.html"> AUR</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/guides.html"> Guides</a>&nbsp;&nbsp;</span>
 
     </header>
   <div class="entry-content text-accent" id="article-content">
     
-<p>Tox,一种新型的聊天协议.如果汝关注安全和隐私,不妨来看看呗~</p>
+<p>通过上一次的 <a class="reference external" href="/aur_packaging_guidebook.html">「创建一个软件包」</a> ,
+汝应该已经创建了一个 <del>(或是 N 个)</del> 软件包了吧,如果汝想分享给其它人的话,上传到 AUR 其实是最方便的方法呗~</p>
 
-<div class="section" id="id1">
-<h2><a class="toc-backref" href="#id9">再说一遍Tox是啥?</a></h2>
-<p>Tox是一种新型的通讯协议,它的目标是——提供一个无法监控的 Skype 替代品——彻底的加密，没有后门，无需中间服务器。</p>
-<p>由于Tox就是一个协议框架,不同的开发者开发了不同的软件呗~</p>
-<p><a class="reference external" href="https://wiki.tox.chat/clients">Tox 官方维护的wiki上可以找到不同平台可用的客户端列表呐</a></p>
-<p>在下面的例子中咱会先拿 <a class="reference external" href="https://github.com/tux3/qTox">qtox</a> 来示范一下,汝可以从上面的列表中选择一个适合自己的客户端呗~</p>
-<p>首先按照上游的指南装好客户端呗~</p>
+<div class="tag info fg-white compound">
+<p>前几天被 <a class="alert-link reference external" href="//webchat.freenode.net/?channels=archlinux-cn">#archlinux-cn</a> 的各位吐槽了中文和英文之间空格的问题,原谅咱写文章时太随性😂</p>
+</div>
+<div class="section" id="arch-user-repository">
+<h2><a class="toc-backref" href="#id5">再来回顾一下 Arch User Repository 的打包规范呗~</a></h2>
+<p><del>不合规范的软件包可能会在不经过提醒的话直接删除.</del></p>
+<ul>
+<li><p class="first"><a class="reference external" href="https://wiki.archlinux.org/index.php/Arch_packaging_standards_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Arch Linux 打包标准</a></p>
+<blockquote>
+<p>对于某些特定平台的软件包(例如 Web 应用)有不同的打包规范,记得看哦~</p>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.archlinux.org/index.php/Arch_User_Repository_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E6.8F.90.E4.BA.A4.E8.BD.AF.E4.BB.B6.E5.8C.85.E7.9A.84.E8.A7.84.E5.88.99">提交软件包到 AUR 的规则</a></p>
+</li>
+</ul>
+<hr class="docutils"/>
+<p>看了 Wiki 以后,是否觉得自己的软件包符合规范了?</p>
+<p>如果确定的话,接着往下看呗~</p>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id10">新建一个Tox个人资料</a></h2>
-<p>运行qtox,会弹出这样的窗口:</p>
-<img alt="qTox欢迎画面" class="img-responsive" src="images/qtox_welcome.png"/>
-<p>因为咱已经有一个Tox Profile所以是这样啦,汝直接按"New Profile"就好:</p>
-<img alt="qTox-新建个人资料" class="img-responsive" src="images/qtox_addprofile.png"/>
-<p>在Username那挑个用户名,Password那输入个密码呗~</p>
-<div class="tag info fg-white compound">
-<p>如果用SSH远程访问做类比的话,汝的Profile就是私钥,密码就是私钥的保护口令呗~</p>
+<h2><a class="toc-backref" href="#id6">第一步:注册一个 AUR 帐号</a></h2>
+<p>去 <a class="reference external" href="https://aur.archlinux.org/register/">https://aur.archlinux.org/register/</a> 注册一个帐号呗~</p>
 </div>
-<div class="tag warning fg-white compound">
-<p class="compound-first">汝输入的密码非常重要!</p>
-<p class="compound-middle">1.挑一个好的密码,如果不怀好意的骇客同时得到了汝的密码和profile,就可以冒充汝发送消息了诶.</p>
-<p class="compound-last">2,记住汝的密码!虽然安全性很重要,但是一旦汝忘了密码,基本上就无法恢复了呗~</p>
-</div>
-<p>确认完毕之后就会进入到qtox的主画面了呗~(旁边一圈是咱加上的注释,原谅咱不怎么会用GIMP......)</p>
-<img alt="qTox_main" class="img-responsive" src="images/qtox_main.png"/>
+<div class="section" id="aur-ssh">
+<h2><a class="toc-backref" href="#id7">第二步:为 AUR 准备一个 SSH 密钥</a></h2>
+<p>因为 AUR 现在用 Git 提交,所以没有一个 SSH 密钥是不行的呐~,
+建议为 AUR 生成一个新的证书,这样一旦发现问题就可以直接吊销诶(不要把鸡蛋放在一个篮子里~)</p>
+<p>可以用 <span class="tag">ssh-keygen</span> 命令生成新的密钥:</p>
+<div class="highlight"><pre><span class="code-line">$ ssh-keygen</span>
+<span class="code-line">Generating public/private rsa key pair.</span>
+<span class="code-line"><span class="c1"># 为汝的公钥和私钥决定一个存放的位置呗~</span></span>
+<span class="code-line">Enter file in which to save the key <span class="o">(</span>/home/horo/.ssh/id_rsa<span class="o">)</span>:</span>
+<span class="code-line">/home/horo/.ssh/example</span>
+<span class="code-line"><span class="c1"># 为私钥设置一个密码,可以省略,但是为了安全还是设置一个呐~</span></span>
+<span class="code-line">Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>:</span>
+<span class="code-line">Enter same passphrase again:</span>
+<span class="code-line"><span class="c1"># 汝的私钥保存在汝决定的路径中</span></span>
+<span class="code-line">Your identification has been saved in /home/horo/.ssh/example.</span>
+<span class="code-line"><span class="c1"># 汝的公钥保存在汝决定的路径中,不过扩展名为.pub</span></span>
+<span class="code-line">Your public key has been saved in /home/horo/.ssh/example.pub.</span>
+<span class="code-line"><span class="c1"># 这是汝的密钥指纹,用来区分不同的密钥</span></span>
+<span class="code-line">The key fingerprint is:</span>
+<span class="code-line">SHA256:mwk7FvA2E0ycw+E8NYOr1+OL3+0qnF6PFMZ/Ndxuw84 horo@Yotisu</span>
+<span class="code-line">The key<span class="err">'</span>s randomart image is:</span>
+<span class="code-line">+---<span class="o">[</span>RSA 2048<span class="o">]</span>----+</span>
+<span class="code-line"><span class="p">|</span>     oo++        <span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     <span class="o">=</span>*. o       <span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>    . *o         <span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     o.o .    . .<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     .B.S +    oo<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>    ...*o<span class="o">=</span> o  .o.<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     .+o+oo . .oo<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     . <span class="nv">o</span><span class="o">=</span>+ + .o..<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>      .o+o+o+  E <span class="p">|</span></span>
+<span class="code-line">+----<span class="o">[</span>SHA256<span class="o">]</span>-----+</span>
+</pre></div>
+<p>然后在 AUR Web 界面上点击 "My Account (我的账户)" ,把汝的公钥里的内容填进 "SSH Public Key:" 一节中,保存.</p>
+<p>接下来编辑 <span class="tag">~/.ssh/config</span> ,
+告诉ssh命令连接到 <span class="tag">aur.archlinux.org</span> 用汝新创建的密钥呗~</p>
+<div class="highlight"><pre><span class="code-line">Host aur.archlinux.org</span>
+<span class="code-line">    IdentityFile ~/.ssh/example <span class="c1"># 记得用汝自己的私钥路径</span></span>
+<span class="code-line">    User foo <span class="c1"># 记得换成汝自己的用户名.</span></span>
+</pre></div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id11">修改个人资料</a></h2>
-<p>点击头像的区域就可以修改自己的个人资料了呗~</p>
-<img alt="qTox_profile" class="img-responsive" src="images/qtox_profile.png"/>
-<div class="tag info fg-white compound">
-<p>就像界面介绍的那样,Name和Status是公开的信息,所以仔细考虑一下选择一个合适的呗~</p>
+<h2><a class="toc-backref" href="#id8">第三步:提交软件包到 AUR</a></h2>
+<p>用下面的命令创建一个新的仓库:</p>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># 用汝希望的名称替换foobar.</span></span>
+<span class="code-line"><span class="c1"># 从不存在的仓库中克隆或推送，将会自动创建此仓库。</span></span>
+<span class="code-line">git clone ssh://aur@aur.archlinux.org/foobar.git</span>
+</pre></div>
+<p>这时汝的当前目录下会多出一个以汝的软件包名命名的文件夹(例如 <span class="tag">foobar</span> ),
+把汝的软件包需要的文件(PKGBUILD,有时还有些其他的文件)放到这个文件夹内.</p>
+<p>接着记得写一个 <span class="tag">.SRCINFO</span> (供 AUR Web 界面解析的元数据),
+可以通过 <a class="reference external" href="https://www.archlinux.org/packages/?name=pkgbuild-introspection">pkgbuild-introspection</a> 包内的 <span class="tag">mksrcinfo</span> 工具生成.</p>
+<div class="tag warning fg-white compound">
+<p>每一次提交都要包含最新的 <span class="tag">.SRCINFO</span> 文件!不然服务器会 <del>傲娇的</del> 拒绝汝的提交呐~</p>
 </div>
-<p>不过问题来啦,木有好友咧?</p>
+<p>然后普通的使用 Git 来提交呗~</p>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># 还是老话,不要照抄,按汝实际的状况来.</span></span>
+<span class="code-line">git add .</span>
+<span class="code-line">git commit -m <span class="s2">"Example"</span></span>
+<span class="code-line">git push</span>
+</pre></div>
+<p>在 AUR 上搜索汝的软件包试试?(像这样 <a href="https://aur.archlinux.org/packages/?O=0&amp;K=parsoid-git" title="在 AUR 上搜索parsoid-git">parsoid-git <sup>AUR</sup> </a>)</p>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id12">添加好友</a></h2>
-<p>要添加好友的话,先让汝的好友把Ta的Tox ID用其他的手段让汝知道呗~</p>
-<blockquote>
-<p>E1F1C7DEA73D8126A1DEE9EAE5B45E21FB17E75F2319B7823A346B8C427EB272C80A89B69B4E</p>
-<p class="attribution">—Tox ID 是像这样的十六进制数呗~</p>
-</blockquote>
-<p>然后到添加好友的界面把Tox ID输入进去.必要的话,附上一段消息让Ta知道汝是谁呗~</p>
-<img alt="qtox_addfriend" class="img-responsive" src="images/qtox_addfriend.png"/>
-<p>一开始时汝的好友列表只会显示对方的Tox ID呐,像这样:</p>
-<img alt="qtox_addfriend_Pending" class="img-responsive" src="images/qtox_addfriend2.png"/>
-<p>当Ta同意汝的好友请求以后,汝的好友列表上就会显示Ta的Name和Status呗~</p>
-<img alt="qtox_addfriend_success" class="img-responsive" src="images/qtox_addfriend3.png"/>
-<p>然后像平常一样聊天呗~</p>
-<div class="tag info fg-white compound">
-<p>要想让其他人和汝成为好友的话,把汝自己的Tox ID告诉Ta,让Ta像这样添加汝为好友呗~</p>
-</div>
-</div>
-<div class="section" id="id5">
-<h2><a class="toc-backref" href="#id13">发起群聊</a></h2>
-<p>Tox也是可以发起群聊的哟~首先创建一个(qtox里点击下方"创建群聊"按钮就可以了诶~)</p>
-<img alt="qtox_groupchat" class="img-responsive" src="images/qtox_groupchat.png"/>
-<p>汝也可以邀请好友加入群聊呗~(qtox中右键点击某个好友-邀请加入群聊-汝的群聊名称呗~)</p>
-<p>只不过万一汝退出了tox,下次登录时是不会加入上次加入的群聊的,汝只好让好友再邀请汝一次呗~</p>
-</div>
-<div class="section" id="id6">
-<h2><a class="toc-backref" href="#id14">导出Tox的配置文件</a></h2>
-<p>必要时可以导出汝的配置文件,这样就可以在其他地方连接到汝的Tox用户了呗~</p>
-<p>qtox的话,可以在Profiles页面通过"导出"选项导出汝的配置文件呗~</p>
-</div>
-<div class="section" id="id7">
-<h2><a class="toc-backref" href="#id15">最后</a></h2>
-<p>这些就是tox基本的用法啦~,对于其他的客户端的话,不妨去阅读对应的文档呗~</p>
-<p>如果汝有意帮助开发Tox的话, <a class="reference external" href="https://wiki.tox.chat/users/contributing">来这看看呗~</a></p>
-<p>哦,差点忘记啦,这是咱的Tox ID,大家可以试试看呗~</p>
-<blockquote>
-7BC803F7F9B8A7230EE181AB45CA909DE446D36A7BC3A275D5576439E0CF7546FF4E2C4665CC</blockquote>
+<h2><a class="toc-backref" href="#id9">可能的后续工作</a></h2>
+<p>汝以为把软件包提交上就结束了?</p>
+<ul class="simple">
+<li>一旦上游更新了,汝就要及时的更新诶(年久失修的包会被删除)</li>
+<li>关注下方的评论,聆听用户的 <ruby><rb>建议</rb><rp>(</rp><rt>抱怨</rt><rp>)</rp></ruby> 并试着改进汝的软件包呗~</li>
+<li>发觉自己没有精力维护某个软件包?可以通过AURweb界面 disown 一个软件包或是在AUR邮件列表发条消息.</li>
+</ul>
 </div>
 
   </div><!-- /.entry-content -->
@@ -234,29 +257,34 @@
   </div>
 </section>
 <br />
-      <a href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" class="place-left">
+      <a href="https://blog.yoitsu.moe/aur_packaging_guidebook.html" class="place-left">
         <button class="command-button bg-lightOlive fg-white">
             <span class="icon mif-arrow-left"></span>
-                新约伊兹的萌狼乡手札诞生全过程伪实录
+                AUR 纯萌新向入门教学(2)-创建一个软件包
               <small>上一篇</small>
-        </button>
-      </a>
-      <a href="https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html" class="place-right">
-        <button class="command-button icon-right bg-lightOlive fg-white">
-            <span class="icon mif-arrow-right"></span>
-                Arch Linux 中文社区非官方生存手册
-              <small>下一篇</small>
         </button>
       </a>
   <div class="padding10 clear-float"></div>
 <div class="panel">
     <div class="heading bg-amber">
-        <span class="title">系列Tox中的文章</span>
+        <span class="title">系列Arch Linux中的文章</span>
     </div>
     <div class="content padding10">
-            <a href='https://blog.yoitsu.moe/tox_trainee_guide.html'>
+            <a href='https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html'>
+            <button class="button ">
+                Arch Linux 中文社区非官方生存手册
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_fresh_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(1)-从AUR安装软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_packaging_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(2)-创建一个软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_sumbiting_guidebook.html'>
             <button class="button  warning ">
-                Tox新手入门
+                AUR 纯萌新向入门教学(3)-提交软件包到AUR
               </button></a><br/>
     </div>
 </div>

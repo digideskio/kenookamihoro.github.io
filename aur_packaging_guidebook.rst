@@ -84,7 +84,7 @@ ArchWiki上关于PKGBUILD的介绍已经很详细啦~,从 :code:`/usr/share/pacm
 挑个许可协议
 --------------------
 
-为了不造轮子,传送门在此~ `<https://wiki.archlinux.org/index.php/PKGBUILD_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#license>`_
+为了不造轮子,`传送门在此~ <https://wiki.archlinux.org/index.php/PKGBUILD_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#license>`_
 
 ---------------------
 编译和安装时的命令

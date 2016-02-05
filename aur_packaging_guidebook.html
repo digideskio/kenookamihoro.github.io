@@ -174,9 +174,7 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id16">第一步:以普通的方式安装软件</a></h2>
-<p>看看 <code class="code">
-base-devel</code>
- 装了没?</p>
+<p>看看 <span class="tag">base-devel</span> 装了没?</p>
 <div class="highlight"><pre><span class="code-line">sudo pacman -S base-devel --needed</span>
 </pre></div>
 <p>从上游把软件的源代码下载下来,按照上游的文档编译和安装(典型的例子像这样):</p>
@@ -196,9 +194,7 @@ base-devel</code>
 </blockquote>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id18">获得原型</a></h3>
-<p>ArchWiki上关于PKGBUILD的介绍已经很详细啦~,从 <code class="code">
-/usr/share/pacman/</code>
- 找个合适的原型复制下来:</p>
+<p>ArchWiki上关于PKGBUILD的介绍已经很详细啦~,从 <span class="tag">/usr/share/pacman/</span> 找个合适的原型复制下来:</p>
 <ul class="simple">
 <li>PKGBUILD.proto       (经典原型😂)</li>
 <li>PKGBUILD-vcs.proto   (如果汝的源码来自像SubVersion,Git,Mercurial一类的 <ruby><rb>SCCS</rb><rp>(</rp><rt>源代码控制系统</rt><rp>)</rp></ruby> 的话,看下这份原型呗~)</li>
@@ -214,7 +210,7 @@ base-devel</code>
 </div>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id20">挑个许可协议</a></h3>
-<p>为了不造轮子,传送门在此~ <a class="reference external" href="https://wiki.archlinux.org/index.php/PKGBUILD_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#license">https://wiki.archlinux.org/index.php/PKGBUILD_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#license</a></p>
+<p>为了不造轮子,`传送门在此~ &lt;<a class="reference external" href="https://wiki.archlinux.org/index.php/PKGBUILD_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87">https://wiki.archlinux.org/index.php/PKGBUILD_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87</a>)#license&gt;`_</p>
 </div>
 <div class="section" id="id7">
 <h3><a class="toc-backref" href="#id21">编译和安装时的命令</a></h3>
@@ -225,9 +221,7 @@ base-devel</code>
 <li><p class="first">pkgver():在汝的源代码来自各种SCCS时会有用,用来更新软件包的版本号.</p>
 <blockquote>
 <p><a class="reference external" href="https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function">ArchWiki:VCS_package_guidelines</a> 有一些范例,可以看看呗~</p>
-<p>不过记得得给 <code class="code">
-pkgver</code>
- 变量随便赋个值先......</p>
+<p>不过记得得给 <span class="tag">pkgver</span> 变量随便赋个值先......</p>
 </blockquote>
 </li>
 <li><p class="first">prepare():一些预处理源文件以进行构建的命令,比如打补丁......</p>
@@ -279,11 +273,7 @@ pkgver</code>
 <li>post_remove - 卸载后运行的脚本,可以传递版本号为参数.</li>
 </ul>
 <p>这些函数运行的也是Bash脚本哦~</p>
-<p>然后在PKGBUILD中把 <code class="code">
-install</code>
- 变量指向汝的 <code class="code">
-.install</code>
- 文件的位置呗~</p>
+<p>然后在PKGBUILD中把 <span class="tag">install</span> 变量指向汝的 <span class="tag">.install</span> 文件的位置呗~</p>
 <div class="highlight"><pre><span class="code-line"><span class="c1"># 一般来说,.install的文件名应该和软件包名一致.</span></span>
 <span class="code-line"><span class="nv">install</span><span class="o">=</span><span class="s1">'foo.install'</span></span>
 </pre></div>
@@ -291,17 +281,11 @@ install</code>
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id23">需要用到配置文件?</a></h3>
 <p>如果汝的软件包要有些用户编写的配置文件,记得添加到backups变量里.</p>
-<p>例如如果汝的配置文件是 <code class="code">
-/etc/foo</code>
- :</p>
+<p>例如如果汝的配置文件是 <span class="tag">/etc/foo</span> :</p>
 <div class="highlight"><pre><span class="code-line"><span class="nv">backup</span><span class="o">=(</span>etc/foo<span class="o">)</span></span>
 </pre></div>
-<p>记得是相对于 <code class="code">
-/</code>
- 的路径.</p>
-<p>这样pacman就会在软件包升级时提醒用户合并新的和旧的文件,在卸载软件包时这些文件会被保留(除非用了 <code class="code">
-pacman -Rn</code>
- )</p>
+<p>记得是相对于 <span class="tag">/</span> 的路径.</p>
+<p>这样pacman就会在软件包升级时提醒用户合并新的和旧的文件,在卸载软件包时这些文件会被保留(除非用了 <span class="tag">pacman -Rn</span> )</p>
 </div>
 <div class="section" id="id10">
 <h3><a class="toc-backref" href="#id24">依赖,依赖,依赖!</a></h3>
@@ -390,9 +374,7 @@ pacman -Rn</code>
 <p>用下面的命令生成一个源码包:</p>
 <div class="highlight"><pre><span class="code-line">makepkg --source</span>
 </pre></div>
-<p>这会在当前目录生成一个 <code class="code">
-.src.tar.gz</code>
- 文件,汝可以在上传到AUR前先分享给其他人帮汝检查一下呗~</p>
+<p>这会在当前目录生成一个 <span class="tag">.src.tar.gz</span> 文件,汝可以在上传到AUR前先分享给其他人帮汝检查一下呗~</p>
 <p>到这里汝应该完成了一个软件包了呗~,下次咱会告诉汝怎么把汝创建的软件包提交到AUR上呗~</p>
 </div>
 
@@ -409,6 +391,13 @@ pacman -Rn</code>
             <span class="icon mif-arrow-left"></span>
                 AUR 纯萌新向入门教学(1)-从AUR安装软件包
               <small>上一篇</small>
+        </button>
+      </a>
+      <a href="https://blog.yoitsu.moe/aur_sumbiting_guidebook.html" class="place-right">
+        <button class="command-button icon-right bg-lightOlive fg-white">
+            <span class="icon mif-arrow-right"></span>
+                AUR 纯萌新向入门教学(3)-提交软件包到AUR
+              <small>下一篇</small>
         </button>
       </a>
   <div class="padding10 clear-float"></div>
@@ -428,6 +417,10 @@ pacman -Rn</code>
             <a href='https://blog.yoitsu.moe/aur_packaging_guidebook.html'>
             <button class="button  warning ">
                 AUR 纯萌新向入门教学(2)-创建一个软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_sumbiting_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(3)-提交软件包到AUR
               </button></a><br/>
     </div>
 </div>
@@ -557,23 +550,13 @@ pacman -Rn</code>
                     <div class="content padding10">
                         <ul class="tagcloud">
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/python.html">
-                                    python
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
-                                    mediawiki
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
-                                    AUR
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
                                     </a>
                                 </li>
                                 <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
-                                    Arch Linux
+                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
+                                    AUR
                                     </a>
                                 </li>
                                 <li class="tag-2">
@@ -581,24 +564,34 @@ pacman -Rn</code>
                                     blog
                                     </a>
                                 </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
+                                    notes
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
+                                    Arch Linux
+                                    </a>
+                                </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
-                                    中文社区
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
                                     </a>
                                 </li>
                                 <li class="tag-2">
                                     <a href="https://blog.yoitsu.moe/tag/pelican.html">
                                     pelican
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
-                                    yoitsu
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
-                                    notes
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -607,8 +600,8 @@ pacman -Rn</code>
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
-                                    Guides
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
                                     </a>
                                 </li>
                         </ul>
