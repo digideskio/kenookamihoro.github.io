@@ -140,7 +140,7 @@ Telegram群 `MediaWiki 站长交流 <https://telegram.me/joinchat/BuDkcQJ5ZNVAS9
     如同博主本人所说，没什么特别的主题，想到什么写什么....
 
 .. friend:: fiveyellowmice
-    :nick: `FiveYellowMice <https://fiveyellowmice.github.io/>`_
+    :nick: `FiveYellowMice <https://fiveyellowmice.com>`_
     :gravatar:  hkz85825915@gmail.com
 
     一位早就不该中二的中二少年，最近又开了一个脑洞，于是就开了这个博客。
