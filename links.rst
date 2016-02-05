@@ -75,7 +75,7 @@ IRC 频道 :irc:`archlinux-cn`
     :nick: `Cuihao 崔灏 <http://i-yu.me/>`_
     :logo: https://avatars2.githubusercontent.com/u/889871
     
-    因为灏(hao,二声)的缘故经常被唤作崔土豪,曾经是 `USTC镜像源 <https://mirrors.ustc.edu.cn>`_ 的维护者,
+    因为 :ruby:`灏|hao,四声` 的缘故经常被唤作崔土豪,曾经是 `USTC镜像源 <https://mirrors.ustc.edu.cn>`_ 的维护者,
     现在是 Arch Linux 中文社区源的维护者之一.
     
 IRC 频道 :irc:`aosc` (Telegram群 "安同开源社区"，目前不开放~）
