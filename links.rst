@@ -39,7 +39,7 @@ IRC 频道 :irc:`archlinux-cn`
     :nick: `LastAvengers 谷月轩 <http://lastavenger.github.io/>`_
     :logo: https://lastavenger.github.io/assets/avatar_big.jpg
 
-    社区里人称LA，一个 `自己写了内核 <https://github.com/LastAvenger/OS67>`_ 的最近又在学Python的像新手又像大神的人呐~
+    社区里人称LA，一个 `自己写了内核 <https://github.com/LastAvenger/OS67>`_ 而且会画画的 :del:`一个恶人` ~
 
 .. friend:: felixonmars
     :nick: `felixonmars <http://blog.felixc.at/>`_
