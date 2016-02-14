@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>交换友情链接 - 约伊兹的萌狼乡手札</title>
+      <title>在 Arch Linux 上安装 Ghost 博客系统 - 约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
     <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
+    <link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
     <link href="https://blog.yoitsu.moe/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -48,6 +49,12 @@
     });
     </script>
 
+
+
+    <meta name="tags" content="Arch Linux" />
+    <meta name="tags" content="partner" />
+
+
 </head>
 <body id="index">
     <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
@@ -57,13 +64,14 @@
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
                 <li><a href="https://blog.yoitsu.moe/category/life.html">Life</a></li>
-                <li><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
+                <li class="active"><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
                 </ul></li>
                 <li><a href="https://blog.yoitsu.moe/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
             <ul class="app-bar-menu place-right">
 
 <li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
+<li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
                 <li><a href="https://blog.yoitsu.moe/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
                 <li><a href="https://blog.yoitsu.moe/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
                 <li>
@@ -114,82 +122,153 @@
     <div class="toc" id="">
 
 <ul class="simple">
-<li><a class="reference internal" href="#id2" id="id9">友情链接的坏处是啥咧~</a></li>
-<li><a class="reference internal" href="#id3" id="id10">那这个页面是来干啥的呢？</a></li>
-<li><a class="reference internal" href="#id4" id="id11">交换友情链接的最低要求</a><ul>
-<li><a class="reference internal" href="#id5" id="id12">下列类型的网站会直接拒绝的呐~</a></li>
-<li><a class="reference internal" href="#id6" id="id13">只有满足下面的全部要求，咱才会和汝交换友链呐~</a></li>
-<li><a class="reference internal" href="#id7" id="id14">加分项</a></li>
-<li><a class="reference internal" href="#id8" id="id15">但是如果遇到下面的情况，可以全部忽略</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#ghost" id="id7">汝连啥是 Ghost 都不知道?</a></li>
+<li><a class="reference internal" href="#id1" id="id8">要安装 Ghost 需要啥?</a></li>
+<li><a class="reference internal" href="#aur-ghost" id="id9">从 AUR 安装 Ghost</a></li>
+<li><a class="reference internal" href="#id2" id="id10">通过源代码安装 Ghost</a></li>
+<li><a class="reference internal" href="#id3" id="id11">修改配置文件</a></li>
+<li><a class="reference internal" href="#id4" id="id12">如果汝的 Ghost 和汝进行操作的电脑是同一个</a></li>
+<li><a class="reference internal" href="#id5" id="id13">如果汝的 Ghost 和汝进行操作的电脑不是同一个</a></li>
+<li><a class="reference internal" href="#id6" id="id14">参考资料</a></li>
 </ul>
 </div>
     </nav>
 </div>
+
+    <script id="dsq-count-scr" src="//kenookamihoro.disqus.com/count.js" async></script>
+
+
 <section id="content" class="body">
-	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/addlinks.html" rel="bookmark" title="到 交换友情链接的固定链接" class="fg-white">交换友情链接</a></h2>
-    	<span class="mif-calendar"> 2016年01月16日 (Sat)&nbsp;&nbsp;</span>
-        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/addlinks.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/ghost_blog_archlinux.html" rel="bookmark" title="到 在 Arch Linux 上安装 Ghost 博客系统的固定链接" class="fg-white">在 Arch Linux 上安装 Ghost 博客系统</a></h2>
+    	<span class="mif-calendar"> 2016年02月14日 (Sun)&nbsp;&nbsp;</span>
+    	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
+        <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/ghost_blog_archlinux.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <br /><br />
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/arch-linux.html"> Arch Linux</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/partner.html"> partner</a>&nbsp;&nbsp;</span>
 
     </header>
   <div class="entry-content text-accent" id="article-content">
     
-<p>首先咱问友情链接有啥用处的时候，一般都会得到这样的回答：</p>
+<p>先祝大家 <ruby><rb>情人节</rb><rp>(</rp><rt>烧烤节</rt><rp>)</rp></ruby> 快乐~ (2333</p>
+<p><del>为了让旅伴发发牢骚,就装了一个 Ghost 博客系统咯~</del></p>
+
+<div class="section" id="ghost">
+<h2><a class="toc-backref" href="#id7">汝连啥是 Ghost 都不知道?</a></h2>
 <blockquote>
-<p>听说这样可以提升网站的 PageRank|PageRank ，在搜索结果中靠前——专业的讲，就是 SEO 。</p>
-<p class="attribution">—<a class="reference external" href="https://fiveyellowmice.github.io/links/">FiveYellowMice's Blog</a></p>
+<p>Ghost是用JavaScript编写的博客平台，基于MIT许可证开放源代码。Ghost的设计主旨是简化个人网站发布以及网上出版的过程。</p>
+<p>Ghost是一款个人博客系统，它是使用Node.js语言和MySQL数据库开发的，同时支持MySQL、MariaDB、SQLite和PostgreSQL。用户可以在支持Node.js的服务器上使用自己的博客。</p>
+<p class="attribution">—<a class="reference external" href="https://zh.wikipedia.org/wiki/Ghost_%28%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0%29">Wikipedia 上的 "Ghost (博客平台)" 条目</a></p>
 </blockquote>
+<p>简单来说,Ghost 是一套博客平台,是一套博客平台,是一套博客平台! <del>(重要的事情说三遍😂😂)</del></p>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id8">要安装 Ghost 需要啥?</a></h2>
+<p>因为 Ghost 是用 Node.js 写成的,所以要安装 Ghost , 汝需要先装上 Node.js 和 npm 呗~</p>
+<div class="tag warning fg-white compound">
+<p class="compound-first">截至写这篇文章时,Arch Linux 官方源里 Node.js 的版本是 5.6.0 ,而 Ghost 的计划是只支持 Node.js 的 <ruby><rb>LTS</rb><rp>(</rp><rt>长期支援</rt><rp>)</rp></ruby> 版本, 而 Node.js 的长期支援版本是 0.10x,0.12x和4.2 .所以嘛......</p>
+<p class="compound-last">这里(和咱在 AUR 的 ghost 软件包里)用到了一个环境变量 <span class="tag">GHOST_NODE_VERSION_CHECK=false</span> 来不让 ghost 来检查 node 的版本,在 Node.js 下一个 LTS 版本(6.x)出来前先凑合一下呗~</p>
+</div>
+<p>于是先安装 <a class="reference external" href="https://www.archlinux.org/packages/?name=nodejs">nodejs</a> 和 <a class="reference external" href="https://www.archlinux.org/packages/?name=npm">npm</a> :</p>
+<div class="highlight"><pre><span class="code-line">sudo pacman -S nodejs npm</span>
+</pre></div>
+<p>如果汝认为自己的博客会做的比较大,需要一个数据库系统的话,咱推荐 <a class="reference external" href="https://www.archlinux.org/packages/?name=mariadb">mariadb</a> 呗~</p>
+</div>
+<div class="section" id="aur-ghost">
+<h2><a class="toc-backref" href="#id9">从 AUR 安装 Ghost</a></h2>
+<p>然后从 AUR 安装 <a href="https://aur.archlinux.org/packages/?O=0&amp;K=ghost" title="在 AUR 上搜索ghost">ghost <sup>AUR</sup> </a> (这个包是咱更新的,有问题尽管 pia 咱~).</p>
+<p>如果汝有 yaourt 的话, <span class="tag">yaourt -S ghost</span></p>
+<p>这会把 ghost 安装在 <span class="tag">/srv/ghost/</span> 目录,由于创建的 ghost 用户不能通过 shell 登录,要修改这个目录的文件的话:</p>
+<ul>
+<li><p class="first">修改 <span class="tag">/etc/passwd</span> 文件:</p>
+<blockquote>
+<p>ghost:x:738:738::/srv/ghost:/usr/bin/nologin</p>
+<p>把 <span class="tag">/usr/bin/nologin</span> 换成 <span class="tag">/bin/bash</span> ,保存.</p>
+<p>这样以后可以通过 <span class="tag">sudo su ghost</span> 切换到 ghost 用户对 /srv/ghost 目录写入了.</p>
+</blockquote>
+</li>
+<li><p class="first">通过下面的命令以 ghost 用户运行一条命令:</p>
+<blockquote>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># su 后面的 -s 参数可以制定切换用户后运行的 shell ,</span></span>
+<span class="code-line"><span class="c1"># -c 参数可以指定要运行的命令.</span></span>
+<span class="code-line"></span>
+<span class="code-line">sudo su ghost -s /bin/bash -c <span class="s2">"此处是汝的命令,记得带上引号"</span></span>
+</pre></div>
+</blockquote>
+</li>
+</ul>
+</div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id9">友情链接的坏处是啥咧~</a></h2>
-<p>那就是会让网页看起来比较乱，具体的例子咱就不举例了。另外页面下一排链接看着也不好看是呗~</p>
-<p>关键的原因是，咱比较懒嘛~</p>
+<h2><a class="toc-backref" href="#id10">通过源代码安装 Ghost</a></h2>
+<p>首先把 ghost 的源代码下载下来并解开:</p>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># 这时最新的版本是0.7.6.</span></span>
+<span class="code-line">wget https://ghost.org/zip/ghost-0.7.6.zip</span>
+<span class="code-line">unzip ghost-0.7.6.zip</span>
+<span class="code-line"><span class="nb">cd</span> ghost-0.7.6</span>
+</pre></div>
+<p>接下来通过 npm 安装需要的依赖,因为上面的提示嘛~</p>
+<div class="highlight"><pre><span class="code-line"><span class="nv">GHOST_NODE_VERSION_CHECK</span><span class="o">=</span><span class="nb">false</span> npm install</span>
+</pre></div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id10">那这个页面是来干啥的呢？</a></h2>
-<p>因为既然交换了友情链接嘛，他（她/它）们就要把咱的地址放在网站上，访问那些网站的人们或许会来看咱呐~</p>
-<p>同样也可以让别人的博客通过咱这里的友情链接被发现。友情链接就这样被用来传递友情，而非 PageRank 。</p>
+<h2><a class="toc-backref" href="#id11">修改配置文件</a></h2>
+<p>如果是通过 AUR 安装的,配置文件位于 <span class="tag">/srv/ghost/config.js</span></p>
+<p>如果是通过源代码安装的,从目录中先复制一份样例出来呗~</p>
+<blockquote>
+<div class="highlight"><pre><span class="code-line">cp config.example.js config.js</span>
+</pre></div>
+</blockquote>
+<p>这里的例子是修改 <span class="tag">Production</span> 一节
+(这一节是汝的 Ghost 实际运行时的配置,下面的 Development 一节是开发时的配置)</p>
+<div class="highlight"><pre><span class="code-line">        server: {</span>
+<span class="code-line">            host: '127.0.0.1',</span>
+<span class="code-line">            port: '2368'</span>
+<span class="code-line">        }</span>
+<span class="code-line">    },</span>
+</pre></div>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id11">交换友情链接的最低要求</a></h2>
+<h2><a class="toc-backref" href="#id12">如果汝的 Ghost 和汝进行操作的电脑是同一个</a></h2>
+<p>通过下面的命令来测试汝的 Ghost 呗~</p>
+<div class="highlight"><pre><span class="code-line"><span class="nb">cd</span> /path/to/ghost</span>
+<span class="code-line"><span class="nv">GHOST_NODE_VERSION_CHECK</span><span class="o">=</span><span class="nb">false</span></span>
+</pre></div>
+<p>如果汝是从 AUR 安装的,可以通过 Systemd 来启动</p>
+<div class="highlight"><pre><span class="code-line">sudo systemctl start ghost</span>
+</pre></div>
+<p>现在打开 <span class="tag">http://localhost:2368</span> 看看效果呗~</p>
+</div>
 <div class="section" id="id5">
-<h3><a class="toc-backref" href="#id12">下列类型的网站会直接拒绝的呐~</a></h3>
-<ul class="simple">
-<li>教唆犯罪（可不是某国的口袋罪哟~）：例如关于帮助非法药品使用、盗窃、网络入侵、创建恶意代码、禁止的软件拷贝、禁止使用的版权/专利材料、破解软件(warez)，以及提供这些内容的种子(torrent)或链接的网站。</li>
-<li>单纯的采集（说的难听些就是抄袭）站。</li>
-<li>含有国内广告联盟的广告</li>
-<li>R-18向（咱就不举例子了……）</li>
-</ul>
+<h2><a class="toc-backref" href="#id13">如果汝的 Ghost 和汝进行操作的电脑不是同一个</a></h2>
+<p>比如汝在 VPS 上安装了 Ghost,就需要用一个 web服务器通过反向代理来访问呗~</p>
+<p>首先修改 <span class="tag">config.js</span> 把 Production 中的 URL 换成汝的网址啦~</p>
+<p>如果汝在用 Nginx, 把这一段增加到汝的 <span class="tag">server</span> 块中:</p>
+<div class="highlight"><pre><span class="code-line">location / {</span>
+<span class="code-line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span>
+<span class="code-line">      proxy_set_header Host $http_host;</span>
+<span class="code-line">      proxy_set_header X-Forwarded-Proto $scheme;</span>
+<span class="code-line">      proxy_pass http://127.0.0.1:2368;</span>
+<span class="code-line">      # 汝的更多自定义设置</span>
+<span class="code-line">}</span>
+</pre></div>
+<p>如果汝在用 Apache, 把下面一段添加到汝的 httpd.conf 的 vhost 段中(首先要启用 mod_proxy 模块~):</p>
+<div class="highlight"><pre><span class="code-line">ProxyPass / http://localhost:2368/</span>
+<span class="code-line">ProxyPassReverse / http://localhost:2368/</span>
+<span class="code-line">ProxyHTMLURLMap http://localhost:2368/ /</span>
+<span class="code-line">RequestHeader set X-Forwarded-For $proxy_add_x_forwarded_for</span>
+<span class="code-line">RequestHeader set Host $host</span>
+<span class="code-line">RequestHeader set X-Forwarded-Proto $scheme</span>
+</pre></div>
+<p>然后重新启动 ghost 和 web 服务器以后试试通过汝的网址访问?</p>
+<p>打开 <span class="tag">http://汝的ghost网址/ghost/</span> 开始设置汝的 Ghost 博客呗~</p>
 </div>
 <div class="section" id="id6">
-<h3><a class="toc-backref" href="#id13">只有满足下面的全部要求，咱才会和汝交换友链呐~</a></h3>
+<h2><a class="toc-backref" href="#id14">参考资料</a></h2>
 <ul class="simple">
-<li>汝本人热爱自由。</li>
-<li>网站中大部分的元素能被现代浏览器（Firefox，Chrome，Microsoft Edge一类的）正常显示。</li>
-<li>（仅限博客型网站）有及时更新的RSS</li>
-<li>广告不要太多……</li>
+<li><a class="reference external" href="http://support.ghost.org/developers">Ghost Blog 文档</a></li>
+<li><a class="reference external" href="http://httpd.apache.org/docs/2.4/mod/mod_proxy.html">Apache httpd mod_proxy 文档</a></li>
 </ul>
-</div>
-<div class="section" id="id7">
-<h3><a class="toc-backref" href="#id14">加分项</a></h3>
-<ul class="simple">
-<li>大部分页面支持[[w:HTTPS|HTTPS]]访问（能有[[w:HSTS|HSTS]]更好）</li>
-<li>汝的内容以像'''知识共享 署名-相同方式共享'''一类的自由文化协议授权。</li>
-<li>活跃于开源社区</li>
-<li>喜欢折腾新鲜技术，但至少对一种技术有恒心和毅力</li>
-<li>写过开源的程序，或对其他开源项目贡献过代码/文档</li>
-<li>比较萌 （ 这才是正义呐！）</li>
-</ul>
-</div>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id15">但是如果遇到下面的情况，可以全部忽略</a></h3>
-<ul class="simple">
-<li>咱主动找到汝换友链……</li>
-<li>……未完待续（蛤？）</li>
-</ul>
-<p>话说了那么多，如果想和咱交换友链的话……</p>
-<p>那还等啥，还不赶紧在下面发个评论或者去Github提个Issue~</p>
-</div>
 </div>
 
   </div><!-- /.entry-content -->
@@ -199,6 +278,42 @@
                <div id="source-code"></div>
   </div>
 </section>
+<br />
+      <a href="https://blog.yoitsu.moe/aur_sumbiting_guidebook.html" class="place-left">
+        <button class="command-button bg-lightOlive fg-white">
+            <span class="icon mif-arrow-left"></span>
+                AUR 纯萌新向入门教学(3)-提交软件包到AUR
+              <small>上一篇</small>
+        </button>
+      </a>
+  <div class="padding10 clear-float"></div>
+<div class="panel">
+    <div class="heading bg-amber">
+        <span class="title">系列Arch Linux中的文章</span>
+    </div>
+    <div class="content padding10">
+            <a href='https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html'>
+            <button class="button ">
+                Arch Linux 中文社区非官方生存手册
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_fresh_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(1)-从AUR安装软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_packaging_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(2)-创建一个软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_sumbiting_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(3)-提交软件包到AUR
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/ghost_blog_archlinux.html'>
+            <button class="button  warning ">
+                在 Arch Linux 上安装 Ghost 博客系统
+              </button></a><br/>
+    </div>
+</div>
 <div class="padding10 clear-float"></div>
 
 <div class="panel" id="talk" data-role="panel">
@@ -244,9 +359,9 @@
     */
     (function() {  // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');
-        
+
         s.src = '//kenookamihoro.disqus.com/embed.js';
-        
+
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
@@ -257,7 +372,6 @@
       </ul>
     </div>
 </div>
-
                 </div>
             <div class="cell colspan3">
                 <div class="panel warning shadow">
