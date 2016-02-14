@@ -221,11 +221,29 @@
 </blockquote>
 <p>这里的例子是修改 <span class="tag">Production</span> 一节
 (这一节是汝的 Ghost 实际运行时的配置,下面的 Development 一节是开发时的配置)</p>
-<div class="highlight"><pre><span class="code-line">        server: {</span>
-<span class="code-line">            host: '127.0.0.1',</span>
-<span class="code-line">            port: '2368'</span>
-<span class="code-line">        }</span>
-<span class="code-line">    },</span>
+<div class="highlight"><pre><span class="code-line"><span class="nx">config</span> <span class="o">=</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="c1">// ### Production</span></span>
+<span class="code-line">    <span class="c1">// When running Ghost in the wild, use the production environment.</span></span>
+<span class="code-line">    <span class="c1">// Configure your URL and mail settings here</span></span>
+<span class="code-line">    <span class="nx">production</span><span class="o">:</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="c1">// 汝的网址?</span></span>
+<span class="code-line">        <span class="nx">url</span><span class="o">:</span> <span class="s1">'http://localhost'</span><span class="p">,</span></span>
+<span class="code-line">        <span class="nx">mail</span><span class="o">:</span> <span class="p">{},</span></span>
+<span class="code-line">        <span class="c1">// 汝想使用那种数据库?</span></span>
+<span class="code-line">        <span class="c1">// 下面的例子是 sqlite3 数据库,配置文件中还有设置 MariaDB 数据库 的样例</span></span>
+<span class="code-line">        <span class="nx">database</span><span class="o">:</span> <span class="p">{</span></span>
+<span class="code-line">            <span class="nx">client</span><span class="o">:</span> <span class="s1">'sqlite3'</span><span class="p">,</span></span>
+<span class="code-line">            <span class="nx">connection</span><span class="o">:</span> <span class="p">{</span></span>
+<span class="code-line">                <span class="nx">filename</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'/content/data/ghost.db'</span><span class="p">)</span></span>
+<span class="code-line">            <span class="p">},</span></span>
+<span class="code-line">            <span class="nx">debug</span><span class="o">:</span> <span class="nx">falseProduction</span></span>
+<span class="code-line">        <span class="p">},</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="nx">server</span><span class="o">:</span> <span class="p">{</span></span>
+<span class="code-line">            <span class="nx">host</span><span class="o">:</span> <span class="s1">'127.0.0.1'</span><span class="p">,</span></span>
+<span class="code-line">            <span class="nx">port</span><span class="o">:</span> <span class="s1">'2368'</span></span>
+<span class="code-line">        <span class="p">}</span></span>
+<span class="code-line">    <span class="p">},</span></span>
 </pre></div>
 </div>
 <div class="section" id="id4">
@@ -439,11 +457,6 @@
                     </div>
                     <div class="content padding10">
                         <ul class="tagcloud">
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
-                                    pelican
-                                    </a>
-                                </li>
                                 <li class="tag-4">
                                     <a href="https://blog.yoitsu.moe/tag/python.html">
                                     python
@@ -452,21 +465,6 @@
                                 <li class="tag-4">
                                     <a href="https://blog.yoitsu.moe/tag/partner.html">
                                     partner
-                                    </a>
-                                </li>
-                                <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
-                                    Guides
-                                    </a>
-                                </li>
-                                <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
-                                    Arch Linux
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/software.html">
-                                    software
                                     </a>
                                 </li>
                                 <li class="tag-2">
@@ -479,9 +477,24 @@
                                     AUR
                                     </a>
                                 </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/software.html">
+                                    software
+                                    </a>
+                                </li>
                                 <li class="tag-2">
                                     <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
                                     yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
+                                    Arch Linux
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -492,6 +505,11 @@
                                 <li class="tag-2">
                                     <a href="https://blog.yoitsu.moe/tag/notes.html">
                                     notes
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
                                     </a>
                                 </li>
                                 <li class="tag-4">

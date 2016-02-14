@@ -105,6 +105,7 @@
 (这一节是汝的 Ghost 实际运行时的配置,下面的 Development 一节是开发时的配置)
 
 .. code-block:: javascript
+
     config = {
         // ### Production
         // When running Ghost in the wild, use the production environment.

@@ -104,30 +104,31 @@
 这里的例子是修改 <span class="na">:code:</span><span class="nv">`Production`</span> 一节
 (这一节是汝的 Ghost 实际运行时的配置,下面的 Development 一节是开发时的配置)
 
-<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> javascript
-    config = {
-        // ### Production
-        // When running Ghost in the wild, use the production environment.
-        // Configure your URL and mail settings here
-        production: {
-            // 汝的网址?
-            url: &#39;http://localhost&#39;,
-            mail: {},
-            // 汝想使用那种数据库? 
-            // 下面的例子是 sqlite3 数据库,配置文件中还有设置 MariaDB 数据库 的样例
-            database: {
-                client: &#39;sqlite3&#39;,
-                connection: {
-                    filename: path.join(__dirname, &#39;/content/data/ghost.db&#39;)
-                },
-                debug: falseProduction
-            },
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">javascript</span>
+
+    <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1">// ### Production</span>
+        <span class="c1">// When running Ghost in the wild, use the production environment.</span>
+        <span class="c1">// Configure your URL and mail settings here</span>
+        <span class="nx">production</span><span class="o">:</span> <span class="p">{</span>
+            <span class="c1">// 汝的网址?</span>
+            <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://localhost&#39;</span><span class="p">,</span>
+            <span class="nx">mail</span><span class="o">:</span> <span class="p">{},</span>
+            <span class="c1">// 汝想使用那种数据库? </span>
+            <span class="c1">// 下面的例子是 sqlite3 数据库,配置文件中还有设置 MariaDB 数据库 的样例</span>
+            <span class="nx">database</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">client</span><span class="o">:</span> <span class="s1">&#39;sqlite3&#39;</span><span class="p">,</span>
+                <span class="nx">connection</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">filename</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;/content/data/ghost.db&#39;</span><span class="p">)</span>
+                <span class="p">},</span>
+                <span class="nx">debug</span><span class="o">:</span> <span class="nx">falseProduction</span>
+            <span class="p">},</span>
     
-            server: {
-                host: &#39;127.0.0.1&#39;,
-                port: &#39;2368&#39;
-            }
-        },
+            <span class="nx">server</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+                <span class="nx">port</span><span class="o">:</span> <span class="s1">&#39;2368&#39;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
 
 <span class="gh">如果汝的 Ghost 和汝进行操作的电脑是同一个</span>
 <span class="gh">------------------------------------------------</span>
