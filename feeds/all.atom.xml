@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/all.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2016-02-14T00:00:00+08:00</updated><entry><title>在 Arch Linux 上安装 Ghost 博客系统</title><link href="https://blog.yoitsu.moe/ghost_blog_archlinux.html" rel="alternate"></link><updated>2016-02-14T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-02-14:ghost_blog_archlinux.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/all.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2016-02-18T15:20:00+08:00</updated><entry><title>MediaWiki 设置SMTP发送邮件</title><link href="https://blog.yoitsu.moe/smtp_for_mediawiki.html" rel="alternate"></link><updated>2016-02-18T15:20:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-02-18:smtp_for_mediawiki.html</id><summary type="html">
+&lt;p&gt;为 MediaWiki 设置通过 SMTP 发送邮件.就是这样  _(:з」∠)_&lt;/p&gt;
+
+&lt;div class="section" id="smtp"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;为啥要搞 SMTP 发信?&lt;/a&gt;&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;邮件功能在重置密码和通知时非常重要 (･ω･)&lt;/li&gt;
+&lt;li&gt;听说用 PHP 的 mail() 函数发送的邮件容易被当成垃圾邮件(然而咱压根没收到😂&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以才要搞 SMTP 呗~&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id1"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;安装需要的库&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;PHP 7 木有 pear 啦 (Arch Linux 官方源在 PHP7 升级后从官方源里移除了 &lt;span class="tag"&gt;php-pear&lt;/span&gt; )~,所以通过 composer 安装呗~&lt;/p&gt;
+&lt;p&gt;首先安装上 composer ,如果汝在用 Arch Linux 的话:&lt;/p&gt;
+&lt;blockquote&gt;
+sudo pacman -S php-composer&lt;/blockquote&gt;
+&lt;p&gt;其它系统的话,可以参照 &lt;a class="reference external" href="https://getcomposer.org/download/"&gt;Composer 官方的安装指南&lt;/a&gt; 进行安装呗~&lt;/p&gt;
+&lt;p&gt;在安装上 composer 以后安装 mail 和 smtp 包:&lt;/p&gt;
+&lt;blockquote&gt;
+composer require --update-no-dev pear/mail pear/net_smtp&lt;/blockquote&gt;
+&lt;p&gt;如果汝像咱一样安装的是 alpha 版(从 Git 下载的,去掉 &lt;span class="tag"&gt;--update-no-dev&lt;/span&gt; 选项.&lt;/p&gt;
+&lt;p&gt;还在用 PHP 5? 用 pear 安装:&lt;/p&gt;
+&lt;blockquote&gt;
+sudo pear install Mail Net_SMTP&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="section" id="wgsmtp-wgpasswordsender"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;设置 $wgSMTP 和 $wgPasswordSender 变量&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://www.mediawiki.org/wiki/Manual:$wgSMTP"&gt;MediaWiki.org 的指南&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="tag"&gt;$wgSMTP&lt;/span&gt; 大概像这样:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;$wgSMTP = array(&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'host'     =&amp;gt; "mail.example.com", // SMTP 服务器的地址 (或IP).如果使用了SSL,记得加上 ssl://&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'IDHost'   =&amp;gt; "example.com",      // 汝的域名,可选.如果不设置的话会设置成 $wgServer 的值.&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'port'     =&amp;gt; 25,                 // 端口(一般是25,SSL是465,StartTLS是587)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'auth'     =&amp;gt; true,               // 是否需要 SMTP 认证 (多半都需要呗~)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'username' =&amp;gt; "my_user_name",     // SMTP 认证的用户名.&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'password' =&amp;gt; "my_password"       // SMTP 认证的密码.&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;举个栗子  _(:з」∠)_ :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;$wgSMTP = array(&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'host'     =&amp;gt; "smtp.yandex.com", // 咱用的是 Yandex 的 Domain mail~&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'port'     =&amp;gt; 587,                 // StartTLS =w=&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'auth'     =&amp;gt; true,               // 需要登录 😂&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'username' =&amp;gt; "sender@yoitsu.moe",     // 用户名啦~&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;    'password' =&amp;gt; "foo"       // 密码啦~&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="x"&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;有些时候 SMTP 服务器要求外发邮件地址中的发件人和实际一致 (例如 Yandex ),这时需要设置 &lt;span class="tag"&gt;$wgPasswordSender&lt;/span&gt; 变量:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;$wgPasswordSender="sender@yoitsu.moe";&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;修改完以后用某个功能(例如修改邮件地址测试一下呗~):&lt;/p&gt;
+&lt;img alt="Parsoid的工作原理" class="img-responsive" src="images/smtptest.png"/&gt;
+&lt;/div&gt;
+</summary><category term="mediawiki"></category><category term="notes"></category></entry><entry><title>在 Arch Linux 上安装 Ghost 博客系统</title><link href="https://blog.yoitsu.moe/ghost_blog_archlinux.html" rel="alternate"></link><updated>2016-02-14T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-02-14:ghost_blog_archlinux.html</id><summary type="html">
 &lt;p&gt;先祝大家 &lt;ruby&gt;&lt;rb&gt;情人节&lt;/rb&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;烧烤节&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt; 快乐~ (2333&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;为了让旅伴发发牢骚,就装了一个 Ghost 博客系统咯~&lt;/del&gt;&lt;/p&gt;
 
@@ -20,7 +74,7 @@
 &lt;p class="compound-last"&gt;这里(和咱在 AUR 的 ghost 软件包里)用到了一个环境变量 &lt;span class="tag"&gt;GHOST_NODE_VERSION_CHECK=false&lt;/span&gt; 来不让 ghost 来检查 node 的版本,在 Node.js 下一个 LTS 版本(6.x)出来前先凑合一下呗~&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;于是先安装 &lt;a class="reference external" href="https://www.archlinux.org/packages/?name=nodejs"&gt;nodejs&lt;/a&gt; 和 &lt;a class="reference external" href="https://www.archlinux.org/packages/?name=npm"&gt;npm&lt;/a&gt; :&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo pacman -S nodejs npm&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo pacman -S nodejs npm&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如果汝认为自己的博客会做的比较大,需要一个数据库系统的话,咱推荐 &lt;a class="reference external" href="https://www.archlinux.org/packages/?name=mariadb"&gt;mariadb&lt;/a&gt; 呗~&lt;/p&gt;
 &lt;/div&gt;
@@ -39,7 +93,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;通过下面的命令以 ghost 用户运行一条命令:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# su 后面的 -s 参数可以制定切换用户后运行的 shell ,&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# su 后面的 -s 参数可以制定切换用户后运行的 shell ,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# -c 参数可以指定要运行的命令.&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;sudo su ghost -s /bin/bash -c &lt;span class="s2"&gt;"此处是汝的命令,记得带上引号"&lt;/span&gt;&lt;/span&gt;
@@ -51,13 +105,13 @@
 &lt;div class="section" id="id2"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;通过源代码安装 Ghost&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;首先把 ghost 的源代码下载下来并解开:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 这时最新的版本是0.7.6.&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 这时最新的版本是0.7.6.&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;wget https://ghost.org/zip/ghost-0.7.6.zip&lt;/span&gt;
 &lt;span class="code-line"&gt;unzip ghost-0.7.6.zip&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ghost-0.7.6&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;接下来通过 npm 安装需要的依赖,因为上面的提示嘛~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nv"&gt;GHOST_NODE_VERSION_CHECK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt; npm install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;GHOST_NODE_VERSION_CHECK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt; npm install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id3"&gt;
@@ -65,12 +119,12 @@
 &lt;p&gt;如果是通过 AUR 安装的,配置文件位于 &lt;span class="tag"&gt;/srv/ghost/config.js&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;如果是通过源代码安装的,从目录中先复制一份样例出来呗~&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;cp config.example.js config.js&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cp config.example.js config.js&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这里的例子是修改 &lt;span class="tag"&gt;Production&lt;/span&gt; 一节
 (这一节是汝的 Ghost 实际运行时的配置,下面的 Development 一节是开发时的配置)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nx"&gt;config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="c1"&gt;// ### Production&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="c1"&gt;// When running Ghost in the wild, use the production environment.&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="c1"&gt;// Configure your URL and mail settings here&lt;/span&gt;&lt;/span&gt;
@@ -98,11 +152,11 @@
 &lt;div class="section" id="id4"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;如果汝的 Ghost 和汝进行操作的电脑是同一个&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;通过下面的命令来测试汝的 Ghost 呗~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /path/to/ghost&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /path/to/ghost&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nv"&gt;GHOST_NODE_VERSION_CHECK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如果汝是从 AUR 安装的,可以通过 Systemd 来启动&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo systemctl start ghost&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo systemctl start ghost&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;现在打开 &lt;span class="tag"&gt;http://localhost:2368&lt;/span&gt; 看看效果呗~&lt;/p&gt;
 &lt;/div&gt;
@@ -111,7 +165,7 @@
 &lt;p&gt;比如汝在 VPS 上安装了 Ghost,就需要用一个 web服务器通过反向代理来访问呗~&lt;/p&gt;
 &lt;p&gt;首先修改 &lt;span class="tag"&gt;config.js&lt;/span&gt; 把 Production 中的 URL 换成汝的网址啦~&lt;/p&gt;
 &lt;p&gt;如果汝在用 Nginx, 把这一段增加到汝的 &lt;span class="tag"&gt;server&lt;/span&gt; 块中:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;location / {&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;location / {&lt;/span&gt;
 &lt;span class="code-line"&gt;      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;
 &lt;span class="code-line"&gt;      proxy_set_header Host $http_host;&lt;/span&gt;
 &lt;span class="code-line"&gt;      proxy_set_header X-Forwarded-Proto $scheme;&lt;/span&gt;
@@ -120,7 +174,7 @@
 &lt;span class="code-line"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如果汝在用 Apache, 把下面一段添加到汝的 httpd.conf 的 vhost 段中(首先要启用 mod_proxy 模块~):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;ProxyPass / http://localhost:2368/&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;ProxyPass / http://localhost:2368/&lt;/span&gt;
 &lt;span class="code-line"&gt;ProxyPassReverse / http://localhost:2368/&lt;/span&gt;
 &lt;span class="code-line"&gt;ProxyHTMLURLMap http://localhost:2368/ /&lt;/span&gt;
 &lt;span class="code-line"&gt;RequestHeader set X-Forwarded-For $proxy_add_x_forwarded_for&lt;/span&gt;
@@ -169,7 +223,7 @@
 &lt;p&gt;因为 AUR 现在用 Git 提交,所以没有一个 SSH 密钥是不行的呐~,
 建议为 AUR 生成一个新的证书,这样一旦发现问题就可以直接吊销诶(不要把鸡蛋放在一个篮子里~)&lt;/p&gt;
 &lt;p&gt;可以用 &lt;span class="tag"&gt;ssh-keygen&lt;/span&gt; 命令生成新的密钥:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;$ ssh-keygen&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;$ ssh-keygen&lt;/span&gt;
 &lt;span class="code-line"&gt;Generating public/private rsa key pair.&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 为汝的公钥和私钥决定一个存放的位置呗~&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;Enter file in which to save the key &lt;span class="o"&gt;(&lt;/span&gt;/home/horo/.ssh/id_rsa&lt;span class="o"&gt;)&lt;/span&gt;:&lt;/span&gt;
@@ -200,7 +254,7 @@
 &lt;p&gt;然后在 AUR Web 界面上点击 "My Account (我的账户)" ,把汝的公钥里的内容填进 "SSH Public Key:" 一节中,保存.&lt;/p&gt;
 &lt;p&gt;接下来编辑 &lt;span class="tag"&gt;~/.ssh/config&lt;/span&gt; ,
 告诉ssh命令连接到 &lt;span class="tag"&gt;aur.archlinux.org&lt;/span&gt; 用汝新创建的密钥呗~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;Host aur.archlinux.org&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;Host aur.archlinux.org&lt;/span&gt;
 &lt;span class="code-line"&gt;    IdentityFile ~/.ssh/example &lt;span class="c1"&gt;# 记得用汝自己的私钥路径&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    User foo &lt;span class="c1"&gt;# 记得换成汝自己的用户名.&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -208,7 +262,7 @@
 &lt;div class="section" id="id3"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;第三步:提交软件包到 AUR&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;用下面的命令创建一个新的仓库:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 用汝希望的名称替换foobar.&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 用汝希望的名称替换foobar.&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 从不存在的仓库中克隆或推送，将会自动创建此仓库。&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git clone ssh://aur@aur.archlinux.org/foobar.git&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -220,7 +274,7 @@
 &lt;p&gt;每一次提交都要包含最新的 &lt;span class="tag"&gt;.SRCINFO&lt;/span&gt; 文件!不然服务器会 &lt;del&gt;傲娇的&lt;/del&gt; 拒绝汝的提交呐~&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;然后普通的使用 Git 来提交呗~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 还是老话,不要照抄,按汝实际的状况来.&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 还是老话,不要照抄,按汝实际的状况来.&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git add .&lt;/span&gt;
 &lt;span class="code-line"&gt;git commit -m &lt;span class="s2"&gt;"Example"&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git push&lt;/span&gt;
@@ -252,10 +306,10 @@
 &lt;div class="section" id="id2"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id16"&gt;第一步:以普通的方式安装软件&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;看看 &lt;span class="tag"&gt;base-devel&lt;/span&gt; 装了没?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo pacman -S base-devel --needed&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo pacman -S base-devel --needed&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;从上游把软件的源代码下载下来,按照上游的文档编译和安装(典型的例子像这样):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;./configure&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;./configure&lt;/span&gt;
 &lt;span class="code-line"&gt;make&lt;/span&gt;
 &lt;span class="code-line"&gt;make install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -311,7 +365,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;如果汝的软件包啥都不用编译,这个函数可以不用.&lt;/p&gt;
 &lt;p&gt;对于普通的configure-make-make install三部曲来说,build()可以写成这样(汝来决定那些注释的去留呗~)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 切换到源码目录&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 切换到源码目录&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;$&lt;span class="s2"&gt;srcdir/&lt;/span&gt;$&lt;span class="s2"&gt;pkgname-&lt;/span&gt;$&lt;span class="s2"&gt;pkgver"&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# configure 和 make ,按照Arch Linux的规范,软件包都装在/usr目录&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 汝也许要按照上游的指示添加别的参数呐~&lt;/span&gt;&lt;/span&gt;
@@ -329,7 +383,7 @@
 如果汝需要手动把文件放到根目录下,那么在这里你需要把文件放在pkg下相同的文件层级结构中诶~.
 比如,把一个文件安装到/usr/bin,那么在伪root环境中对应的路径为$pkgdir/usr/bin.&lt;/p&gt;
 &lt;p&gt;对于普通的configure-make-make install三部曲来说,package()可以写成这样:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;make &lt;span class="nv"&gt;DESTDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;$&lt;span class="s2"&gt;pkgdir/"&lt;/span&gt; install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;make &lt;span class="nv"&gt;DESTDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;$&lt;span class="s2"&gt;pkgdir/"&lt;/span&gt; install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;在一些很罕见的情况下,软件只有安装在单一目录下时才能运行.在这种情况下汝还是老老实实把它安装到$pkgdir/opt下吧.&lt;/p&gt;
 &lt;p&gt;通常,软件在安装过程中会在pkg目录下先创建一系列子目录.如果没有的话,makepkg会报错,记得先在build()函数中提前手动创建这些目录哟.&lt;/p&gt;
@@ -351,7 +405,7 @@
 &lt;/ul&gt;
 &lt;p&gt;这些函数运行的也是Bash脚本哦~&lt;/p&gt;
 &lt;p&gt;然后在PKGBUILD中把 &lt;span class="tag"&gt;install&lt;/span&gt; 变量指向汝的 &lt;span class="tag"&gt;.install&lt;/span&gt; 文件的位置呗~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 一般来说,.install的文件名应该和软件包名一致.&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 一般来说,.install的文件名应该和软件包名一致.&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nv"&gt;install&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'foo.install'&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -359,7 +413,7 @@
 &lt;h3&gt;&lt;a class="toc-backref" href="#id23"&gt;需要用到配置文件?&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;如果汝的软件包要有些用户编写的配置文件,记得添加到backups变量里.&lt;/p&gt;
 &lt;p&gt;例如如果汝的配置文件是 &lt;span class="tag"&gt;/etc/foo&lt;/span&gt; :&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nv"&gt;backup&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;etc/foo&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;backup&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;etc/foo&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;记得是相对于 &lt;span class="tag"&gt;/&lt;/span&gt; 的路径.&lt;/p&gt;
 &lt;p&gt;这样pacman就会在软件包升级时提醒用户合并新的和旧的文件,在卸载软件包时这些文件会被保留(除非用了 &lt;span class="tag"&gt;pacman -Rn&lt;/span&gt; )&lt;/p&gt;
@@ -380,7 +434,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;一组不影响软件主要功能,但能提供额外特性的软件包.应该简要说明每个包所能提供的额外功能.有些可选依赖如果不安装,软件包的个别程序可能无法正常使用.&lt;/p&gt;
 &lt;p&gt;optdepends可以这样写:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nv"&gt;optdepends&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;optdepends&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="s1"&gt;'foo: some description'&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -406,14 +460,14 @@
 &lt;h3&gt;&lt;a class="toc-backref" href="#id25"&gt;散列值:安全第一&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;记得加上文件的散列值,makepkg会在编译前检查文件的散列值(和PKGBUILD中的散列值比较),一定程度上确保源代码不会篡改.&lt;/p&gt;
 &lt;p&gt;写法大概像这样:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="o"&gt;{&lt;/span&gt;这里是汝选择的散列算法&lt;span class="o"&gt;}=(&lt;/span&gt;&lt;span class="s1"&gt;'{散列值}'&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;这里是汝选择的散列算法&lt;span class="o"&gt;}=(&lt;/span&gt;&lt;span class="s1"&gt;'{散列值}'&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;散列值的顺序取决于汝的sources变量,例如如果汝选择sha512sum的话:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nv"&gt;sha512sums&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="s2"&gt;"....."&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;sha512sums&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="s2"&gt;"....."&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;建议使用sha256sums(或更高的位数),md5已经发现有 &lt;a class="reference external" href="https://en.wikipedia.org/wiki/MD5"&gt;碰撞漏洞&lt;/a&gt; ,sha1已经发现Preimage漏洞(已知校验和的情况下，可以生成一段字符串产生相同的校验和,)&lt;/p&gt;
 &lt;p&gt;如果汝的源代码来自SCCS的话,因为文件在不断变化,所以需要让makepkg跳过散列值检查:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nv"&gt;sha512sums&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="s2"&gt;"SKIP"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;sha512sums&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="s2"&gt;"SKIP"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;记得在修改某个文件以后用新的散列值这个变量呗~&lt;/p&gt;
 &lt;/div&gt;
@@ -431,7 +485,7 @@
 &lt;p&gt;如果包看起来是正确的，那汝的工作就完成了。但是如果汝打算发布这个包或PKGBUILD，还是需要确认确认再确认包的依赖关系。&lt;/p&gt;
 &lt;p&gt;同样要确保安装的软件确实很完美的运行！就算汝释放了一个包括所有必需文件的包，但是由于一些配置选项使它不能很好的工作，这真是让人恼火。&lt;/p&gt;
 &lt;p&gt;可以用namcap帮助检查软件包的依赖是否正确:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 检查PKGBUILD文件&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 检查PKGBUILD文件&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;$ namcap PKGBUILD&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 检查某个软件包&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;$ namcap &amp;lt;package file name&amp;gt;.pkg.tar.xz&lt;/span&gt;
@@ -449,7 +503,7 @@
 &lt;div class="section" id="id14"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id27"&gt;生成源码包&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;用下面的命令生成一个源码包:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;makepkg --source&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;makepkg --source&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这会在当前目录生成一个 &lt;span class="tag"&gt;.src.tar.gz&lt;/span&gt; 文件,汝可以在上传到AUR前先分享给其他人帮汝检查一下呗~&lt;/p&gt;
 &lt;p&gt;到这里汝应该完成了一个软件包了呗~,下次咱会告诉汝怎么把汝创建的软件包提交到AUR上呗~&lt;/p&gt;
@@ -457,7 +511,7 @@
 </summary><category term="Arch Linux"></category><category term="AUR"></category><category term="Guides"></category></entry><entry><title>AUR 纯萌新向入门教学(1)-从AUR安装软件包</title><link href="https://blog.yoitsu.moe/aur_fresh_guidebook.html" rel="alternate"></link><updated>2016-02-01T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-29:aur_fresh_guidebook.html</id><summary type="html">
 &lt;p&gt;&lt;del&gt;没玩过AUR好意思说自己是Arch Linux用户？&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;尽管Arch Linux官方软件仓库里的软件包够多了,连MediaWiki或者OwnCloud一类的用 &lt;del&gt;最好的编程语言&lt;/del&gt; PHP写的应用都有对应的软件包啦~( &lt;del&gt;TU:反正闲着也没事干,打个包呗~&lt;/del&gt; ), 但是汝是不是有时试图pacman的时候:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;error: target not found: &lt;span class="o"&gt;{&lt;/span&gt; 此处用汝希望安装的软件包名称替换呗~ &lt;span class="o"&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;error: target not found: &lt;span class="o"&gt;{&lt;/span&gt; 此处用汝希望安装的软件包名称替换呗~ &lt;span class="o"&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这时咋办咧?就该AUR上场了呗~&lt;/p&gt;
 
@@ -472,7 +526,7 @@
 &lt;div class="section" id="aur"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;安装AUR里的软件包前要做好哪些准备咧?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;其实只有一项,安装 &lt;span class="tag"&gt;base-devel&lt;/span&gt; 软件包组,内含编译软件包所需要的工具.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo pacman -S base-devel&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo pacman -S base-devel&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;对于汝个人而言,需要 &lt;strong&gt;会使用&lt;/strong&gt; 终端和 &lt;strong&gt;看得懂bash脚本&lt;/strong&gt; (因为PKGBUILD其实就是bash脚本啦~,为了安全起见建议在安装时检查PKGBUILD呗~)&lt;/p&gt;
 &lt;p&gt;下面是一句没啥用处的警告:&lt;/p&gt;
@@ -497,7 +551,7 @@
 &lt;p&gt;点击右侧的"Download snapshot"就可以下载到软件包的快照.(比如pypi-pip.tar.gz)
 一般包含PKGBUILD,有些软件包中可能包含其它文件(例如Systemd 单元啥的)
 可以用tar来解开它呗~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 如果汝不知道tar 怎么用的话,man一下呗~ (man tar)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 如果汝不知道tar 怎么用的话,man一下呗~ (man tar)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;tar xzf pypi-pip.tar.gz&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -517,7 +571,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 如有疑问，可以到论坛或邮件列表询问。&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;在 &lt;ruby&gt;&lt;rb&gt;仔细&lt;/rb&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;几乎没有&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt; 检查完所有文件以后,运行makepkg来创建并安装软件包呗~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 下面的三个选项分别是&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 下面的三个选项分别是&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# (i) 在编译完成后安装,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# (s) 安装编译时需要的依赖关系,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# (r) 在安装完成后删除只在编译时需要的软件包&lt;/span&gt;&lt;/span&gt;
@@ -526,7 +580,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;span class="code-line"&gt;makepkg -rsi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;不过经常会出现这样的状况:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 正在创建软件包：pypy-pip 8.0.2-1 &lt;span class="o"&gt;(&lt;/span&gt;2016年 01月 30日 星期六 15:18:38 CST&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 正在创建软件包：pypy-pip 8.0.2-1 &lt;span class="o"&gt;(&lt;/span&gt;2016年 01月 30日 星期六 15:18:38 CST&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 正在检查运行时依赖关系...&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 正在检查编译时依赖关系&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 正在安装缺少的依赖关系...&lt;/span&gt;
@@ -536,7 +590,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这表示这个软件包依赖的某些包也在AUR里,汝只好先把它们装上呗~,或者用个AUR Helper(一会儿咱会介绍一个AUR Helper)&lt;/p&gt;
 &lt;p&gt;在安装完需要的依赖以后再运行下makepkg,大概像这样~:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 正在创建软件包：pypy-pip 8.0.2-1 &lt;span class="o"&gt;(&lt;/span&gt;2016年 01月 30日 星期六 15:27:02 CST&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 正在创建软件包：pypy-pip 8.0.2-1 &lt;span class="o"&gt;(&lt;/span&gt;2016年 01月 30日 星期六 15:27:02 CST&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 正在检查运行时依赖关系...&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 正在检查编译时依赖关系&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="o"&gt;==&lt;/span&gt;&amp;gt; 获取源代码......&lt;/span&gt;
@@ -573,7 +627,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;p&gt;然而官方不做并不代表没有😂😂,有一个叫做yaourt的工具在Archer间口口相传.yaourt就是一个AUR helper.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://aur.archlinux.org/packages/yaourt/"&gt;yaourt on AUR&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;先用上面的方法安装好yaourt,然后像用pacman一样运行yaourt就好(除了不要以root用户运行)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;yaourt -S foo&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;yaourt -S foo&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;yaourt会帮汝下载PKGBUILD,安装需要的依赖,运行makepkg等一系列操作哟~&lt;/p&gt;
 &lt;div class="tag warning fg-white compound"&gt;
@@ -771,17 +825,17 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;安装Pelican然后进行初始设置&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;在咱写这篇文章时, &lt;a class="reference external" href="/links.html#farsserfc"&gt;farsserfc&lt;/a&gt; 已经把Pelican打好包放进Arch Linux 官方软件仓库啦好棒~&lt;/p&gt;
 &lt;p&gt;Arch Linux用户可以这样安装:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo pacman -S pelican&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo pacman -S pelican&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;其它操作系统可以通过pip安装:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo pip install pelican&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo pip install pelican&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;接着运行设置程序建立一个工作文件夹:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;pelican-quickstart&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;pelican-quickstart&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;接着开始挖坑呗~,用 &lt;a class="reference external" href="http://docutils.sourceforge.net/rst.html"&gt;reStructuredText&lt;/a&gt; 或 &lt;a class="reference external" href="http://wowubuntu.com/markdown/"&gt;Markdown&lt;/a&gt; 开始写文章然后放到 &lt;span class="tag"&gt;contents&lt;/span&gt; 文件夹里,像这样:&lt;/p&gt;
 &lt;p&gt;(reStructuredText)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="gh"&gt;这里是标题&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;这里是标题&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="gh"&gt;===========================================&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nc"&gt;:lang:&lt;/span&gt; &lt;span class="nf"&gt;这里填语言&lt;/span&gt;&lt;/span&gt;
@@ -791,14 +845,14 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;span class="code-line"&gt;这里是内容&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;(Markdown)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;Title: 这里是标题&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;Title: 这里是标题&lt;/span&gt;
 &lt;span class="code-line"&gt;date: 写文章的日期&lt;/span&gt;
 &lt;span class="code-line"&gt;Category: 分类&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;这里是内容&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后运行一个命令来测试&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;make html &lt;span class="c1"&gt;# 生成html&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;make html &lt;span class="c1"&gt;# 生成html&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;make serve &lt;span class="c1"&gt;# 在127.0.0.1:8000 运行一个测试服务器.&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后打开浏览器输入 &lt;span class="tag"&gt;localhost:8000&lt;/span&gt; ，你就能看到一个初生的很 &lt;ruby&gt;&lt;rb&gt;简洁&lt;/rb&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;难看&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt; 的博客了，不过不要担心，它是只丑小鸭，很快就会像天鹅般美丽(真的么?)。&lt;/p&gt;
@@ -845,7 +899,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;span class="code-line"&gt;└──&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;然后记得修改pelican.conf告诉Pelican那些页面是模板那些页面是直接生成的呐~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# DIRECT_TEMPLATES 告诉Pelican哪些页面是直接用来生成特定页面的......&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# DIRECT_TEMPLATES 告诉Pelican哪些页面是直接用来生成特定页面的......&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="n"&gt;DIRECT_TEMPLATES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s1"&gt;'index'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'archives'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'search'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;接下来开始调教主题呗~,直接给出官方的教程呗~ &lt;a class="reference external" href="http://docs.getpelican.com/en/3.6.3/themes.html"&gt;Pelican doc:Creating Themes&lt;/a&gt;&lt;/p&gt;
@@ -856,7 +910,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;装插件&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;作为一套博客系统,Pelican自然有很多的插件可以安装呐~,不信的话去看看`pelican-plugins里有多少插件呗~ &amp;lt;&lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins"&gt;https://github.com/getpelican/pelican-plugins&lt;/a&gt;&amp;gt;`_&lt;/p&gt;
 &lt;p&gt;咱启用的插件有这些:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"better_codeblock_line_numbering"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"better_codeblock_line_numbering"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'tipue_search'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'neighbors'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;           &lt;span class="s1"&gt;'series'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
@@ -874,7 +928,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;实现动态格言&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;动态格言的实现来自 &lt;a class="reference external" href="/links.html#fiveyellowmice"&gt;fiveyellowmice&lt;/a&gt; 啦~(咱不是JavaScript专家呐~,就不谈具体的实现了呗~)&lt;/p&gt;
 &lt;p&gt;首先是一段修改某一个元素的类的JavaScript(当然还需要 &lt;a class="reference external" href="http://julian.com/research/velocity/"&gt;velocity&lt;/a&gt; ):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"/theme/js/velocity.min.js"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"/theme/js/velocity.min.js"&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;addEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"DOMContentLoaded"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
@@ -894,7 +948,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后新建一个 Github gist 填上动态格言,像这样(大括号里的内容可以添加多个):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;        &lt;span class="nt"&gt;"content"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;"example"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;        &lt;span class="nt"&gt;"author"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s2"&gt;"someone"&lt;/span&gt;&lt;/span&gt;
@@ -902,7 +956,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;span class="code-line"&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;再写个JavaScript来从JSON中提取格言然后填到html里:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;            &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;addEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"DOMContentLoaded"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;                    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;".site-description"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;after&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;lt;blockquote&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"id"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"fortune"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;css&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"display"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"none"&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;                    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;".site-description"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;after&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;lt;blockquote&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"id"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"fortune"&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;css&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"line-height"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"1.4rem"&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;/span&gt;
@@ -927,7 +981,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;div class="section" id="id4"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;发布&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;通过几条命令可以发布~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;make publish&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;make publish&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后用git提交到Github就好......&lt;/p&gt;
 &lt;p&gt;好吧这就是咱的全过程啦(雾)&lt;/p&gt;
@@ -957,13 +1011,13 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;p&gt;上游的指南在这(好好学英语呗~) &lt;a class="reference external" href="https://www.mediawiki.org/wiki/Parsoid/Setup"&gt;https://www.mediawiki.org/wiki/Parsoid/Setup&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu和Debian系统的话直接添加MediaWiki.org的软件源然后通过apt安装就好了啦~&lt;/p&gt;
 &lt;p&gt;首先添加MediaWiki.org的GPG公钥:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo apt-key advanced --keyserver keys.gnupg.net --recv-keys 664C383A3566A3481B942F007A322AC6E84AFDD2&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo apt-key advanced --keyserver keys.gnupg.net --recv-keys 664C383A3566A3481B942F007A322AC6E84AFDD2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后添加Parsoid源:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"deb https://releases.wikimedia.org/debian jessie-mediawiki main"&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/parsoid.list&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"deb https://releases.wikimedia.org/debian jessie-mediawiki main"&lt;/span&gt; &amp;gt; /etc/apt/sources.list.d/parsoid.list&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;安装需要的软件包:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt-get install curl parsoid&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt-get install curl parsoid&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后看下下面一节的内容修改一下配置文件呗~&lt;/p&gt;
 &lt;/div&gt;
@@ -974,13 +1028,13 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 具体的安装方法为了避免降低正交性 &lt;del&gt;(其实是系统太多不好写......)&lt;/del&gt;,就麻烦汝自己去找了呐~&lt;/p&gt;
 &lt;blockquote&gt;
 「呵。咱是贤狼，不是神呐。如果汝开始会期待起咱能够泄露天机给汝，那咱就得从汝眼前消失了呗。」&lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;node --version &lt;span class="c1"&gt;# 如果是Debian或Ubuntu ,输入 nodejs --version&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;node --version &lt;span class="c1"&gt;# 如果是Debian或Ubuntu ,输入 nodejs --version&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后用git克隆版本库呗~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;用npm安装上相应的依赖:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;npm install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;npm install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;然后看下面一节的内容修改一下配置文件呗~&lt;/p&gt;
 &lt;/div&gt;
@@ -989,11 +1043,11 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;blockquote&gt;
 &lt;p&gt;如果是通过软件源安装的,配置文件位于 &lt;span class="tag"&gt;/etc/mediawiki/parsoid/settings.js&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;如果是通过git下载的,从parsoid目录中先复制一份样例出来呗~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;cp localsettings.js.example localsettings.js&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cp localsettings.js.example localsettings.js&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;打开配置文件,找到这一段内容,然后改它~:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nx"&gt;parsoidConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setMwApi&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;parsoidConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setMwApi&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="c1"&gt;// The "prefix" is the name given to this wiki configuration in the&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="c1"&gt;// (deprecated) Parsoid v1 API.&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    &lt;span class="nx"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'localhost'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;// optional&lt;/span&gt;&lt;/span&gt;
@@ -1013,7 +1067,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;h2&gt;&lt;a class="toc-backref" href="#id15"&gt;启动服务&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="section" id="id7"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id16"&gt;从软件源安装的?&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;sudo systemctl start parsoid &lt;span class="c1"&gt;# Debian Jessie ,用Systemd启动&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo systemctl start parsoid &lt;span class="c1"&gt;# Debian Jessie ,用Systemd启动&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;sudo service parsoid start &lt;span class="c1"&gt;# Debian Wheezy 或Ubuntu ,用init.d脚本启动.&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1021,10 +1075,10 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;/div&gt;
 &lt;div class="section" id="git"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id17"&gt;用git安装的?&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;npm start&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;npm start&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;或者:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;node bin/server.js&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;node bin/server.js&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;可以用screen一类的工具让Parsoid在后台运行~&lt;/p&gt;
 &lt;p&gt;如果汝不是通过远程访问执行的命令,可以在浏览器上打开 &lt;span class="tag"&gt;http://localhost:8000&lt;/span&gt; 来进行测试.试着加载 &lt;span class="tag"&gt;http://localhost:8000/汝设置的前缀/汝的wiki上的一个页面&lt;/span&gt; 试试呗~&lt;/p&gt;
@@ -1032,7 +1086,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;div class="section" id="id8"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id18"&gt;修改监听地址便于远程测试&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;改这一段:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;// Allow override of port/interface:&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Allow override of port/interface:&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//parsoidConfig.serverPort = 8142;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;//parsoidConfig.serverInterface = '127.0.0.1';&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1044,7 +1098,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;p&gt;上游的指南在这: &lt;a class="reference external" href="https://www.mediawiki.org/wiki/Extension:VisualEditor"&gt;https://www.mediawiki.org/wiki/Extension:VisualEditor&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;首先从 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/Special:ExtensionDistributor/VisualEditor"&gt;这里&lt;/a&gt; 获得扩展然后上传到汝的wiki上的extensions目录呗~&lt;/p&gt;
 &lt;p&gt;然后修改汝的LocalSettings.php:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;require_once "$IP/extensions/VisualEditor/VisualEditor.php";&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;require_once "$IP/extensions/VisualEditor/VisualEditor.php";&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;// 反注释下一行来默认启用可视化编辑器&lt;/span&gt;
 &lt;span class="code-line"&gt;#$wgDefaultUserOptions['visualeditor-enable'] = 1;&lt;/span&gt;

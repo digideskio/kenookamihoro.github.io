@@ -181,7 +181,7 @@
 <p>因为 AUR 现在用 Git 提交,所以没有一个 SSH 密钥是不行的呐~,
 建议为 AUR 生成一个新的证书,这样一旦发现问题就可以直接吊销诶(不要把鸡蛋放在一个篮子里~)</p>
 <p>可以用 <span class="tag">ssh-keygen</span> 命令生成新的密钥:</p>
-<div class="highlight"><pre><span class="code-line">$ ssh-keygen</span>
+<div class="highlight"><pre><span class="code-line"><span></span>$ ssh-keygen</span>
 <span class="code-line">Generating public/private rsa key pair.</span>
 <span class="code-line"><span class="c1"># 为汝的公钥和私钥决定一个存放的位置呗~</span></span>
 <span class="code-line">Enter file in which to save the key <span class="o">(</span>/home/horo/.ssh/id_rsa<span class="o">)</span>:</span>
@@ -212,7 +212,7 @@
 <p>然后在 AUR Web 界面上点击 "My Account (我的账户)" ,把汝的公钥里的内容填进 "SSH Public Key:" 一节中,保存.</p>
 <p>接下来编辑 <span class="tag">~/.ssh/config</span> ,
 告诉ssh命令连接到 <span class="tag">aur.archlinux.org</span> 用汝新创建的密钥呗~</p>
-<div class="highlight"><pre><span class="code-line">Host aur.archlinux.org</span>
+<div class="highlight"><pre><span class="code-line"><span></span>Host aur.archlinux.org</span>
 <span class="code-line">    IdentityFile ~/.ssh/example <span class="c1"># 记得用汝自己的私钥路径</span></span>
 <span class="code-line">    User foo <span class="c1"># 记得换成汝自己的用户名.</span></span>
 </pre></div>
@@ -220,7 +220,7 @@
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id8">第三步:提交软件包到 AUR</a></h2>
 <p>用下面的命令创建一个新的仓库:</p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># 用汝希望的名称替换foobar.</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 用汝希望的名称替换foobar.</span></span>
 <span class="code-line"><span class="c1"># 从不存在的仓库中克隆或推送，将会自动创建此仓库。</span></span>
 <span class="code-line">git clone ssh://aur@aur.archlinux.org/foobar.git</span>
 </pre></div>
@@ -232,7 +232,7 @@
 <p>每一次提交都要包含最新的 <span class="tag">.SRCINFO</span> 文件!不然服务器会 <del>傲娇的</del> 拒绝汝的提交呐~</p>
 </div>
 <p>然后普通的使用 Git 来提交呗~</p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># 还是老话,不要照抄,按汝实际的状况来.</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 还是老话,不要照抄,按汝实际的状况来.</span></span>
 <span class="code-line">git add .</span>
 <span class="code-line">git commit -m <span class="s2">"Example"</span></span>
 <span class="code-line">git push</span>
@@ -424,29 +424,14 @@
                     </div>
                     <div class="content padding10">
                         <ul class="tagcloud">
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/python.html">
-                                    python
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
-                                    partner
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
-                                    blog
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
                                     </a>
                                 </li>
                                 <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/aur.html">
                                     AUR
-                                    </a>
-                                </li>
-                                <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
-                                    Guides
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -455,8 +440,18 @@
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
-                                    yoitsu
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
+                                    partner
                                     </a>
                                 </li>
                                 <li class="tag-1">
@@ -465,23 +460,28 @@
                                     </a>
                                 </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
-                                    mediawiki
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
                                     </a>
                                 </li>
-                                <li class="tag-2">
+                                <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/notes.html">
                                     notes
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
-                                    pelican
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
                                     </a>
                                 </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
-                                    中文社区
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
                                     </a>
                                 </li>
                         </ul>

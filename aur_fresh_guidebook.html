@@ -154,7 +154,7 @@
     
 <p><del>没玩过AUR好意思说自己是Arch Linux用户？</del></p>
 <p>尽管Arch Linux官方软件仓库里的软件包够多了,连MediaWiki或者OwnCloud一类的用 <del>最好的编程语言</del> PHP写的应用都有对应的软件包啦~( <del>TU:反正闲着也没事干,打个包呗~</del> ), 但是汝是不是有时试图pacman的时候:</p>
-<div class="highlight"><pre><span class="code-line">error: target not found: <span class="o">{</span> 此处用汝希望安装的软件包名称替换呗~ <span class="o">}</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span>error: target not found: <span class="o">{</span> 此处用汝希望安装的软件包名称替换呗~ <span class="o">}</span></span>
 </pre></div>
 <p>这时咋办咧?就该AUR上场了呗~</p>
 
@@ -169,7 +169,7 @@
 <div class="section" id="aur">
 <h2><a class="toc-backref" href="#id5">安装AUR里的软件包前要做好哪些准备咧?</a></h2>
 <p>其实只有一项,安装 <span class="tag">base-devel</span> 软件包组,内含编译软件包所需要的工具.</p>
-<div class="highlight"><pre><span class="code-line">sudo pacman -S base-devel</span>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo pacman -S base-devel</span>
 </pre></div>
 <p>对于汝个人而言,需要 <strong>会使用</strong> 终端和 <strong>看得懂bash脚本</strong> (因为PKGBUILD其实就是bash脚本啦~,为了安全起见建议在安装时检查PKGBUILD呗~)</p>
 <p>下面是一句没啥用处的警告:</p>
@@ -194,7 +194,7 @@
 <p>点击右侧的"Download snapshot"就可以下载到软件包的快照.(比如pypi-pip.tar.gz)
 一般包含PKGBUILD,有些软件包中可能包含其它文件(例如Systemd 单元啥的)
 可以用tar来解开它呗~</p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># 如果汝不知道tar 怎么用的话,man一下呗~ (man tar)</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 如果汝不知道tar 怎么用的话,man一下呗~ (man tar)</span></span>
 <span class="code-line">tar xzf pypi-pip.tar.gz</span>
 </pre></div>
 </div>
@@ -214,7 +214,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 如有疑问，可以到论坛或邮件列表询问。</p>
 </div>
 <p>在 <ruby><rb>仔细</rb><rp>(</rp><rt>几乎没有</rt><rp>)</rp></ruby> 检查完所有文件以后,运行makepkg来创建并安装软件包呗~</p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># 下面的三个选项分别是</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 下面的三个选项分别是</span></span>
 <span class="code-line"><span class="c1"># (i) 在编译完成后安装,</span></span>
 <span class="code-line"><span class="c1"># (s) 安装编译时需要的依赖关系,</span></span>
 <span class="code-line"><span class="c1"># (r) 在安装完成后删除只在编译时需要的软件包</span></span>
@@ -223,7 +223,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 <span class="code-line">makepkg -rsi</span>
 </pre></div>
 <p>不过经常会出现这样的状况:</p>
-<div class="highlight"><pre><span class="code-line"><span class="o">==</span>&gt; 正在创建软件包：pypy-pip 8.0.2-1 <span class="o">(</span>2016年 01月 30日 星期六 15:18:38 CST<span class="o">)</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="o">==</span>&gt; 正在创建软件包：pypy-pip 8.0.2-1 <span class="o">(</span>2016年 01月 30日 星期六 15:18:38 CST<span class="o">)</span></span>
 <span class="code-line"><span class="o">==</span>&gt; 正在检查运行时依赖关系...</span>
 <span class="code-line"><span class="o">==</span>&gt; 正在检查编译时依赖关系</span>
 <span class="code-line"><span class="o">==</span>&gt; 正在安装缺少的依赖关系...</span>
@@ -233,7 +233,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 </pre></div>
 <p>这表示这个软件包依赖的某些包也在AUR里,汝只好先把它们装上呗~,或者用个AUR Helper(一会儿咱会介绍一个AUR Helper)</p>
 <p>在安装完需要的依赖以后再运行下makepkg,大概像这样~:</p>
-<div class="highlight"><pre><span class="code-line"><span class="o">==</span>&gt; 正在创建软件包：pypy-pip 8.0.2-1 <span class="o">(</span>2016年 01月 30日 星期六 15:27:02 CST<span class="o">)</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="o">==</span>&gt; 正在创建软件包：pypy-pip 8.0.2-1 <span class="o">(</span>2016年 01月 30日 星期六 15:27:02 CST<span class="o">)</span></span>
 <span class="code-line"><span class="o">==</span>&gt; 正在检查运行时依赖关系...</span>
 <span class="code-line"><span class="o">==</span>&gt; 正在检查编译时依赖关系</span>
 <span class="code-line"><span class="o">==</span>&gt; 获取源代码......</span>
@@ -270,7 +270,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 <p>然而官方不做并不代表没有😂😂,有一个叫做yaourt的工具在Archer间口口相传.yaourt就是一个AUR helper.</p>
 <p><a class="reference external" href="https://aur.archlinux.org/packages/yaourt/">yaourt on AUR</a></p>
 <p>先用上面的方法安装好yaourt,然后像用pacman一样运行yaourt就好(除了不要以root用户运行)</p>
-<div class="highlight"><pre><span class="code-line">yaourt -S foo</span>
+<div class="highlight"><pre><span class="code-line"><span></span>yaourt -S foo</span>
 </pre></div>
 <p>yaourt会帮汝下载PKGBUILD,安装需要的依赖,运行makepkg等一系列操作哟~</p>
 <div class="tag warning fg-white compound">
@@ -482,29 +482,14 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
                     </div>
                     <div class="content padding10">
                         <ul class="tagcloud">
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/python.html">
-                                    python
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
-                                    partner
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
-                                    blog
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
                                     </a>
                                 </li>
                                 <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/aur.html">
                                     AUR
-                                    </a>
-                                </li>
-                                <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
-                                    Guides
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -513,8 +498,18 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
-                                    yoitsu
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
+                                    partner
                                     </a>
                                 </li>
                                 <li class="tag-1">
@@ -523,23 +518,28 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
                                     </a>
                                 </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
-                                    mediawiki
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
                                     </a>
                                 </li>
-                                <li class="tag-2">
+                                <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/notes.html">
                                     notes
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
-                                    pelican
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
                                     </a>
                                 </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
-                                    中文社区
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
                                     </a>
                                 </li>
                         </ul>

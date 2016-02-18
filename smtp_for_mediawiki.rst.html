@@ -1,0 +1,88 @@
+<div class="highlight"><pre><span></span><span class="gh">MediaWiki 设置SMTP发送邮件</span>
+<span class="gh">=========================================</span>
+
+<span class="nc">:slug:</span> <span class="nf">smtp_for_mediawiki</span>
+<span class="nc">:lang:</span> <span class="nf">zh</span>
+<span class="nc">:date:</span> <span class="nf">2016-02-18 15:20</span>
+<span class="nc">:tags:</span> <span class="nf">mediawiki,notes</span>
+<span class="nc">:series:</span> <span class="nf">MediaWiki</span>
+
+<span class="cp">.. PELICAN_BEGIN_SUMMARY</span>
+
+为 MediaWiki 设置通过 SMTP 发送邮件.就是这样  _(:з」∠)_ 
+
+<span class="cp">.. PELICAN_END_SUMMARY</span>
+
+<span class="p">..</span> <span class="ow">contents</span><span class="p">::</span>
+
+<span class="gh">为啥要搞 SMTP 发信?</span>
+<span class="gh">-----------------------------</span>
+
+<span class="m">*</span> 邮件功能在重置密码和通知时非常重要 (･ω･)
+
+<span class="m">*</span> 听说用 PHP 的 mail() 函数发送的邮件容易被当成垃圾邮件(然而咱压根没收到😂
+
+所以才要搞 SMTP 呗~
+
+<span class="gh">安装需要的库</span>
+<span class="gh">------------------------------</span>
+
+PHP 7 木有 pear 啦 (Arch Linux 官方源在 PHP7 升级后从官方源里移除了 <span class="na">:code:</span><span class="nv">`php-pear`</span> )~,所以通过 composer 安装呗~
+
+首先安装上 composer ,如果汝在用 Arch Linux 的话:
+
+    sudo pacman -S php-composer
+    
+其它系统的话,可以参照 <span class="s">`Composer 官方的安装指南 </span><span class="si">&lt;https://getcomposer.org/download/&gt;</span><span class="s">`_</span> 进行安装呗~
+
+在安装上 composer 以后安装 mail 和 smtp 包:
+
+    composer require --update-no-dev pear/mail pear/net_smtp
+    
+如果汝像咱一样安装的是 alpha 版(从 Git 下载的,去掉 <span class="na">:code:</span><span class="nv">`--update-no-dev`</span> 选项.
+
+还在用 PHP 5? 用 pear 安装:
+
+    sudo pear install Mail Net_SMTP
+
+<span class="gh">设置 $wgSMTP 和 $wgPasswordSender 变量</span>
+<span class="gh">-------------------------------------------</span>
+
+<span class="s">`MediaWiki.org 的指南 </span><span class="si">&lt;https://www.mediawiki.org/wiki/Manual:$wgSMTP&gt;</span><span class="s">`_</span>
+
+<span class="na">:code:</span><span class="nv">`$wgSMTP`</span> 大概像这样:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">php</span>
+
+    <span class="x">$wgSMTP = array(</span>
+    <span class="x">    &#39;host&#39;     =&gt; &quot;mail.example.com&quot;, // SMTP 服务器的地址 (或IP).如果使用了SSL,记得加上 ssl://</span>
+    <span class="x">    &#39;IDHost&#39;   =&gt; &quot;example.com&quot;,      // 汝的域名,可选.如果不设置的话会设置成 $wgServer 的值.</span>
+    <span class="x">    &#39;port&#39;     =&gt; 25,                 // 端口(一般是25,SSL是465,StartTLS是587)</span>
+    <span class="x">    &#39;auth&#39;     =&gt; true,               // 是否需要 SMTP 认证 (多半都需要呗~)</span>
+    <span class="x">    &#39;username&#39; =&gt; &quot;my_user_name&quot;,     // SMTP 认证的用户名.</span>
+    <span class="x">    &#39;password&#39; =&gt; &quot;my_password&quot;       // SMTP 认证的密码.</span>
+    <span class="x">);</span>
+    <span class="x"></span>
+举个栗子  _(:з」∠)_ :
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">php</span>
+
+    <span class="x">$wgSMTP = array(</span>
+    <span class="x">    &#39;host&#39;     =&gt; &quot;smtp.yandex.com&quot;, // 咱用的是 Yandex 的 Domain mail~</span>
+    <span class="x">    &#39;port&#39;     =&gt; 587,                 // StartTLS =w=</span>
+    <span class="x">    &#39;auth&#39;     =&gt; true,               // 需要登录 😂</span>
+    <span class="x">    &#39;username&#39; =&gt; &quot;sender@yoitsu.moe&quot;,     // 用户名啦~</span>
+    <span class="x">    &#39;password&#39; =&gt; &quot;foo&quot;       // 密码啦~</span>
+    <span class="x">);</span>
+    <span class="x"></span>
+有些时候 SMTP 服务器要求外发邮件地址中的发件人和实际一致 (例如 Yandex ),这时需要设置 <span class="na">:code:</span><span class="nv">`$wgPasswordSender`</span> 变量:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">php</span>
+
+    <span class="x">$wgPasswordSender=&quot;sender@yoitsu.moe&quot;;</span>
+    <span class="x"></span>
+修改完以后用某个功能(例如修改邮件地址测试一下呗~):
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/smtptest.png
+   <span class="nc">:alt:</span> <span class="nf">Parsoid的工作原理</span>
+</pre></div>

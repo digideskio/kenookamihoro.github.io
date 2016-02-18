@@ -171,7 +171,7 @@
 <p class="compound-last">这里(和咱在 AUR 的 ghost 软件包里)用到了一个环境变量 <span class="tag">GHOST_NODE_VERSION_CHECK=false</span> 来不让 ghost 来检查 node 的版本,在 Node.js 下一个 LTS 版本(6.x)出来前先凑合一下呗~</p>
 </div>
 <p>于是先安装 <a class="reference external" href="https://www.archlinux.org/packages/?name=nodejs">nodejs</a> 和 <a class="reference external" href="https://www.archlinux.org/packages/?name=npm">npm</a> :</p>
-<div class="highlight"><pre><span class="code-line">sudo pacman -S nodejs npm</span>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo pacman -S nodejs npm</span>
 </pre></div>
 <p>如果汝认为自己的博客会做的比较大,需要一个数据库系统的话,咱推荐 <a class="reference external" href="https://www.archlinux.org/packages/?name=mariadb">mariadb</a> 呗~</p>
 </div>
@@ -190,7 +190,7 @@
 </li>
 <li><p class="first">通过下面的命令以 ghost 用户运行一条命令:</p>
 <blockquote>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># su 后面的 -s 参数可以制定切换用户后运行的 shell ,</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># su 后面的 -s 参数可以制定切换用户后运行的 shell ,</span></span>
 <span class="code-line"><span class="c1"># -c 参数可以指定要运行的命令.</span></span>
 <span class="code-line"></span>
 <span class="code-line">sudo su ghost -s /bin/bash -c <span class="s2">"此处是汝的命令,记得带上引号"</span></span>
@@ -202,13 +202,13 @@
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id10">通过源代码安装 Ghost</a></h2>
 <p>首先把 ghost 的源代码下载下来并解开:</p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># 这时最新的版本是0.7.6.</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 这时最新的版本是0.7.6.</span></span>
 <span class="code-line">wget https://ghost.org/zip/ghost-0.7.6.zip</span>
 <span class="code-line">unzip ghost-0.7.6.zip</span>
 <span class="code-line"><span class="nb">cd</span> ghost-0.7.6</span>
 </pre></div>
 <p>接下来通过 npm 安装需要的依赖,因为上面的提示嘛~</p>
-<div class="highlight"><pre><span class="code-line"><span class="nv">GHOST_NODE_VERSION_CHECK</span><span class="o">=</span><span class="nb">false</span> npm install</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">GHOST_NODE_VERSION_CHECK</span><span class="o">=</span><span class="nb">false</span> npm install</span>
 </pre></div>
 </div>
 <div class="section" id="id3">
@@ -216,12 +216,12 @@
 <p>如果是通过 AUR 安装的,配置文件位于 <span class="tag">/srv/ghost/config.js</span></p>
 <p>如果是通过源代码安装的,从目录中先复制一份样例出来呗~</p>
 <blockquote>
-<div class="highlight"><pre><span class="code-line">cp config.example.js config.js</span>
+<div class="highlight"><pre><span class="code-line"><span></span>cp config.example.js config.js</span>
 </pre></div>
 </blockquote>
 <p>这里的例子是修改 <span class="tag">Production</span> 一节
 (这一节是汝的 Ghost 实际运行时的配置,下面的 Development 一节是开发时的配置)</p>
-<div class="highlight"><pre><span class="code-line"><span class="nx">config</span> <span class="o">=</span> <span class="p">{</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nx">config</span> <span class="o">=</span> <span class="p">{</span></span>
 <span class="code-line">    <span class="c1">// ### Production</span></span>
 <span class="code-line">    <span class="c1">// When running Ghost in the wild, use the production environment.</span></span>
 <span class="code-line">    <span class="c1">// Configure your URL and mail settings here</span></span>
@@ -249,11 +249,11 @@
 <div class="section" id="id4">
 <h2><a class="toc-backref" href="#id12">如果汝的 Ghost 和汝进行操作的电脑是同一个</a></h2>
 <p>通过下面的命令来测试汝的 Ghost 呗~</p>
-<div class="highlight"><pre><span class="code-line"><span class="nb">cd</span> /path/to/ghost</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">cd</span> /path/to/ghost</span>
 <span class="code-line"><span class="nv">GHOST_NODE_VERSION_CHECK</span><span class="o">=</span><span class="nb">false</span></span>
 </pre></div>
 <p>如果汝是从 AUR 安装的,可以通过 Systemd 来启动</p>
-<div class="highlight"><pre><span class="code-line">sudo systemctl start ghost</span>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo systemctl start ghost</span>
 </pre></div>
 <p>现在打开 <span class="tag">http://localhost:2368</span> 看看效果呗~</p>
 </div>
@@ -262,7 +262,7 @@
 <p>比如汝在 VPS 上安装了 Ghost,就需要用一个 web服务器通过反向代理来访问呗~</p>
 <p>首先修改 <span class="tag">config.js</span> 把 Production 中的 URL 换成汝的网址啦~</p>
 <p>如果汝在用 Nginx, 把这一段增加到汝的 <span class="tag">server</span> 块中:</p>
-<div class="highlight"><pre><span class="code-line">location / {</span>
+<div class="highlight"><pre><span class="code-line"><span></span>location / {</span>
 <span class="code-line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span>
 <span class="code-line">      proxy_set_header Host $http_host;</span>
 <span class="code-line">      proxy_set_header X-Forwarded-Proto $scheme;</span>
@@ -271,7 +271,7 @@
 <span class="code-line">}</span>
 </pre></div>
 <p>如果汝在用 Apache, 把下面一段添加到汝的 httpd.conf 的 vhost 段中(首先要启用 mod_proxy 模块~):</p>
-<div class="highlight"><pre><span class="code-line">ProxyPass / http://localhost:2368/</span>
+<div class="highlight"><pre><span class="code-line"><span></span>ProxyPass / http://localhost:2368/</span>
 <span class="code-line">ProxyPassReverse / http://localhost:2368/</span>
 <span class="code-line">ProxyHTMLURLMap http://localhost:2368/ /</span>
 <span class="code-line">RequestHeader set X-Forwarded-For $proxy_add_x_forwarded_for</span>
@@ -302,6 +302,13 @@
             <span class="icon mif-arrow-left"></span>
                 AUR 纯萌新向入门教学(3)-提交软件包到AUR
               <small>上一篇</small>
+        </button>
+      </a>
+      <a href="https://blog.yoitsu.moe/smtp_for_mediawiki.html" class="place-right">
+        <button class="command-button icon-right bg-lightOlive fg-white">
+            <span class="icon mif-arrow-right"></span>
+                MediaWiki 设置SMTP发送邮件
+              <small>下一篇</small>
         </button>
       </a>
   <div class="padding10 clear-float"></div>
@@ -457,29 +464,14 @@
                     </div>
                     <div class="content padding10">
                         <ul class="tagcloud">
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/python.html">
-                                    python
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
-                                    partner
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
-                                    blog
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
                                     </a>
                                 </li>
                                 <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/aur.html">
                                     AUR
-                                    </a>
-                                </li>
-                                <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
-                                    Guides
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -488,8 +480,18 @@
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
-                                    yoitsu
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
+                                    partner
                                     </a>
                                 </li>
                                 <li class="tag-1">
@@ -498,23 +500,28 @@
                                     </a>
                                 </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
-                                    mediawiki
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
                                     </a>
                                 </li>
-                                <li class="tag-2">
+                                <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/notes.html">
                                     notes
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
-                                    pelican
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
                                     </a>
                                 </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
-                                    中文社区
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
                                     </a>
                                 </li>
                         </ul>

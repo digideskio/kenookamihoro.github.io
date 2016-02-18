@@ -158,17 +158,17 @@
 <h2><a class="toc-backref" href="#id5">安装Pelican然后进行初始设置</a></h2>
 <p>在咱写这篇文章时, <a class="reference external" href="/links.html#farsserfc">farsserfc</a> 已经把Pelican打好包放进Arch Linux 官方软件仓库啦好棒~</p>
 <p>Arch Linux用户可以这样安装:</p>
-<div class="highlight"><pre><span class="code-line">sudo pacman -S pelican</span>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo pacman -S pelican</span>
 </pre></div>
 <p>其它操作系统可以通过pip安装:</p>
-<div class="highlight"><pre><span class="code-line">sudo pip install pelican</span>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo pip install pelican</span>
 </pre></div>
 <p>接着运行设置程序建立一个工作文件夹:</p>
-<div class="highlight"><pre><span class="code-line">pelican-quickstart</span>
+<div class="highlight"><pre><span class="code-line"><span></span>pelican-quickstart</span>
 </pre></div>
 <p>接着开始挖坑呗~,用 <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> 或 <a class="reference external" href="http://wowubuntu.com/markdown/">Markdown</a> 开始写文章然后放到 <span class="tag">contents</span> 文件夹里,像这样:</p>
 <p>(reStructuredText)</p>
-<div class="highlight"><pre><span class="code-line"><span class="gh">这里是标题</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="gh">这里是标题</span></span>
 <span class="code-line"><span class="gh">===========================================</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="nc">:lang:</span> <span class="nf">这里填语言</span></span>
@@ -178,14 +178,14 @@
 <span class="code-line">这里是内容</span>
 </pre></div>
 <p>(Markdown)</p>
-<div class="highlight"><pre><span class="code-line">Title: 这里是标题</span>
+<div class="highlight"><pre><span class="code-line"><span></span>Title: 这里是标题</span>
 <span class="code-line">date: 写文章的日期</span>
 <span class="code-line">Category: 分类</span>
 <span class="code-line"></span>
 <span class="code-line">这里是内容</span>
 </pre></div>
 <p>然后运行一个命令来测试</p>
-<div class="highlight"><pre><span class="code-line">make html <span class="c1"># 生成html</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span>make html <span class="c1"># 生成html</span></span>
 <span class="code-line">make serve <span class="c1"># 在127.0.0.1:8000 运行一个测试服务器.</span></span>
 </pre></div>
 <p>然后打开浏览器输入 <span class="tag">localhost:8000</span> ，你就能看到一个初生的很 <ruby><rb>简洁</rb><rp>(</rp><rt>难看</rt><rp>)</rp></ruby> 的博客了，不过不要担心，它是只丑小鸭，很快就会像天鹅般美丽(真的么?)。</p>
@@ -232,7 +232,7 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
 <span class="code-line">└──</span>
 <span class="code-line"></span>
 </pre><p>然后记得修改pelican.conf告诉Pelican那些页面是模板那些页面是直接生成的呐~</p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># DIRECT_TEMPLATES 告诉Pelican哪些页面是直接用来生成特定页面的......</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># DIRECT_TEMPLATES 告诉Pelican哪些页面是直接用来生成特定页面的......</span></span>
 <span class="code-line"><span class="n">DIRECT_TEMPLATES</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'index'</span><span class="p">,</span> <span class="s1">'archives'</span><span class="p">,</span> <span class="s1">'search'</span><span class="p">))</span></span>
 </pre></div>
 <p>接下来开始调教主题呗~,直接给出官方的教程呗~ <a class="reference external" href="http://docs.getpelican.com/en/3.6.3/themes.html">Pelican doc:Creating Themes</a></p>
@@ -243,7 +243,7 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
 <h2><a class="toc-backref" href="#id7">装插件</a></h2>
 <p>作为一套博客系统,Pelican自然有很多的插件可以安装呐~,不信的话去看看`pelican-plugins里有多少插件呗~ &lt;<a class="reference external" href="https://github.com/getpelican/pelican-plugins">https://github.com/getpelican/pelican-plugins</a>&gt;`_</p>
 <p>咱启用的插件有这些:</p>
-<div class="highlight"><pre><span class="code-line"><span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"better_codeblock_line_numbering"</span><span class="p">,</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"better_codeblock_line_numbering"</span><span class="p">,</span></span>
 <span class="code-line">           <span class="s1">'tipue_search'</span><span class="p">,</span></span>
 <span class="code-line">           <span class="s1">'neighbors'</span><span class="p">,</span></span>
 <span class="code-line">           <span class="s1">'series'</span><span class="p">,</span></span>
@@ -261,7 +261,7 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
 <h2><a class="toc-backref" href="#id8">实现动态格言</a></h2>
 <p>动态格言的实现来自 <a class="reference external" href="/links.html#fiveyellowmice">fiveyellowmice</a> 啦~(咱不是JavaScript专家呐~,就不谈具体的实现了呗~)</p>
 <p>首先是一段修改某一个元素的类的JavaScript(当然还需要 <a class="reference external" href="http://julian.com/research/velocity/">velocity</a> ):</p>
-<div class="highlight"><pre><span class="code-line"> <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"/theme/js/velocity.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span> <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"/theme/js/velocity.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span>
 <span class="code-line"></span>
 <span class="code-line"> <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span></span>
 <span class="code-line"> <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></span>
@@ -281,7 +281,7 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
 <span class="code-line"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span>
 </pre></div>
 <p>然后新建一个 Github gist 填上动态格言,像这样(大括号里的内容可以添加多个):</p>
-<div class="highlight"><pre><span class="code-line"><span class="p">[</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="p">[</span></span>
 <span class="code-line">    <span class="p">{</span></span>
 <span class="code-line">        <span class="nt">"content"</span><span class="p">:</span><span class="s2">"example"</span><span class="p">,</span></span>
 <span class="code-line">        <span class="nt">"author"</span><span class="p">:</span><span class="s2">"someone"</span></span>
@@ -289,7 +289,7 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
 <span class="code-line"><span class="p">]</span></span>
 </pre></div>
 <p>再写个JavaScript来从JSON中提取格言然后填到html里:</p>
-<div class="highlight"><pre><span class="code-line"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span></span>
 <span class="code-line">            <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></span>
 <span class="code-line">                    <span class="nx">$</span><span class="p">(</span><span class="s2">".site-description"</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"&lt;blockquote&gt;"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"fortune"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"display"</span><span class="p">,</span> <span class="s2">"none"</span><span class="p">));</span></span>
 <span class="code-line">                    <span class="nx">$</span><span class="p">(</span><span class="s2">".site-description"</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"&lt;blockquote&gt;"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"fortune"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"line-height"</span><span class="p">,</span> <span class="s2">"1.4rem"</span><span class="p">));</span></span>
@@ -314,7 +314,7 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
 <div class="section" id="id4">
 <h2><a class="toc-backref" href="#id9">发布</a></h2>
 <p>通过几条命令可以发布~</p>
-<div class="highlight"><pre><span class="code-line">make publish</span>
+<div class="highlight"><pre><span class="code-line"><span></span>make publish</span>
 </pre></div>
 <p>然后用git提交到Github就好......</p>
 <p>好吧这就是咱的全过程啦(雾)</p>
@@ -483,29 +483,14 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
                     </div>
                     <div class="content padding10">
                         <ul class="tagcloud">
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/python.html">
-                                    python
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
-                                    partner
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
-                                    blog
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
                                     </a>
                                 </li>
                                 <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/aur.html">
                                     AUR
-                                    </a>
-                                </li>
-                                <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
-                                    Guides
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -514,8 +499,18 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
-                                    yoitsu
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
+                                    partner
                                     </a>
                                 </li>
                                 <li class="tag-1">
@@ -524,23 +519,28 @@ plugins 指向 <a class="reference external" href="https://github.com/getpelican
                                     </a>
                                 </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
-                                    mediawiki
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
                                     </a>
                                 </li>
-                                <li class="tag-2">
+                                <li class="tag-1">
                                     <a href="https://blog.yoitsu.moe/tag/notes.html">
                                     notes
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
-                                    pelican
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
                                     </a>
                                 </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
-                                    中文社区
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
                                     </a>
                                 </li>
                         </ul>
