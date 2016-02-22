@@ -143,4 +143,6 @@ Telegram群 `MediaWiki 站长交流 <https://telegram.me/joinchat/BuDkcQJ5ZNVAS9
     :nick: `FiveYellowMice <https://fiveyellowmice.com>`_
     :gravatar:  hkz85825915@gmail.com
 
-    一位早就不该中二的中二少年，最近又开了一个脑洞，于是就开了这个博客。
+    “I'm a Chunibyo who is too old to be a Chunibyo.”
+    
+    一位早就不该中二的中二少年。
