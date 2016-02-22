@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>约伊兹的萌狼乡手札</title>
+      <title>装完 Arch Linux 再装 Windows 然后修引导~ - 约伊兹的萌狼乡手札</title>
     <meta charset="utf-8" />
     <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
     <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
+    <link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
     <link href="https://blog.yoitsu.moe/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -48,6 +49,13 @@
     });
     </script>
 
+
+
+    <meta name="tags" content="windows" />
+    <meta name="tags" content="grub" />
+    <meta name="tags" content="凑数" />
+
+
 </head>
 <body id="index">
     <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
@@ -57,11 +65,14 @@
                 <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
                 <ul class="d-menu" data-role="dropdown">
                 <li><a href="https://blog.yoitsu.moe/category/life.html">Life</a></li>
-                <li><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
+                <li class="active"><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
                 </ul></li>
                 <li><a href="https://blog.yoitsu.moe/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
             <ul class="app-bar-menu place-right">
+
+<li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
+<li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
                 <li><a href="https://blog.yoitsu.moe/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
                 <li><a href="https://blog.yoitsu.moe/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
                 <li>
@@ -106,29 +117,204 @@
 			</script>
             <div class="row cells10">
                 <div class="cell colspan7">
-<section id="content" style="clear:both;">
-<h2>标签"python"中的文章</h2>
-        <article class="hentry block-shadow">
-                <header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/new_yoitsu_birth_notes.html" rel="bookmark" title="到 新约伊兹的萌狼乡手札诞生全过程伪实录的固定链接" class="fg-white">新约伊兹的萌狼乡手札诞生全过程伪实录</a></h2>
-    	<span class="mif-calendar"> 2016年01月18日 (Mon)&nbsp;&nbsp;</span>
+<div data-role="charm" data-position="right" id="right-charm" class="bg-grayLighter page-content fg-black ">
+<h2>目录</h2>
+    <nav class="toc">
+    <div class="toc" id="">
+
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id3">准备工作</a></li>
+<li><a class="reference internal" href="#id2" id="id4">确定设备名称,然后挂载</a></li>
+<li><a class="reference internal" href="#chrooting" id="id5">chrooting......</a></li>
+<li><a class="reference internal" href="#mbr-grub" id="id6">MBR  安装 GRUB (´･ω･`)</a></li>
+<li><a class="reference internal" href="#uefi-grub" id="id7">UEFI 安装 GRUB _(:з」∠)_</a></li>
+</ul>
+</div>
+    </nav>
+</div>
+
+    <script id="dsq-count-scr" src="//kenookamihoro.disqus.com/count.js" async></script>
+
+
+<section id="content" class="body">
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/windows_grub_recuse.html" rel="bookmark" title="到 装完 Arch Linux 再装 Windows 然后修引导~的固定链接" class="fg-white">装完 Arch Linux 再装 Windows 然后修引导~</a></h2>
+    	<span class="mif-calendar"> 2016年02月22日 (Mon)&nbsp;&nbsp;</span>
     	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
         <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
-        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/new_yoitsu_birth_notes.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/windows_grub_recuse.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
         <br /><br />
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/yoitsu.html"> yoitsu</a>&nbsp;&nbsp;</span>
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/pelican.html"> pelican</a>&nbsp;&nbsp;</span>
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/blog.html"> blog</a>&nbsp;&nbsp;</span>
-   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/python.html"> python</a>&nbsp;&nbsp;</span>
-            </header>
-                <footer class="post-info">
-                <div class="entry-content popover marker-on-top bg-lightOrange fg-grayDarker"> 
-<p>说好的下一期来啦~,新的"约伊兹的萌狼乡手札"是怎么样诞生呐~马上就告诉汝呗~</p>
- </div><!-- /.entry-content -->
-                </footer><!-- /.post-info -->
-        </article>
-        <hr class="bg-lightOrange" />
-<!-- /#posts-list -->
-</section><!-- /#content -->
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/windows.html"> windows</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/grub.html"> grub</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/cou-shu.html"> 凑数</a>&nbsp;&nbsp;</span>
+
+    </header>
+  <div class="entry-content text-accent" id="article-content">
+    
+<p>装完 Arch Linux 再装 Windows 以后 GRUB 没啦~ Windows 出来背锅 _(:з」∠)_</p>
+
+<p><del>要啥 Windows 啊~</del></p>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id3">准备工作</a></h2>
+<ul class="simple">
+<li>一个可启动的 Linux 的 Live USB ( 咱是用的 Arch Linux 的安装 ISO )</li>
+</ul>
+<p>好像没啥了诶~(最好要连上网,可以参阅 <a class="reference external" href="https://wiki.archlinux.org/index.php/Beginners'_guide">ArchWiki</a> 呗~ ).</p>
+<p>如果汝使用 UEFI 主板，且 UEFI 启动模式（优于 BIOS/Legacy 模式）已启用，CD/USB 会自动通过systemd-boot 启动 Arch Linux。要确认是否已进入UEFI模式，检查下面目录是否有文件呗~：</p>
+<blockquote>
+# ls /sys/firmware/efi/efivars</blockquote>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id4">确定设备名称,然后挂载</a></h2>
+<p>用 <span class="tag">lsblk</span> 确定汝 Linux 安装到哪个磁盘里呐~</p>
+<blockquote>
+<p>NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</p>
+<p>sda         8:0    0 298.1G  0 disk</p>
+<p>├─sda1    8:1    0    40G  0 part</p>
+<p>├─sda2    8:2    0 256.1G  0 part</p>
+<p>└─sda3    8:3    0     2G  0 part</p>
+</blockquote>
+<p>咱这个栗子是 <span class="tag">/dev/sda1</span> ,MBR 模式的. <span class="tag">sda1</span> 是 <span class="tag">/</span> ,:code:<cite>sda2</cite> 是 <span class="tag">/home</span> (´･ω･`).</p>
+<p>然后挂载上, archiso 里有个天然的适合的挂载点~</p>
+<blockquote>
+<p># mount /dev/sda1 /mnt</p>
+<p># mount /dev/sda2 /mnt/home</p>
+</blockquote>
+</div>
+<div class="section" id="chrooting">
+<h2><a class="toc-backref" href="#id5">chrooting......</a></h2>
+<p>用 <span class="tag">arch-chroot</span> chroot 进目标系统:</p>
+<blockquote>
+# arch-chroot /mnt /bin/bash</blockquote>
+</div>
+<div class="section" id="mbr-grub">
+<h2><a class="toc-backref" href="#id6">MBR  安装 GRUB (´･ω･`)</a></h2>
+<p>这样(记得用汝实际的磁盘名称替换 <span class="tag">sda</span> ,不要后面的数字.)</p>
+<blockquote>
+<p># grub-install --target=i386-pc --recheck --debug /dev/sda</p>
+<p># grub-mkconfig -o /boot/grub/grub.cfg</p>
+</blockquote>
+</div>
+<div class="section" id="uefi-grub">
+<h2><a class="toc-backref" href="#id7">UEFI 安装 GRUB _(:з」∠)_</a></h2>
+<p>这样(某些系统的 <span class="tag">--efi-directory</span> 可能是 :code`/boot/EFI` ,不管啦 (ノ=Д=)ノ┻━┻ )</p>
+<blockquote>
+<p># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck</p>
+<p># grub-mkconfig -o /boot/grub/grub.cfg</p>
+</blockquote>
+<hr class="docutils"/>
+<p>最后离开 chroot 环境然后重启,记得拔掉U盘~</p>
+<blockquote>
+<p># exit</p>
+<p># reboot</p>
+</blockquote>
+<p>所以嘛,要啥 Windows 呐~ (ノ=Д=)ノ┻━┻</p>
+</div>
+
+  </div><!-- /.entry-content -->
+  <div class="entry-content jumbotron" id="source-content" style="display: none">
+               <!-- <pre><code id="source-code">
+               </code></pre> -->
+               <div id="source-code"></div>
+  </div>
+</section>
+<br />
+      <a href="https://blog.yoitsu.moe/vpsto_openvz.html" class="place-left">
+        <button class="command-button bg-lightOlive fg-white">
+            <span class="icon mif-arrow-left"></span>
+                凤凰卷家的 vps.to 的 OpenVZ VPS 试用小记
+              <small>上一篇</small>
+        </button>
+      </a>
+  <div class="padding10 clear-float"></div>
+<div class="panel">
+    <div class="heading bg-amber">
+        <span class="title">系列Arch Linux中的文章</span>
+    </div>
+    <div class="content padding10">
+            <a href='https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html'>
+            <button class="button ">
+                Arch Linux 中文社区非官方生存手册
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_fresh_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(1)-从AUR安装软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_packaging_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(2)-创建一个软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/aur_sumbiting_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(3)-提交软件包到AUR
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/ghost_blog_archlinux.html'>
+            <button class="button ">
+                在 Arch Linux 上安装 Ghost 博客系统
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/windows_grub_recuse.html'>
+            <button class="button  warning ">
+                装完 Arch Linux 再装 Windows 然后修引导~
+              </button></a><br/>
+    </div>
+</div>
+<div class="padding10 clear-float"></div>
+
+<div class="panel" id="talk" data-role="panel">
+<div class="heading bg-orange">
+       <span class="icon mif-bubbles bg-darkOrange"></span>
+       <span class="title">参与讨论</span>
+    </div>
+    <div class="content">
+        <ul class="step-list padding10" style="padding-left:20px;">
+         <li>
+             <h2>如何和咱交流?</h2>
+             <hr class="bg-red" />
+             <div>
+                 汝可以通过Github的Issue和Disqus和咱交(bao)流(yuan)呐~
+                 <br />
+             </div>
+         </li>
+         <li>
+             <h2>Github Issue?</h2>
+             <hr class="bg-green" />
+             <div>
+                 Github issues用来回报网站的一般问题，用Github帐号登录，然后提交issue抱怨咱一下呗~
+                 <br />
+                 <a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success">前往Issues页面呗~</button></a>
+             </div>
+         </li>
+         <li>
+             <h2>用Disqus?</h2>
+             <hr  class="bg-blue"/>
+             <div>
+                 Disqus用来回报某个页面的问题，用Disqus帐号登录，提交评论抱怨咱一下呗~ <br /><br />
+                 <div id="disqus_thread"></div>
+					<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//kenookamihoro.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Disqus需要启用JavaScript 才能工作呐~<br /><a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+             </div>
+         </li>
+      </ul>
+    </div>
+</div>
                 </div>
             <div class="cell colspan3">
                 <div class="panel warning shadow">
@@ -279,6 +465,8 @@
         </div>
     </div>
     <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
+
+<button onclick="showCharm('right')" class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:100px;right:30px;z-index:2000;"><span class="mif-list"></span></button>
     </div>
     <div class="app-bar darcula padding10 text-shadow ">
         <div class="grid container page-content ">

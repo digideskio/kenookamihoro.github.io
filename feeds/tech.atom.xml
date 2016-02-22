@@ -1,5 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2016-02-18T15:20:00+08:00</updated><entry><title>MediaWiki 设置SMTP发送邮件</title><link href="https://blog.yoitsu.moe/smtp_for_mediawiki.html" rel="alternate"></link><updated>2016-02-18T15:20:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-02-18:smtp_for_mediawiki.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2016-02-22T17:00:00+08:00</updated><entry><title>装完 Arch Linux 再装 Windows 然后修引导~</title><link href="https://blog.yoitsu.moe/windows_grub_recuse.html" rel="alternate"></link><updated>2016-02-22T17:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-02-22:windows_grub_recuse.html</id><summary type="html">
+&lt;p&gt;装完 Arch Linux 再装 Windows 以后 GRUB 没啦~ Windows 出来背锅 _(:з」∠)_&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;要啥 Windows 啊~&lt;/del&gt;&lt;/p&gt;
+&lt;div class="section" id="id1"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;准备工作&lt;/a&gt;&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;一个可启动的 Linux 的 Live USB ( 咱是用的 Arch Linux 的安装 ISO )&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;好像没啥了诶~(最好要连上网,可以参阅 &lt;a class="reference external" href="https://wiki.archlinux.org/index.php/Beginners'_guide"&gt;ArchWiki&lt;/a&gt; 呗~ ).&lt;/p&gt;
+&lt;p&gt;如果汝使用 UEFI 主板，且 UEFI 启动模式（优于 BIOS/Legacy 模式）已启用，CD/USB 会自动通过systemd-boot 启动 Arch Linux。要确认是否已进入UEFI模式，检查下面目录是否有文件呗~：&lt;/p&gt;
+&lt;blockquote&gt;
+# ls /sys/firmware/efi/efivars&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id2"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;确定设备名称,然后挂载&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;用 &lt;span class="tag"&gt;lsblk&lt;/span&gt; 确定汝 Linux 安装到哪个磁盘里呐~&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT&lt;/p&gt;
+&lt;p&gt;sda         8:0    0 298.1G  0 disk&lt;/p&gt;
+&lt;p&gt;├─sda1    8:1    0    40G  0 part&lt;/p&gt;
+&lt;p&gt;├─sda2    8:2    0 256.1G  0 part&lt;/p&gt;
+&lt;p&gt;└─sda3    8:3    0     2G  0 part&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;咱这个栗子是 &lt;span class="tag"&gt;/dev/sda1&lt;/span&gt; ,MBR 模式的. &lt;span class="tag"&gt;sda1&lt;/span&gt; 是 &lt;span class="tag"&gt;/&lt;/span&gt; ,:code:&lt;cite&gt;sda2&lt;/cite&gt; 是 &lt;span class="tag"&gt;/home&lt;/span&gt; (´･ω･`).&lt;/p&gt;
+&lt;p&gt;然后挂载上, archiso 里有个天然的适合的挂载点~&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# mount /dev/sda1 /mnt&lt;/p&gt;
+&lt;p&gt;# mount /dev/sda2 /mnt/home&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="section" id="chrooting"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;chrooting......&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;用 &lt;span class="tag"&gt;arch-chroot&lt;/span&gt; chroot 进目标系统:&lt;/p&gt;
+&lt;blockquote&gt;
+# arch-chroot /mnt /bin/bash&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="section" id="mbr-grub"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;MBR  安装 GRUB (´･ω･`)&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;这样(记得用汝实际的磁盘名称替换 &lt;span class="tag"&gt;sda&lt;/span&gt; ,不要后面的数字.)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# grub-install --target=i386-pc --recheck --debug /dev/sda&lt;/p&gt;
+&lt;p&gt;# grub-mkconfig -o /boot/grub/grub.cfg&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="section" id="uefi-grub"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;UEFI 安装 GRUB _(:з」∠)_&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;这样(某些系统的 &lt;span class="tag"&gt;--efi-directory&lt;/span&gt; 可能是 :code`/boot/EFI` ,不管啦 (ノ=Д=)ノ┻━┻ )&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck&lt;/p&gt;
+&lt;p&gt;# grub-mkconfig -o /boot/grub/grub.cfg&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr class="docutils"/&gt;
+&lt;p&gt;最后离开 chroot 环境然后重启,记得拔掉U盘~&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# exit&lt;/p&gt;
+&lt;p&gt;# reboot&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以嘛,要啥 Windows 呐~ (ノ=Д=)ノ┻━┻&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="windows"></category><category term="grub"></category><category term="凑数"></category></entry><entry><title>MediaWiki 设置SMTP发送邮件</title><link href="https://blog.yoitsu.moe/smtp_for_mediawiki.html" rel="alternate"></link><updated>2016-02-18T15:20:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-02-18:smtp_for_mediawiki.html</id><summary type="html">
 &lt;p&gt;为 MediaWiki 设置通过 SMTP 发送邮件.就是这样  _(:з」∠)_&lt;/p&gt;
 
 &lt;div class="section" id="smtp"&gt;
