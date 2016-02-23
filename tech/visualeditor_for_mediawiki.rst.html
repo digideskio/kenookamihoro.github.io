@@ -1,0 +1,220 @@
+<div class="highlight"><pre><span></span><span class="gh">为MediaWiki安装可视化编辑器</span>
+<span class="gh">=========================================</span>
+
+<span class="nc">:slug:</span> <span class="nf">visualeditor_for_mediawiki</span>
+<span class="nc">:lang:</span> <span class="nf">zh</span>
+<span class="nc">:date:</span> <span class="nf">2016-01-17 09:35</span>
+<span class="nc">:tags:</span> <span class="nf">mediawiki,notes</span>
+<span class="nc">:series:</span> <span class="nf">MediaWiki</span>
+
+<span class="cp">.. PELICAN_BEGIN_SUMMARY</span>
+
+为MediaWiki安装来自 <span class="s">`维基媒体基金会 </span><span class="si">&lt;https://www.mediawiki.org/wiki/VisualEditor&gt;</span><span class="s">`_</span> 的 <span class="s">`可视化编辑器 </span><span class="si">&lt;https://www.mediawiki.org/wiki/VisualEditor&gt;</span><span class="s">`_</span> .
+
+<span class="cp">.. PELICAN_END_SUMMARY</span>
+
+<span class="p">..</span> <span class="ow">contents</span><span class="p">::</span>
+
+<span class="gh">连维基百科都要Hold不住啦~</span>
+<span class="gh">-----------------------------</span>
+
+    许多新用户不会着手大幅度修改，而只是做些细节调整，不过仅仅阅读源代码就必须学标记语言了。当我们的用户在演示操作时，这把他们吓走了。
+
+    早在 2004 年，社群开始一再认识到必须采用更好的编辑方式。因为人们的请求，更重要的是他们的需要，所以我们开发了可视化编辑器。
+
+    Wiki 标记语言让新人害怕，这种程度会随着其他站点的迁离而加剧。如果我们不开发可视化编辑器，那么图表的走势会在接下来五年中变得更加糟糕。
+
+    -- <span class="s">`MediaWiki.org </span><span class="si">&lt;https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh&gt;</span><span class="s">`_</span>
+
+所以他们才 <span class="na">:del:</span><span class="nv">`痛定思痛`</span> 决定开发可视化编辑器么😂
+
+<span class="gh">开始之前-检查一下要求</span>
+<span class="gh">------------------------------</span>
+
+可视化编辑器(下面就说VisualEditor呗~)还需要一个叫
+<span class="s">`Parsoid </span><span class="si">&lt;https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh&gt;</span><span class="s">`_</span>
+的程序来承担把wiki标记转化成html的任务啦(看下图)~,所以需要服务器来运行它呐~
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/Parsoid_HTML-RDFa_content_model.svg.png
+   <span class="nc">:scale:</span> <span class="nf">50 %</span>
+   <span class="nc">:alt:</span> <span class="nf">Parsoid的工作原理</span>
+
+
+
+<span class="gh">安装Parsoid(Ubuntu 14+ / Debian 7+ )</span>
+<span class="gh">--------------------------------------</span>
+
+上游的指南在这(好好学英语呗~) <span class="s">`&lt;https://www.mediawiki.org/wiki/Parsoid/Setup&gt;`_</span>
+
+Ubuntu和Debian系统的话直接添加MediaWiki.org的软件源然后通过apt安装就好了啦~
+
+首先添加MediaWiki.org的GPG公钥:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    sudo apt-key advanced --keyserver keys.gnupg.net --recv-keys 664C383A3566A3481B942F007A322AC6E84AFDD2
+
+然后添加Parsoid源:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    sudo <span class="nb">echo</span> <span class="s2">&quot;deb https://releases.wikimedia.org/debian jessie-mediawiki main&quot;</span> &gt; /etc/apt/sources.list.d/parsoid.list
+
+安装需要的软件包:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install curl parsoid
+
+然后看下下面一节的内容修改一下配置文件呗~
+
+<span class="gh">其它系统?手动安装呗~</span>
+<span class="gh">---------------------------------</span>
+
+上游的指南在这(还是要好好学英语呗~) <span class="s">`&lt;https://www.mediawiki.org/wiki/Parsoid/Developer_Setup&gt;`_</span>
+
+首先汝要装上Nodejs(&gt;0.8,建议0.10或更新的版本呐~),还有git.
+具体的安装方法为了避免降低正交性 <span class="na">:del:</span><span class="nv">`(其实是系统太多不好写......)`</span>,就麻烦汝自己去找了呐~
+
+    「呵。咱是贤狼，不是神呐。如果汝开始会期待起咱能够泄露天机给汝，那咱就得从汝眼前消失了呗。」
+
+
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    node --version <span class="c1"># 如果是Debian或Ubuntu ,输入 nodejs --version</span>
+
+然后用git克隆版本库呗~
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid
+
+用npm安装上相应的依赖:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    npm install
+
+然后看下面一节的内容修改一下配置文件呗~
+
+<span class="gh">修改配置文件</span>
+<span class="gh">------------------------------</span>
+
+    如果是通过软件源安装的,配置文件位于 <span class="na">:code:</span><span class="nv">`/etc/mediawiki/parsoid/settings.js`</span>
+
+    如果是通过git下载的,从parsoid目录中先复制一份样例出来呗~
+
+<span class="p">    ..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+        cp localsettings.js.example localsettings.js
+
+打开配置文件,找到这一段内容,然后改它~:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">javascript</span>
+
+    <span class="nx">parsoidConfig</span><span class="p">.</span><span class="nx">setMwApi</span><span class="p">({</span>
+        <span class="c1">// The &quot;prefix&quot; is the name given to this wiki configuration in the</span>
+        <span class="c1">// (deprecated) Parsoid v1 API.</span>
+        <span class="nx">prefix</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="c1">// optional</span>
+        <span class="c1">// The &quot;domain&quot; is used for communication with Visual Editor</span>
+        <span class="c1">// and RESTBase.  It defaults to the hostname portion of</span>
+        <span class="c1">// the `uri` property below, but you can manually set it</span>
+        <span class="c1">// to an arbitrary string.</span>
+        <span class="nx">domain</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="c1">// optional</span>
+        <span class="c1">// This is the only required parameter:</span>
+        <span class="c1">// the URL of you MediaWiki API endpoint.</span>
+        <span class="nx">uri</span><span class="o">:</span> <span class="s1">&#39;http://localhost/w/api.php&#39;</span>
+        <span class="p">});</span>
+
+其中&quot;uri&quot;对应汝的wiki的api.php的位置,&quot;domain&quot;是汝的域名啦~.&quot;prefix&quot;可以自己起一个(反正因为换了API也没用啦~,不过测试时可能用得到)
+
+<span class="gh">启动服务</span>
+<span class="gh">-------------------------</span>
+
+<span class="gh">-------------------------</span>
+<span class="gh">从软件源安装的?</span>
+<span class="gh">-------------------------</span>
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    sudo systemctl start parsoid <span class="c1"># Debian Jessie ,用Systemd启动</span>
+
+    sudo service parsoid start <span class="c1"># Debian Wheezy 或Ubuntu ,用init.d脚本启动.</span>
+
+如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <span class="na">:code:</span><span class="nv">`http://localhost:8142`</span> 来进行测试.试着加载 <span class="na">:code:</span><span class="nv">`http://localhost:8142/汝设置的前缀/汝的wiki上的一个页面`</span> 试试呗~
+
+<span class="gh">-------------------------</span>
+<span class="gh">用git安装的?</span>
+<span class="gh">-------------------------</span>
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    npm start
+
+或者:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    node bin/server.js
+
+可以用screen一类的工具让Parsoid在后台运行~
+
+如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <span class="na">:code:</span><span class="nv">`http://localhost:8000`</span> 来进行测试.试着加载 <span class="na">:code:</span><span class="nv">`http://localhost:8000/汝设置的前缀/汝的wiki上的一个页面`</span> 试试呗~
+
+<span class="gh">------------------------------------</span>
+<span class="gh">修改监听地址便于远程测试</span>
+<span class="gh">------------------------------------</span>
+
+改这一段:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">javascript</span>
+
+    <span class="c1">// Allow override of port/interface:</span>
+    <span class="c1">//parsoidConfig.serverPort = 8142;</span>
+    <span class="c1">//parsoidConfig.serverInterface = &#39;127.0.0.1&#39;;</span>
+
+反注释最后一行并改成0.0.0.0,就可以通过 <span class="na">:code:</span><span class="nv">`http://服务器的IP地址:8142`</span> 访问啦~
+
+<span class="gh">安装VisualEditor扩展</span>
+<span class="gh">--------------------------------------</span>
+
+上游的指南在这: <span class="s">`&lt;https://www.mediawiki.org/wiki/Extension:VisualEditor&gt;`_</span>
+
+首先从 <span class="s">`这里 </span><span class="si">&lt;https://www.mediawiki.org/wiki/Special:ExtensionDistributor/VisualEditor&gt;</span><span class="s">`_</span> 获得扩展然后上传到汝的wiki上的extensions目录呗~
+
+然后修改汝的LocalSettings.php:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> php
+    $wgVirtualRestConfig[&#39;modules&#39;][&#39;parsoid&#39;] = array(
+    // URL to the Parsoid instance
+    // Use port 8142 if you use the Debian package
+    // Parsoid 运行的位置,如果是从软件源安装的,默认设置是&#39;http://localhost:8142&#39;
+    &#39;url&#39; =&gt; &#39;http://localhost:8000&#39;,
+    // Parsoid &quot;domain&quot;, see below (optional)
+    // 汝在Parsoid中设置的&quot;domain&quot;值呐~
+    &#39;domain&#39; =&gt; &#39;localhost&#39;,
+    // Parsoid &quot;prefix&quot;, see below (optional)
+    // 汝在Parsoid中设置的&quot;prefix&quot;值呐~
+    &#39;prefix&#39; =&gt; &#39;localhost&#39;
+    );
+
+    require_once &quot;$IP/extensions/VisualEditor/VisualEditor.php&quot;;
+
+    // 反注释下一行来默认启用可视化编辑器
+    #$wgDefaultUserOptions[&#39;visualeditor-enable&#39;] = 1;
+
+    // 反注释下一行来启用测试中的功能
+    #$wgDefaultUserOptions[&#39;visualeditor-enable-experimental&#39;] = 1;
+
+    //在除了主名字空间以外的名字空间中也启用可视化编辑器(下面的例子是用户名字空间)
+    $wgVisualEditorNamespaces=array_merge($wgContentNamespaces,array( NS_USER ));
+
+完整的设置选项可以在扩展页面上找到.
+
+然后在汝的wiki上试试看呗~
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> images/visualeditor-test.png
+   <span class="nc">:scale:</span> <span class="nf">50 %</span>
+   <span class="nc">:alt:</span> <span class="nf">VisualEditor效果</span>
+</pre></div>

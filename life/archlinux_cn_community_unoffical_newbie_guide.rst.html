@@ -1,0 +1,120 @@
+<div class="highlight"><pre><span></span><span class="gh">Arch Linux 中文社区非官方生存手册</span>
+<span class="gh">=========================================</span>
+
+<span class="nc">:slug:</span> <span class="nf">archlinux_cn_community_unoffical_newbie_guide</span>
+<span class="nc">:lang:</span> <span class="nf">zh</span>
+<span class="nc">:date:</span> <span class="nf">2016-01-28</span>
+<span class="nc">:tags:</span> <span class="nf">Arch Linux,中文社区</span>
+<span class="nc">:series:</span> <span class="nf">Arch Linux</span>
+
+<span class="cp">.. PELICAN_BEGIN_SUMMARY</span>
+
+汝要入坑Arch Linux了吗?那还不赶紧加入Arch Linux中文社区~
+
+<span class="cp">.. PELICAN_END_SUMMARY</span>
+
+<span class="p">..</span> <span class="ow">contents</span><span class="p">::</span>
+
+<span class="gh">什么是Arch Linux?</span>
+<span class="gh">-----------------------------</span>
+
+    Arch Linux 是一个针对 i686/x86-64 平台独立开发的 GNU/Linux 发行版，遵循轻量、简洁、优雅的开发原则，借灵活的架构应用于各种环境。Arch 安装后只提供最基本的系统，用户可以根据自己的需求来搭建不同的系统环境。官方并不提供图形化的配置工具，多数系统配置是通过修改文本文件来进行的。Arch 尽力提供最新稳定版本的软件。
+
+    Arch Linux 使用 Pacman 作为包管理器，它在提供了一个简单的包管理器同时，也提供了一个易用的包构建系统，使用户能够轻松地管理和定制官方提供的、用户自己制作的、甚至是来自第三方的各种软件包。仓库系统也能够让用户轻松的构建和维护自己的编译脚本、软件包和仓库，这样将有助于社区的成长和建设。
+
+    Arch Linux 的基本安装包由 [core] 软件库提供。此外 [extra], [community] 和 [testing] 软件库则提供了大量的的高品质软件以满足你的需求。Arch Linux 同时也通过 Arch 用户软件仓库(AUR)提供了 [unsupported] 软件库，里面有大量的编译脚本，用户可以通过 <span class="nv">`makepkg`</span> 工具轻松地从源码中编译软件。
+
+    Arch Linux 采用“滚动升级”策略，这样可以实现“一次安装，永久更新”。升级到下一个“版本”的 Arch Linux 几乎不需要重新安装系统，只需一行命令，你就能轻松的享受到最新的 Arch Linux。
+
+    Arch Linux 努力和上游软件源码保持一致，只有使程序能够在 Arch Linux 正常编译运行的补丁才会被加入更新中。
+
+    总之， Arch Linux 是一个灵活、简洁的、满足有一定经验的 Linux® 用户的需求的发行版。它强大且易于管理的特性，使其成为可以完美胜任服务器和工作站的发行版。它可以变成任何你想要的样子。如果你也认为这是一个 GNU/Linux 发行版该做的，欢迎你来自由使用并参与其中，为社区做出贡献，欢迎来到 Arch Linux！
+
+    --<span class="s">`Arch Linux 中文社区 </span><span class="si">&lt;https://www.archlinuxcn.org/about/&gt;</span><span class="s">`_</span> ,翻译自 <span class="s">`Archlinux.org </span><span class="si">&lt;https://www.archlinux.org/about/&gt;</span><span class="s">`_</span> . 
+
+<span class="gh">先把Arch Linux装上先~</span>
+<span class="gh">-----------------------------</span>
+
+ArchWiki的文档应该算比较详细的啦~
+
+<span class="m">*</span> 第一次安装Arch Linux的新手建议看看 <span class="s">`Beginners&#39; guide </span><span class="si">&lt;https://wiki.archlinux.org/index.php/Beginners&#39;_guide_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29&gt;</span><span class="s">`_</span>
+
+<span class="m">*</span> 有经验的用户可以看看 <span class="s">`Installation guide </span><span class="si">&lt;https://wiki.archlinux.org/index.php/Installation_guide_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29&gt;</span><span class="s">`_</span>
+
+<span class="m">*</span> 想找交互式的安装程序? 可以试试 <span class="s">`ArchBoot </span><span class="si">&lt;https://wiki.archlinux.org/index.php/Archboot&gt;</span><span class="s">`_</span> 
+
+<span class="gh">加入Arch Linux中文社区论坛呗~</span>
+<span class="gh">--------------------------------</span>
+
+用Arch Linux时发现了些问题?英文水平不足担心发到 <span class="s">`官方论坛 </span><span class="si">&lt;https://bbs.archlinux.org&gt;</span><span class="s">`_</span> 泥牛入海? 来中文论坛呗~
+
+中文论坛在这~: <span class="s">`&lt;https://bbs.archlinuxcn.org/&gt;`_</span>
+
+和参加其他的论坛讨论一样,先读读 <span class="na">:fref:</span><span class="nv">`phoenixlzx`</span> 写的 <span class="s">`Arch Linux 中文社区 新手生存指南 </span><span class="si">&lt;https://bbs.archlinuxcn.org/viewtopic.php?id=1072&gt;</span><span class="s">`_</span> , <span class="s">`官方编写的论坛礼仪指南 </span><span class="si">&lt;https://wiki.archlinux.org/index.php/Forum_etiquette_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29&gt;</span><span class="s">`_</span> 也可以作为参考呗~
+
+<span class="gh">加入中文社区的聊天频道呗~</span>
+<span class="gh">--------------------------------</span>
+
+和论坛相比,中文社区聊天频道更 <span class="na">:ruby:</span><span class="nv">`活跃|洪水`</span> 呗~
+
+在多才多艺的百合仙子 <span class="na">:fref:</span><span class="nv">`lilydjwg`</span> , Tox传教士 <span class="na">:fref:</span><span class="nv">`quininer`</span> ,和 PhD <span class="na">:fref:</span><span class="nv">`farseerfc`</span> 的协力下,社区交流群实现了irc+Telegram+xmpp+Tox的多通道联通,撒花~
+
+<span class="gh">-------------------------</span>
+<span class="gh">加入irc频道</span>
+<span class="gh">-------------------------</span>
+
+Web界面在这: <span class="na">:irc:</span><span class="nv">`archlinux-cn`</span>
+
+如果汝使用irc客户端的话:
+    
+    irc服务器: <span class="na">:code:</span><span class="nv">`irc.freenode.net`</span>
+    
+    端口: <span class="na">:code:</span><span class="nv">`7000`</span> (SSL) / <span class="na">:code:</span><span class="nv">`6667`</span> (Plain)
+    
+<span class="gh">-------------------------</span>
+<span class="gh">通过XMPP加入</span>
+<span class="gh">-------------------------</span>
+
+使用XMPP帐号添加 <span class="na">:code:</span><span class="nv">`talk@archlinuxcn.org`</span> 为好友即可加入。成功加入将收到欢迎信息。
+
+<span class="gh">-------------------------</span>
+<span class="gh">通过Tox加入</span>
+<span class="gh">-------------------------</span>
+
+添加下面那个Tox ID为好友,然后按照它的提示操作呗~
+
+    34922396155AA49CE6845A2FE34A73208F6FCD
+    6190D981B1DBBC816326F26C6CDF3581F697E7
+    
+<span class="gh">------------------------</span>
+<span class="gh">通过Telegram加入</span>
+<span class="gh">------------------------</span>
+
+hmmm.....为保护群组不被外星人攻击，所以这里就不贴上链接啦~
+
+汝可以通过其它方法加入,贴上汝在Telegram的用户名呗~(其它已经在群里的用户会帮汝拉进来......)
+
+或者,在Telegram上添加@Jqs7Bot这个机器人,通过群组查询中的Linux分类找到#archlinux-cn(irc)的链接再加入呗~
+
+<span class="gh">-----------------------</span>
+<span class="gh">群内的一般原则</span>
+<span class="gh">-----------------------</span>
+
+<span class="m">*</span> <span class="na">:del:</span><span class="nv">`要优雅,不要污~`</span>
+<span class="m">*</span> (irc/xmpp/tox) 推荐一个由百合仙子帮忙的图床 <span class="s">`&lt;https://img.vim-cn.com/&gt;`_</span> 呗~
+<span class="m">*</span> (Telegram) 发没压缩的图片和声音的话irc可是收不到的哟~
+
+
+<span class="gh">如果汝的英语水平也不错的话......</span>
+<span class="gh">----------------------------------</span>
+
+如果汝的英语水平不错的话，太棒啦~,社区正需要汝这样的人呐~
+
+汝可以......
+
+<span class="m">*</span> 帮助翻译ArchWiki,可以在 <span class="s">`ArchWiki上翻到相应页面呗~ </span><span class="si">&lt;https://wiki.archlinux.org/index.php/ArchWiki_Translation_Team_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29&gt;</span><span class="s">`_</span>
+
+<span class="m">*</span> 创建软件包并提交到 <span class="s">`AUR(Arch Linux User Repository) </span><span class="si">&lt;https://wiki.archlinux.org/index.php/Arch_User_Repository&gt;</span><span class="s">`_</span> ,高质量的软件包可能会被TU(授信用户)收录到官方软件仓库呗~
+
+<span class="m">*</span> <span class="s">`参与开发 </span><span class="si">&lt;https://wiki.archlinux.org/index.php/Getting_involved&gt;</span><span class="s">`_</span> , <span class="na">:del:</span><span class="nv">`然后成为下一个像felixonmars一样的领袖😂😂😂`</span>
+</pre></div>

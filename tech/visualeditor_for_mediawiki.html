@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+      <title>为MediaWiki安装可视化编辑器 - 约伊兹的萌狼乡手札</title>
+    <meta charset="utf-8" />
+    <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
+    <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
+    <link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
+    <link href="https://blog.yoitsu.moe/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#bf5a15">
+    <link href="https://blog.yoitsu.moe/theme/css/metro.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/docs.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-icons.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-responsive.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-schemes.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/pygment.css" rel="stylesheet">
+    <script src="https://blog.yoitsu.moe/theme/js/jquery-2.1.3.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/metro.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/velocity.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+    <script>
+        function showCharm(id){
+            var  charm = $("#"+id+"-charm").data("charm");
+            if (charm.element.data("opened") === true) {
+                charm.close();
+            } else {
+                charm.open();
+            }
+        }
+    </script>
+
+    <!--动态格言的实现参考自https://fiveyellowmice.github.io/-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+      $(".menu-button").on("touchstart", function() {
+        $(".menu-wrapper").removeClass("trigger");
+        if ( $(".nav-items").is(":visible") ) {
+			$(".nav-items").velocity("finish")
+			.velocity("slideUp", { delay: 200, duration: 400, easing: "easeInQuad" })
+			.velocity("fadeOut", { delay: 200, duration: 400, easing: "easeInQuad", queue: false });
+		} else {
+			$(".nav-items").velocity("finish")
+			.velocity("slideDown", { delay: 200, duration: 400, easing: "easeOutQuad" })
+			.velocity("fadeIn", { delay: 200, duration: 400, easing: "easeOutQuad", queue: false });
+		}
+      });
+    });
+    </script>
+
+
+
+    <meta name="tags" content="mediawiki" />
+    <meta name="tags" content="notes" />
+
+
+</head>
+<body id="index">
+    <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
+        <div class="container">
+            <ul class="app-bar-menu">
+                <li><a href="https://blog.yoitsu.moe/"><strong>约伊兹的萌狼乡手札</strong></a></li>
+                <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
+                <ul class="d-menu" data-role="dropdown">
+                <li><a href="https://blog.yoitsu.moe/category/life.html">Life</a></li>
+                <li class="active"><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
+                </ul></li>
+                <li><a href="https://blog.yoitsu.moe/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
+            </ul>
+            <ul class="app-bar-menu place-right">
+
+<li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
+<li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
+                <li><a href="https://blog.yoitsu.moe/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
+                <li><a href="https://blog.yoitsu.moe/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
+                <li>
+                <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
+                <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
+                	<div class="padding10">
+                		<h4>搜索约伊兹的萌狼乡手札</h4>
+                    	<form action="search.html">
+                        	<div class="input-control text" data-role="input">
+    						<input type="text" name="q" required="required">
+    						<button class="button" action="sumbit"><span class="mif-search"></span></button>
+							</div>
+                       </form>
+                    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>$("div#navbar-fixed-top").autoHidingNavbar();</script>
+    <div class="container page-content" >
+        <div class="grid">
+			<div class="padding5 site-description" style="clear:both;"></div>
+			<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			$(".site-description").after($("<blockquote>").attr("id", "fortune").css("display", "none"));
+			$(".site-description").after($("<blockquote>").attr("id", "fortune").css("line-height", "1.4rem"));
+
+			$.getJSON( "https://api.github.com/gists/07ca2edea6e507bf40f5", function(data) {
+
+				fortunes = JSON.parse(data.files["quotes.json"].content);
+				randomFortune = fortunes[ Math.floor( Math.random() * fortunes.length ) ];
+				if ( randomFortune.author === undefined ) {
+					$("#fortune").html( "<p>"+randomFortune.content+"</p>" );
+				} else {
+					$("#fortune").html( "<p>"+randomFortune.content+"</p>"  + "<small>" + randomFortune.author + "</small>");
+				}
+
+				$("#fortune").velocity("slideDown", { duration: 400, easing: "easeOutQuad" });
+			});
+		});
+			</script>
+            <div class="row cells10">
+                <div class="cell colspan7" id="main">
+<div data-role="charm" data-position="right" id="right-charm" class="bg-grayLighter page-content fg-black ">
+<h2>目录</h2>
+    <nav class="toc">
+    <div class="toc" id="">
+
+<ul class="simple">
+<li><a class="reference internal" href="#hold" id="id10">连维基百科都要Hold不住啦~</a></li>
+<li><a class="reference internal" href="#id3" id="id11">开始之前-检查一下要求</a></li>
+<li><a class="reference internal" href="#parsoid-ubuntu-14-debian-7" id="id12">安装Parsoid(Ubuntu 14+ / Debian 7+ )</a></li>
+<li><a class="reference internal" href="#id4" id="id13">其它系统?手动安装呗~</a></li>
+<li><a class="reference internal" href="#id5" id="id14">修改配置文件</a></li>
+<li><a class="reference internal" href="#id6" id="id15">启动服务</a><ul>
+<li><a class="reference internal" href="#id7" id="id16">从软件源安装的?</a></li>
+<li><a class="reference internal" href="#git" id="id17">用git安装的?</a></li>
+<li><a class="reference internal" href="#id8" id="id18">修改监听地址便于远程测试</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#visualeditor" id="id19">安装VisualEditor扩展</a></li>
+</ul>
+</div>
+    </nav>
+</div>
+
+    <script id="dsq-count-scr" src="//kenookamihoro.disqus.com/count.js" async></script>
+
+
+<section id="content" class="body">
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/tech/visualeditor_for_mediawiki.html" rel="bookmark" title="到 为MediaWiki安装可视化编辑器的固定链接" class="fg-white">为MediaWiki安装可视化编辑器</a></h2>
+    	<span class="mif-calendar"> 2016年01月17日 (Sun)&nbsp;&nbsp;</span>
+    	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
+        <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('visualeditor_for_mediawiki.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <br /><br />
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/mediawiki.html"> mediawiki</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/notes.html"> notes</a>&nbsp;&nbsp;</span>
+
+    </header>
+  <div class="entry-content text-accent" id="article-content">
+    
+<p>为MediaWiki安装来自 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">维基媒体基金会</a> 的 <a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor">可视化编辑器</a> .</p>
+
+<div class="section" id="hold">
+<h2><a class="toc-backref" href="#id10">连维基百科都要Hold不住啦~</a></h2>
+<blockquote>
+<p>许多新用户不会着手大幅度修改，而只是做些细节调整，不过仅仅阅读源代码就必须学标记语言了。当我们的用户在演示操作时，这把他们吓走了。</p>
+<p>早在 2004 年，社群开始一再认识到必须采用更好的编辑方式。因为人们的请求，更重要的是他们的需要，所以我们开发了可视化编辑器。</p>
+<p>Wiki 标记语言让新人害怕，这种程度会随着其他站点的迁离而加剧。如果我们不开发可视化编辑器，那么图表的走势会在接下来五年中变得更加糟糕。</p>
+<p class="attribution">—<a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh">MediaWiki.org</a></p>
+</blockquote>
+<p>所以他们才 <del>痛定思痛</del> 决定开发可视化编辑器么😂</p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id11">开始之前-检查一下要求</a></h2>
+<p>可视化编辑器(下面就说VisualEditor呗~)还需要一个叫
+<a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh">Parsoid</a>
+的程序来承担把wiki标记转化成html的任务啦(看下图)~,所以需要服务器来运行它呐~</p>
+<img alt="Parsoid的工作原理" class="img-responsive" src="images/Parsoid_HTML-RDFa_content_model.svg.png"/>
+</div>
+<div class="section" id="parsoid-ubuntu-14-debian-7">
+<h2><a class="toc-backref" href="#id12">安装Parsoid(Ubuntu 14+ / Debian 7+ )</a></h2>
+<p>上游的指南在这(好好学英语呗~) <a class="reference external" href="https://www.mediawiki.org/wiki/Parsoid/Setup">https://www.mediawiki.org/wiki/Parsoid/Setup</a></p>
+<p>Ubuntu和Debian系统的话直接添加MediaWiki.org的软件源然后通过apt安装就好了啦~</p>
+<p>首先添加MediaWiki.org的GPG公钥:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-key advanced --keyserver keys.gnupg.net --recv-keys 664C383A3566A3481B942F007A322AC6E84AFDD2</span>
+</pre></div>
+<p>然后添加Parsoid源:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo <span class="nb">echo</span> <span class="s2">"deb https://releases.wikimedia.org/debian jessie-mediawiki main"</span> &gt; /etc/apt/sources.list.d/parsoid.list</span>
+</pre></div>
+<p>安装需要的软件包:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install curl parsoid</span>
+</pre></div>
+<p>然后看下下面一节的内容修改一下配置文件呗~</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id13">其它系统?手动安装呗~</a></h2>
+<p>上游的指南在这(还是要好好学英语呗~) <a class="reference external" href="https://www.mediawiki.org/wiki/Parsoid/Developer_Setup">https://www.mediawiki.org/wiki/Parsoid/Developer_Setup</a></p>
+<p>首先汝要装上Nodejs(&gt;0.8,建议0.10或更新的版本呐~),还有git.
+具体的安装方法为了避免降低正交性 <del>(其实是系统太多不好写......)</del>,就麻烦汝自己去找了呐~</p>
+<blockquote>
+「呵。咱是贤狼，不是神呐。如果汝开始会期待起咱能够泄露天机给汝，那咱就得从汝眼前消失了呗。」</blockquote>
+<div class="highlight"><pre><span class="code-line"><span></span>node --version <span class="c1"># 如果是Debian或Ubuntu ,输入 nodejs --version</span></span>
+</pre></div>
+<p>然后用git克隆版本库呗~</p>
+<div class="highlight"><pre><span class="code-line"><span></span>git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid</span>
+</pre></div>
+<p>用npm安装上相应的依赖:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>npm install</span>
+</pre></div>
+<p>然后看下面一节的内容修改一下配置文件呗~</p>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id14">修改配置文件</a></h2>
+<blockquote>
+<p>如果是通过软件源安装的,配置文件位于 <span class="tag">/etc/mediawiki/parsoid/settings.js</span></p>
+<p>如果是通过git下载的,从parsoid目录中先复制一份样例出来呗~</p>
+<div class="highlight"><pre><span class="code-line"><span></span>cp localsettings.js.example localsettings.js</span>
+</pre></div>
+</blockquote>
+<p>打开配置文件,找到这一段内容,然后改它~:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nx">parsoidConfig</span><span class="p">.</span><span class="nx">setMwApi</span><span class="p">({</span></span>
+<span class="code-line">    <span class="c1">// The "prefix" is the name given to this wiki configuration in the</span></span>
+<span class="code-line">    <span class="c1">// (deprecated) Parsoid v1 API.</span></span>
+<span class="code-line">    <span class="nx">prefix</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span> <span class="c1">// optional</span></span>
+<span class="code-line">    <span class="c1">// The "domain" is used for communication with Visual Editor</span></span>
+<span class="code-line">    <span class="c1">// and RESTBase.  It defaults to the hostname portion of</span></span>
+<span class="code-line">    <span class="c1">// the `uri` property below, but you can manually set it</span></span>
+<span class="code-line">    <span class="c1">// to an arbitrary string.</span></span>
+<span class="code-line">    <span class="nx">domain</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span> <span class="c1">// optional</span></span>
+<span class="code-line">    <span class="c1">// This is the only required parameter:</span></span>
+<span class="code-line">    <span class="c1">// the URL of you MediaWiki API endpoint.</span></span>
+<span class="code-line">    <span class="nx">uri</span><span class="o">:</span> <span class="s1">'http://localhost/w/api.php'</span></span>
+<span class="code-line">    <span class="p">});</span></span>
+</pre></div>
+<p>其中"uri"对应汝的wiki的api.php的位置,"domain"是汝的域名啦~."prefix"可以自己起一个(反正因为换了API也没用啦~,不过测试时可能用得到)</p>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id15">启动服务</a></h2>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id16">从软件源安装的?</a></h3>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo systemctl start parsoid <span class="c1"># Debian Jessie ,用Systemd启动</span></span>
+<span class="code-line"></span>
+<span class="code-line">sudo service parsoid start <span class="c1"># Debian Wheezy 或Ubuntu ,用init.d脚本启动.</span></span>
+</pre></div>
+<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <span class="tag">http://localhost:8142</span> 来进行测试.试着加载 <span class="tag">http://localhost:8142/汝设置的前缀/汝的wiki上的一个页面</span> 试试呗~</p>
+</div>
+<div class="section" id="git">
+<h3><a class="toc-backref" href="#id17">用git安装的?</a></h3>
+<div class="highlight"><pre><span class="code-line"><span></span>npm start</span>
+</pre></div>
+<p>或者:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>node bin/server.js</span>
+</pre></div>
+<p>可以用screen一类的工具让Parsoid在后台运行~</p>
+<p>如果汝不是通过远程访问执行的命令,可以在浏览器上打开 <span class="tag">http://localhost:8000</span> 来进行测试.试着加载 <span class="tag">http://localhost:8000/汝设置的前缀/汝的wiki上的一个页面</span> 试试呗~</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id18">修改监听地址便于远程测试</a></h3>
+<p>改这一段:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">// Allow override of port/interface:</span></span>
+<span class="code-line"><span class="c1">//parsoidConfig.serverPort = 8142;</span></span>
+<span class="code-line"><span class="c1">//parsoidConfig.serverInterface = '127.0.0.1';</span></span>
+</pre></div>
+<p>反注释最后一行并改成0.0.0.0,就可以通过 <span class="tag">http://服务器的IP地址:8142</span> 访问啦~</p>
+</div>
+</div>
+<div class="section" id="visualeditor">
+<h2><a class="toc-backref" href="#id19">安装VisualEditor扩展</a></h2>
+<p>上游的指南在这: <a class="reference external" href="https://www.mediawiki.org/wiki/Extension:VisualEditor">https://www.mediawiki.org/wiki/Extension:VisualEditor</a></p>
+<p>首先从 <a class="reference external" href="https://www.mediawiki.org/wiki/Special:ExtensionDistributor/VisualEditor">这里</a> 获得扩展然后上传到汝的wiki上的extensions目录呗~</p>
+<p>然后修改汝的LocalSettings.php:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>require_once "$IP/extensions/VisualEditor/VisualEditor.php";</span>
+<span class="code-line"></span>
+<span class="code-line">// 反注释下一行来默认启用可视化编辑器</span>
+<span class="code-line">#$wgDefaultUserOptions['visualeditor-enable'] = 1;</span>
+<span class="code-line"></span>
+<span class="code-line">// 反注释下一行来启用测试中的功能</span>
+<span class="code-line">#$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;</span>
+<span class="code-line"></span>
+<span class="code-line">//在除了主名字空间以外的名字空间中也启用可视化编辑器(下面的例子是用户名字空间)</span>
+<span class="code-line">$wgVisualEditorNamespaces=array_merge($wgContentNamespaces,array( NS_USER ));</span>
+</pre></div>
+<p>完整的设置选项可以在扩展页面上找到.</p>
+<p>然后在汝的wiki上试试看呗~</p>
+<img alt="VisualEditor效果" class="img-responsive" src="images/visualeditor-test.png"/>
+</div>
+
+  </div><!-- /.entry-content -->
+  <div class="entry-content jumbotron" id="source-content" style="display: none">
+               <!-- <pre><code id="source-code">
+               </code></pre> -->
+               <div id="source-code"></div>
+  </div>
+</section>
+<br />
+      <a href="https://blog.yoitsu.moe/tech/new_yoitsu_birth.html" class="place-left">
+        <button class="command-button bg-lightOlive fg-white">
+            <span class="icon mif-arrow-left"></span>
+                新的&quot;约伊兹的萌狼乡手札&quot;诞生啦~
+              <small>上一篇</small>
+        </button>
+      </a>
+      <a href="https://blog.yoitsu.moe/tech/new_yoitsu_birth_notes.html" class="place-right">
+        <button class="command-button icon-right bg-lightOlive fg-white">
+            <span class="icon mif-arrow-right"></span>
+                新约伊兹的萌狼乡手札诞生全过程伪实录
+              <small>下一篇</small>
+        </button>
+      </a>
+  <div class="padding10 clear-float"></div>
+<div class="panel">
+    <div class="heading bg-amber">
+        <span class="title">系列MediaWiki中的文章</span>
+    </div>
+    <div class="content padding10">
+            <a href='https://blog.yoitsu.moe/tech/visualeditor_for_mediawiki.html'>
+            <button class="button  warning ">
+                为MediaWiki安装可视化编辑器
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/smtp_for_mediawiki.html'>
+            <button class="button ">
+                MediaWiki 设置SMTP发送邮件
+              </button></a><br/>
+    </div>
+</div>
+<div class="padding10 clear-float"></div>
+
+<div class="panel" id="talk" data-role="panel">
+<div class="heading bg-orange">
+       <span class="icon mif-bubbles bg-darkOrange"></span>
+       <span class="title">参与讨论</span>
+    </div>
+    <div class="content">
+        <ul class="step-list padding10" style="padding-left:20px;">
+         <li>
+             <h2>如何和咱交流?</h2>
+             <hr class="bg-red" />
+             <div>
+                 汝可以通过Github的Issue和Disqus和咱交(bao)流(yuan)呐~
+                 <br />
+             </div>
+         </li>
+         <li>
+             <h2>Github Issue?</h2>
+             <hr class="bg-green" />
+             <div>
+                 Github issues用来回报网站的一般问题，用Github帐号登录，然后提交issue抱怨咱一下呗~
+                 <br />
+                 <a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success">前往Issues页面呗~</button></a>
+             </div>
+         </li>
+         <li>
+             <h2>用Disqus?</h2>
+             <hr  class="bg-blue"/>
+             <div>
+                 Disqus用来回报某个页面的问题，用Disqus帐号登录，提交评论抱怨咱一下呗~ <br /><br />
+                 <div id="disqus_thread"></div>
+					<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//kenookamihoro.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Disqus需要启用JavaScript 才能工作呐~<br /><a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+             </div>
+         </li>
+      </ul>
+    </div>
+</div>
+                </div>
+            <div class="cell colspan3" id="sidebar">
+                <div class="panel warning shadow">
+                    <div class="heading">
+                        <span class="icon mif-notification bg-darkOrange"></span>
+                        <span class="title">站点通告</span>
+                    </div>
+                <div class="content padding10">
+                <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
+                <div>如果有问题的话，记得回报咱哟~</div><br />
+                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a></div><br />
+                <div>咱的Tox ID(这是一整个~):<br />7BC803F7F9B8A7230EE181AB4<br />5CA909DE446D36A7BC3A275D5<br />576439E0CF7546FF4E2C4665CC</div><br />
+                </ul>
+                </div>
+                </div>
+                <br />
+                <div class="panel alert shadow">
+                    <div class="heading">
+                        <span class="icon mif-user bg-darkRed"></span>
+                        <span class="title">ホロ</span>
+                    </div>
+                    <div class="content padding10">
+                    <div class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
+                        <div class="tile-content slide-up-2">
+                            <div class="slide">
+                                 <div class="image-container image-format-square" style="width: 100%;">
+                                     <div class="frame">
+                                        <div style="width: 100%; height: 150px; border-radius: 0px; background-image: url(&quot;/theme/images/wiki.png&quot;); background-size: cover; background-repeat: no-repeat;">
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+                            <div class="slide-over bg-darkOrange slide-up-2 padding10 ">
+                            「虽然咱长久以来被尊为神，不过，咱就是咱。咱是赫萝。」
+                            </div>
+                        </div>
+                    </div>
+                        <div class="toolbar align-center">
+                        <br />
+                        <a href="https://twitter.com/Ken_Ookami_Horo">
+                        <div class="fg-darkOrange icon mif-twitter mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="https://github.com/KenOokamiHoro">
+                        <div class="fg-darkOrange icon mif-github mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="https://plus.google.com/u/0/+%E5%BC%A0%E9%87%91%E6%B6%9B4676">
+                        <div class="fg-darkOrange icon mif-google-plus mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="mailto:horo@yoitsu.moe">
+                        <div class="fg-darkOrange icon mif-mail mif-2x "></div>
+                        </a>
+                        <br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                 <br />
+                <div class="panel shadow">
+                    <div class="heading">
+                        <span class="icon mif-tags"></span>
+                        <span class="title">标签云</span>
+                    </div>
+                    <div class="content padding10">
+                        <ul class="tagcloud">
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/software.html">
+                                    software
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/grub.html">
+                                    grub
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/cou-shu.html">
+                                    凑数
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/windows.html">
+                                    windows
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
+                                    Arch Linux
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
+                                    AUR
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
+                                    partner
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
+                                    notes
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+    <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
+
+<button onclick="showCharm('right')" class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:100px;right:30px;z-index:2000;"><span class="mif-list"></span></button>
+    </div>
+    <div class="app-bar darcula padding10 text-shadow ">
+        <div class="grid container page-content ">
+            约伊兹的萌狼乡手札基于<a href="http://metroui.org.ua/">Metro UI CSS</a>和使用<del>人生苦短</del>的<a href="http://python.org">Python</a>制成的<a href="http://getpelican.com/">Pelican</a>构建.<br />
+            <br />
+            <img alt="知识共享许可协议" style="border-width:1" src="/theme/images/cc-by-sa.png" />除非另有声明，约伊兹的萌狼乡手札的文字内容在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">知识共享 署名-相同方式共享 4.0协议</a>之条款下提供。<br />
+        </div>
+    </div>
+</body>
+</html>

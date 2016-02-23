@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+      <title>在 Arch Linux 上安装 Ghost 博客系统 - 约伊兹的萌狼乡手札</title>
+    <meta charset="utf-8" />
+    <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
+    <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
+    <link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
+    <link href="https://blog.yoitsu.moe/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#bf5a15">
+    <link href="https://blog.yoitsu.moe/theme/css/metro.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/docs.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-icons.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-responsive.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-schemes.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/pygment.css" rel="stylesheet">
+    <script src="https://blog.yoitsu.moe/theme/js/jquery-2.1.3.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/metro.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/velocity.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+    <script>
+        function showCharm(id){
+            var  charm = $("#"+id+"-charm").data("charm");
+            if (charm.element.data("opened") === true) {
+                charm.close();
+            } else {
+                charm.open();
+            }
+        }
+    </script>
+
+    <!--动态格言的实现参考自https://fiveyellowmice.github.io/-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+      $(".menu-button").on("touchstart", function() {
+        $(".menu-wrapper").removeClass("trigger");
+        if ( $(".nav-items").is(":visible") ) {
+			$(".nav-items").velocity("finish")
+			.velocity("slideUp", { delay: 200, duration: 400, easing: "easeInQuad" })
+			.velocity("fadeOut", { delay: 200, duration: 400, easing: "easeInQuad", queue: false });
+		} else {
+			$(".nav-items").velocity("finish")
+			.velocity("slideDown", { delay: 200, duration: 400, easing: "easeOutQuad" })
+			.velocity("fadeIn", { delay: 200, duration: 400, easing: "easeOutQuad", queue: false });
+		}
+      });
+    });
+    </script>
+
+
+
+    <meta name="tags" content="Arch Linux" />
+    <meta name="tags" content="partner" />
+
+
+</head>
+<body id="index">
+    <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
+        <div class="container">
+            <ul class="app-bar-menu">
+                <li><a href="https://blog.yoitsu.moe/"><strong>约伊兹的萌狼乡手札</strong></a></li>
+                <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
+                <ul class="d-menu" data-role="dropdown">
+                <li><a href="https://blog.yoitsu.moe/category/life.html">Life</a></li>
+                <li class="active"><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
+                </ul></li>
+                <li><a href="https://blog.yoitsu.moe/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
+            </ul>
+            <ul class="app-bar-menu place-right">
+
+<li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
+<li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
+                <li><a href="https://blog.yoitsu.moe/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
+                <li><a href="https://blog.yoitsu.moe/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
+                <li>
+                <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
+                <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
+                	<div class="padding10">
+                		<h4>搜索约伊兹的萌狼乡手札</h4>
+                    	<form action="search.html">
+                        	<div class="input-control text" data-role="input">
+    						<input type="text" name="q" required="required">
+    						<button class="button" action="sumbit"><span class="mif-search"></span></button>
+							</div>
+                       </form>
+                    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>$("div#navbar-fixed-top").autoHidingNavbar();</script>
+    <div class="container page-content" >
+        <div class="grid">
+			<div class="padding5 site-description" style="clear:both;"></div>
+			<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			$(".site-description").after($("<blockquote>").attr("id", "fortune").css("display", "none"));
+			$(".site-description").after($("<blockquote>").attr("id", "fortune").css("line-height", "1.4rem"));
+
+			$.getJSON( "https://api.github.com/gists/07ca2edea6e507bf40f5", function(data) {
+
+				fortunes = JSON.parse(data.files["quotes.json"].content);
+				randomFortune = fortunes[ Math.floor( Math.random() * fortunes.length ) ];
+				if ( randomFortune.author === undefined ) {
+					$("#fortune").html( "<p>"+randomFortune.content+"</p>" );
+				} else {
+					$("#fortune").html( "<p>"+randomFortune.content+"</p>"  + "<small>" + randomFortune.author + "</small>");
+				}
+
+				$("#fortune").velocity("slideDown", { duration: 400, easing: "easeOutQuad" });
+			});
+		});
+			</script>
+            <div class="row cells10">
+                <div class="cell colspan7" id="main">
+<div data-role="charm" data-position="right" id="right-charm" class="bg-grayLighter page-content fg-black ">
+<h2>目录</h2>
+    <nav class="toc">
+    <div class="toc" id="">
+
+<ul class="simple">
+<li><a class="reference internal" href="#ghost" id="id7">汝连啥是 Ghost 都不知道?</a></li>
+<li><a class="reference internal" href="#id1" id="id8">要安装 Ghost 需要啥?</a></li>
+<li><a class="reference internal" href="#aur-ghost" id="id9">从 AUR 安装 Ghost</a></li>
+<li><a class="reference internal" href="#id2" id="id10">通过源代码安装 Ghost</a></li>
+<li><a class="reference internal" href="#id3" id="id11">修改配置文件</a></li>
+<li><a class="reference internal" href="#id4" id="id12">如果汝的 Ghost 和汝进行操作的电脑是同一个</a></li>
+<li><a class="reference internal" href="#id5" id="id13">如果汝的 Ghost 和汝进行操作的电脑不是同一个</a></li>
+<li><a class="reference internal" href="#id6" id="id14">参考资料</a></li>
+</ul>
+</div>
+    </nav>
+</div>
+
+    <script id="dsq-count-scr" src="//kenookamihoro.disqus.com/count.js" async></script>
+
+
+<section id="content" class="body">
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/tech/ghost_blog_archlinux.html" rel="bookmark" title="到 在 Arch Linux 上安装 Ghost 博客系统的固定链接" class="fg-white">在 Arch Linux 上安装 Ghost 博客系统</a></h2>
+    	<span class="mif-calendar"> 2016年02月14日 (Sun)&nbsp;&nbsp;</span>
+    	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
+        <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('ghost_blog_archlinux.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <br /><br />
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/arch-linux.html"> Arch Linux</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/partner.html"> partner</a>&nbsp;&nbsp;</span>
+
+    </header>
+  <div class="entry-content text-accent" id="article-content">
+    
+<p>先祝大家 <ruby><rb>情人节</rb><rp>(</rp><rt>烧烤节</rt><rp>)</rp></ruby> 快乐~ (2333</p>
+<p><del>为了让旅伴发发牢骚,就装了一个 Ghost 博客系统咯~</del></p>
+
+<div class="section" id="ghost">
+<h2><a class="toc-backref" href="#id7">汝连啥是 Ghost 都不知道?</a></h2>
+<blockquote>
+<p>Ghost是用JavaScript编写的博客平台，基于MIT许可证开放源代码。Ghost的设计主旨是简化个人网站发布以及网上出版的过程。</p>
+<p>Ghost是一款个人博客系统，它是使用Node.js语言和MySQL数据库开发的，同时支持MySQL、MariaDB、SQLite和PostgreSQL。用户可以在支持Node.js的服务器上使用自己的博客。</p>
+<p class="attribution">—<a class="reference external" href="https://zh.wikipedia.org/wiki/Ghost_%28%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0%29">Wikipedia 上的 "Ghost (博客平台)" 条目</a></p>
+</blockquote>
+<p>简单来说,Ghost 是一套博客平台,是一套博客平台,是一套博客平台! <del>(重要的事情说三遍😂😂)</del></p>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id8">要安装 Ghost 需要啥?</a></h2>
+<p>因为 Ghost 是用 Node.js 写成的,所以要安装 Ghost , 汝需要先装上 Node.js 和 npm 呗~</p>
+<div class="tag warning fg-white compound">
+<p class="compound-first">截至写这篇文章时,Arch Linux 官方源里 Node.js 的版本是 5.6.0 ,而 Ghost 的计划是只支持 Node.js 的 <ruby><rb>LTS</rb><rp>(</rp><rt>长期支援</rt><rp>)</rp></ruby> 版本, 而 Node.js 的长期支援版本是 0.10x,0.12x和4.2 .所以嘛......</p>
+<p class="compound-last">这里(和咱在 AUR 的 ghost 软件包里)用到了一个环境变量 <span class="tag">GHOST_NODE_VERSION_CHECK=false</span> 来不让 ghost 来检查 node 的版本,在 Node.js 下一个 LTS 版本(6.x)出来前先凑合一下呗~</p>
+</div>
+<p>于是先安装 <a class="reference external" href="https://www.archlinux.org/packages/?name=nodejs">nodejs</a> 和 <a class="reference external" href="https://www.archlinux.org/packages/?name=npm">npm</a> :</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo pacman -S nodejs npm</span>
+</pre></div>
+<p>如果汝认为自己的博客会做的比较大,需要一个数据库系统的话,咱推荐 <a class="reference external" href="https://www.archlinux.org/packages/?name=mariadb">mariadb</a> 呗~</p>
+</div>
+<div class="section" id="aur-ghost">
+<h2><a class="toc-backref" href="#id9">从 AUR 安装 Ghost</a></h2>
+<p>然后从 AUR 安装 <a href="https://aur.archlinux.org/packages/?O=0&amp;K=ghost" title="在 AUR 上搜索ghost">ghost <sup>AUR</sup> </a> (这个包是咱更新的,有问题尽管 pia 咱~).</p>
+<p>如果汝有 yaourt 的话, <span class="tag">yaourt -S ghost</span></p>
+<p>这会把 ghost 安装在 <span class="tag">/srv/ghost/</span> 目录,由于创建的 ghost 用户不能通过 shell 登录,要修改这个目录的文件的话:</p>
+<ul>
+<li><p class="first">修改 <span class="tag">/etc/passwd</span> 文件:</p>
+<blockquote>
+<p>ghost:x:738:738::/srv/ghost:/usr/bin/nologin</p>
+<p>把 <span class="tag">/usr/bin/nologin</span> 换成 <span class="tag">/bin/bash</span> ,保存.</p>
+<p>这样以后可以通过 <span class="tag">sudo su ghost</span> 切换到 ghost 用户对 /srv/ghost 目录写入了.</p>
+</blockquote>
+</li>
+<li><p class="first">通过下面的命令以 ghost 用户运行一条命令:</p>
+<blockquote>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># su 后面的 -s 参数可以制定切换用户后运行的 shell ,</span></span>
+<span class="code-line"><span class="c1"># -c 参数可以指定要运行的命令.</span></span>
+<span class="code-line"></span>
+<span class="code-line">sudo su ghost -s /bin/bash -c <span class="s2">"此处是汝的命令,记得带上引号"</span></span>
+</pre></div>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id10">通过源代码安装 Ghost</a></h2>
+<p>首先把 ghost 的源代码下载下来并解开:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 这时最新的版本是0.7.6.</span></span>
+<span class="code-line">wget https://ghost.org/zip/ghost-0.7.6.zip</span>
+<span class="code-line">unzip ghost-0.7.6.zip</span>
+<span class="code-line"><span class="nb">cd</span> ghost-0.7.6</span>
+</pre></div>
+<p>接下来通过 npm 安装需要的依赖,因为上面的提示嘛~</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">GHOST_NODE_VERSION_CHECK</span><span class="o">=</span><span class="nb">false</span> npm install</span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id11">修改配置文件</a></h2>
+<p>如果是通过 AUR 安装的,配置文件位于 <span class="tag">/srv/ghost/config.js</span></p>
+<p>如果是通过源代码安装的,从目录中先复制一份样例出来呗~</p>
+<blockquote>
+<div class="highlight"><pre><span class="code-line"><span></span>cp config.example.js config.js</span>
+</pre></div>
+</blockquote>
+<p>这里的例子是修改 <span class="tag">Production</span> 一节
+(这一节是汝的 Ghost 实际运行时的配置,下面的 Development 一节是开发时的配置)</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nx">config</span> <span class="o">=</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="c1">// ### Production</span></span>
+<span class="code-line">    <span class="c1">// When running Ghost in the wild, use the production environment.</span></span>
+<span class="code-line">    <span class="c1">// Configure your URL and mail settings here</span></span>
+<span class="code-line">    <span class="nx">production</span><span class="o">:</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="c1">// 汝的网址?</span></span>
+<span class="code-line">        <span class="nx">url</span><span class="o">:</span> <span class="s1">'http://localhost'</span><span class="p">,</span></span>
+<span class="code-line">        <span class="nx">mail</span><span class="o">:</span> <span class="p">{},</span></span>
+<span class="code-line">        <span class="c1">// 汝想使用那种数据库?</span></span>
+<span class="code-line">        <span class="c1">// 下面的例子是 sqlite3 数据库,配置文件中还有设置 MariaDB 数据库 的样例</span></span>
+<span class="code-line">        <span class="nx">database</span><span class="o">:</span> <span class="p">{</span></span>
+<span class="code-line">            <span class="nx">client</span><span class="o">:</span> <span class="s1">'sqlite3'</span><span class="p">,</span></span>
+<span class="code-line">            <span class="nx">connection</span><span class="o">:</span> <span class="p">{</span></span>
+<span class="code-line">                <span class="nx">filename</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'/content/data/ghost.db'</span><span class="p">)</span></span>
+<span class="code-line">            <span class="p">},</span></span>
+<span class="code-line">            <span class="nx">debug</span><span class="o">:</span> <span class="nx">falseProduction</span></span>
+<span class="code-line">        <span class="p">},</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="nx">server</span><span class="o">:</span> <span class="p">{</span></span>
+<span class="code-line">            <span class="nx">host</span><span class="o">:</span> <span class="s1">'127.0.0.1'</span><span class="p">,</span></span>
+<span class="code-line">            <span class="nx">port</span><span class="o">:</span> <span class="s1">'2368'</span></span>
+<span class="code-line">        <span class="p">}</span></span>
+<span class="code-line">    <span class="p">},</span></span>
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id12">如果汝的 Ghost 和汝进行操作的电脑是同一个</a></h2>
+<p>通过下面的命令来测试汝的 Ghost 呗~</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">cd</span> /path/to/ghost</span>
+<span class="code-line"><span class="nv">GHOST_NODE_VERSION_CHECK</span><span class="o">=</span><span class="nb">false</span></span>
+</pre></div>
+<p>如果汝是从 AUR 安装的,可以通过 Systemd 来启动</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo systemctl start ghost</span>
+</pre></div>
+<p>现在打开 <span class="tag">http://localhost:2368</span> 看看效果呗~</p>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id13">如果汝的 Ghost 和汝进行操作的电脑不是同一个</a></h2>
+<p>比如汝在 VPS 上安装了 Ghost,就需要用一个 web服务器通过反向代理来访问呗~</p>
+<p>首先修改 <span class="tag">config.js</span> 把 Production 中的 URL 换成汝的网址啦~</p>
+<p>如果汝在用 Nginx, 把这一段增加到汝的 <span class="tag">server</span> 块中:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>location / {</span>
+<span class="code-line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span>
+<span class="code-line">      proxy_set_header Host $http_host;</span>
+<span class="code-line">      proxy_set_header X-Forwarded-Proto $scheme;</span>
+<span class="code-line">      proxy_pass http://127.0.0.1:2368;</span>
+<span class="code-line">      # 汝的更多自定义设置</span>
+<span class="code-line">}</span>
+</pre></div>
+<p>如果汝在用 Apache, 把下面一段添加到汝的 httpd.conf 的 vhost 段中(首先要启用 mod_proxy 模块~):</p>
+<div class="highlight"><pre><span class="code-line"><span></span>ProxyPass / http://localhost:2368/</span>
+<span class="code-line">ProxyPassReverse / http://localhost:2368/</span>
+<span class="code-line">ProxyHTMLURLMap http://localhost:2368/ /</span>
+<span class="code-line">RequestHeader set X-Forwarded-For $proxy_add_x_forwarded_for</span>
+<span class="code-line">RequestHeader set Host $host</span>
+<span class="code-line">RequestHeader set X-Forwarded-Proto $scheme</span>
+</pre></div>
+<p>然后重新启动 ghost 和 web 服务器以后试试通过汝的网址访问?</p>
+<p>打开 <span class="tag">http://汝的ghost网址/ghost/</span> 开始设置汝的 Ghost 博客呗~</p>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id14">参考资料</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://support.ghost.org/developers">Ghost Blog 文档</a></li>
+<li><a class="reference external" href="http://httpd.apache.org/docs/2.4/mod/mod_proxy.html">Apache httpd mod_proxy 文档</a></li>
+</ul>
+</div>
+
+  </div><!-- /.entry-content -->
+  <div class="entry-content jumbotron" id="source-content" style="display: none">
+               <!-- <pre><code id="source-code">
+               </code></pre> -->
+               <div id="source-code"></div>
+  </div>
+</section>
+<br />
+      <a href="https://blog.yoitsu.moe/tech/aur_sumbiting_guidebook.html" class="place-left">
+        <button class="command-button bg-lightOlive fg-white">
+            <span class="icon mif-arrow-left"></span>
+                AUR 纯萌新向入门教学(3)-提交软件包到AUR
+              <small>上一篇</small>
+        </button>
+      </a>
+      <a href="https://blog.yoitsu.moe/tech/smtp_for_mediawiki.html" class="place-right">
+        <button class="command-button icon-right bg-lightOlive fg-white">
+            <span class="icon mif-arrow-right"></span>
+                MediaWiki 设置SMTP发送邮件
+              <small>下一篇</small>
+        </button>
+      </a>
+  <div class="padding10 clear-float"></div>
+<div class="panel">
+    <div class="heading bg-amber">
+        <span class="title">系列Arch Linux中的文章</span>
+    </div>
+    <div class="content padding10">
+            <a href='https://blog.yoitsu.moe/life/archlinux_cn_community_unoffical_newbie_guide.html'>
+            <button class="button ">
+                Arch Linux 中文社区非官方生存手册
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/aur_fresh_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(1)-从AUR安装软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/aur_packaging_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(2)-创建一个软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/aur_sumbiting_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(3)-提交软件包到AUR
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/ghost_blog_archlinux.html'>
+            <button class="button  warning ">
+                在 Arch Linux 上安装 Ghost 博客系统
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/windows_grub_recuse.html'>
+            <button class="button ">
+                装完 Arch Linux 再装 Windows 然后修引导~
+              </button></a><br/>
+    </div>
+</div>
+<div class="padding10 clear-float"></div>
+
+<div class="panel" id="talk" data-role="panel">
+<div class="heading bg-orange">
+       <span class="icon mif-bubbles bg-darkOrange"></span>
+       <span class="title">参与讨论</span>
+    </div>
+    <div class="content">
+        <ul class="step-list padding10" style="padding-left:20px;">
+         <li>
+             <h2>如何和咱交流?</h2>
+             <hr class="bg-red" />
+             <div>
+                 汝可以通过Github的Issue和Disqus和咱交(bao)流(yuan)呐~
+                 <br />
+             </div>
+         </li>
+         <li>
+             <h2>Github Issue?</h2>
+             <hr class="bg-green" />
+             <div>
+                 Github issues用来回报网站的一般问题，用Github帐号登录，然后提交issue抱怨咱一下呗~
+                 <br />
+                 <a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success">前往Issues页面呗~</button></a>
+             </div>
+         </li>
+         <li>
+             <h2>用Disqus?</h2>
+             <hr  class="bg-blue"/>
+             <div>
+                 Disqus用来回报某个页面的问题，用Disqus帐号登录，提交评论抱怨咱一下呗~ <br /><br />
+                 <div id="disqus_thread"></div>
+					<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//kenookamihoro.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Disqus需要启用JavaScript 才能工作呐~<br /><a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+             </div>
+         </li>
+      </ul>
+    </div>
+</div>
+                </div>
+            <div class="cell colspan3" id="sidebar">
+                <div class="panel warning shadow">
+                    <div class="heading">
+                        <span class="icon mif-notification bg-darkOrange"></span>
+                        <span class="title">站点通告</span>
+                    </div>
+                <div class="content padding10">
+                <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
+                <div>如果有问题的话，记得回报咱哟~</div><br />
+                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a></div><br />
+                <div>咱的Tox ID(这是一整个~):<br />7BC803F7F9B8A7230EE181AB4<br />5CA909DE446D36A7BC3A275D5<br />576439E0CF7546FF4E2C4665CC</div><br />
+                </ul>
+                </div>
+                </div>
+                <br />
+                <div class="panel alert shadow">
+                    <div class="heading">
+                        <span class="icon mif-user bg-darkRed"></span>
+                        <span class="title">ホロ</span>
+                    </div>
+                    <div class="content padding10">
+                    <div class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
+                        <div class="tile-content slide-up-2">
+                            <div class="slide">
+                                 <div class="image-container image-format-square" style="width: 100%;">
+                                     <div class="frame">
+                                        <div style="width: 100%; height: 150px; border-radius: 0px; background-image: url(&quot;/theme/images/wiki.png&quot;); background-size: cover; background-repeat: no-repeat;">
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+                            <div class="slide-over bg-darkOrange slide-up-2 padding10 ">
+                            「虽然咱长久以来被尊为神，不过，咱就是咱。咱是赫萝。」
+                            </div>
+                        </div>
+                    </div>
+                        <div class="toolbar align-center">
+                        <br />
+                        <a href="https://twitter.com/Ken_Ookami_Horo">
+                        <div class="fg-darkOrange icon mif-twitter mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="https://github.com/KenOokamiHoro">
+                        <div class="fg-darkOrange icon mif-github mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="https://plus.google.com/u/0/+%E5%BC%A0%E9%87%91%E6%B6%9B4676">
+                        <div class="fg-darkOrange icon mif-google-plus mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="mailto:horo@yoitsu.moe">
+                        <div class="fg-darkOrange icon mif-mail mif-2x "></div>
+                        </a>
+                        <br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                 <br />
+                <div class="panel shadow">
+                    <div class="heading">
+                        <span class="icon mif-tags"></span>
+                        <span class="title">标签云</span>
+                    </div>
+                    <div class="content padding10">
+                        <ul class="tagcloud">
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/software.html">
+                                    software
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/grub.html">
+                                    grub
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/cou-shu.html">
+                                    凑数
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/windows.html">
+                                    windows
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
+                                    Arch Linux
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
+                                    AUR
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
+                                    partner
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
+                                    notes
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+    <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
+
+<button onclick="showCharm('right')" class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:100px;right:30px;z-index:2000;"><span class="mif-list"></span></button>
+    </div>
+    <div class="app-bar darcula padding10 text-shadow ">
+        <div class="grid container page-content ">
+            约伊兹的萌狼乡手札基于<a href="http://metroui.org.ua/">Metro UI CSS</a>和使用<del>人生苦短</del>的<a href="http://python.org">Python</a>制成的<a href="http://getpelican.com/">Pelican</a>构建.<br />
+            <br />
+            <img alt="知识共享许可协议" style="border-width:1" src="/theme/images/cc-by-sa.png" />除非另有声明，约伊兹的萌狼乡手札的文字内容在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">知识共享 署名-相同方式共享 4.0协议</a>之条款下提供。<br />
+        </div>
+    </div>
+</body>
+</html>

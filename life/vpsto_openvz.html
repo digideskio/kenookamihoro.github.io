@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+      <title>凤凰卷家的 vps.to 的 OpenVZ VPS 试用小记 - 约伊兹的萌狼乡手札</title>
+    <meta charset="utf-8" />
+    <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
+    <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
+    <link href="https://blog.yoitsu.moe/feeds/life.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
+    <link href="https://blog.yoitsu.moe/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#bf5a15">
+    <link href="https://blog.yoitsu.moe/theme/css/metro.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/docs.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-icons.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-responsive.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-schemes.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/pygment.css" rel="stylesheet">
+    <script src="https://blog.yoitsu.moe/theme/js/jquery-2.1.3.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/metro.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/velocity.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+    <script>
+        function showCharm(id){
+            var  charm = $("#"+id+"-charm").data("charm");
+            if (charm.element.data("opened") === true) {
+                charm.close();
+            } else {
+                charm.open();
+            }
+        }
+    </script>
+
+    <!--动态格言的实现参考自https://fiveyellowmice.github.io/-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+      $(".menu-button").on("touchstart", function() {
+        $(".menu-wrapper").removeClass("trigger");
+        if ( $(".nav-items").is(":visible") ) {
+			$(".nav-items").velocity("finish")
+			.velocity("slideUp", { delay: 200, duration: 400, easing: "easeInQuad" })
+			.velocity("fadeOut", { delay: 200, duration: 400, easing: "easeInQuad", queue: false });
+		} else {
+			$(".nav-items").velocity("finish")
+			.velocity("slideDown", { delay: 200, duration: 400, easing: "easeOutQuad" })
+			.velocity("fadeIn", { delay: 200, duration: 400, easing: "easeOutQuad", queue: false });
+		}
+      });
+    });
+    </script>
+
+
+
+
+
+</head>
+<body id="index">
+    <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
+        <div class="container">
+            <ul class="app-bar-menu">
+                <li><a href="https://blog.yoitsu.moe/"><strong>约伊兹的萌狼乡手札</strong></a></li>
+                <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
+                <ul class="d-menu" data-role="dropdown">
+                <li class="active"><a href="https://blog.yoitsu.moe/category/life.html">Life</a></li>
+                <li><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
+                </ul></li>
+                <li><a href="https://blog.yoitsu.moe/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
+            </ul>
+            <ul class="app-bar-menu place-right">
+
+<li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
+<li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
+                <li><a href="https://blog.yoitsu.moe/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
+                <li><a href="https://blog.yoitsu.moe/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
+                <li>
+                <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
+                <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
+                	<div class="padding10">
+                		<h4>搜索约伊兹的萌狼乡手札</h4>
+                    	<form action="search.html">
+                        	<div class="input-control text" data-role="input">
+    						<input type="text" name="q" required="required">
+    						<button class="button" action="sumbit"><span class="mif-search"></span></button>
+							</div>
+                       </form>
+                    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>$("div#navbar-fixed-top").autoHidingNavbar();</script>
+    <div class="container page-content" >
+        <div class="grid">
+			<div class="padding5 site-description" style="clear:both;"></div>
+			<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			$(".site-description").after($("<blockquote>").attr("id", "fortune").css("display", "none"));
+			$(".site-description").after($("<blockquote>").attr("id", "fortune").css("line-height", "1.4rem"));
+
+			$.getJSON( "https://api.github.com/gists/07ca2edea6e507bf40f5", function(data) {
+
+				fortunes = JSON.parse(data.files["quotes.json"].content);
+				randomFortune = fortunes[ Math.floor( Math.random() * fortunes.length ) ];
+				if ( randomFortune.author === undefined ) {
+					$("#fortune").html( "<p>"+randomFortune.content+"</p>" );
+				} else {
+					$("#fortune").html( "<p>"+randomFortune.content+"</p>"  + "<small>" + randomFortune.author + "</small>");
+				}
+
+				$("#fortune").velocity("slideDown", { duration: 400, easing: "easeOutQuad" });
+			});
+		});
+			</script>
+            <div class="row cells10">
+                <div class="cell colspan7" id="main">
+<div data-role="charm" data-position="right" id="right-charm" class="bg-grayLighter page-content fg-black ">
+<h2>目录</h2>
+    <nav class="toc">
+    <div class="toc" id="">
+
+<ul class="simple">
+<li><a class="reference internal" href="#openvz" id="id8">说到底还是在吐槽 OpenVZ 架构</a></li>
+<li><a class="reference internal" href="#id3" id="id9">购买时的一点吐槽</a></li>
+<li><a class="reference internal" href="#id4" id="id10">日常</a></li>
+<li><a class="reference internal" href="#id5" id="id11">胡乱的性能测试</a></li>
+<li><a class="reference internal" href="#id7" id="id12">一点总结</a></li>
+</ul>
+</div>
+    </nav>
+</div>
+
+    <script id="dsq-count-scr" src="//kenookamihoro.disqus.com/count.js" async></script>
+
+
+<section id="content" class="body">
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/life/vpsto_openvz.html" rel="bookmark" title="到 凤凰卷家的 vps.to 的 OpenVZ VPS 试用小记的固定链接" class="fg-white">凤凰卷家的 vps.to 的 OpenVZ VPS 试用小记</a></h2>
+    	<span class="mif-calendar"> 2016年02月22日 (Mon)&nbsp;&nbsp;</span>
+    	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
+        <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/life.html"> Life&nbsp;&nbsp;</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('vpsto_openvz.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <br /><br />
+
+    </header>
+  <div class="entry-content text-accent" id="article-content">
+    
+<p>论感情牌+吐槽的必要性~（雾</p>
+
+<p>凤凰卷( <a class="reference external" href="/links.html#phoenixlzx">phoenixlzx</a> )家的 <a class="reference external" href="http://vps.to">vps.to</a> <a class="footnote-reference" href="#id2" id="id1">[1]</a> 最近新上线了 OpenVZ 架构的 VPS .卷说不会超售,咱相信她 (谁叫咱认为她是个好人咧~)</p>
+<table class="footnote docutils table-hover  table-striped table" frame="void" id="id2" rules="none">
+<colgroup><col class="label"></col><col></col></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>其实和喵窝一样,真正的大 boss 藏在后面~ (逃~</td></tr>
+</tbody>
+</table>
+<p>因为没人搭理她,她还在 <a class="reference external" href="//webchat.freenode.net/?channels=#archlinux-cn">##archlinux-cn</a> 里吐槽了一番:</p>
+<blockquote>
+<p>[phoenixlzx] 没人理会透明卷</p>
+<p>[phoenixlzx] 还是滚去睡觉好了</p>
+<p>(quininer) 凤凰怎么了</p>
+<p>[phoenixlzx] 心情不好</p>
+<p>(quininer) momo</p>
+<p>[phoenixlzx] 当时要做的时候都说做做做做好了买买买</p>
+<p>[phoenixlzx] 然后现在做好了都不吱声了</p>
+<p>[phoenixlzx] 订单呢？订单呢？</p>
+<p>[phoenixlzx] 真是不靠谱</p>
+</blockquote>
+<p>不过说到底还是在吐槽 OpenVZ 架构……</p>
+<div class="section" id="openvz">
+<h2><a class="toc-backref" href="#id8">说到底还是在吐槽 OpenVZ 架构</a></h2>
+<blockquote>
+<p>OpenVZ是基于Linux内核和作业系统的操作系统级虚拟化技术。OpenVZ允许物理服务器运行多个操作系统，被称虚拟专用服务器（VPS，Virtual Private Server）或虚拟环境（VE，Virtual Environment）。</p>
+<p>与VMware这种虚拟机和Xen这种硬件辅助虚拟化技术相比，OpenVZ的主机与客户系统都必须是Linux（虽然在不同的虚拟环境里可以用不同的Linux发行版）。但是，OpenVZ声称这样做有性能上的优势。根据OpenVZ网站的说法，使用OpenVZ与使用独立的实体服务器相比，性能只会有1-3%的损失。</p>
+<p>OpenVZ是SWsoft, Inc.公司开发的专有软件Virtuozzo的基础。OpenVZ的授权为GPLv2。</p>
+<p>OpenVZ由两部分组成，一个经修改过的操作系统核心与一套用户工具。</p>
+<p class="attribution">—<a class="reference external" href="https://zh.wikipedia.org/wiki/OpenVZ">Wikipedia:OpenVZ</a></p>
+</blockquote>
+<p>简单来说,OpenVZ 架构不是像 KVM Vmware 一类的完全虚拟化.而且 <ruby><rb>容易</rb><rp>(</rp><rt>几乎总是</rt><rp>)</rp></ruby> 被服务商超售(不然咋会卖那么便宜😂😂).</p>
+<p>不过由于和 <ruby><rb>主机</rb><rp>(</rp><rt>母鸡</rt><rp>)</rp></ruby> 共享内核，听说会有性能优势？</p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id9">购买时的一点吐槽</a></h2>
+<p><a class="reference external" href="https://portal.vpsto.com/cart.php?gid=9">链接在这,标准的 WHMCS 面板.</a></p>
+<p>可是为啥服务开通的确认邮件被 Yandex Mail 当作 spam 了啊 (ノ=Д=)ノ┻━┻</p>
+<p>除了这个其它还OK,VPS 的管理界面也是标准的 SolusVM 面板。</p>
+<p><del>真的是太标准了好像连主题都没改😂😂</del></p>
+<p>另外没有咱喜欢的 Arch Linux 还是很遗憾呐~(卷把锅甩给了OpenVZ,因为母鸡定制的内核太老 (2.6.x) 😂😂</p>
+<p>顺便提一下这次咱买的是最便宜的那个(一个月也要99😂😂),配置大概像这样:</p>
+<blockquote>
+<p>1 Core CPU</p>
+<p>1 GB Guaranteed RAM</p>
+<p>25 GB HDD</p>
+<p>400 GB Premium Traffic @ 100Mbps Bandwidth</p>
+<p>SoftLayer Hong Kong Datacenter</p>
+</blockquote>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id10">日常</a></h2>
+<p>刚开通时的系统是 CentOS 6 , <del>吓的咱赶紧换成了 Debian 8</del>,VPS 控制面板上就重装系统,大概一两分钟左右吧.</p>
+<p>登录,先 apt update 一下,连的好像是 Debian 官方的仓库,速度不够快.</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># apt update</span></span>
+<span class="code-line">.....</span>
+<span class="code-line">Fetched <span class="m">528</span> kB in 5s <span class="o">(</span>94.2 kB/s<span class="o">)</span></span>
+</pre></div>
+<p>接下来更新系统,速度在 2M/s 左右,还可以(懒得换镜像源了😂😂</p>
+<div class="highlight"><pre><span class="code-line"><span></span>root@s17931102:~# apt full-upgrade</span>
+<span class="code-line">Reading package lists... Done</span>
+<span class="code-line">Building dependency tree</span>
+<span class="code-line">Reading state information... Done</span>
+<span class="code-line">Calculating upgrade... Done</span>
+<span class="code-line">The following NEW packages will be installed:</span>
+<span class="code-line">    e2fsprogs init libss2</span>
+<span class="code-line">The following packages will be upgraded:</span>
+<span class="code-line">    cpio libc-bin libc6 libgcrypt20 locales multiarch-support</span>
+<span class="code-line"><span class="m">6</span> upgraded, <span class="m">3</span> newly installed, <span class="m">0</span> to remove and <span class="m">0</span> not upgraded.</span>
+<span class="code-line">Need to get 11.5 MB of archives.</span>
+<span class="code-line">After this operation, <span class="m">3327</span> kB of additional disk space will be used.</span>
+<span class="code-line">Do you want to <span class="k">continue</span>? <span class="o">[</span>Y/n<span class="o">]</span></span>
+<span class="code-line">...</span>
+<span class="code-line">Fetched 11.5 MB in 4s <span class="o">(</span><span class="m">2705</span> kB/s<span class="o">)</span></span>
+<span class="code-line">...</span>
+</pre></div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id11">胡乱的性能测试</a></h2>
+<p><a class="reference external" href="http://www.freehao123.com/vps-cpu-io-unixbench/">咱照着这篇文章小小的测试了一下😂😂</a></p>
+<p>CPU 是 Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz .</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># cat /proc/cpuinfo</span></span>
+<span class="code-line">processor   : 0</span>
+<span class="code-line">vendor_id   : GenuineIntel</span>
+<span class="code-line">cpu family  : 6</span>
+<span class="code-line">model               : 63</span>
+<span class="code-line">model name  : Intel<span class="o">(</span>R<span class="o">)</span> Xeon<span class="o">(</span>R<span class="o">)</span> CPU E5-2650 v3 @ 2.30GHz</span>
+<span class="code-line">stepping    : 2</span>
+<span class="code-line">microcode   : 45</span>
+<span class="code-line">cpu MHz             : 2300.033</span>
+<span class="code-line">cache size  : <span class="m">25600</span> KB</span>
+<span class="code-line">......</span>
+</pre></div>
+<p><span class="tag">free -m</span> 了一下:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>root@s17931102:~# free -m</span>
+<span class="code-line">             total       used       free     shared    buffers     cached</span>
+<span class="code-line">Mem:          <span class="m">1024</span>        <span class="m">315</span>        <span class="m">708</span>         <span class="m">14</span>          <span class="m">0</span>        292</span>
+<span class="code-line">-/+ buffers/cache:         <span class="m">23</span>       1000</span>
+<span class="code-line">Swap:            <span class="m">0</span>          <span class="m">0</span>          0</span>
+</pre></div>
+<p>Debian 8 Minimal,还没有装任何软件时大概用掉了23M 内存.</p>
+<p><span class="tag">dd</span> 了两下,速度不错:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>root@s17931102:~# dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span><span class="nb">test</span> <span class="nv">bs</span><span class="o">=</span>64k <span class="nv">count</span><span class="o">=</span>4k <span class="nv">oflag</span><span class="o">=</span>dsync</span>
+<span class="code-line">4096+0 records in</span>
+<span class="code-line">4096+0 records out</span>
+<span class="code-line"><span class="m">268435456</span> bytes <span class="o">(</span><span class="m">268</span> MB<span class="o">)</span> copied, 1.08052 s, <span class="m">248</span> MB/s</span>
+<span class="code-line">root@s17931102:~# dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span><span class="nb">test</span> <span class="nv">bs</span><span class="o">=</span>8k <span class="nv">count</span><span class="o">=</span>256k <span class="nv">conv</span><span class="o">=</span>fdatasync</span>
+<span class="code-line">262144+0 records in</span>
+<span class="code-line">262144+0 records out</span>
+<span class="code-line"><span class="m">2147483648</span> bytes <span class="o">(</span>2.1 GB<span class="o">)</span> copied, 2.51345 s, <span class="m">854</span> MB/s</span>
+</pre></div>
+<p>下载一个来自 Cachefly 的测速文件,差不多跑满了 100Mb 的带宽:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>root@s17931102:~# wget http://cachefly.cachefly.net/100mb.test</span>
+<span class="code-line">Resolving cachefly.cachefly.net <span class="o">(</span>cachefly.cachefly.net<span class="o">)</span>... 205.234.175.175</span>
+<span class="code-line">Connecting to cachefly.cachefly.net <span class="o">(</span>cachefly.cachefly.net<span class="o">)</span><span class="p">|</span>205.234.175.175<span class="p">|</span>:80... connected.</span>
+<span class="code-line">HTTP request sent, awaiting response... <span class="m">200</span> OK</span>
+<span class="code-line">Length: <span class="m">104857600</span> <span class="o">(</span>100M<span class="o">)</span> <span class="o">[</span>application/octet-stream<span class="o">]</span></span>
+<span class="code-line">Saving to: <span class="s1">'100mb.test'</span></span>
+<span class="code-line"></span>
+<span class="code-line">100mb.test                    100%<span class="o">[===================================================</span>&gt;<span class="o">]</span> 100.00M  11.7MB/s   in 9.0s</span>
+<span class="code-line"></span>
+<span class="code-line">2016-02-22 02:52:54 <span class="o">(</span>11.1 MB/s<span class="o">)</span> - <span class="s1">'100mb.test'</span> saved <span class="o">[</span>104857600/104857600<span class="o">]</span></span>
+</pre></div>
+<p>从 <a class="reference external" href="/links.html#cuihao">cuihao</a> 的镜像源下载 Arch Linux 的安装映像,也能跑满百兆带宽:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>root@s17931102:~# wget https://mirrors.ustc.edu.cn/archlinux/iso/2016.02.01/archlinux-2016.02.01-dual.iso</span>
+<span class="code-line">Resolving mirrors.ustc.edu.cn <span class="o">(</span>mirrors.ustc.edu.cn<span class="o">)</span>... 202.141.176.110, 2001:da8:d800:95::110</span>
+<span class="code-line">Connecting to mirrors.ustc.edu.cn <span class="o">(</span>mirrors.ustc.edu.cn<span class="o">)</span><span class="p">|</span>202.141.176.110<span class="p">|</span>:443... connected.</span>
+<span class="code-line">HTTP request sent, awaiting response... <span class="m">200</span> OK</span>
+<span class="code-line">Length: <span class="m">735051776</span> <span class="o">(</span>701M<span class="o">)</span> <span class="o">[</span>application/octet-stream<span class="o">]</span></span>
+<span class="code-line">Saving to: <span class="s1">'archlinux-2016.02.01-dual.iso'</span></span>
+<span class="code-line"></span>
+<span class="code-line">archlinux-2016.02.01-dual.iso 100%<span class="o">[===================================================</span>&gt;<span class="o">]</span> 701.00M  11.7MB/s   in 63s</span>
+<span class="code-line"></span>
+<span class="code-line">2016-02-22 02:57:09 <span class="o">(</span>11.2 MB/s<span class="o">)</span> - <span class="s1">'archlinux-2016.02.01-dual.iso'</span> saved <span class="o">[</span>735051776/735051776<span class="o">]</span></span>
+</pre></div>
+<p>由于没装web服务器所以先不测试出口带宽......</p>
+<p>运行了一个小脚本来测速,噫可赛艇~:</p>
+<p><a class="reference external" href="http://freevps.us/downloads/bench.sh">http://freevps.us/downloads/bench.sh</a></p>
+<div class="highlight"><pre><span class="code-line"><span></span>Speedtest <span class="o">(</span>IPv4 only<span class="o">)</span></span>
+<span class="code-line">---------------------</span>
+<span class="code-line">Your public IPv4 is foo</span>
+<span class="code-line"></span>
+<span class="code-line">Location            Provider        Speed</span>
+<span class="code-line">CDN                 Cachefly        11.1MB/s</span>
+<span class="code-line"></span>
+<span class="code-line">Atlanta, GA, US             Coloat          7.26MB/s</span>
+<span class="code-line">Dallas, TX, US              Softlayer       8.13MB/s</span>
+<span class="code-line">Seattle, WA, US             Softlayer       10.6MB/s</span>
+<span class="code-line">San Jose, CA, US    Softlayer       9.82MB/s</span>
+<span class="code-line">Washington, DC, US  Softlayer       9.11MB/s</span>
+<span class="code-line"></span>
+<span class="code-line">Tokyo, Japan                Linode          11.2MB/s</span>
+<span class="code-line">Singapore           Softlayer       11.5MB/s</span>
+<span class="code-line"></span>
+<span class="code-line">Rotterdam, Netherlands      id3.net         6.91MB/s</span>
+<span class="code-line">Haarlem, Netherlands        Leaseweb        7.45MB/s</span>
+</pre></div>
+<p>综上所述,网速棒棒哒~</p>
+<p>编译来自 <a class="reference external" href="http://lnmp.org">lnmp.org</a> 的LNMP 一键安装包......</p>
+<p>用了40多分钟,算不算快咧 _(:з」∠)_</p>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id12">一点总结</a></h2>
+<p>总之卷的 VPS 还是很棒呐~(๑•̀ㅂ•́)و✧，不过真的还是有些贵😂😂，对于只想搭个梯子的人来讲花销有些大 (´･ω･`).</p>
+<p><del>为了接着用 Arch Linux,咱还是回去用 conoha 吧 _(:з」∠)_</del></p>
+</div>
+
+  </div><!-- /.entry-content -->
+  <div class="entry-content jumbotron" id="source-content" style="display: none">
+               <!-- <pre><code id="source-code">
+               </code></pre> -->
+               <div id="source-code"></div>
+  </div>
+</section>
+<br />
+      <a href="https://blog.yoitsu.moe/tech/smtp_for_mediawiki.html" class="place-left">
+        <button class="command-button bg-lightOlive fg-white">
+            <span class="icon mif-arrow-left"></span>
+                MediaWiki 设置SMTP发送邮件
+              <small>上一篇</small>
+        </button>
+      </a>
+      <a href="https://blog.yoitsu.moe/tech/windows_grub_recuse.html" class="place-right">
+        <button class="command-button icon-right bg-lightOlive fg-white">
+            <span class="icon mif-arrow-right"></span>
+                装完 Arch Linux 再装 Windows 然后修引导~
+              <small>下一篇</small>
+        </button>
+      </a>
+  <div class="padding10 clear-float"></div>
+
+<div class="panel" id="talk" data-role="panel">
+<div class="heading bg-orange">
+       <span class="icon mif-bubbles bg-darkOrange"></span>
+       <span class="title">参与讨论</span>
+    </div>
+    <div class="content">
+        <ul class="step-list padding10" style="padding-left:20px;">
+         <li>
+             <h2>如何和咱交流?</h2>
+             <hr class="bg-red" />
+             <div>
+                 汝可以通过Github的Issue和Disqus和咱交(bao)流(yuan)呐~
+                 <br />
+             </div>
+         </li>
+         <li>
+             <h2>Github Issue?</h2>
+             <hr class="bg-green" />
+             <div>
+                 Github issues用来回报网站的一般问题，用Github帐号登录，然后提交issue抱怨咱一下呗~
+                 <br />
+                 <a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success">前往Issues页面呗~</button></a>
+             </div>
+         </li>
+         <li>
+             <h2>用Disqus?</h2>
+             <hr  class="bg-blue"/>
+             <div>
+                 Disqus用来回报某个页面的问题，用Disqus帐号登录，提交评论抱怨咱一下呗~ <br /><br />
+                 <div id="disqus_thread"></div>
+					<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//kenookamihoro.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Disqus需要启用JavaScript 才能工作呐~<br /><a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+             </div>
+         </li>
+      </ul>
+    </div>
+</div>
+                </div>
+            <div class="cell colspan3" id="sidebar">
+                <div class="panel warning shadow">
+                    <div class="heading">
+                        <span class="icon mif-notification bg-darkOrange"></span>
+                        <span class="title">站点通告</span>
+                    </div>
+                <div class="content padding10">
+                <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
+                <div>如果有问题的话，记得回报咱哟~</div><br />
+                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a></div><br />
+                <div>咱的Tox ID(这是一整个~):<br />7BC803F7F9B8A7230EE181AB4<br />5CA909DE446D36A7BC3A275D5<br />576439E0CF7546FF4E2C4665CC</div><br />
+                </ul>
+                </div>
+                </div>
+                <br />
+                <div class="panel alert shadow">
+                    <div class="heading">
+                        <span class="icon mif-user bg-darkRed"></span>
+                        <span class="title">ホロ</span>
+                    </div>
+                    <div class="content padding10">
+                    <div class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
+                        <div class="tile-content slide-up-2">
+                            <div class="slide">
+                                 <div class="image-container image-format-square" style="width: 100%;">
+                                     <div class="frame">
+                                        <div style="width: 100%; height: 150px; border-radius: 0px; background-image: url(&quot;/theme/images/wiki.png&quot;); background-size: cover; background-repeat: no-repeat;">
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+                            <div class="slide-over bg-darkOrange slide-up-2 padding10 ">
+                            「虽然咱长久以来被尊为神，不过，咱就是咱。咱是赫萝。」
+                            </div>
+                        </div>
+                    </div>
+                        <div class="toolbar align-center">
+                        <br />
+                        <a href="https://twitter.com/Ken_Ookami_Horo">
+                        <div class="fg-darkOrange icon mif-twitter mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="https://github.com/KenOokamiHoro">
+                        <div class="fg-darkOrange icon mif-github mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="https://plus.google.com/u/0/+%E5%BC%A0%E9%87%91%E6%B6%9B4676">
+                        <div class="fg-darkOrange icon mif-google-plus mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="mailto:horo@yoitsu.moe">
+                        <div class="fg-darkOrange icon mif-mail mif-2x "></div>
+                        </a>
+                        <br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                 <br />
+                <div class="panel shadow">
+                    <div class="heading">
+                        <span class="icon mif-tags"></span>
+                        <span class="title">标签云</span>
+                    </div>
+                    <div class="content padding10">
+                        <ul class="tagcloud">
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/software.html">
+                                    software
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/grub.html">
+                                    grub
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/cou-shu.html">
+                                    凑数
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/windows.html">
+                                    windows
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
+                                    Arch Linux
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
+                                    AUR
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
+                                    partner
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
+                                    notes
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+    <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
+
+<button onclick="showCharm('right')" class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:100px;right:30px;z-index:2000;"><span class="mif-list"></span></button>
+    </div>
+    <div class="app-bar darcula padding10 text-shadow ">
+        <div class="grid container page-content ">
+            约伊兹的萌狼乡手札基于<a href="http://metroui.org.ua/">Metro UI CSS</a>和使用<del>人生苦短</del>的<a href="http://python.org">Python</a>制成的<a href="http://getpelican.com/">Pelican</a>构建.<br />
+            <br />
+            <img alt="知识共享许可协议" style="border-width:1" src="/theme/images/cc-by-sa.png" />除非另有声明，约伊兹的萌狼乡手札的文字内容在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">知识共享 署名-相同方式共享 4.0协议</a>之条款下提供。<br />
+        </div>
+    </div>
+</body>
+</html>

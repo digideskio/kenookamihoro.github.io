@@ -1,0 +1,248 @@
+<div class="highlight"><pre><span></span><span class="gh">新约伊兹的萌狼乡手札诞生全过程伪实录</span>
+<span class="gh">===========================================</span>
+
+<span class="nc">:slug:</span> <span class="nf">new_yoitsu_birth_notes</span>
+<span class="nc">:lang:</span> <span class="nf">zh</span>
+<span class="nc">:date:</span> <span class="nf">2016-01-18 09:35</span>
+<span class="nc">:tags:</span> <span class="nf">yoitsu ,pelican,blog,python</span>
+<span class="nc">:series:</span> <span class="nf">Pelican</span>
+
+<span class="cp">.. PELICAN_BEGIN_SUMMARY</span>
+
+说好的下一期来啦~,新的&quot;约伊兹的萌狼乡手札&quot;是怎么样诞生呐~马上就告诉汝呗~
+
+<span class="cp">.. PELICAN_END_SUMMARY</span>
+
+<span class="p">..</span> <span class="ow">contents</span><span class="p">::</span>
+
+<span class="gh">安装Pelican然后进行初始设置</span>
+<span class="gh">----------------------------</span>
+
+在咱写这篇文章时, <span class="na">:fref:</span><span class="nv">`farsserfc`</span> 已经把Pelican打好包放进Arch Linux 官方软件仓库啦好棒~
+
+Arch Linux用户可以这样安装:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    sudo pacman -S pelican
+
+其它操作系统可以通过pip安装:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    sudo pip install pelican
+
+接着运行设置程序建立一个工作文件夹:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    pelican-quickstart
+
+接着开始挖坑呗~,用 <span class="s">`reStructuredText </span><span class="si">&lt;http://docutils.sourceforge.net/rst.html&gt;</span><span class="s">`_</span> 或 <span class="s">`Markdown </span><span class="si">&lt;http://wowubuntu.com/markdown/&gt;</span><span class="s">`_</span> 开始写文章然后放到 <span class="na">:code:</span><span class="nv">`contents`</span> 文件夹里,像这样:
+
+(reStructuredText)
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">rst</span>
+
+    <span class="gh">这里是标题</span>
+    <span class="gh">===========================================</span>
+
+    <span class="nc">:lang:</span> <span class="nf">这里填语言</span>
+    <span class="nc">:date:</span> <span class="nf">写文章的日期</span>
+    <span class="nc">:Category:</span> <span class="nf">分类</span>
+
+    这里是内容
+
+
+(Markdown)
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">markdown</span>
+
+<span class="s">    Title: 这里是标题</span>
+<span class="s">    date: 写文章的日期</span>
+<span class="s">    Category: 分类</span>
+
+<span class="s">    这里是内容</span>
+
+然后运行一个命令来测试
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    make html <span class="c1"># 生成html</span>
+    make serve <span class="c1"># 在127.0.0.1:8000 运行一个测试服务器.</span>
+
+然后打开浏览器输入 <span class="na">:code:</span><span class="nv">`localhost:8000`</span> ，你就能看到一个初生的很 <span class="na">:ruby:</span><span class="nv">`简洁|难看`</span> 的博客了，不过不要担心，它是只丑小鸭，很快就会像天鹅般美丽(真的么?)。
+
+<span class="gh">:ruby:`修改|调教` Pelican的主题</span>
+<span class="gh">---------------------------------------</span>
+
+可能是一时抽风没找到合适的Material Design风格的框架，<span class="na">:del:</span><span class="nv">`于是走上了Metro UI CSS的不归路......`</span>
+
+Metro UI CSS的项目主页在这里 <span class="s">`&lt;http://metroui.org.ua&gt;`_</span>
+
+咱拿了pelican内置的simple主题做起步,把Metro UI CSS文件夹里的 <span class="na">:code:</span><span class="nv">`/css`</span> 和 <span class="na">:code:</span><span class="nv">`/js`</span> 复制到主题的 <span class="na">:code:</span><span class="nv">`/statics`</span> 文件夹里. 
+
+现在的文件夹结构大概像这样:
+
+<span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> html
+
+    &lt;pre&gt;
+    &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;.&lt;/span&gt;
+    ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;cache&lt;/span&gt;             生成頁面的 pickle 緩存
+    ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;content&lt;/span&gt;           讀取的全部內容
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;&amp;lt;categories&amp;gt;&lt;/span&gt;      按分類存放的文章
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;pages&lt;/span&gt;             像 About 這樣的固定頁面
+    │   └── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;static&lt;/span&gt;            文章內用到的靜態內容
+    ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;drafts&lt;/span&gt;            文章的草稿箱
+    ├── &lt;span style=&quot;color:green;font-weight:bold;&quot;&gt;Makefile&lt;/span&gt;          生成用的 makefile
+    ├── &lt;span style=&quot;color:green;font-weight:bold;&quot;&gt;pelicanconf.py&lt;/span&gt;    測試時用的快速 Pelican 配置
+    ├── &lt;span style=&quot;color:green;font-weight:bold;&quot;&gt;publishconf.py&lt;/span&gt;    部署時用的耗時 Pelican 配置
+    ├── &lt;span style=&quot;color:teal;font-weight:bold;&quot;&gt;output&lt;/span&gt;          -&amp;gt; &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;../kenookamihoro.github.io&lt;/span&gt;
+    ├── &lt;span style=&quot;color:teal;font-weight:bold;&quot;&gt;plugins&lt;/span&gt;         -&amp;gt; &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;../plugins&lt;/span&gt;
+    └── &lt;span style=&quot;color:teal;font-weight:bold;&quot;&gt;theme&lt;/span&gt;           -&amp;gt; &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;../yoitsu&lt;/span&gt;
+    &lt;/pre&gt;
+        
+然后这个内容 repo 中的三个符号链接分别指向三个子 repo（为啥没用 <span class="na">:code:</span><span class="nv">`git submodule`</span> ? 因为咱技术不精还不会用......）。 
+theme 指向 <span class="s">`yoitsu </span><span class="si">&lt;https://github.com/KenOokamiHoro/yoitsu&gt;</span><span class="s">`_</span> ，是咱修改过的 pelican 主题啦。
+plugins 指向 <span class="s">`pelican-plugins </span><span class="si">&lt;https://github.com/getpelican/pelican-plugins&gt;</span><span class="s">`_</span>
+最后 output 指向 <span class="s">`kenookamihoro.github.io </span><span class="si">&lt;https://github.com/KenOokamiHoro/kenookamihoro.github.io&gt;</span><span class="s">`_</span> 也就是发布的静态网站啦。        
+
+
+而主题文件夹的结构大概像这样：
+
+<span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> html
+
+    &lt;pre&gt;
+    &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;.&lt;/span&gt;
+    ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;static&lt;/span&gt;         主题中用到的静态文件，例如js和css            
+    ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;templates&lt;/span&gt;      供jinja使用的模板页面     
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;archives.html&lt;/span&gt;     文章归档
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;article.html&lt;/span&gt;      每个文章
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;author.html&lt;/span&gt;       作者
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;base.html&lt;/span&gt;         所有模板的基础
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;category.html&lt;/span&gt;     分类
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;index.html&lt;/span&gt;        首页  
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;page.html&lt;/span&gt;         每个页面
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;pageination.html&lt;/span&gt;  分页
+    │   ├── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;search.html&lt;/span&gt;       搜索
+    │   └── &lt;span style=&quot;color:blue;font-weight:bold;&quot;&gt;tag.html&lt;/span&gt;          标签
+    └──
+    
+    &lt;/pre&gt;
+    
+然后记得修改pelican.conf告诉Pelican那些页面是模板那些页面是直接生成的呐~
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
+
+    <span class="c1"># DIRECT_TEMPLATES 告诉Pelican哪些页面是直接用来生成特定页面的......</span>
+    <span class="n">DIRECT_TEMPLATES</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;archives&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">))</span>
+    
+接下来开始调教主题呗~,直接给出官方的教程呗~ <span class="s">`Pelican doc:Creating Themes </span><span class="si">&lt;http://docs.getpelican.com/en/3.6.3/themes.html&gt;</span><span class="s">`_</span>
+
+经过一番 <span class="na">:ruby:</span><span class="nv">`仔细|无脑`</span> 调教以后,就成了汝等现在看到的样子了呐~
+
+PS:咱自己做的这套主题还木有到能拿来复用的程度(原因主要是咱有很多是直接写死在主题里的设置),所以这又是一个坑呗~
+
+
+<span class="gh">装插件</span>
+<span class="gh">-------------</span>
+
+作为一套博客系统,Pelican自然有很多的插件可以安装呐~,不信的话去看看<span class="s">`pelican-plugins里有多少插件呗~ </span><span class="si">&lt;https://github.com/getpelican/pelican-plugins&gt;</span><span class="s">`_</span>
+
+咱启用的插件有这些:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
+
+    <span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;better_codeblock_line_numbering&quot;</span><span class="p">,</span>
+               <span class="s1">&#39;tipue_search&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;series&#39;</span><span class="p">,</span>
+               <span class="s2">&quot;render_math&quot;</span><span class="p">,</span>
+               <span class="s1">&#39;extract_toc&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;tag_cloud&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;sitemap&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;summary&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;bootstrapify&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;twitter_bootstrap_rst_directives&#39;</span><span class="p">]</span>
+               
+具体的设置流程嘛,请允许咱引用一下 <span class="s">`farseerfc.me:重新設計了 Pelican 的主題與插件 </span><span class="si">&lt;http://farseerfc.me/redesign-pelican-theme.html#pelican-restructuredtext&gt;</span><span class="s">`_</span> 呗~
+
+<span class="gh">实现动态格言</span>
+<span class="gh">-------------------</span>
+
+动态格言的实现来自 <span class="na">:fref:</span><span class="nv">`fiveyellowmice`</span> 啦~(咱不是JavaScript专家呐~,就不谈具体的实现了呗~)
+
+首先是一段修改某一个元素的类的JavaScript(当然还需要 <span class="s">`velocity </span><span class="si">&lt;http://julian.com/research/velocity/&gt;</span><span class="s">`_</span> ):
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">html</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/theme/js/velocity.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+      $(&quot;.menu-button&quot;).on(&quot;touchstart&quot;, function() {
+        $(&quot;.menu-wrapper&quot;).removeClass(&quot;trigger&quot;);
+        if ( $(&quot;.nav-items&quot;).is(&quot;:visible&quot;) ) {
+			$(&quot;.nav-items&quot;).velocity(&quot;finish&quot;)
+			.velocity(&quot;slideUp&quot;, { delay: 200, duration: 400, easing: &quot;easeInQuad&quot; })
+			.velocity(&quot;fadeOut&quot;, { delay: 200, duration: 400, easing: &quot;easeInQuad&quot;, queue: false });
+		} else {
+			$(&quot;.nav-items&quot;).velocity(&quot;finish&quot;)
+			.velocity(&quot;slideDown&quot;, { delay: 200, duration: 400, easing: &quot;easeOutQuad&quot; })
+			.velocity(&quot;fadeIn&quot;, { delay: 200, duration: 400, easing: &quot;easeOutQuad&quot;, queue: false });
+		}
+      });
+    });
+   &lt;/script&gt;
+
+然后新建一个 Github gist 填上动态格言,像这样(大括号里的内容可以添加多个):
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">json</span>
+
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="s2">&quot;example&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="s2">&quot;someone&quot;</span>
+        <span class="p">},</span>
+    <span class="p">]</span>
+ 
+ 
+再写个JavaScript来从JSON中提取格言然后填到html里:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> html
+ 
+    &lt;script&gt;
+		document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+			$(&quot;.site-description&quot;).after($(&quot;&lt;blockquote&gt;&quot;).attr(&quot;id&quot;, &quot;fortune&quot;).css(&quot;display&quot;, &quot;none&quot;));
+			$(&quot;.site-description&quot;).after($(&quot;&lt;blockquote&gt;&quot;).attr(&quot;id&quot;, &quot;fortune&quot;).css(&quot;line-height&quot;, &quot;1.4rem&quot;));
+
+			$.getJSON( &quot;https://api.github.com/gists/07ca2edea6e507bf40f5&quot;, function(data) {
+
+				fortunes = JSON.parse(data.files[&quot;quotes.json&quot;].content);
+				randomFortune = fortunes[ Math.floor( Math.random() * fortunes.length ) ];
+				if ( randomFortune.author === undefined ) {
+					$(&quot;#fortune&quot;).html( &quot;&lt;p&gt;&quot;+randomFortune.content+&quot;&lt;/p&gt;&quot; );
+				} else {
+					$(&quot;#fortune&quot;).html( &quot;&lt;p&gt;&quot;+randomFortune.content+&quot;&lt;/p&gt;&quot;  + &quot;&lt;small&gt;&quot; + randomFortune.author + &quot;&lt;/small&gt;&quot;);
+				}
+
+				$(&quot;#fortune&quot;).velocity(&quot;slideDown&quot;, { duration: 400, easing: &quot;easeOutQuad&quot; });
+			});
+		});
+	&lt;/script&gt;
+   
+最后的效果汝也应该看到了呗~
+
+<span class="gh">发布</span>
+<span class="gh">--------------</span>
+
+通过几条命令可以发布~
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+    
+    make publish
+
+然后用git提交到Github就好......
+
+好吧这就是咱的全过程啦(雾)
+</pre></div>

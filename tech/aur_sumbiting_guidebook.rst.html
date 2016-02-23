@@ -1,0 +1,136 @@
+<div class="highlight"><pre><span></span><span class="gh">AUR 纯萌新向入门教学(3)-提交软件包到AUR</span>
+<span class="gh">===================================================</span>
+
+<span class="nc">:slug:</span> <span class="nf">aur_sumbiting_guidebook</span>
+<span class="nc">:lang:</span> <span class="nf">zh</span>
+<span class="nc">:date:</span> <span class="nf">2016-02-05</span>
+<span class="nc">:tags:</span> <span class="nf">Arch Linux,AUR,Guides</span>
+<span class="nc">:series:</span> <span class="nf">Arch Linux</span>
+
+<span class="cp">.. PELICAN_BEGIN_SUMMARY</span>
+
+通过上一次的 <span class="s">`「创建一个软件包」 </span><span class="si">&lt;/aur_packaging_guidebook.html&gt;</span><span class="s">`_</span> ,
+汝应该已经创建了一个 <span class="na">:del:</span><span class="nv">`(或是 N 个)`</span> 软件包了吧,如果汝想分享给其它人的话,上传到 AUR 其实是最方便的方法呗~
+
+<span class="cp">.. PELICAN_END_SUMMARY</span>
+
+<span class="cp">.. alert-info ::</span>
+<span class="cp">    </span>
+<span class="cp">    前几天被 :irc:`archlinux-cn` 的各位吐槽了中文和英文之间空格的问题,原谅咱写文章时太随性😂</span>
+<span class="cp">        </span>
+<span class="p">..</span> <span class="ow">contents</span><span class="p">::</span>
+
+<span class="gh">再来回顾一下 Arch User Repository 的打包规范呗~</span>
+<span class="gh">-----------------------------------------------------------------</span>
+
+<span class="na">:del:</span><span class="nv">`不合规范的软件包可能会在不经过提醒的话直接删除.`</span>
+
+<span class="m">*</span> <span class="s">`Arch Linux 打包标准 </span><span class="si">&lt;https://wiki.archlinux.org/index.php/Arch_packaging_standards_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&gt;</span><span class="s">`_</span>
+    
+    对于某些特定平台的软件包(例如 Web 应用)有不同的打包规范,记得看哦~
+    
+<span class="m">*</span> <span class="s">`提交软件包到 AUR 的规则 </span><span class="si">&lt;https://wiki.archlinux.org/index.php/Arch_User_Repository_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E6.8F.90.E4.BA.A4.E8.BD.AF.E4.BB.B6.E5.8C.85.E7.9A.84.E8.A7.84.E5.88.99&gt;</span><span class="s">`_</span>
+
+<span class="cp">......</span>
+
+看了 Wiki 以后,是否觉得自己的软件包符合规范了?
+ 
+如果确定的话,接着往下看呗~
+  
+<span class="gh">第一步:注册一个 AUR 帐号</span>
+<span class="gh">-----------------------------------------------------------------</span>
+
+去 <span class="s">`&lt;https://aur.archlinux.org/register/&gt;`_</span> 注册一个帐号呗~
+
+<span class="gh">第二步:为 AUR 准备一个 SSH 密钥</span>
+<span class="gh">-----------------------------------------------------------------</span>
+
+因为 AUR 现在用 Git 提交,所以没有一个 SSH 密钥是不行的呐~,
+建议为 AUR 生成一个新的证书,这样一旦发现问题就可以直接吊销诶(不要把鸡蛋放在一个篮子里~)
+
+可以用 <span class="na">:code:</span><span class="nv">`ssh-keygen`</span> 命令生成新的密钥:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    $ ssh-keygen 
+    Generating public/private rsa key pair.
+    <span class="c1"># 为汝的公钥和私钥决定一个存放的位置呗~</span>
+    Enter file in which to save the key <span class="o">(</span>/home/horo/.ssh/id_rsa<span class="o">)</span>:
+    /home/horo/.ssh/example
+    <span class="c1"># 为私钥设置一个密码,可以省略,但是为了安全还是设置一个呐~</span>
+    Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>: 
+    Enter same passphrase again: 
+    <span class="c1"># 汝的私钥保存在汝决定的路径中</span>
+    Your identification has been saved in /home/horo/.ssh/example.
+    <span class="c1"># 汝的公钥保存在汝决定的路径中,不过扩展名为.pub</span>
+    Your public key has been saved in /home/horo/.ssh/example.pub.
+    <span class="c1"># 这是汝的密钥指纹,用来区分不同的密钥</span>
+    The key fingerprint is:
+    SHA256:mwk7FvA2E0ycw+E8NYOr1+OL3+0qnF6PFMZ/Ndxuw84 horo@Yotisu
+    The key<span class="err">&#39;</span>s randomart image is:
+    +---<span class="o">[</span>RSA 2048<span class="o">]</span>----+
+    <span class="p">|</span>     oo++        <span class="p">|</span>
+    <span class="p">|</span>     <span class="o">=</span>*. o       <span class="p">|</span>
+    <span class="p">|</span>    . *o         <span class="p">|</span>
+    <span class="p">|</span>     o.o .    . .<span class="p">|</span>
+    <span class="p">|</span>     .B.S +    oo<span class="p">|</span>
+    <span class="p">|</span>    ...*o<span class="o">=</span> o  .o.<span class="p">|</span>
+    <span class="p">|</span>     .+o+oo . .oo<span class="p">|</span>
+    <span class="p">|</span>     . <span class="nv">o</span><span class="o">=</span>+ + .o..<span class="p">|</span>
+    <span class="p">|</span>      .o+o+o+  E <span class="p">|</span>
+    +----<span class="o">[</span>SHA256<span class="o">]</span>-----+
+    
+然后在 AUR Web 界面上点击 &quot;My Account (我的账户)&quot; ,把汝的公钥里的内容填进 &quot;SSH Public Key:&quot; 一节中,保存.
+
+接下来编辑 <span class="na">:code:</span><span class="nv">`~/.ssh/config`</span> ,
+告诉ssh命令连接到 <span class="na">:code:</span><span class="nv">`aur.archlinux.org`</span> 用汝新创建的密钥呗~
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+    
+    Host aur.archlinux.org
+        IdentityFile ~/.ssh/example <span class="c1"># 记得用汝自己的私钥路径 </span>
+        User foo <span class="c1"># 记得换成汝自己的用户名.</span>
+        
+<span class="gh">第三步:提交软件包到 AUR </span>
+<span class="gh">-------------------------------------------</span>
+
+用下面的命令创建一个新的仓库:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+    <span class="c1"># 用汝希望的名称替换foobar.</span>
+    <span class="c1"># 从不存在的仓库中克隆或推送，将会自动创建此仓库。 </span>
+    git clone ssh://aur@aur.archlinux.org/foobar.git
+    
+这时汝的当前目录下会多出一个以汝的软件包名命名的文件夹(例如 <span class="na">:code:</span><span class="nv">`foobar`</span> ),
+把汝的软件包需要的文件(PKGBUILD,有时还有些其他的文件)放到这个文件夹内.
+
+接着记得写一个 <span class="na">:code:</span><span class="nv">`.SRCINFO`</span> (供 AUR Web 界面解析的元数据),
+可以通过 <span class="na">:package:</span><span class="nv">`pkgbuild-introspection`</span> 包内的 <span class="na">:code:</span><span class="nv">`mksrcinfo`</span> 工具生成.
+
+<span class="p">..</span> <span class="ow">alert-warning</span><span class="p">::</span>
+
+    每一次提交都要包含最新的 <span class="na">:code:</span><span class="nv">`.SRCINFO`</span> 文件!不然服务器会 <span class="na">:del:</span><span class="nv">`傲娇的`</span> 拒绝汝的提交呐~
+    
+然后普通的使用 Git 来提交呗~
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+    
+    <span class="c1"># 还是老话,不要照抄,按汝实际的状况来.</span>
+    git add .
+    git commit -m <span class="s2">&quot;Example&quot;</span>
+    git push
+    
+在 AUR 上搜索汝的软件包试试?(像这样 <span class="na">:aur:</span><span class="nv">`parsoid-git`</span>)
+
+<span class="gh">可能的后续工作</span>
+<span class="gh">------------------------</span>
+
+汝以为把软件包提交上就结束了?
+
+<span class="m">*</span> 一旦上游更新了,汝就要及时的更新诶(年久失修的包会被删除)
+
+<span class="m">*</span> 关注下方的评论,聆听用户的 <span class="na">:ruby:</span><span class="nv">`建议|抱怨`</span> 并试着改进汝的软件包呗~
+
+<span class="m">*</span> 发觉自己没有精力维护某个软件包?可以通过AURweb界面 disown 一个软件包或是在AUR邮件列表发条消息.
+</pre></div>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/life.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2016-02-22T00:00:00+08:00</updated><entry><title>凤凰卷家的 vps.to 的 OpenVZ VPS 试用小记</title><link href="https://blog.yoitsu.moe/vpsto_openvz.html" rel="alternate"></link><updated>2016-02-22T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-02-22:vpsto_openvz.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>约伊兹的萌狼乡手札</title><link href="https://blog.yoitsu.moe/" rel="alternate"></link><link href="https://blog.yoitsu.moe/feeds/life.atom.xml" rel="self"></link><id>https://blog.yoitsu.moe/</id><updated>2016-02-22T00:00:00+08:00</updated><entry><title>凤凰卷家的 vps.to 的 OpenVZ VPS 试用小记</title><link href="https://blog.yoitsu.moe/life/vpsto_openvz.html" rel="alternate"></link><updated>2016-02-22T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-02-22:life/vpsto_openvz.html</id><summary type="html">
 &lt;p&gt;论感情牌+吐槽的必要性~（雾&lt;/p&gt;
 
 &lt;p&gt;凤凰卷( &lt;a class="reference external" href="/links.html#phoenixlzx"&gt;phoenixlzx&lt;/a&gt; )家的 &lt;a class="reference external" href="http://vps.to"&gt;vps.to&lt;/a&gt; &lt;a class="footnote-reference" href="#id2" id="id1"&gt;[1]&lt;/a&gt; 最近新上线了 OpenVZ 架构的 VPS .卷说不会超售,咱相信她 (谁叫咱认为她是个好人咧~)&lt;/p&gt;
@@ -166,7 +166,7 @@
 &lt;p&gt;总之卷的 VPS 还是很棒呐~(๑•̀ㅂ•́)و✧，不过真的还是有些贵😂😂，对于只想搭个梯子的人来讲花销有些大 (´･ω･`).&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;为了接着用 Arch Linux,咱还是回去用 conoha 吧 _(:з」∠)_&lt;/del&gt;&lt;/p&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Arch Linux 中文社区非官方生存手册</title><link href="https://blog.yoitsu.moe/archlinux_cn_community_unoffical_newbie_guide.html" rel="alternate"></link><updated>2016-01-28T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-28:archlinux_cn_community_unoffical_newbie_guide.html</id><summary type="html">
+</summary></entry><entry><title>Arch Linux 中文社区非官方生存手册</title><link href="https://blog.yoitsu.moe/life/archlinux_cn_community_unoffical_newbie_guide.html" rel="alternate"></link><updated>2016-01-28T00:00:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-28:life/archlinux_cn_community_unoffical_newbie_guide.html</id><summary type="html">
 &lt;p&gt;汝要入坑Arch Linux了吗?那还不赶紧加入Arch Linux中文社区~&lt;/p&gt;
 
 &lt;div class="section" id="id1"&gt;

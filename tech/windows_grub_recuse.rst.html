@@ -1,0 +1,89 @@
+<div class="highlight"><pre><span></span><span class="gh">装完 Arch Linux 再装 Windows 然后修引导~</span>
+<span class="gh">======================================================</span>
+
+<span class="nc">:slug:</span> <span class="nf">windows_grub_recuse</span>
+<span class="nc">:lang:</span> <span class="nf">zh</span>
+<span class="nc">:date:</span> <span class="nf">2016-02-22 17:00</span>
+<span class="nc">:tags:</span> <span class="nf">windows,grub,凑数</span>
+<span class="nc">:series:</span> <span class="nf">Arch Linux</span>
+
+<span class="cp">.. PELICAN_BEGIN_SUMMARY</span>
+
+装完 Arch Linux 再装 Windows 以后 GRUB 没啦~ Windows 出来背锅 _(:з」∠)_ 
+
+<span class="cp">.. PELICAN_END_SUMMARY</span>
+
+<span class="p">..</span> <span class="ow">contents</span><span class="p">::</span>
+
+<span class="na">:del:</span><span class="nv">`要啥 Windows 啊~`</span>
+
+<span class="gh">准备工作</span>
+<span class="gh">-----------------------------</span>
+
+<span class="m">*</span> 一个可启动的 Linux 的 Live USB ( 咱是用的 Arch Linux 的安装 ISO )
+
+好像没啥了诶~(最好要连上网,可以参阅 <span class="s">`ArchWiki </span><span class="si">&lt;https://wiki.archlinux.org/index.php/Beginners&#39;_guide&gt;</span><span class="s">`_</span> 呗~ ).
+
+如果汝使用 UEFI 主板，且 UEFI 启动模式（优于 BIOS/Legacy 模式）已启用，CD/USB 会自动通过systemd-boot 启动 Arch Linux。要确认是否已进入UEFI模式，检查下面目录是否有文件呗~：
+
+    # ls /sys/firmware/efi/efivars
+
+<span class="gh">确定设备名称,然后挂载</span>
+<span class="gh">-----------------------------</span>
+
+用 <span class="na">:code:</span><span class="nv">`lsblk`</span> 确定汝 Linux 安装到哪个磁盘里呐~
+
+    NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+    
+    sda         8:0    0 298.1G  0 disk 
+    
+    ├─sda1    8:1    0    40G  0 part 
+    
+    ├─sda2    8:2    0 256.1G  0 part 
+    
+    └─sda3    8:3    0     2G  0 part 
+    
+咱这个栗子是 <span class="na">:code:</span><span class="nv">`/dev/sda1`</span> ,MBR 模式的. <span class="na">:code:</span><span class="nv">`sda1`</span> 是 <span class="na">:code:</span><span class="nv">`/`</span> ,<span class="na">:code:</span><span class="nv">`sda2`</span> 是 <span class="na">:code:</span><span class="nv">`/home`</span> (\´･ω･\`).
+
+然后挂载上, archiso 里有个天然的适合的挂载点~
+
+    # mount /dev/sda1 /mnt
+    
+    # mount /dev/sda2 /mnt/home
+    
+<span class="gh">chrooting......</span>
+<span class="gh">----------------------------------</span>
+
+用 <span class="na">:code:</span><span class="nv">`arch-chroot`</span> chroot 进目标系统:
+
+    # arch-chroot /mnt /bin/bash
+    
+<span class="gh">MBR  安装 GRUB (\´･ω･\`)</span>
+<span class="gh">--------------------------------</span>
+
+这样(记得用汝实际的磁盘名称替换 <span class="na">:code:</span><span class="nv">`sda`</span> ,不要后面的数字.)
+
+    # grub-install --target=i386-pc --recheck --debug /dev/sda
+    
+    # grub-mkconfig -o /boot/grub/grub.cfg
+
+
+<span class="gh">UEFI 安装 GRUB _(:з」∠)_  </span>
+<span class="gh">-----------------------------------</span>
+
+这样(某些系统的 <span class="na">:code:</span><span class="nv">`--efi-directory`</span> 可能是 :code<span class="nv">`/boot/EFI`</span> ,不管啦 (ノ=Д=)ノ┻━┻ )
+
+    # grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
+    
+    # grub-mkconfig -o /boot/grub/grub.cfg
+    
+-------------------------------
+
+最后离开 chroot 环境然后重启,记得拔掉U盘~
+
+    # exit
+    
+    # reboot
+    
+所以嘛,要啥 Windows 呐~ (ノ=Д=)ノ┻━┻
+</pre></div>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+      <title>AUR 纯萌新向入门教学(3)-提交软件包到AUR - 约伊兹的萌狼乡手札</title>
+    <meta charset="utf-8" />
+    <link rel="search" type="application/html" href="/search.html" title="约伊兹的萌狼乡手札" />
+    <link href="https://blog.yoitsu.moe/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Full Atom Feed" />
+    <link href="https://blog.yoitsu.moe/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="约伊兹的萌狼乡手札 Categories Atom Feed" />
+    <link href="https://blog.yoitsu.moe/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#bf5a15">
+    <link href="https://blog.yoitsu.moe/theme/css/metro.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/docs.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-icons.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-responsive.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/metro-schemes.css" rel="stylesheet">
+    <link href="https://blog.yoitsu.moe/theme/css/pygment.css" rel="stylesheet">
+    <script src="https://blog.yoitsu.moe/theme/js/jquery-2.1.3.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/metro.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/velocity.min.js"></script>
+    <script src="https://blog.yoitsu.moe/theme/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+    <script>
+        function showCharm(id){
+            var  charm = $("#"+id+"-charm").data("charm");
+            if (charm.element.data("opened") === true) {
+                charm.close();
+            } else {
+                charm.open();
+            }
+        }
+    </script>
+
+    <!--动态格言的实现参考自https://fiveyellowmice.github.io/-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+      $(".menu-button").on("touchstart", function() {
+        $(".menu-wrapper").removeClass("trigger");
+        if ( $(".nav-items").is(":visible") ) {
+			$(".nav-items").velocity("finish")
+			.velocity("slideUp", { delay: 200, duration: 400, easing: "easeInQuad" })
+			.velocity("fadeOut", { delay: 200, duration: 400, easing: "easeInQuad", queue: false });
+		} else {
+			$(".nav-items").velocity("finish")
+			.velocity("slideDown", { delay: 200, duration: 400, easing: "easeOutQuad" })
+			.velocity("fadeIn", { delay: 200, duration: 400, easing: "easeOutQuad", queue: false });
+		}
+      });
+    });
+    </script>
+
+
+
+    <meta name="tags" content="Arch Linux" />
+    <meta name="tags" content="AUR" />
+    <meta name="tags" content="Guides" />
+
+
+</head>
+<body id="index">
+    <div class="app-bar orange fixed-top bottom-shadow no-float" data-role="appbar" id="navbar-fixed-top">
+        <div class="container">
+            <ul class="app-bar-menu">
+                <li><a href="https://blog.yoitsu.moe/"><strong>约伊兹的萌狼乡手札</strong></a></li>
+                <li><a href="" class="dropdown-toggle"><span class="mif-stack2"></span> 分类</a>
+                <ul class="d-menu" data-role="dropdown">
+                <li><a href="https://blog.yoitsu.moe/category/life.html">Life</a></li>
+                <li class="active"><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
+                </ul></li>
+                <li><a href="https://blog.yoitsu.moe/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
+            </ul>
+            <ul class="app-bar-menu place-right">
+
+<li onclick="showCharm('right')">&nbsp;<span class="mif-list"></span>&nbsp;目录&nbsp;</a></li>
+<li><a href="#talk"><span class="mif-bubble"></span>&nbsp;参与讨论&nbsp;</a></li>
+                <li><a href="https://blog.yoitsu.moe/feeds/all.atom.xml"><span class="mif-feed3"></span>&nbsp;RSS订阅</a></li>
+                <li><a href="https://blog.yoitsu.moe/links.html"><span class="mif-favorite"></span>&nbsp;链接</a></li>
+                <li>
+                <a class="dropdown-toggle"><span  class="mif-search"></span> 搜索</a>
+                <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" style="display: none;width:280px">
+                	<div class="padding10">
+                		<h4>搜索约伊兹的萌狼乡手札</h4>
+                    	<form action="search.html">
+                        	<div class="input-control text" data-role="input">
+    						<input type="text" name="q" required="required">
+    						<button class="button" action="sumbit"><span class="mif-search"></span></button>
+							</div>
+                       </form>
+                    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>$("div#navbar-fixed-top").autoHidingNavbar();</script>
+    <div class="container page-content" >
+        <div class="grid">
+			<div class="padding5 site-description" style="clear:both;"></div>
+			<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			$(".site-description").after($("<blockquote>").attr("id", "fortune").css("display", "none"));
+			$(".site-description").after($("<blockquote>").attr("id", "fortune").css("line-height", "1.4rem"));
+
+			$.getJSON( "https://api.github.com/gists/07ca2edea6e507bf40f5", function(data) {
+
+				fortunes = JSON.parse(data.files["quotes.json"].content);
+				randomFortune = fortunes[ Math.floor( Math.random() * fortunes.length ) ];
+				if ( randomFortune.author === undefined ) {
+					$("#fortune").html( "<p>"+randomFortune.content+"</p>" );
+				} else {
+					$("#fortune").html( "<p>"+randomFortune.content+"</p>"  + "<small>" + randomFortune.author + "</small>");
+				}
+
+				$("#fortune").velocity("slideDown", { duration: 400, easing: "easeOutQuad" });
+			});
+		});
+			</script>
+            <div class="row cells10">
+                <div class="cell colspan7" id="main">
+<div data-role="charm" data-position="right" id="right-charm" class="bg-grayLighter page-content fg-black ">
+<h2>目录</h2>
+    <nav class="toc">
+    <div class="toc" id="">
+
+<ul class="simple">
+<li><a class="reference internal" href="#arch-user-repository" id="id5">再来回顾一下 Arch User Repository 的打包规范呗~</a></li>
+<li><a class="reference internal" href="#id2" id="id6">第一步:注册一个 AUR 帐号</a></li>
+<li><a class="reference internal" href="#aur-ssh" id="id7">第二步:为 AUR 准备一个 SSH 密钥</a></li>
+<li><a class="reference internal" href="#id3" id="id8">第三步:提交软件包到 AUR</a></li>
+<li><a class="reference internal" href="#id4" id="id9">可能的后续工作</a></li>
+</ul>
+</div>
+    </nav>
+</div>
+
+    <script id="dsq-count-scr" src="//kenookamihoro.disqus.com/count.js" async></script>
+
+
+<section id="content" class="body">
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/tech/aur_sumbiting_guidebook.html" rel="bookmark" title="到 AUR 纯萌新向入门教学(3)-提交软件包到AUR的固定链接" class="fg-white">AUR 纯萌新向入门教学(3)-提交软件包到AUR</a></h2>
+    	<span class="mif-calendar"> 2016年02月05日 (Fri)&nbsp;&nbsp;</span>
+    	<span class="mif-user" title="作者"><a class="fg-white" href="https://blog.yoitsu.moe/author/horo.html"> ホロ&nbsp;&nbsp;</a></span>
+        <span class="mif-folder" title="分类"><a class="fg-white" href="https://blog.yoitsu.moe/category/tech.html"> Tech&nbsp;&nbsp;</a></span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('aur_sumbiting_guidebook.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+        <br /><br />
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/arch-linux.html"> Arch Linux</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/aur.html"> AUR</a>&nbsp;&nbsp;</span>
+   		<span class="mif-tag" title="标签"><a class="fg-white" href="https://blog.yoitsu.moe/tag/guides.html"> Guides</a>&nbsp;&nbsp;</span>
+
+    </header>
+  <div class="entry-content text-accent" id="article-content">
+    
+<p>通过上一次的 <a class="reference external" href="/aur_packaging_guidebook.html">「创建一个软件包」</a> ,
+汝应该已经创建了一个 <del>(或是 N 个)</del> 软件包了吧,如果汝想分享给其它人的话,上传到 AUR 其实是最方便的方法呗~</p>
+
+<div class="tag info fg-white compound">
+<p>前几天被 <a class="alert-link reference external" href="//webchat.freenode.net/?channels=archlinux-cn">#archlinux-cn</a> 的各位吐槽了中文和英文之间空格的问题,原谅咱写文章时太随性😂</p>
+</div>
+<div class="section" id="arch-user-repository">
+<h2><a class="toc-backref" href="#id5">再来回顾一下 Arch User Repository 的打包规范呗~</a></h2>
+<p><del>不合规范的软件包可能会在不经过提醒的话直接删除.</del></p>
+<ul>
+<li><p class="first"><a class="reference external" href="https://wiki.archlinux.org/index.php/Arch_packaging_standards_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Arch Linux 打包标准</a></p>
+<blockquote>
+<p>对于某些特定平台的软件包(例如 Web 应用)有不同的打包规范,记得看哦~</p>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.archlinux.org/index.php/Arch_User_Repository_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#.E6.8F.90.E4.BA.A4.E8.BD.AF.E4.BB.B6.E5.8C.85.E7.9A.84.E8.A7.84.E5.88.99">提交软件包到 AUR 的规则</a></p>
+</li>
+</ul>
+<hr class="docutils"/>
+<p>看了 Wiki 以后,是否觉得自己的软件包符合规范了?</p>
+<p>如果确定的话,接着往下看呗~</p>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id6">第一步:注册一个 AUR 帐号</a></h2>
+<p>去 <a class="reference external" href="https://aur.archlinux.org/register/">https://aur.archlinux.org/register/</a> 注册一个帐号呗~</p>
+</div>
+<div class="section" id="aur-ssh">
+<h2><a class="toc-backref" href="#id7">第二步:为 AUR 准备一个 SSH 密钥</a></h2>
+<p>因为 AUR 现在用 Git 提交,所以没有一个 SSH 密钥是不行的呐~,
+建议为 AUR 生成一个新的证书,这样一旦发现问题就可以直接吊销诶(不要把鸡蛋放在一个篮子里~)</p>
+<p>可以用 <span class="tag">ssh-keygen</span> 命令生成新的密钥:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>$ ssh-keygen</span>
+<span class="code-line">Generating public/private rsa key pair.</span>
+<span class="code-line"><span class="c1"># 为汝的公钥和私钥决定一个存放的位置呗~</span></span>
+<span class="code-line">Enter file in which to save the key <span class="o">(</span>/home/horo/.ssh/id_rsa<span class="o">)</span>:</span>
+<span class="code-line">/home/horo/.ssh/example</span>
+<span class="code-line"><span class="c1"># 为私钥设置一个密码,可以省略,但是为了安全还是设置一个呐~</span></span>
+<span class="code-line">Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>:</span>
+<span class="code-line">Enter same passphrase again:</span>
+<span class="code-line"><span class="c1"># 汝的私钥保存在汝决定的路径中</span></span>
+<span class="code-line">Your identification has been saved in /home/horo/.ssh/example.</span>
+<span class="code-line"><span class="c1"># 汝的公钥保存在汝决定的路径中,不过扩展名为.pub</span></span>
+<span class="code-line">Your public key has been saved in /home/horo/.ssh/example.pub.</span>
+<span class="code-line"><span class="c1"># 这是汝的密钥指纹,用来区分不同的密钥</span></span>
+<span class="code-line">The key fingerprint is:</span>
+<span class="code-line">SHA256:mwk7FvA2E0ycw+E8NYOr1+OL3+0qnF6PFMZ/Ndxuw84 horo@Yotisu</span>
+<span class="code-line">The key<span class="err">'</span>s randomart image is:</span>
+<span class="code-line">+---<span class="o">[</span>RSA 2048<span class="o">]</span>----+</span>
+<span class="code-line"><span class="p">|</span>     oo++        <span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     <span class="o">=</span>*. o       <span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>    . *o         <span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     o.o .    . .<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     .B.S +    oo<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>    ...*o<span class="o">=</span> o  .o.<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     .+o+oo . .oo<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>     . <span class="nv">o</span><span class="o">=</span>+ + .o..<span class="p">|</span></span>
+<span class="code-line"><span class="p">|</span>      .o+o+o+  E <span class="p">|</span></span>
+<span class="code-line">+----<span class="o">[</span>SHA256<span class="o">]</span>-----+</span>
+</pre></div>
+<p>然后在 AUR Web 界面上点击 "My Account (我的账户)" ,把汝的公钥里的内容填进 "SSH Public Key:" 一节中,保存.</p>
+<p>接下来编辑 <span class="tag">~/.ssh/config</span> ,
+告诉ssh命令连接到 <span class="tag">aur.archlinux.org</span> 用汝新创建的密钥呗~</p>
+<div class="highlight"><pre><span class="code-line"><span></span>Host aur.archlinux.org</span>
+<span class="code-line">    IdentityFile ~/.ssh/example <span class="c1"># 记得用汝自己的私钥路径</span></span>
+<span class="code-line">    User foo <span class="c1"># 记得换成汝自己的用户名.</span></span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id8">第三步:提交软件包到 AUR</a></h2>
+<p>用下面的命令创建一个新的仓库:</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 用汝希望的名称替换foobar.</span></span>
+<span class="code-line"><span class="c1"># 从不存在的仓库中克隆或推送，将会自动创建此仓库。</span></span>
+<span class="code-line">git clone ssh://aur@aur.archlinux.org/foobar.git</span>
+</pre></div>
+<p>这时汝的当前目录下会多出一个以汝的软件包名命名的文件夹(例如 <span class="tag">foobar</span> ),
+把汝的软件包需要的文件(PKGBUILD,有时还有些其他的文件)放到这个文件夹内.</p>
+<p>接着记得写一个 <span class="tag">.SRCINFO</span> (供 AUR Web 界面解析的元数据),
+可以通过 <a class="reference external" href="https://www.archlinux.org/packages/?name=pkgbuild-introspection">pkgbuild-introspection</a> 包内的 <span class="tag">mksrcinfo</span> 工具生成.</p>
+<div class="tag warning fg-white compound">
+<p>每一次提交都要包含最新的 <span class="tag">.SRCINFO</span> 文件!不然服务器会 <del>傲娇的</del> 拒绝汝的提交呐~</p>
+</div>
+<p>然后普通的使用 Git 来提交呗~</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 还是老话,不要照抄,按汝实际的状况来.</span></span>
+<span class="code-line">git add .</span>
+<span class="code-line">git commit -m <span class="s2">"Example"</span></span>
+<span class="code-line">git push</span>
+</pre></div>
+<p>在 AUR 上搜索汝的软件包试试?(像这样 <a href="https://aur.archlinux.org/packages/?O=0&amp;K=parsoid-git" title="在 AUR 上搜索parsoid-git">parsoid-git <sup>AUR</sup> </a>)</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id9">可能的后续工作</a></h2>
+<p>汝以为把软件包提交上就结束了?</p>
+<ul class="simple">
+<li>一旦上游更新了,汝就要及时的更新诶(年久失修的包会被删除)</li>
+<li>关注下方的评论,聆听用户的 <ruby><rb>建议</rb><rp>(</rp><rt>抱怨</rt><rp>)</rp></ruby> 并试着改进汝的软件包呗~</li>
+<li>发觉自己没有精力维护某个软件包?可以通过AURweb界面 disown 一个软件包或是在AUR邮件列表发条消息.</li>
+</ul>
+</div>
+
+  </div><!-- /.entry-content -->
+  <div class="entry-content jumbotron" id="source-content" style="display: none">
+               <!-- <pre><code id="source-code">
+               </code></pre> -->
+               <div id="source-code"></div>
+  </div>
+</section>
+<br />
+      <a href="https://blog.yoitsu.moe/tech/aur_packaging_guidebook.html" class="place-left">
+        <button class="command-button bg-lightOlive fg-white">
+            <span class="icon mif-arrow-left"></span>
+                AUR 纯萌新向入门教学(2)-创建一个软件包
+              <small>上一篇</small>
+        </button>
+      </a>
+      <a href="https://blog.yoitsu.moe/tech/ghost_blog_archlinux.html" class="place-right">
+        <button class="command-button icon-right bg-lightOlive fg-white">
+            <span class="icon mif-arrow-right"></span>
+                在 Arch Linux 上安装 Ghost 博客系统
+              <small>下一篇</small>
+        </button>
+      </a>
+  <div class="padding10 clear-float"></div>
+<div class="panel">
+    <div class="heading bg-amber">
+        <span class="title">系列Arch Linux中的文章</span>
+    </div>
+    <div class="content padding10">
+            <a href='https://blog.yoitsu.moe/life/archlinux_cn_community_unoffical_newbie_guide.html'>
+            <button class="button ">
+                Arch Linux 中文社区非官方生存手册
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/aur_fresh_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(1)-从AUR安装软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/aur_packaging_guidebook.html'>
+            <button class="button ">
+                AUR 纯萌新向入门教学(2)-创建一个软件包
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/aur_sumbiting_guidebook.html'>
+            <button class="button  warning ">
+                AUR 纯萌新向入门教学(3)-提交软件包到AUR
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/ghost_blog_archlinux.html'>
+            <button class="button ">
+                在 Arch Linux 上安装 Ghost 博客系统
+              </button></a><br/>
+            <a href='https://blog.yoitsu.moe/tech/windows_grub_recuse.html'>
+            <button class="button ">
+                装完 Arch Linux 再装 Windows 然后修引导~
+              </button></a><br/>
+    </div>
+</div>
+<div class="padding10 clear-float"></div>
+
+<div class="panel" id="talk" data-role="panel">
+<div class="heading bg-orange">
+       <span class="icon mif-bubbles bg-darkOrange"></span>
+       <span class="title">参与讨论</span>
+    </div>
+    <div class="content">
+        <ul class="step-list padding10" style="padding-left:20px;">
+         <li>
+             <h2>如何和咱交流?</h2>
+             <hr class="bg-red" />
+             <div>
+                 汝可以通过Github的Issue和Disqus和咱交(bao)流(yuan)呐~
+                 <br />
+             </div>
+         </li>
+         <li>
+             <h2>Github Issue?</h2>
+             <hr class="bg-green" />
+             <div>
+                 Github issues用来回报网站的一般问题，用Github帐号登录，然后提交issue抱怨咱一下呗~
+                 <br />
+                 <a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success">前往Issues页面呗~</button></a>
+             </div>
+         </li>
+         <li>
+             <h2>用Disqus?</h2>
+             <hr  class="bg-blue"/>
+             <div>
+                 Disqus用来回报某个页面的问题，用Disqus帐号登录，提交评论抱怨咱一下呗~ <br /><br />
+                 <div id="disqus_thread"></div>
+					<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//kenookamihoro.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Disqus需要启用JavaScript 才能工作呐~<br /><a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+             </div>
+         </li>
+      </ul>
+    </div>
+</div>
+                </div>
+            <div class="cell colspan3" id="sidebar">
+                <div class="panel warning shadow">
+                    <div class="heading">
+                        <span class="icon mif-notification bg-darkOrange"></span>
+                        <span class="title">站点通告</span>
+                    </div>
+                <div class="content padding10">
+                <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
+                <div>如果有问题的话，记得回报咱哟~</div><br />
+                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a></div><br />
+                <div>咱的Tox ID(这是一整个~):<br />7BC803F7F9B8A7230EE181AB4<br />5CA909DE446D36A7BC3A275D5<br />576439E0CF7546FF4E2C4665CC</div><br />
+                </ul>
+                </div>
+                </div>
+                <br />
+                <div class="panel alert shadow">
+                    <div class="heading">
+                        <span class="icon mif-user bg-darkRed"></span>
+                        <span class="title">ホロ</span>
+                    </div>
+                    <div class="content padding10">
+                    <div class="tile fg-white bg-transparent clear-float align-center" data-role="tile">
+                        <div class="tile-content slide-up-2">
+                            <div class="slide">
+                                 <div class="image-container image-format-square" style="width: 100%;">
+                                     <div class="frame">
+                                        <div style="width: 100%; height: 150px; border-radius: 0px; background-image: url(&quot;/theme/images/wiki.png&quot;); background-size: cover; background-repeat: no-repeat;">
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+                            <div class="slide-over bg-darkOrange slide-up-2 padding10 ">
+                            「虽然咱长久以来被尊为神，不过，咱就是咱。咱是赫萝。」
+                            </div>
+                        </div>
+                    </div>
+                        <div class="toolbar align-center">
+                        <br />
+                        <a href="https://twitter.com/Ken_Ookami_Horo">
+                        <div class="fg-darkOrange icon mif-twitter mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="https://github.com/KenOokamiHoro">
+                        <div class="fg-darkOrange icon mif-github mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="https://plus.google.com/u/0/+%E5%BC%A0%E9%87%91%E6%B6%9B4676">
+                        <div class="fg-darkOrange icon mif-google-plus mif-2x "></div>
+                        </a>
+                        <br />
+                        <a href="mailto:horo@yoitsu.moe">
+                        <div class="fg-darkOrange icon mif-mail mif-2x "></div>
+                        </a>
+                        <br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                 <br />
+                <div class="panel shadow">
+                    <div class="heading">
+                        <span class="icon mif-tags"></span>
+                        <span class="title">标签云</span>
+                    </div>
+                    <div class="content padding10">
+                        <ul class="tagcloud">
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/software.html">
+                                    software
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/grub.html">
+                                    grub
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/cou-shu.html">
+                                    凑数
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/windows.html">
+                                    windows
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/arch-linux.html">
+                                    Arch Linux
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/aur.html">
+                                    AUR
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
+                                    partner
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
+                                    </a>
+                                </li>
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/notes.html">
+                                    notes
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+    <a href="#"><button class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:30px;right:30px;z-index:1"><span class="mif-vertical-align-top"></span></button></a>
+
+<button onclick="showCharm('right')" class="button cycle-button big-button warning block-shadow text-shadow"  style="position:fixed;bottom:100px;right:30px;z-index:2000;"><span class="mif-list"></span></button>
+    </div>
+    <div class="app-bar darcula padding10 text-shadow ">
+        <div class="grid container page-content ">
+            约伊兹的萌狼乡手札基于<a href="http://metroui.org.ua/">Metro UI CSS</a>和使用<del>人生苦短</del>的<a href="http://python.org">Python</a>制成的<a href="http://getpelican.com/">Pelican</a>构建.<br />
+            <br />
+            <img alt="知识共享许可协议" style="border-width:1" src="/theme/images/cc-by-sa.png" />除非另有声明，约伊兹的萌狼乡手札的文字内容在<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">知识共享 署名-相同方式共享 4.0协议</a>之条款下提供。<br />
+        </div>
+    </div>
+</body>
+</html>
