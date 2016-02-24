@@ -32,12 +32,12 @@ Tox是一种新型的通讯协议,它的目标是——提供一个无法监控�
 ---------------------------------
 运行qtox,会弹出这样的窗口:
 
-.. image:: images/qtox_welcome.png
+.. image:: /images/qtox_welcome.png
    :alt: qTox欢迎画面
    
 因为咱已经有一个Tox Profile所以是这样啦,汝直接按"New Profile"就好:
 
-.. image:: images/qtox_addprofile.png
+.. image:: /images/qtox_addprofile.png
    :alt: qTox-新建个人资料
    
 在Username那挑个用户名,Password那输入个密码呗~
@@ -56,7 +56,7 @@ Tox是一种新型的通讯协议,它的目标是——提供一个无法监控�
     
 确认完毕之后就会进入到qtox的主画面了呗~(旁边一圈是咱加上的注释,原谅咱不怎么会用GIMP......)
 
-.. image:: images/qtox_main.png
+.. image:: /images/qtox_main.png
    :alt: qTox_main
    
 修改个人资料
@@ -64,7 +64,7 @@ Tox是一种新型的通讯协议,它的目标是——提供一个无法监控�
 
 点击头像的区域就可以修改自己的个人资料了呗~
 
-.. image:: images/qtox_profile.png
+.. image:: /images/qtox_profile.png
    :alt: qTox_profile
 
 
@@ -85,17 +85,17 @@ Tox是一种新型的通讯协议,它的目标是——提供一个无法监控�
     
 然后到添加好友的界面把Tox ID输入进去.必要的话,附上一段消息让Ta知道汝是谁呗~
 
-.. image:: images/qtox_addfriend.png
+.. image:: /images/qtox_addfriend.png
    :alt: qtox_addfriend
    
 一开始时汝的好友列表只会显示对方的Tox ID呐,像这样:
 
-.. image:: images/qtox_addfriend2.png
+.. image:: /images/qtox_addfriend2.png
    :alt: qtox_addfriend_Pending
    
 当Ta同意汝的好友请求以后,汝的好友列表上就会显示Ta的Name和Status呗~
 
-.. image:: images/qtox_addfriend3.png
+.. image:: /images/qtox_addfriend3.png
    :alt: qtox_addfriend_success
    
 然后像平常一样聊天呗~
@@ -108,7 +108,7 @@ Tox是一种新型的通讯协议,它的目标是——提供一个无法监控�
 ----------------------
 Tox也是可以发起群聊的哟~首先创建一个(qtox里点击下方"创建群聊"按钮就可以了诶~)
 
-.. image:: images/qtox_groupchat.png
+.. image:: /images/qtox_groupchat.png
    :alt: qtox_groupchat
    
 汝也可以邀请好友加入群聊呗~(qtox中右键点击某个好友-邀请加入群聊-汝的群聊名称呗~)

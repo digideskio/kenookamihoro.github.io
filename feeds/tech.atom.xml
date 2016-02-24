@@ -598,16 +598,16 @@ sudo pear install Mail Net_SMTP&lt;/blockquote&gt;
 &lt;div class="section" id="pkgbuild"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;第一步:寻找和获得软件包的PKGBUILD文件&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;这里是AUR的网址呗~: &lt;a class="reference external" href="https://aur.archlinux.org/"&gt;https://aur.archlinux.org/&lt;/a&gt; 打开后大概像这样:&lt;/p&gt;
-&lt;img alt="AUR 首页" class="img-responsive" src="images/aur_mainpage.png"/&gt;
+&lt;img alt="AUR 首页" class="img-responsive" src="/images/aur_mainpage.png"/&gt;
 &lt;p&gt;可以在另一侧的"English"那里的下拉菜单里将AUR web 界面的语言修改成中文呗~&lt;/p&gt;
 &lt;div class="tag info fg-white compound"&gt;
 &lt;p&gt;建议先 &lt;a class="alert-link reference external" href="https://aur.archlinux.org/register/"&gt;注册一个账户&lt;/a&gt; ,
 这样便可以使用更多功能呗~&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;然后在搜索框里输入需要的软件包的名称就可以搜索呗~&lt;/p&gt;
-&lt;img alt="在AUR里搜索软件包" class="img-responsive" src="images/aur_search.png"/&gt;
+&lt;img alt="在AUR里搜索软件包" class="img-responsive" src="/images/aur_search.png"/&gt;
 &lt;p&gt;点击对应软件包的名称就可以进入软件包的详细信息呗~&lt;/p&gt;
-&lt;img alt="软件包的详细信息" class="img-responsive" src="images/aur_packageinfo.png"/&gt;
+&lt;img alt="软件包的详细信息" class="img-responsive" src="/images/aur_packageinfo.png"/&gt;
 &lt;p&gt;点击右侧的"Download snapshot"就可以下载到软件包的快照.(比如pypi-pip.tar.gz)
 一般包含PKGBUILD,有些软件包中可能包含其它文件(例如Systemd 单元啥的)
 可以用tar来解开它呗~&lt;/p&gt;
@@ -737,9 +737,9 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;div class="section" id="id2"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;新建一个Tox个人资料&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;运行qtox,会弹出这样的窗口:&lt;/p&gt;
-&lt;img alt="qTox欢迎画面" class="img-responsive" src="images/qtox_welcome.png"/&gt;
+&lt;img alt="qTox欢迎画面" class="img-responsive" src="/images/qtox_welcome.png"/&gt;
 &lt;p&gt;因为咱已经有一个Tox Profile所以是这样啦,汝直接按"New Profile"就好:&lt;/p&gt;
-&lt;img alt="qTox-新建个人资料" class="img-responsive" src="images/qtox_addprofile.png"/&gt;
+&lt;img alt="qTox-新建个人资料" class="img-responsive" src="/images/qtox_addprofile.png"/&gt;
 &lt;p&gt;在Username那挑个用户名,Password那输入个密码呗~&lt;/p&gt;
 &lt;div class="tag info fg-white compound"&gt;
 &lt;p&gt;如果用SSH远程访问做类比的话,汝的Profile就是私钥,密码就是私钥的保护口令呗~&lt;/p&gt;
@@ -750,12 +750,12 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;p class="compound-last"&gt;2,记住汝的密码!虽然安全性很重要,但是一旦汝忘了密码,基本上就无法恢复了呗~&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;确认完毕之后就会进入到qtox的主画面了呗~(旁边一圈是咱加上的注释,原谅咱不怎么会用GIMP......)&lt;/p&gt;
-&lt;img alt="qTox_main" class="img-responsive" src="images/qtox_main.png"/&gt;
+&lt;img alt="qTox_main" class="img-responsive" src="/images/qtox_main.png"/&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id3"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;修改个人资料&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;点击头像的区域就可以修改自己的个人资料了呗~&lt;/p&gt;
-&lt;img alt="qTox_profile" class="img-responsive" src="images/qtox_profile.png"/&gt;
+&lt;img alt="qTox_profile" class="img-responsive" src="/images/qtox_profile.png"/&gt;
 &lt;div class="tag info fg-white compound"&gt;
 &lt;p&gt;就像界面介绍的那样,Name和Status是公开的信息,所以仔细考虑一下选择一个合适的呗~&lt;/p&gt;
 &lt;/div&gt;
@@ -769,11 +769,11 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;p class="attribution"&gt;—Tox ID 是像这样的十六进制数呗~&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;然后到添加好友的界面把Tox ID输入进去.必要的话,附上一段消息让Ta知道汝是谁呗~&lt;/p&gt;
-&lt;img alt="qtox_addfriend" class="img-responsive" src="images/qtox_addfriend.png"/&gt;
+&lt;img alt="qtox_addfriend" class="img-responsive" src="/images/qtox_addfriend.png"/&gt;
 &lt;p&gt;一开始时汝的好友列表只会显示对方的Tox ID呐,像这样:&lt;/p&gt;
-&lt;img alt="qtox_addfriend_Pending" class="img-responsive" src="images/qtox_addfriend2.png"/&gt;
+&lt;img alt="qtox_addfriend_Pending" class="img-responsive" src="/images/qtox_addfriend2.png"/&gt;
 &lt;p&gt;当Ta同意汝的好友请求以后,汝的好友列表上就会显示Ta的Name和Status呗~&lt;/p&gt;
-&lt;img alt="qtox_addfriend_success" class="img-responsive" src="images/qtox_addfriend3.png"/&gt;
+&lt;img alt="qtox_addfriend_success" class="img-responsive" src="/images/qtox_addfriend3.png"/&gt;
 &lt;p&gt;然后像平常一样聊天呗~&lt;/p&gt;
 &lt;div class="tag info fg-white compound"&gt;
 &lt;p&gt;要想让其他人和汝成为好友的话,把汝自己的Tox ID告诉Ta,让Ta像这样添加汝为好友呗~&lt;/p&gt;
@@ -782,7 +782,7 @@ makepkg将通过fakeroot（意为“假root”）执行这些命令，能在一�
 &lt;div class="section" id="id5"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;发起群聊&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Tox也是可以发起群聊的哟~首先创建一个(qtox里点击下方"创建群聊"按钮就可以了诶~)&lt;/p&gt;
-&lt;img alt="qtox_groupchat" class="img-responsive" src="images/qtox_groupchat.png"/&gt;
+&lt;img alt="qtox_groupchat" class="img-responsive" src="/images/qtox_groupchat.png"/&gt;
 &lt;p&gt;汝也可以邀请好友加入群聊呗~(qtox中右键点击某个好友-邀请加入群聊-汝的群聊名称呗~)&lt;/p&gt;
 &lt;p&gt;只不过万一汝退出了tox,下次登录时是不会加入上次加入的群聊的,汝只好让好友再邀请汝一次呗~&lt;/p&gt;
 &lt;/div&gt;
@@ -985,7 +985,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;p&gt;可视化编辑器(下面就说VisualEditor呗~)还需要一个叫
 &lt;a class="reference external" href="https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh"&gt;Parsoid&lt;/a&gt;
 的程序来承担把wiki标记转化成html的任务啦(看下图)~,所以需要服务器来运行它呐~&lt;/p&gt;
-&lt;img alt="Parsoid的工作原理" class="img-responsive" src="images/Parsoid_HTML-RDFa_content_model.svg.png"/&gt;
+&lt;img alt="Parsoid的工作原理" class="img-responsive" src="/images/Parsoid_HTML-RDFa_content_model.svg.png"/&gt;
 &lt;/div&gt;
 &lt;div class="section" id="parsoid-ubuntu-14-debian-7"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;安装Parsoid(Ubuntu 14+ / Debian 7+ )&lt;/a&gt;&lt;/h2&gt;
@@ -1092,7 +1092,7 @@ plugins 指向 &lt;a class="reference external" href="https://github.com/getpeli
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;完整的设置选项可以在扩展页面上找到.&lt;/p&gt;
 &lt;p&gt;然后在汝的wiki上试试看呗~&lt;/p&gt;
-&lt;img alt="VisualEditor效果" class="img-responsive" src="images/visualeditor-test.png"/&gt;
+&lt;img alt="VisualEditor效果" class="img-responsive" src="/images/visualeditor-test.png"/&gt;
 &lt;/div&gt;
 </summary><category term="mediawiki"></category><category term="notes"></category></entry><entry><title>新的"约伊兹的萌狼乡手札"诞生啦~</title><link href="https://blog.yoitsu.moe/tech/new_yoitsu_birth.html" rel="alternate"></link><updated>2016-01-16T09:35:00+08:00</updated><author><name>ホロ</name></author><id>tag:blog.yoitsu.moe,2016-01-16:tech/new_yoitsu_birth.html</id><summary type="html">
 &lt;p&gt;就像标题描述的一样，新的"约伊兹的萌狼乡手札"以Pelican之姿再次出发啦~&lt;/p&gt;

@@ -58,7 +58,7 @@ AUR 纯萌新向入门教学(1)-从AUR安装软件包
 
 这里是AUR的网址呗~: `<https://aur.archlinux.org/>`_ 打开后大概像这样:
 
-.. image:: images/aur_mainpage.png
+.. image:: /images/aur_mainpage.png
     :alt: AUR 首页
 
 可以在另一侧的"English"那里的下拉菜单里将AUR web 界面的语言修改成中文呗~
@@ -71,12 +71,12 @@ AUR 纯萌新向入门教学(1)-从AUR安装软件包
 
 然后在搜索框里输入需要的软件包的名称就可以搜索呗~
 
-.. image:: images/aur_search.png
+.. image:: /images/aur_search.png
     :alt: 在AUR里搜索软件包
 
 点击对应软件包的名称就可以进入软件包的详细信息呗~
 
-.. image:: images/aur_packageinfo.png
+.. image:: /images/aur_packageinfo.png
     :alt: 软件包的详细信息
 
 点击右侧的"Download snapshot"就可以下载到软件包的快照.(比如pypi-pip.tar.gz)

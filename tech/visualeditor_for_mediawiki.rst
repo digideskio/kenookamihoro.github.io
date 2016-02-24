@@ -35,7 +35,7 @@
 `Parsoid <https://www.mediawiki.org/wiki/VisualEditor/Portal/Why/zh>`_
 的程序来承担把wiki标记转化成html的任务啦(看下图)~,所以需要服务器来运行它呐~
 
-.. image:: images/Parsoid_HTML-RDFa_content_model.svg.png
+.. image:: /images/Parsoid_HTML-RDFa_content_model.svg.png
    :scale: 50 %
    :alt: Parsoid的工作原理
 
@@ -214,6 +214,6 @@ Ubuntu和Debian系统的话直接添加MediaWiki.org的软件源然后通过apt�
 
 然后在汝的wiki上试试看呗~
 
-.. image:: images/visualeditor-test.png
+.. image:: /images/visualeditor-test.png
    :scale: 50 %
    :alt: VisualEditor效果
