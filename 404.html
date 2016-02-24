@@ -59,6 +59,10 @@
                 <li><a href="https://blog.yoitsu.moe/category/life.html">Life</a></li>
                 <li><a href="https://blog.yoitsu.moe/category/tech.html">Tech</a></li>
                 </ul></li>
+                <li><a href="" class="dropdown-toggle"><span class="mif-page-break"></span> 页面</a>
+                <ul class="d-menu" data-role="dropdown">
+                        <li><a href="https://blog.yoitsu.moe/gpgkey.html">咱的 GnuPG 公钥</a></li>
+                </ul></li>
                 <li><a href="https://blog.yoitsu.moe/archives.html"><span class="mif-versions"></span>&nbsp;文章归档</a></li>
             </ul>
             <ul class="app-bar-menu place-right">
@@ -112,17 +116,18 @@
 <h2>目录</h2>
 </div>
 <section id="content" class="body">
-	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/zhao-bu-dao-wen-zhang.html" rel="bookmark" title="到 找不到文章的固定链接" class="fg-white">找不到文章</a></h2>
-    	<span class="mif-calendar"> 2016年01月10日 (Sun)&nbsp;&nbsp;</span>
-        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/zhao-bu-dao-wen-zhang.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
+	<header class="bg-darkOrange fg-white padding20 block-shadow"> <h2 class="entry-title"><a href="https://blog.yoitsu.moe/404.html" rel="bookmark" title="到 找不到文章的固定链接" class="fg-white">找不到文章</a></h2>
+    	<span class="mif-calendar"> 2016年01月16日 (Sat)&nbsp;&nbsp;</span>
+        <span class="mif-pilcrow"><a class="fg-white" href="#" onclick="$.get('https://blog.yoitsu.moe/404.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" title="在显示内容和源代码间切换">&nbsp;显示源代码</a></span>
 
     </header>
   <div class="entry-content text-accent" id="article-content">
     <p>咱找不到汝需要的页面呐~</p>
-<ol>
+<ul class="simple">
 <li>如果汝是点击页面中的链接来到这里的话，发个评论给咱让咱修复链接呗~</li>
-<li>如果汝是随意输入URL的话，或许想查看<a href="/archives.html">存档</a>？如果有啥想法的话，也可以和咱说呐~</li>
-</ol>
+<li>如果汝是随意输入URL的话，或许想查看[存档](/archives.html)？如果有啥想法的话，也可以和咱说呐~</li>
+</ul>
+
   </div><!-- /.entry-content -->
   <div class="entry-content jumbotron" id="source-content" style="display: none">
                <!-- <pre><code id="source-code">
@@ -191,21 +196,7 @@
 
                 </div>
             <div class="cell colspan3" id="sidebar">
-                <div class="panel warning shadow">
-                    <div class="heading">
-                        <span class="icon mif-notification bg-darkOrange"></span>
-                        <span class="title">站点通告</span>
-                    </div>
-                <div class="content padding10">
-                <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
-                <div>如果有问题的话，记得回报咱哟~</div><br />
-                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a></div><br />
-                <div>咱的Tox ID(这是一整个~):<br />7BC803F7F9B8A7230EE181AB4<br />5CA909DE446D36A7BC3A275D5<br />576439E0CF7546FF4E2C4665CC</div><br />
-                </ul>
-                </div>
-                </div>
-                <br />
-                <div class="panel alert shadow">
+            <div class="panel alert shadow">
                     <div class="heading">
                         <span class="icon mif-user bg-darkRed"></span>
                         <span class="title">ホロ</span>
@@ -248,6 +239,21 @@
                     </div>
                 </div>
                 <br />
+                <div class="panel warning shadow">
+                    <div class="heading">
+                        <span class="icon mif-notification bg-darkOrange"></span>
+                        <span class="title">站点通告</span>
+                    </div>
+                <div class="content padding10">
+                <div>咱没有测试在大于1920x1080的屏幕上的表现呐~</div><br />
+                <div>如果有问题的话，记得回报咱哟~</div><br />
+                <div><a href="https://github.com/KenOokamiHoro/kenookamihoro.github.io/issues"><button class="button success block-shadow-success text-shadow">Github</button></a></div><br />
+                <div>咱的Tox ID(这是一整个~):<br />7BC803F7F9B8A7230EE181AB4<br />5CA909DE446D36A7BC3A275D5<br />576439E0CF7546FF4E2C4665CC</div><br />
+                <div>咱的 GnuPG 公钥指纹(点击链接查看完整供公钥呗~)：<br /><a href="gpgkey.html">3E55 AD6A 27EE 7827 815B <br /> C75E E1E7 A122 9EFA 661C</a></div><br />
+                </ul>
+                </div>
+                </div>
+                <br />
                  <br />
                 <div class="panel shadow">
                     <div class="heading">
@@ -256,34 +262,14 @@
                     </div>
                     <div class="content padding10">
                         <ul class="tagcloud">
-                                <li class="tag-1">
-                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
-                                    Guides
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/software.html">
-                                    software
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/grub.html">
-                                    grub
-                                    </a>
-                                </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
-                                    中文社区
-                                    </a>
-                                </li>
-                                <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
-                                    yoitsu
-                                    </a>
-                                </li>
                                 <li class="tag-4">
                                     <a href="https://blog.yoitsu.moe/tag/cou-shu.html">
                                     凑数
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
+                                    partner
                                     </a>
                                 </li>
                                 <li class="tag-4">
@@ -291,14 +277,29 @@
                                     windows
                                     </a>
                                 </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/software.html">
+                                    software
+                                    </a>
+                                </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
-                                    pelican
+                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
+                                    mediawiki
                                     </a>
                                 </li>
                                 <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/python.html">
-                                    python
+                                    <a href="https://blog.yoitsu.moe/tag/zhong-wen-she-qu.html">
+                                    中文社区
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/grub.html">
+                                    grub
+                                    </a>
+                                </li>
+                                <li class="tag-2">
+                                    <a href="https://blog.yoitsu.moe/tag/pelican.html">
+                                    pelican
                                     </a>
                                 </li>
                                 <li class="tag-1">
@@ -311,14 +312,14 @@
                                     AUR
                                     </a>
                                 </li>
-                                <li class="tag-4">
-                                    <a href="https://blog.yoitsu.moe/tag/partner.html">
-                                    partner
+                                <li class="tag-1">
+                                    <a href="https://blog.yoitsu.moe/tag/guides.html">
+                                    Guides
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
-                                    blog
+                                    <a href="https://blog.yoitsu.moe/tag/yoitsu.html">
+                                    yoitsu
                                     </a>
                                 </li>
                                 <li class="tag-1">
@@ -327,8 +328,13 @@
                                     </a>
                                 </li>
                                 <li class="tag-2">
-                                    <a href="https://blog.yoitsu.moe/tag/mediawiki.html">
-                                    mediawiki
+                                    <a href="https://blog.yoitsu.moe/tag/blog.html">
+                                    blog
+                                    </a>
+                                </li>
+                                <li class="tag-4">
+                                    <a href="https://blog.yoitsu.moe/tag/python.html">
+                                    python
                                     </a>
                                 </li>
                         </ul>

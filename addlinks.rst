@@ -4,6 +4,7 @@
 :slug: addlinks
 :date: 2016-01-16
 :save_as: addlinks.html
+:display: none
 
 .. contents ::
 

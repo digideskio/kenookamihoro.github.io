@@ -4,6 +4,7 @@
 :slug: links
 :date: 2016-01-16
 :save_as: links.html
+:display: none
 
 因为有伙伴们在，咱就不是孤独一人呐~
 

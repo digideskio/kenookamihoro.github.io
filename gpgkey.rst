@@ -1,0 +1,59 @@
+咱的 GnuPG 公钥
+=======================================
+
+:slug: gpgkey
+:date: 2016-01-16
+:save_as: gpgkey.html
+
+.. contents ::
+
+GnuPG 是啥？
+---------------------------------------
+
+    GNU Privacy Guard（GnuPG或GPG）是一种加密软件，它是PGP加密软件的满足GPL的替代物。
+    GnuPG依照由IETF订定的OpenPGP技术标准设计。GnuPG用于加密、数字签名及产生非对称匙对的软件。
+
+    IETF正在为PGP协议进行标准化，标准化的PGP称为OpenPGP。当前版本的PGP及Veridis' Filecrypt与GnuPG或其他OpenPGP系统兼容。
+
+    GnuPG是自由软件基金会的GNU计划的一部分，目前受德国政府资助。以GNU通用公共许可证第三版授权。
+
+    -- `Wikipedia:GnuPG <https://zh.wikipedia.org/wiki/GnuPG>`_
+    
+简而言之，GnuPG 可以帮汝加密各种文件以便安全的传输呗~
+
+这是咱的 GnuPG 公钥
+----------------------------------------
+
+.. code-block:: html
+
+    -----BEGIN PGP PUBLIC KEY BLOCK-----
+    Version: GnuPG v2
+    
+    mQENBFbNc8YBCADjJ/dqVh9xLEc/S2YR4U+zNGCKn85ytl4nVtTt9LHm8l9JMTbL
+    qGtdR2N4o7YoSdCbZq7soxvgVFEI/7H+/NsmKcw+gt+VRkCAKcMP04DpTeWFk0Nd
+    Br0P9L10n+oUG2JPJQB1R0SVe4xTUztjw2Fu9YeJ8ZsFi4rmENk1/7YrTL/xZjeM
+    eJYBK6rgxVYSYgKSyuL9vFFjQHj35WsGC1tm0RAECCWZKcucnTpZXndTtHmchsr/
+    90TUeXI4e44DsjOQNvh+lDn7euyegcENRxjw49mnmOBHWeDc5tRcrpTyi/JXQFNQ
+    Lbd0EZTtTFq64lIb5LItqYvJeanrjFeUp9zhABEBAAG0IUtlbl9Pb2thbWlfSG9y
+    byA8aG9yb0B5b2l0c3UubW9lPokBNwQTAQgAIQUCVs1zxgIbAwULCQgHAgYVCAkK
+    CwIEFgIDAQIeAQIXgAAKCRDh56EinvpmHAfTCADhVdR3pdsP4hgjbnAHJxzwWSOe
+    TDuPqNVZX8wFXmwbLSur75m57UCcX9Zkablg1mA3w8F3+ArcAokFir4n72x+7s1L
+    Tj1vssFIVhPO5lltvaSgflUPikeMw3UsSY6qRzCqPY0klZpYz0zNWbyqLUUxx29j
+    vtrhVRzIGa9e5LBnhMwCPvu/Zk5sQAZN1Pbh/85KP5NFx9IO9fwGWBnPSxN41wYy
+    wwnOWv+x9YULKe+uBdMZanlelY8le96CukQmIZqjBkMvp3x3rEhxgxntoAKDqtoz
+    MFc88Ldz71JhV2+5tdcrztgs7Muc2bjwnbMUKoB6Fc3gV+WopTRaRG0wbeaKuQEN
+    BFbNc8YBCADSEN2CSAoP9UrZ8376kxhhyMHogUQsl8YGWU8zMvubB2ml0cDCk2la
+    bXGYabIf804ZirZ9FC7k9E/rwIcZpIsKgqhYO+fRQkfSkxolP94RvgwRgRmjfrd9
+    mrWYUD5XsHjtI3MM4VIZHhsWxwrERloXWAcxvt0HfkGTYnuu+0zYwppkYxKUr+bR
+    /B8jqjbxHlNfydeMURYvnYcNKJD1TyLuvPbTMwxwWwkiqZtCvzqhVcOX7NaTv9lw
+    CO5V4rl/xIcqBfZMAXVywEPvmr7+l6sVI6jyqMptPsLHgZLTlnQowABRfE1dJ4rY
+    YyNqpsLilTvhcC+apGX+pC55l6U9jSr1ABEBAAGJAR8EGAEIAAkFAlbNc8YCGwwA
+    CgkQ4eehIp76ZhxVtQf8DSnV4SNy2YPdG1iXUpkchjXaxxbSvPIWjDPTzXuaQKvE
+    Gl9ZkK/Txd12E2fs7xF0qgCQ/o/FXSr7iao77Lmh+LkjoZdRfvuNfI5P6hbW7CTc
+    Xc7TWnXYLUWgasc8/NamCCGUtH8iKZxuEMJQ0epMpxY3Gx+Y8L31l442+Z66K2/r
+    duOtOthapynzsUcdU2ZaSOpWTdHIinVKTpzIdoey4mFvYu0zkNo5tt8vbQC49TuL
+    ZEAT5SFEiXnaWOvaJoaP530aBtpcLcRu6rTYeFHuNhdxCtAeaqeACji9GrHUmMlO
+    JGTs2b1oWG0JS2eSeHUnCm81BOpBqBScyLK+83szag==
+    =KqKm
+    -----END PGP PUBLIC KEY BLOCK-----
+
