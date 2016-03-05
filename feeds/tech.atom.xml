@@ -426,7 +426,7 @@ sudo pear install Mail Net_SMTP&lt;/blockquote&gt;
 &lt;p&gt;如果汝的软件包啥都不用编译,这个函数可以不用.&lt;/p&gt;
 &lt;p&gt;对于普通的configure-make-make install三部曲来说,build()可以写成这样(汝来决定那些注释的去留呗~)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 切换到源码目录&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;$&lt;span class="s2"&gt;srcdir/&lt;/span&gt;$&lt;span class="s2"&gt;pkgname-&lt;/span&gt;$&lt;span class="s2"&gt;pkgver"&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$srcdir&lt;/span&gt;&lt;span class="s2"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;$pkgname&lt;/span&gt;&lt;span class="s2"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;$pkgver&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# configure 和 make ,按照Arch Linux的规范,软件包都装在/usr目录&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 汝也许要按照上游的指示添加别的参数呐~&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;./configure --prefix&lt;span class="o"&gt;=&lt;/span&gt;/usr&lt;/span&gt;
@@ -443,7 +443,7 @@ sudo pear install Mail Net_SMTP&lt;/blockquote&gt;
 如果汝需要手动把文件放到根目录下,那么在这里你需要把文件放在pkg下相同的文件层级结构中诶~.
 比如,把一个文件安装到/usr/bin,那么在伪root环境中对应的路径为$pkgdir/usr/bin.&lt;/p&gt;
 &lt;p&gt;对于普通的configure-make-make install三部曲来说,package()可以写成这样:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;make &lt;span class="nv"&gt;DESTDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;$&lt;span class="s2"&gt;pkgdir/"&lt;/span&gt; install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;make &lt;span class="nv"&gt;DESTDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$pkgdir&lt;/span&gt;&lt;span class="s2"&gt;/"&lt;/span&gt; install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;在一些很罕见的情况下,软件只有安装在单一目录下时才能运行.在这种情况下汝还是老老实实把它安装到$pkgdir/opt下吧.&lt;/p&gt;
 &lt;p&gt;通常,软件在安装过程中会在pkg目录下先创建一系列子目录.如果没有的话,makepkg会报错,记得先在build()函数中提前手动创建这些目录哟.&lt;/p&gt;

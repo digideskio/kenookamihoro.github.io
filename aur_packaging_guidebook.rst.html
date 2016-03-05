@@ -135,7 +135,7 @@ makepkg的运行顺序大概像这样(从上到下):
     
 <span class="p">    ..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
     
-        make <span class="nv">DESTDIR</span><span class="o">=</span><span class="s2">&quot;</span>$<span class="s2">pkgdir/&quot;</span> install
+        make <span class="nv">DESTDIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$pkgdir</span><span class="s2">/&quot;</span> install
         
     在一些很罕见的情况下,软件只有安装在单一目录下时才能运行.在这种情况下汝还是老老实实把它安装到$pkgdir/opt下吧.
 
